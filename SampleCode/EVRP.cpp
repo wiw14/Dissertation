@@ -80,6 +80,18 @@ double ** generate_2D_matrix_double(int n, int m){
 }
 
 
+void displayNodeData(void){
+    for (int index=0; index < ACTUAL_PROBLEM_SIZE; index++){
+        printf("Node %d at %f,%f",node_list[index].id,node_list[index].x,node_list[index].y);
+        if (charging_station[index])
+            printf(" Charging station");
+        if (index == DEPOT)
+            printf(" Depot");
+        printf("\n");
+    }
+}
+
+
 /****************************************************************/
 /* Read the problem instance and generate the initial object    */
 /* vector.                                                      */
@@ -200,6 +212,7 @@ void read_problem(char* filename){
 
     }
     fin.close();
+    displayNodeData();
     if(ACTUAL_PROBLEM_SIZE == 0) {
         cout << "wrong problem instance file" << endl;
         exit(1);
