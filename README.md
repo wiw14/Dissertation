@@ -1,6 +1,4 @@
-# Dissertation
-Electric vehicle routing problem source code.
-
+# Dissertation - Electric Vehicle Routing Problem (EVRP)
 "The proposed EVRP model formulation follows a classic VRP formulation: let G = (NF, A) be a graph where
 vertex set N is a combination of the customer set N0 = {1,2,...,i,...,j,…,n} and the depot {O}; F={n+1,n+2,...,n+s,
 s 0s0} is a set of charging stations. The set of charging stations F includes a charging station O1 located at the
