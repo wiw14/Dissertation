@@ -24,3 +24,4 @@ void run_heuristic();
 
 
 void free_heuristic();
+void storeTour(void);

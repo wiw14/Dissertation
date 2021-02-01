@@ -28,7 +28,7 @@ void initialize_heuristic(){
 
 void storeTour(void){
     printf("saving tour");
-    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\jsonTour.json)","w")) == NULL) { printf("ERROR\n");}
+    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
     int index = 0;
     while (best_sol->tour[index] != 0 || best_sol->tour[index+1] !=0 || best_sol->tour[index+2] != 0|| best_sol->tour[index+3] !=0 || best_sol->tour[index+4] != 0){
         fprintf(jsonTour,"%d\n",best_sol->tour[index]);

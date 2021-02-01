@@ -39,7 +39,7 @@ FILE* jsonNodes;
 
 void storeNodes(){
     printf("saving....\n");
-    if ((jsonNodes = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\jsonNodes.json)","w")) == NULL) { printf("ERROR\n");}
+    if ((jsonNodes = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeNodes)","w")) == NULL) { printf("ERROR\n");}
     for (int index=0;index<ACTUAL_PROBLEM_SIZE;index++){
         fprintf(jsonNodes,"%d %f %f",node_list[index].id,node_list[index].x,node_list[index].y);
         if(index == DEPOT)
