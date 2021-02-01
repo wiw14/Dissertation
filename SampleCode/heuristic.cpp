@@ -13,7 +13,7 @@
 
 using namespace std;
 
-
+FILE * jsonTour;
 solution *best_sol;   //see heuristic.hpp for the solution structure
 
 /*initialize the structure of your heuristic in this function*/
@@ -26,14 +26,15 @@ void initialize_heuristic(){
     best_sol->tour_length = INT_MAX;
 }
 
-void displayTour(void){
-    printf("ID: %d\n",best_sol->id);
+void storeTour(void){
+    printf("saving tour");
+    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\jsonTour.json)","w")) == NULL) { printf("ERROR\n");}
     int index = 0;
-    while (best_sol->tour[index] != 0 || best_sol->tour[index+1] !=0 || best_sol->tour[index+2] != 0){
-        printf("%d ",best_sol->tour[index]);
+    while (best_sol->tour[index] != 0 || best_sol->tour[index+1] !=0 || best_sol->tour[index+2] != 0|| best_sol->tour[index+3] !=0 || best_sol->tour[index+4] != 0){
+        fprintf(jsonTour,"%d\n",best_sol->tour[index]);
         index ++;
     }
-    printf("\n");
+    fclose(jsonTour);
 }
 
 /*implement your heuristic in this function*/
@@ -105,7 +106,7 @@ void run_heuristic(){
     }
 
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
-    displayTour();
+
 
     //free memory
     delete[] r;
@@ -116,7 +117,6 @@ void run_heuristic(){
 
 /*free memory structures*/
 void free_heuristic(){
-
     delete[] best_sol->tour;
 
 
