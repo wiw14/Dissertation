@@ -34,19 +34,3 @@ EVRP.hpp
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/main.cpp
-iostream
--
-stdlib.h
--
-limits.h
--
-EVRP.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-heuristic.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
-stats.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/stats.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/stats.hpp
-

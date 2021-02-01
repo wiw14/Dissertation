@@ -11,6 +11,8 @@ allNodes = []
 csList = []
 depot = []
 customers = []
+nodes = []
+numSolutions = 0
 
 
 def clearLists():
@@ -22,7 +24,7 @@ def clearLists():
 
 def readFile():
     clearLists()
-    file = open("C:\\Users\\wmw13\\Documents\\GitHub\\Dissertation\\SampleCode\\jsonNodes.json", "r")
+    file = open("C:\\Users\\wmw13\\Documents\\GitHub\\Dissertation\\SampleCode\\storeNodes.txt", "r")
     csX = []
     csY = []
     cX = []
@@ -46,36 +48,53 @@ def readFile():
     customers.append(cY)
 
 
-def displayList():
-    plt.close()
-    verts = [
-        (145.,215.),
-        (128.,252.),
-        (148.,232.),
-        (137.,193.),
-        (145.,215.),
-    ]
-    codes = [
-        Path.MOVETO,
-        Path.LINETO,
-        Path.LINETO,
-        Path.LINETO,
-        Path.LINETO,
-    ]
-
+def createPath(nodes):
+    verts = []
+    for node in nodes:
+        verts.append((allNodes[node][0],allNodes[node][1]))
+    codes = [Path.MOVETO]
+    for x in range(1,len(nodes)):
+        codes.append(Path.LINETO)
     path = Path(verts, codes)
-
     patch = patches.PathPatch(path, facecolor='orange', lw=1,fill=False)
 
-    fig,ax = plt.subplots()
-    ax.plot(customers[0],customers[1],"b.")
-    ax.plot(csList[0],csList[1],"rs")
-    ax.plot(depot[0],depot[1],"ks")
-    ax.add_patch(patch)
-    plt.pause(0.5)
+    return patch
+
+def readTour():
+    file = open("C:\\Users\\wmw13\\Documents\\GitHub\\Dissertation\\SampleCode\\storeTour.txt", "r")
+    nodes = []
+    temp = []
+    for line in file:
+        #print(line);
+        if line.split(" ")[0] == '-':
+            numSolutions = int(line.split(" ")[1])
+            nodes.append(temp[:])
+            temp.clear()
+        else:
+            temp.append(int(line))
+    print(numSolutions)
+    return nodes
 
 
-while True:
-    readFile()
-    displayList()
-    print("..")
+def displayList():
+    plt.close()
+    #nodes = [0,11,15,12,29,17,22,13,0,19,29,9,5,6,0,3,29,21,27,14,1,24,10,18,26,8,0,16,4,29,2,23,20,0]
+    #nodes = [0,15,10,22,17,8,26,20,0,19,25,3,7,9,6,0,5,23,18,22,4,22,12,0,21,14,16,22,2,23,11,0,1,22,13]
+    nodes = readTour()
+    fig = plt.figure()
+    n = 1
+    for node in nodes:
+        patch = createPath(node)
+        ax = fig.add_subplot(4,5,n)
+        # ax.set_title('Run '+str(n))
+        n+=1
+        ax.plot(customers[0],customers[1],"b.")
+        ax.plot(csList[0],csList[1],"rs")
+        ax.plot(depot[0],depot[1],"ys")
+        ax.add_patch(patch)
+        plt.draw()
+    plt.show()
+
+
+readFile()
+displayList()
