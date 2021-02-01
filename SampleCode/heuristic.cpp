@@ -26,6 +26,15 @@ void initialize_heuristic(){
     best_sol->tour_length = INT_MAX;
 }
 
+void displayTour(void){
+    printf("ID: %d\n",best_sol->id);
+    int index = 0;
+    while (best_sol->tour[index] != 0 || best_sol->tour[index+1] !=0 || best_sol->tour[index+2] != 0){
+        printf("%d ",best_sol->tour[index]);
+        index ++;
+    }
+    printf("\n");
+}
 
 /*implement your heuristic in this function*/
 void run_heuristic(){
@@ -96,7 +105,7 @@ void run_heuristic(){
     }
 
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
-
+    displayTour();
 
     //free memory
     delete[] r;

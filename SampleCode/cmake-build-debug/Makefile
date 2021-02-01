@@ -197,33 +197,6 @@ heuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/heuristic.cpp.s
 .PHONY : heuristic.cpp.s
 
-json.o: json.cpp.o
-
-.PHONY : json.o
-
-# target to build an object file
-json.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/json.cpp.o
-.PHONY : json.cpp.o
-
-json.i: json.cpp.i
-
-.PHONY : json.i
-
-# target to preprocess a source file
-json.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/json.cpp.i
-.PHONY : json.cpp.i
-
-json.s: json.cpp.s
-
-.PHONY : json.s
-
-# target to generate assembly for a file
-json.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/json.cpp.s
-.PHONY : json.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -293,9 +266,6 @@ help:
 	@echo "... heuristic.o"
 	@echo "... heuristic.i"
 	@echo "... heuristic.s"
-	@echo "... json.o"
-	@echo "... json.i"
-	@echo "... json.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

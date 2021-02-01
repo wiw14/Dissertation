@@ -92,12 +92,6 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/json.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/json.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/main.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>

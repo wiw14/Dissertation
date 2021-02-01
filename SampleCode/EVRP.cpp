@@ -9,7 +9,6 @@
 #include<limits.h>
 
 #include "EVRP.hpp"
-#include "json.hpp"
 
 using namespace std;
 
@@ -34,6 +33,25 @@ int MIN_VEHICLES;
 
 double evals;
 double current_best;
+
+FILE* jsonNodes;
+
+
+void storeNodes(){
+    printf("saving....\n");
+    if ((jsonNodes = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\evrp-benchmark-set\jsonNodes.json)","w")) == NULL) { printf("ERROR\n");}
+    for (int index=0;index<ACTUAL_PROBLEM_SIZE;index++){
+        fprintf(jsonNodes,"%d %f %f",node_list[index].id,node_list[index].x,node_list[index].y);
+        if(index == DEPOT)
+            fprintf(jsonNodes," %s","d");
+        else if(charging_station[index])
+            fprintf(jsonNodes," %s","s");
+        else
+            fprintf(jsonNodes," %s","c");
+        fprintf(jsonNodes,"\n");
+    }
+    fclose(jsonNodes);
+}
 
 
 /****************************************************************/
@@ -214,6 +232,7 @@ void read_problem(char* filename){
     }
     fin.close();
     displayNodeData();
+    storeNodes();
     if(ACTUAL_PROBLEM_SIZE == 0) {
         cout << "wrong problem instance file" << endl;
         exit(1);
