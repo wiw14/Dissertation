@@ -143,6 +143,33 @@ TestSampleCode/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/build
 .PHONY : TestSampleCode/fast
 
+ACOHeuristic.o: ACOHeuristic.cpp.o
+
+.PHONY : ACOHeuristic.o
+
+# target to build an object file
+ACOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
+.PHONY : ACOHeuristic.cpp.o
+
+ACOHeuristic.i: ACOHeuristic.cpp.i
+
+.PHONY : ACOHeuristic.i
+
+# target to preprocess a source file
+ACOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.i
+.PHONY : ACOHeuristic.cpp.i
+
+ACOHeuristic.s: ACOHeuristic.cpp.s
+
+.PHONY : ACOHeuristic.s
+
+# target to generate assembly for a file
+ACOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
+.PHONY : ACOHeuristic.cpp.s
+
 EVRP.o: EVRP.cpp.o
 
 .PHONY : EVRP.o
@@ -169,6 +196,33 @@ EVRP.s: EVRP.cpp.s
 EVRP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
 .PHONY : EVRP.cpp.s
+
+greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
+
+.PHONY : greedyEuclideanHeuristic.o
+
+# target to build an object file
+greedyEuclideanHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
+.PHONY : greedyEuclideanHeuristic.cpp.o
+
+greedyEuclideanHeuristic.i: greedyEuclideanHeuristic.cpp.i
+
+.PHONY : greedyEuclideanHeuristic.i
+
+# target to preprocess a source file
+greedyEuclideanHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.i
+.PHONY : greedyEuclideanHeuristic.cpp.i
+
+greedyEuclideanHeuristic.s: greedyEuclideanHeuristic.cpp.s
+
+.PHONY : greedyEuclideanHeuristic.s
+
+# target to generate assembly for a file
+greedyEuclideanHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.s
+.PHONY : greedyEuclideanHeuristic.cpp.s
 
 heuristic.o: heuristic.cpp.o
 
@@ -224,6 +278,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+randomHeuristic.o: randomHeuristic.cpp.o
+
+.PHONY : randomHeuristic.o
+
+# target to build an object file
+randomHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o
+.PHONY : randomHeuristic.cpp.o
+
+randomHeuristic.i: randomHeuristic.cpp.i
+
+.PHONY : randomHeuristic.i
+
+# target to preprocess a source file
+randomHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.i
+.PHONY : randomHeuristic.cpp.i
+
+randomHeuristic.s: randomHeuristic.cpp.s
+
+.PHONY : randomHeuristic.s
+
+# target to generate assembly for a file
+randomHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.s
+.PHONY : randomHeuristic.cpp.s
+
 stats.o: stats.cpp.o
 
 .PHONY : stats.o
@@ -260,15 +341,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TestSampleCode"
+	@echo "... ACOHeuristic.o"
+	@echo "... ACOHeuristic.i"
+	@echo "... ACOHeuristic.s"
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"
+	@echo "... greedyEuclideanHeuristic.o"
+	@echo "... greedyEuclideanHeuristic.i"
+	@echo "... greedyEuclideanHeuristic.s"
 	@echo "... heuristic.o"
 	@echo "... heuristic.i"
 	@echo "... heuristic.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... randomHeuristic.o"
+	@echo "... randomHeuristic.i"
+	@echo "... randomHeuristic.s"
 	@echo "... stats.o"
 	@echo "... stats.i"
 	@echo "... stats.s"

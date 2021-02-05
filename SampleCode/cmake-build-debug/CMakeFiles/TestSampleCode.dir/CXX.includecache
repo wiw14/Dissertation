@@ -8,6 +8,34 @@
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.cpp
+cmath
+-
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+string
+-
+cstring
+-
+math.h
+-
+fstream
+-
+limits.h
+-
+heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+EVRP.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+greedyEuclideanHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.cpp
 cmath
 -
@@ -31,6 +59,12 @@ heuristic.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 EVRP.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+greedyEuclideanHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+randomHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
 

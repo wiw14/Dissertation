@@ -4,14 +4,26 @@
 CMakeFiles/TestSampleCode.dir/EVRP.cpp.o: ../EVRP.cpp
 CMakeFiles/TestSampleCode.dir/EVRP.cpp.o: ../EVRP.hpp
 
+CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../greedyEuclideanHeuristic.cpp
+CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../greedyEuclideanHeuristic.h
+CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../heuristic.hpp
+
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../greedyEuclideanHeuristic.h
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../heuristic.cpp
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../heuristic.hpp
+CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../randomHeuristic.h
 
 CMakeFiles/TestSampleCode.dir/main.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/main.cpp.o: ../heuristic.hpp
 CMakeFiles/TestSampleCode.dir/main.cpp.o: ../main.cpp
 CMakeFiles/TestSampleCode.dir/main.cpp.o: ../stats.hpp
+
+CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../heuristic.hpp
+CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../randomHeuristic.cpp
+CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../randomHeuristic.h
 
 CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../stats.cpp

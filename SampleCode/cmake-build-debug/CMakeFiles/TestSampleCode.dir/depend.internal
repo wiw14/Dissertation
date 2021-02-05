@@ -4,15 +4,27 @@
 CMakeFiles/TestSampleCode.dir/EVRP.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
 CMakeFiles/TestSampleCode.dir/main.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/main.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/stats.hpp
+CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
 CMakeFiles/TestSampleCode.dir/stats.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/stats.cpp

@@ -27,7 +27,6 @@ def readFile():
     cY = []
     for line in file:
         val = re.split(" |\n", line)
-        # print("node " + str(val[0]) + " at " + str(val[1]) + "," +str(val[2]))
         allNodes.append([val[1], val[2]])
         if val[3] == 'c':
             cX.append(float(val[1]))
@@ -79,17 +78,19 @@ def displayList():
     # nodes = [0,15,10,22,17,8,26,20,0,19,25,3,7,9,6,0,5,23,18,22,4,22,12,0,21,14,16,22,2,23,11,0,1,22,13]
     nodes = readTour()
 
-    for node in nodes:
-        patch = createPath(node)
-        fig2, ax2 = plt.subplots()
-        ax2.plot(customers[0], customers[1], "b.")
-        ax2.plot(csList[0], csList[1], "rs")
-        ax2.plot(depot[0], depot[1], "ys")
-        ax2.add_patch(patch)
-        plt.draw()
+    # Generates individual maps for each run.
+    # for node in nodes:
+    #     patch = createPath(node)
+    #     fig2, ax2 = plt.subplots()
+    #     ax2.plot(customers[0], customers[1], "b.")
+    #     ax2.plot(csList[0], csList[1], "rs")
+    #     ax2.plot(depot[0], depot[1], "ys")
+    #     ax2.add_patch(patch)
+    #     plt.draw()
     fig = plt.figure()
     n = 1
     for node in nodes:
+        node.append(0)
         patch = createPath(node)
         # ax.set_title('Run '+str(n))
         ax = fig.add_subplot(4, 5, n)
