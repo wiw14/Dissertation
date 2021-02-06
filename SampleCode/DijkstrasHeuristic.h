@@ -1,0 +1,12 @@
+//
+// Created by wmw13 on 06/02/2021.
+//
+
+#ifndef TESTSAMPLECODE_DIJKSTRASHEURISTIC_H
+#define TESTSAMPLECODE_DIJKSTRASHEURISTIC_H
+
+
+void DijkstrasHeuristic();
+
+
+#endif //TESTSAMPLECODE_DIJKSTRASHEURISTIC_H

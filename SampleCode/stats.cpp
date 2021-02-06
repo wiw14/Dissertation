@@ -35,6 +35,7 @@ void open_stats(void){
     perf_filename = new char[CHAR_LEN];
     sprintf(perf_filename, "%s.stats.txt",
             problem_instance);
+    printf("File %s\n",problem_instance);
     //for performance
     if ((log_performance = fopen(perf_filename,"a")) == NULL) { exit(2);}
     //initialize and open output files

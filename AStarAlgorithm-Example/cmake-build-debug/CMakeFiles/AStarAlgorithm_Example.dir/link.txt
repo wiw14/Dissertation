@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/AStarAlgorithm_Example.dir/main.cpp.o  -o AStarAlgorithm_Example.exe -Wl,--out-implib,libAStarAlgorithm_Example.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

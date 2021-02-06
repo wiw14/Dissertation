@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AStarAlgorithm-Example/main.cpp
+math.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AStarAlgorithm-Example/math.h
+array
+-
+chrono
+-
+cstring
+-
+iostream
+-
+queue
+-
+set
+-
+stack
+-
+tuple
+-
+

@@ -59,19 +59,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe -E rm -f
+RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode/cmake-bu
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -90,7 +90,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode/cmake-build-debug/CMakeFiles /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/wmw13/CLionProjects/TestSampleCode/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -143,6 +143,87 @@ TestSampleCode/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/build
 .PHONY : TestSampleCode/fast
 
+ACOHeuristic.o: ACOHeuristic.cpp.o
+
+.PHONY : ACOHeuristic.o
+
+# target to build an object file
+ACOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
+.PHONY : ACOHeuristic.cpp.o
+
+ACOHeuristic.i: ACOHeuristic.cpp.i
+
+.PHONY : ACOHeuristic.i
+
+# target to preprocess a source file
+ACOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.i
+.PHONY : ACOHeuristic.cpp.i
+
+ACOHeuristic.s: ACOHeuristic.cpp.s
+
+.PHONY : ACOHeuristic.s
+
+# target to generate assembly for a file
+ACOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
+.PHONY : ACOHeuristic.cpp.s
+
+AStarHeuristic.o: AStarHeuristic.cpp.o
+
+.PHONY : AStarHeuristic.o
+
+# target to build an object file
+AStarHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o
+.PHONY : AStarHeuristic.cpp.o
+
+AStarHeuristic.i: AStarHeuristic.cpp.i
+
+.PHONY : AStarHeuristic.i
+
+# target to preprocess a source file
+AStarHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.i
+.PHONY : AStarHeuristic.cpp.i
+
+AStarHeuristic.s: AStarHeuristic.cpp.s
+
+.PHONY : AStarHeuristic.s
+
+# target to generate assembly for a file
+AStarHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.s
+.PHONY : AStarHeuristic.cpp.s
+
+DijkstrasHeuristic.o: DijkstrasHeuristic.cpp.o
+
+.PHONY : DijkstrasHeuristic.o
+
+# target to build an object file
+DijkstrasHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o
+.PHONY : DijkstrasHeuristic.cpp.o
+
+DijkstrasHeuristic.i: DijkstrasHeuristic.cpp.i
+
+.PHONY : DijkstrasHeuristic.i
+
+# target to preprocess a source file
+DijkstrasHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.i
+.PHONY : DijkstrasHeuristic.cpp.i
+
+DijkstrasHeuristic.s: DijkstrasHeuristic.cpp.s
+
+.PHONY : DijkstrasHeuristic.s
+
+# target to generate assembly for a file
+DijkstrasHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s
+.PHONY : DijkstrasHeuristic.cpp.s
+
 EVRP.o: EVRP.cpp.o
 
 .PHONY : EVRP.o
@@ -169,6 +250,33 @@ EVRP.s: EVRP.cpp.s
 EVRP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
 .PHONY : EVRP.cpp.s
+
+greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
+
+.PHONY : greedyEuclideanHeuristic.o
+
+# target to build an object file
+greedyEuclideanHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
+.PHONY : greedyEuclideanHeuristic.cpp.o
+
+greedyEuclideanHeuristic.i: greedyEuclideanHeuristic.cpp.i
+
+.PHONY : greedyEuclideanHeuristic.i
+
+# target to preprocess a source file
+greedyEuclideanHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.i
+.PHONY : greedyEuclideanHeuristic.cpp.i
+
+greedyEuclideanHeuristic.s: greedyEuclideanHeuristic.cpp.s
+
+.PHONY : greedyEuclideanHeuristic.s
+
+# target to generate assembly for a file
+greedyEuclideanHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.s
+.PHONY : greedyEuclideanHeuristic.cpp.s
 
 heuristic.o: heuristic.cpp.o
 
@@ -224,6 +332,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+randomHeuristic.o: randomHeuristic.cpp.o
+
+.PHONY : randomHeuristic.o
+
+# target to build an object file
+randomHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o
+.PHONY : randomHeuristic.cpp.o
+
+randomHeuristic.i: randomHeuristic.cpp.i
+
+.PHONY : randomHeuristic.i
+
+# target to preprocess a source file
+randomHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.i
+.PHONY : randomHeuristic.cpp.i
+
+randomHeuristic.s: randomHeuristic.cpp.s
+
+.PHONY : randomHeuristic.s
+
+# target to generate assembly for a file
+randomHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.s
+.PHONY : randomHeuristic.cpp.s
+
 stats.o: stats.cpp.o
 
 .PHONY : stats.o
@@ -260,15 +395,30 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TestSampleCode"
+	@echo "... ACOHeuristic.o"
+	@echo "... ACOHeuristic.i"
+	@echo "... ACOHeuristic.s"
+	@echo "... AStarHeuristic.o"
+	@echo "... AStarHeuristic.i"
+	@echo "... AStarHeuristic.s"
+	@echo "... DijkstrasHeuristic.o"
+	@echo "... DijkstrasHeuristic.i"
+	@echo "... DijkstrasHeuristic.s"
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"
+	@echo "... greedyEuclideanHeuristic.o"
+	@echo "... greedyEuclideanHeuristic.i"
+	@echo "... greedyEuclideanHeuristic.s"
 	@echo "... heuristic.o"
 	@echo "... heuristic.i"
 	@echo "... heuristic.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... randomHeuristic.o"
+	@echo "... randomHeuristic.i"
+	@echo "... randomHeuristic.s"
 	@echo "... stats.o"
 	@echo "... stats.i"
 	@echo "... stats.s"

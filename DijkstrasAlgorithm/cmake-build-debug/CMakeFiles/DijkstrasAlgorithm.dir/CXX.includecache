@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/DijkstrasAlgorithm/main.cpp
+iostream
+-
+vector
+-
+queue
+-
+functional
+-
+

@@ -34,6 +34,25 @@ int MIN_VEHICLES;
 double evals;
 double current_best;
 
+FILE* jsonNodes;
+
+
+void storeNodes(){
+    printf("saving....\n");
+    if ((jsonNodes = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeNodes.txt)","w")) == NULL) { printf("ERROR\n");}
+    for (int index=0;index<ACTUAL_PROBLEM_SIZE;index++){
+        fprintf(jsonNodes,"%d %f %f",node_list[index].id,node_list[index].x,node_list[index].y);
+        if(index == DEPOT)
+            fprintf(jsonNodes," %s","d");
+        else if(charging_station[index])
+            fprintf(jsonNodes," %s","s");
+        else
+            fprintf(jsonNodes," %s","c");
+        fprintf(jsonNodes,"\n");
+    }
+    fclose(jsonNodes);
+}
+
 
 /****************************************************************/
 /*Compute and return the euclidean distance of two objects      */
@@ -77,6 +96,18 @@ double ** generate_2D_matrix_double(int n, int m){
         }
     }
     return matrix;
+}
+
+
+void displayNodeData(void){
+    for (int index=0; index < ACTUAL_PROBLEM_SIZE; index++){
+        printf("Node %d at %f,%f",node_list[index].id,node_list[index].x,node_list[index].y);
+        if (charging_station[index])
+            printf(" Charging station");
+        if (index == DEPOT)
+            printf(" Depot");
+        printf("\n");
+    }
 }
 
 
@@ -200,6 +231,8 @@ void read_problem(char* filename){
 
     }
     fin.close();
+    displayNodeData();
+    storeNodes();
     if(ACTUAL_PROBLEM_SIZE == 0) {
         cout << "wrong problem instance file" << endl;
         exit(1);
