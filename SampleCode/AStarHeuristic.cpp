@@ -1,5 +1,5 @@
 //
-// Created by wmw13 on 05/02/2021.
+// Created by wmw13 on 06/02/2021.
 //
 
 #include<cmath>
@@ -15,8 +15,8 @@
 #include "heuristic.hpp"
 #include "EVRP.hpp"
 
-#include "ACOHeuristic.h"
+#include "AStarHeuristic.h"
 
-void ACOHeuristic(){
+void AStarHeuristic(){
 
 }
