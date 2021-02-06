@@ -17,6 +17,7 @@
 #include "greedyEuclideanHeuristic.h"
 #include "randomHeuristic.h"
 #include "ACOHeuristic.h"
+#include "DijkstrasHeuristic.h"
 
 using namespace std;
 
@@ -54,7 +55,8 @@ void storeTour(int run){
 void run_heuristic(){
    //greedyHeuristic();
    //randomHeuristic();
-   ACOHeuristic();
+   //ACOHeuristic();
+   DijkstrasHeuristic();
 }
 
 /*free memory structures*/

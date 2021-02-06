@@ -304,7 +304,7 @@ int main()
     };
 
     // Source is the left-most bottom-most corner
-    Pair src(8, 0);
+    Pair src(4, 8);
 
     // Destination is the left-most top-most corner
     Pair dest(0, 0);

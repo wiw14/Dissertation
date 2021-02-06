@@ -6,9 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.cpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
 cmath
 -
 iostream
@@ -27,12 +25,10 @@ fstream
 -
 limits.h
 -
-heuristic.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
-EVRP.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
+
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-greedyEuclideanHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
 
@@ -63,6 +59,10 @@ greedyEuclideanHeuristic.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
 randomHeuristic.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
+ACOHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
+DijkstrasHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 

@@ -12,11 +12,10 @@
 #include<fstream>
 #include<limits.h>
 
-#include "heuristic.hpp"
 #include "EVRP.hpp"
 
 #include "ACOHeuristic.h"
 
 void ACOHeuristic(){
-
+    printf("ACO HEURISTIC IN DEVELOPMENT");
 }

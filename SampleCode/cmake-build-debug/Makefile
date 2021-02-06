@@ -197,6 +197,33 @@ AStarHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.s
 .PHONY : AStarHeuristic.cpp.s
 
+DijkstrasHeuristic.o: DijkstrasHeuristic.cpp.o
+
+.PHONY : DijkstrasHeuristic.o
+
+# target to build an object file
+DijkstrasHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o
+.PHONY : DijkstrasHeuristic.cpp.o
+
+DijkstrasHeuristic.i: DijkstrasHeuristic.cpp.i
+
+.PHONY : DijkstrasHeuristic.i
+
+# target to preprocess a source file
+DijkstrasHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.i
+.PHONY : DijkstrasHeuristic.cpp.i
+
+DijkstrasHeuristic.s: DijkstrasHeuristic.cpp.s
+
+.PHONY : DijkstrasHeuristic.s
+
+# target to generate assembly for a file
+DijkstrasHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s
+.PHONY : DijkstrasHeuristic.cpp.s
+
 EVRP.o: EVRP.cpp.o
 
 .PHONY : EVRP.o
@@ -374,6 +401,9 @@ help:
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"
+	@echo "... DijkstrasHeuristic.o"
+	@echo "... DijkstrasHeuristic.i"
+	@echo "... DijkstrasHeuristic.s"
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"

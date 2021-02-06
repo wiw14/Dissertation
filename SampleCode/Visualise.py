@@ -72,10 +72,23 @@ def readTour():
     return nodes
 
 
+def displayTemp():
+    node = [0,14,16,12,15,17,13,18,19,20,21,11,8,10,9,7,5,6,2,1,3,4]
+    patch = createPath(node)
+    # ax.set_title('Run '+str(n))
+    fig,ax = plt.subplots()
+    ax.plot(customers[0], customers[1], "b.")
+    ax.plot(csList[0], csList[1], "rs")
+    ax.plot(depot[0], depot[1], "ys")
+    ax.add_patch(patch)
+    plt.draw()
+
+    plt.show()
+
+
 def displayList():
     plt.close()
     # nodes = [0,11,15,12,29,17,22,13,0,19,29,9,5,6,0,3,29,21,27,14,1,24,10,18,26,8,0,16,4,29,2,23,20,0]
-    # nodes = [0,15,10,22,17,8,26,20,0,19,25,3,7,9,6,0,5,23,18,22,4,22,12,0,21,14,16,22,2,23,11,0,1,22,13]
     nodes = readTour()
 
     # Generates individual maps for each run.
@@ -106,3 +119,4 @@ def displayList():
 
 readFile()
 displayList()
+#displayTemp()

@@ -12,8 +12,6 @@
 #include<fstream>
 #include<limits.h>
 
-#include "heuristic.hpp"
-#include "EVRP.hpp"
 
 #ifndef TESTSAMPLECODE_ACOHEURISTIC_H
 #define TESTSAMPLECODE_ACOHEURISTIC_H
