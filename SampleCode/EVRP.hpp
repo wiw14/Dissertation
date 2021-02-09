@@ -34,8 +34,11 @@ double get_distance(int from, int to);				//returns the distance
 bool is_charging_station(int node);					//returns true if node is a charging station
 double get_current_best();							//returns the best solution quality from all evaluation
 double get_evals();									//returns the number of evaluations
-void free_EVRP();                           //free memory
+void free_EVRP();                                   //free memory
+
 void displayNodeData(void);
+node getNodeInfo(int index);
+
 
 
 

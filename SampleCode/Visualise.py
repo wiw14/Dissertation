@@ -73,7 +73,8 @@ def readTour():
 
 
 def displayTemp():
-    node = [0,14,16,12,15,17,13,18,19,20,21,11,8,10,9,7,5,6,2,1,3,4]
+    node = [0,14,16,12,15,17,13,18,19,20,21,11,8,10,9,7,5,6,2,1,3,4] #Dijkstra path
+    #node = [0,8,6,1,9,4,3,5,7,15,16,10,11,2,19,21,20,18,14,17,12,13]
     patch = createPath(node)
     # ax.set_title('Run '+str(n))
     fig,ax = plt.subplots()
@@ -118,5 +119,5 @@ def displayList():
 
 
 readFile()
-displayList()
-#displayTemp()
+#displayList()
+displayTemp()

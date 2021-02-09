@@ -1,4 +1,4 @@
-C:\Users\wmw13\AppData\Local\JetBrains\CLion2020.3\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AntColonyOptimisation -- Example"
+C:\Users\wmw13\AppData\Local\JetBrains\CLion2020.2\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AntColonyOptimisation -- Example"
 -- The C compiler identification is GNU 10.2.0
 -- The CXX compiler identification is GNU 10.2.0
 -- Check for working C compiler: /usr/bin/cc

@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe -E rm -f
+RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -194,6 +194,32 @@ CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.cpp -o CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s
 
+CMakeFiles/TestSampleCode.dir/ACO.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../ACO.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/TestSampleCode.dir/ACO.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/ACO.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp
+
+CMakeFiles/TestSampleCode.dir/ACO.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/ACO.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp > CMakeFiles/TestSampleCode.dir/ACO.cpp.i
+
+CMakeFiles/TestSampleCode.dir/ACO.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/ACO.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp -o CMakeFiles/TestSampleCode.dir/ACO.cpp.s
+
+CMakeFiles/TestSampleCode.dir/Randoms.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/Randoms.cpp.o: ../Randoms.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/TestSampleCode.dir/Randoms.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/Randoms.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp
+
+CMakeFiles/TestSampleCode.dir/Randoms.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/Randoms.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp > CMakeFiles/TestSampleCode.dir/Randoms.cpp.i
+
+CMakeFiles/TestSampleCode.dir/Randoms.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/Randoms.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp -o CMakeFiles/TestSampleCode.dir/Randoms.cpp.s
+
 # Object files for target TestSampleCode
 TestSampleCode_OBJECTS = \
 "CMakeFiles/TestSampleCode.dir/main.cpp.o" \
@@ -204,7 +230,9 @@ TestSampleCode_OBJECTS = \
 "CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o" \
-"CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o"
+"CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/ACO.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/Randoms.cpp.o"
 
 # External object files for target TestSampleCode
 TestSampleCode_EXTERNAL_OBJECTS =
@@ -218,9 +246,11 @@ TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ACO.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/Randoms.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/build.make
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable TestSampleCode.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable TestSampleCode.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestSampleCode.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
@@ -102,6 +108,9 @@
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.cpp">
