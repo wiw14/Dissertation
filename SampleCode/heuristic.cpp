@@ -55,8 +55,8 @@ void storeTour(int run){
 void run_heuristic(){
    //greedyHeuristic();
    //randomHeuristic();
-   //ACOHeuristic();
-   DijkstrasHeuristic();
+   ACOHeuristic();
+   //DijkstrasHeuristic();
 }
 
 /*free memory structures*/

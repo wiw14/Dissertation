@@ -53,6 +53,10 @@ void storeNodes(){
     fclose(jsonNodes);
 }
 
+node getNodeInfo(int index){
+    return node_list[index];
+}
+
 
 /****************************************************************/
 /*Compute and return the euclidean distance of two objects      */
