@@ -76,7 +76,7 @@ void generateACOTour(const int *nextNode) {
 }
 
 void ACOHeuristic(){
-    int numAnts = 3,Taumax = 2, Iterations = 5;  //Original Values: nA=4, T=2, I=5 //Best Values: nA=3, T=2, I=5
+    int numAnts = 3,Taumax = 2, Iterations = 5000;  //Original Values: nA=4, T=2, I=5 //Best Values: nA=3, T=2, I=5
     double Alpha = 0.28, Beta = 0.8, Q = 80, RO = 0.8; //Original Values: A=0.5, B=0.8, Q=80, RO=0.2 //Best Values: A=0.28, B=0.8, Q=80, RO=0.8
 
     ACO *ants = new ACO (numAnts, NUM_OF_CUSTOMERS + 1,

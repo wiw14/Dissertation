@@ -125,8 +125,8 @@ double ACO::distance (int customerA, int customerB) {
     return get_distance(customerA,customerB);
 }
 
-bool ACO::exists (int cityi, int cityc) {
-    return (pheromones[cityi][cityc] > 0);
+bool ACO::exists (int customerA, int customerB) {
+    return (get_distance(customerA,customerB) > 0);
 }
 
 bool ACO::visited (int antk, int c) {
@@ -275,10 +275,10 @@ void ACO::updatePHEROMONES () {
     for (int k=0; k < numberOfAnts; k++) {
         double rlength = length(k);
         for (int r=0; r < numberOfCustomers - 1; r++) {
-            int cityi = routes[k][r];
-            int cityj = routes[k][r + 1];
-            deltaPheromones[cityi][cityj] += Q / rlength;
-            deltaPheromones[cityj][cityi] += Q / rlength;
+            int customerA = routes[k][r];
+            int customerB = routes[k][r + 1];
+            deltaPheromones[customerA][customerB] += Q / rlength;
+            deltaPheromones[customerB][customerA] += Q / rlength;
         }
     }
     for (int i=0; i < numberOfCustomers; i++) {
