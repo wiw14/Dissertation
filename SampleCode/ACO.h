@@ -2,9 +2,9 @@
 
 class ACO {
 public:
-    ACO (int nAnts, int nCities,
+    ACO (int nAnts, int numCustomers,
          double alpha, double beta, double q, double ro, double taumax,
-         int initCity);
+         int startDepot);
     virtual ~ACO ();
 
     void init ();
@@ -22,26 +22,26 @@ public:
 private:
     double distance (int cityi, int cityj);
     bool exists (int cityi, int cityc);
-    bool vizited (int antk, int c);
-    double PHI (int cityi, int cityj, int antk);
+    bool visited (int antk, int c);
+    double PHI (int customerA, int customerB, int antk);
 
     double length (int antk);
 
-    int city ();
+    int customer ();
     void route (int antk);
     int valid (int antk, int iteration);
 
     void updatePHEROMONES ();
 
 
-    int NUMBEROFANTS, NUMBEROFCITIES, INITIALCITY;
-    double ALPHA, BETA, Q, RO, TAUMAX;
+    int numberOfAnts, numberOfCustomers, depot;
+    double Alpha, Beta, Q, RO, Taumax;
 
-    double BESTLENGTH;
-    int *BESTROUTE;
+    double bestLength;
+    int *bestRoute;
 
-    int **GRAPH, **ROUTES;
-    double **CITIES, **PHEROMONES, **DELTAPHEROMONES, **PROBS;
+    int **routes;
+    double **customers, **pheromones, **deltaPheromones, **probability;
 
     Randoms *randoms;
 };

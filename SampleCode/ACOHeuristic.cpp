@@ -18,26 +18,8 @@
 #include "ACOHeuristic.h"
 #include "ACO.h"
 
-#define ITERATIONS		(int) 5
-
-#define NUMBEROFANTS	(int) 4
-#define NUMBEROFCITIES	(int) 8
-
-// if (ALPHA == 0) { stochastic search & sub-optimal route }
-#define ALPHA			(double) 0.5
-// if (BETA  == 0) { sub-optimal route }
-#define BETA			(double) 0.8
-// Estimation of the suspected best route.
-#define Q				(double) 80
-// Pheromones evaporation.
-#define RO				(double) 0.2
-// Maximum pheromone random number.
-#define TAUMAX			(int) 2
-
-#define INITIALCITY		(int) 0
-
-
 void generateACOTour(const int *nextNode) {
+
     /*
     * Re-Initialise best_sol
     */
@@ -93,25 +75,26 @@ void generateACOTour(const int *nextNode) {
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
 }
 
-
 void ACOHeuristic(){
+    int numAnts = 3,Taumax = 2, Iterations = 5;  //Original Values: nA=4, T=2, I=5 //Best Values: nA=3, T=2, I=5
+    double Alpha = 0.28, Beta = 0.8, Q = 80, RO = 0.8; //Original Values: A=0.5, B=0.8, Q=80, RO=0.2 //Best Values: A=0.28, B=0.8, Q=80, RO=0.8
 
-    ACO *ANTS = new ACO (NUMBEROFANTS, NUM_OF_CUSTOMERS+1,
-                         ALPHA, BETA, Q, RO, TAUMAX,
-                         INITIALCITY);
+    ACO *ants = new ACO (numAnts, NUM_OF_CUSTOMERS + 1,
+                         Alpha, Beta, Q, RO, Taumax,
+                         DEPOT);
 
-    ANTS -> init();
+    ants -> init();
 
     for (int startCustomer=0;startCustomer<=NUM_OF_CUSTOMERS; startCustomer++){
         for(int endCustomer=startCustomer+1;endCustomer<=NUM_OF_CUSTOMERS;endCustomer++){
-            ANTS->connectCustomers(startCustomer,endCustomer);
+            ants->connectCustomers(startCustomer, endCustomer);
         }
 
         node currentNode = getNodeInfo(startCustomer);
-        ANTS->setCustomerLocation(startCustomer,currentNode.x,currentNode.y);
+        ants->setCustomerLocation(startCustomer, currentNode.x, currentNode.y);
     }
 
-    ANTS -> optimize (ITERATIONS);
-    generateACOTour(ANTS->returnResults());
+    ants -> optimize (Iterations);
+    generateACOTour(ants->returnResults());
 
 }
