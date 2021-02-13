@@ -22,6 +22,7 @@ private:
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     int numOfAnts, probabilitySize;
+    int ** localSearchPheromone;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
@@ -30,7 +31,13 @@ private:
     void printPheromones();
     void resetRoute(int);
     void resetProbability();
-    void localSearch();
+    void randomPheromoneLocalSearch();
+    void randomLocalSearch();
+    void twoOptLocalSearch();
+    void updatePheromones ();
+    void route(int);
+    void decreaseLocalSearchPheromone();
+    void printLocalSearchPheromones();
     bool visited(int,int);
     bool valid(int);
     bool exists (int, int);
@@ -39,13 +46,13 @@ private:
     double getProbability(int,int,int);
     double getRouteLength(int*);
     int getNextCustomer();
+    int getRandomNumber(int);
+    int getTotalWeight(int);
 
 public:
     ACO(int,double,double,int,double,double);
     virtual ~ACO ();
     void optimize (int);
-    void updatePheromones ();
-    void route(int);
     int* returnResults();
 };
 
