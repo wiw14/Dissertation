@@ -1,47 +1,53 @@
-#include "Randoms.cpp"
+//
+// Created by wmw13 on 11/02/2021.
+//
+
+#ifndef TESTSAMPLECODE_ACO_H
+#define TESTSAMPLECODE_ACO_H
+
+#include "EVRP.hpp"
+#include <map>
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <random>
+
 
 class ACO {
-public:
-    ACO (int nAnts, int numCustomers,
-         double alpha, double beta, double q, double ro, double taumax,
-         int startDepot);
-    virtual ~ACO ();
-
-    void init ();
-
-    void connectCustomers (int cityi, int cityj);
-    void setCustomerLocation (int city, double x, double y);
-
-    void printPHEROMONES ();
-    void printGRAPH ();
-    void printRESULTS ();
-    int* returnResults();
-
-    void optimize (int ITERATIONS);
-
 private:
-    double distance (int cityi, int cityj);
-    bool exists (int cityi, int cityc);
-    bool visited (int antk, int c);
-    double PHI (int customerA, int customerB, int antk);
+    std::map<std::string,double>::iterator iterator;
+    std::map<std::string, double> pheromones;
+    int ** routes;
+    int* bestRoute;
+    double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
+    double ** probability;
+    int numOfAnts, probabilitySize;
 
-    double length (int antk);
+    std::default_random_engine seed;
+    std::uniform_real_distribution<double> distribution;
 
-    int customer ();
-    void route (int antk);
-    int valid (int antk, int iteration);
+    static char* getArcCode(int,int);
+    void printPheromones();
+    void resetRoute(int);
+    void resetProbability();
+    void localSearch();
+    bool visited(int,int);
+    bool valid(int);
+    bool exists (int, int);
+    double length(int);
+    double amountOfPheromone(double,int,int);
+    double getProbability(int,int,int);
+    double getRouteLength(int*);
+    int getNextCustomer();
 
-    void updatePHEROMONES ();
-
-
-    int numberOfAnts, numberOfCustomers, depot;
-    double Alpha, Beta, Q, RO, Taumax;
-
-    double bestLength;
-    int *bestRoute;
-
-    int **routes;
-    double **customers, **pheromones, **deltaPheromones, **probability;
-
-    Randoms *randoms;
+public:
+    ACO(int,double,double,int,double,double);
+    virtual ~ACO ();
+    void optimize (int);
+    void updatePheromones ();
+    void route(int);
+    int* returnResults();
 };
+
+
+#endif //TESTSAMPLECODE_ACO_H

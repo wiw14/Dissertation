@@ -197,6 +197,33 @@ ACOHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
 .PHONY : ACOHeuristic.cpp.s
 
+ACOv1.o: ACOv1.cpp.o
+
+.PHONY : ACOv1.o
+
+# target to build an object file
+ACOv1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o
+.PHONY : ACOv1.cpp.o
+
+ACOv1.i: ACOv1.cpp.i
+
+.PHONY : ACOv1.i
+
+# target to preprocess a source file
+ACOv1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.i
+.PHONY : ACOv1.cpp.i
+
+ACOv1.s: ACOv1.cpp.s
+
+.PHONY : ACOv1.s
+
+# target to generate assembly for a file
+ACOv1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.s
+.PHONY : ACOv1.cpp.s
+
 AStarHeuristic.o: AStarHeuristic.cpp.o
 
 .PHONY : AStarHeuristic.o
@@ -455,6 +482,9 @@ help:
 	@echo "... ACOHeuristic.o"
 	@echo "... ACOHeuristic.i"
 	@echo "... ACOHeuristic.s"
+	@echo "... ACOv1.o"
+	@echo "... ACOv1.i"
+	@echo "... ACOv1.s"
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"

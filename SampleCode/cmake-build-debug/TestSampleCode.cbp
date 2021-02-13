@@ -92,6 +92,12 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOv1.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOv1.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AStarHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
