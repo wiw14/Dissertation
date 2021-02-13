@@ -22,7 +22,7 @@ private:
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     int numOfAnts, probabilitySize;
-    int ** localSearchPheromone;
+    std::map<std::string, int> localSearchPheromone;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
@@ -46,8 +46,8 @@ private:
     double getProbability(int,int,int);
     double getRouteLength(int*);
     int getNextCustomer();
-    int getRandomNumber(int);
-    int getTotalWeight(int);
+    std::vector<int> getRandomNumber();
+    int getTotalWeight();
 
 public:
     ACO(int,double,double,int,double,double);

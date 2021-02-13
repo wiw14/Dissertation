@@ -25,6 +25,7 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
         for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
             pheromones[getArcCode(i, j)] = distribution(seed);
+            localSearchPheromone[getArcCode(i,j)] = 1;
         }
     }
 
@@ -37,13 +38,6 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
             bestRoute[customer] = -1;
         }
     }
-    localSearchPheromone = new int *[NUM_OF_CUSTOMERS + 1];
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index) {
-        localSearchPheromone[index] = new int[2];
-        localSearchPheromone[index][0] = 1;
-        localSearchPheromone[index][1] = 1;
-    }
-
 
 }
 
@@ -65,11 +59,10 @@ void ACO::printPheromones() {
 ACO::~ACO() {
     for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
         pheromones.erase(iterator);
+    for (auto iter = localSearchPheromone.begin(); iter != localSearchPheromone.end(); iter++)
+        localSearchPheromone.erase(iter);
     for (int ant = 0; ant < numOfAnts; ant++)
         delete[] routes[ant];
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-        delete[] localSearchPheromone[index];
-    delete[] localSearchPheromone;
     delete[] routes;
 }
 
@@ -221,34 +214,43 @@ void ACO::twoOptLocalSearch() {
 }
 
 void ACO::decreaseLocalSearchPheromone() {
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
-        if (localSearchPheromone[index][0] > 1)
-            localSearchPheromone[index][0] = (int) (localSearchPheromone[index][0] * 0.9);
-        if (localSearchPheromone[index][1] > 1)
-            localSearchPheromone[index][1] = (int) (localSearchPheromone[index][1] * 0.9);
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+            if(localSearchPheromone[getArcCode(i,j)] > 1)
+                localSearchPheromone[getArcCode(i,j)] = localSearchPheromone[getArcCode(i,j)] * 0.9;
+        }
     }
 }
 
-int ACO::getTotalWeight(int type) {
+int ACO::getTotalWeight() {
     int totalWeight = 0;
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-        totalWeight += localSearchPheromone[index][type];
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+            totalWeight += localSearchPheromone[getArcCode(i, j)];
+        }
+    }
     return totalWeight;
 }
 
-int ACO::getRandomNumber(int type) { //type either x (0) or y (1).
-    int totalWeight = getTotalWeight(type);
+std::vector<int> ACO::getRandomNumber() { //type either x (0) or y (1).
+    std::vector<int> xy(2);
+    int totalWeight = getTotalWeight();
+    xy.operator[](0) = -1; xy.operator[](1) = -1;
     //printf("type: %d tw: %d\n",type ,totalWeight); //DEBUGGING
     int val = rand() % (totalWeight - 1);
     totalWeight = 0;
-    for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
-        totalWeight += localSearchPheromone[index][type];
-        if (val <= (totalWeight)) {
-            //printf("%d\n",index); //DEBUGGING
-            return index;
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+            totalWeight += localSearchPheromone[getArcCode(i,j)];
+            if (val <= (totalWeight)) {
+                //printf("%d\n",index); //DEBUGGING
+                xy.operator[](0) = i;
+                xy.operator[](1) = j;
+                return xy;
+            }
         }
     }
-    return -1;
+    return xy;
 }
 
 void ACO::randomLocalSearch() {
@@ -302,18 +304,24 @@ void ACO::randomPheromoneLocalSearch() {
     double route_length = getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
-    while (new_route_length >= route_length && iters < 100) {
+    std::vector<int> xy(2);
+    while (new_route_length >= route_length && iters < (rand()%10)+10) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
         //x = rand() % NUM_OF_CUSTOMERS;
         //y = ((rand() % 5) + 1 + x);
 
-        x = getRandomNumber(0);
-        y = ((rand() % 5) + 1 + x);
-        if (y > NUM_OF_CUSTOMERS) {
-            y = NUM_OF_CUSTOMERS;
+        xy = getRandomNumber();
+        if (xy.operator[](0) < xy.operator[](1)){
+            x = xy.operator[](0);
+            y = xy.operator[](1);
         }
+        else{
+            x = xy.operator[](1);
+            y = xy.operator[](0);
+        }
+
 //        y = getRandomNumber(1);
 //        int tempx;
 //        if (y < x) {
@@ -321,7 +329,7 @@ void ACO::randomPheromoneLocalSearch() {
 //            x = y;
 //            y = tempx;
 //        }
-        //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
+       //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
 
         int size = (y - x) + 1;
         int *routeTemp = new int[size];
@@ -347,24 +355,23 @@ void ACO::randomPheromoneLocalSearch() {
     }
     decreaseLocalSearchPheromone();
     if (new_route_length < route_length) {
-
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             bestRoute[index] = tempRoute[index];
-        localSearchPheromone[x][0] = localSearchPheromone[x][0] + (int) ((route_length - new_route_length));
-        localSearchPheromone[y][1] = localSearchPheromone[y][1] + (int) ((route_length - new_route_length));
+        localSearchPheromone[getArcCode(x,y)] = localSearchPheromone[getArcCode(x,y)] + (int) ((route_length - new_route_length));
     }
     //printLocalSearchPheromones();
     delete[] tempRoute;
+
 }
 
 void ACO::printLocalSearchPheromones() {
-    printf("Pheromones for X : ");
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-        printf("%d, ", localSearchPheromone[index][0]);
-    printf("\n");
-    printf("Pheromones for Y : ");
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-        printf("%d, ", localSearchPheromone[index][1]);
+    printf("Pheromones for XY : ");
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+            printf("%d, ", localSearchPheromone[getArcCode(i,j)]);
+        }
+
+        }
     printf("\n");
 }
 

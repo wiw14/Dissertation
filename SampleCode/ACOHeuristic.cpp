@@ -19,7 +19,10 @@
 #include "ACO.h"
 
 void generateACOTour(const int *nextNode) {
-
+    //DEBUGGING
+//    for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index)
+//        printf("%d, ",nextNode[index]);
+//    printf("\n");
     /*
     * Re-Initialise best_sol
     */
@@ -35,7 +38,7 @@ void generateACOTour(const int *nextNode) {
 
     int prev, next, chargingStation;
     double activeCapacity = 0.0, activeBatteryLevel = 0.0;
-    int i = 1;
+    int i = 0;
     while (i <= NUM_OF_CUSTOMERS) {
         prev = best_sol->tour[best_sol->steps - 1];
         next = nextNode[i];
@@ -78,6 +81,10 @@ void generateACOTour(const int *nextNode) {
     }
 
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
+    //DEBUGGING
+//    for (int index = 0; index < best_sol->steps; ++index)
+//        printf("%d, ",best_sol->tour[index]);
+//    printf("\n");
 }
 
 //void ACOHeuristic(){
