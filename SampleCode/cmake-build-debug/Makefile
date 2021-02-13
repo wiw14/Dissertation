@@ -59,10 +59,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe -E rm -f
+RM = /cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleC
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -90,7 +90,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.2/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/cygdrive/c/Users/wmw13/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -196,6 +196,33 @@ ACOHeuristic.s: ACOHeuristic.cpp.s
 ACOHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
 .PHONY : ACOHeuristic.cpp.s
+
+ACOv1.o: ACOv1.cpp.o
+
+.PHONY : ACOv1.o
+
+# target to build an object file
+ACOv1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o
+.PHONY : ACOv1.cpp.o
+
+ACOv1.i: ACOv1.cpp.i
+
+.PHONY : ACOv1.i
+
+# target to preprocess a source file
+ACOv1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.i
+.PHONY : ACOv1.cpp.i
+
+ACOv1.s: ACOv1.cpp.s
+
+.PHONY : ACOv1.s
+
+# target to generate assembly for a file
+ACOv1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.s
+.PHONY : ACOv1.cpp.s
 
 AStarHeuristic.o: AStarHeuristic.cpp.o
 
@@ -455,6 +482,9 @@ help:
 	@echo "... ACOHeuristic.o"
 	@echo "... ACOHeuristic.i"
 	@echo "... ACOHeuristic.s"
+	@echo "... ACOv1.o"
+	@echo "... ACOv1.i"
+	@echo "... ACOv1.s"
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"

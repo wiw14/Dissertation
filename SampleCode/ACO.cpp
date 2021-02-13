@@ -1,343 +1,356 @@
-#include "ACO.h"
+//
+// Created by wmw13 on 11/02/2021.
+//
 
-#include <cstdio>
-#include <iostream>
-#include <cstdlib>
-
-#include <cmath>
-#include <limits>
 #include <climits>
+#include <functional>
+#include "ACO.h"
+#define SIZEOFPHEROMONES (((NUM_OF_CUSTOMERS+1)*(NUM_OF_CUSTOMERS+1))-(NUM_OF_CUSTOMERS+1))/2
 
-using namespace std;
+ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize,double Alpha,double Beta){
+    numOfAnts = numberOfAnts;
+    bestRouteLength = (double) INT_MAX;
+    pheromoneDecrease = pheromoneDecreaseFactor;
+    Q = q;
+    alpha = Alpha;
+    beta = Beta;
+    probabilitySize = ProbabilityArraySize;
+    probability = new double*[probabilitySize];
+    for (int index = 0; index <probabilitySize; index++)
+        probability[index] = new double[2];
+    resetProbability();
 
-ACO::ACO (int nAnts, int nCities,
-          double alpha, double beta, double q, double ro, double taumax,
-          int initCity) {
-    NUMBEROFANTS 	= nAnts;
-    NUMBEROFCITIES 	= nCities;
-    ALPHA 			= alpha;
-    BETA 			= beta;
-    Q 				= q;
-    RO 				= ro;
-    TAUMAX 			= taumax;
-    INITIALCITY		= initCity;
-
-    randoms = new Randoms (21);
-}
-ACO::~ACO () {
-    for(int i=0; i<NUMBEROFCITIES; i++) {
-        delete [] GRAPH[i];
-        delete [] CITIES[i];
-        delete [] PHEROMONES[i];
-        delete [] DELTAPHEROMONES[i];
-        if(i < NUMBEROFCITIES - 1) {
-            delete [] PROBS[i];
-        }
-    }
-    delete [] GRAPH;
-    delete [] CITIES;
-    delete [] PHEROMONES;
-    delete [] DELTAPHEROMONES;
-    delete [] PROBS;
-}
-
-void ACO::init () {
-    GRAPH 			= new int*[NUMBEROFCITIES];
-    CITIES 			= new double*[NUMBEROFCITIES];
-    PHEROMONES 		= new double*[NUMBEROFCITIES];
-    DELTAPHEROMONES = new double*[NUMBEROFCITIES];
-    PROBS 			= new double*[NUMBEROFCITIES-1];
-    for(int i=0; i<NUMBEROFCITIES; i++) {
-        GRAPH[i] 			= new int[NUMBEROFCITIES];
-        CITIES[i] 			= new double[2];
-        PHEROMONES[i] 		= new double[NUMBEROFCITIES];
-        DELTAPHEROMONES[i] 	= new double[NUMBEROFCITIES];
-        PROBS[i] 			= new double[2];
-        for (int j=0; j<2; j++) {
-            CITIES[i][j] = -1.0;
-            PROBS[i][j]  = -1.0;
-        }
-        for (int j=0; j<NUMBEROFCITIES; j++) {
-            GRAPH[i][j] 			= 0;
-            PHEROMONES[i][j] 		= 0.0;
-            DELTAPHEROMONES[i][j] 	= 0.0;
+    for (int i = 0;i<=NUM_OF_CUSTOMERS; i++){
+        for(int j = i+1; j<=NUM_OF_CUSTOMERS; j++){
+            pheromones[getArcCode(i,j)] = distribution(seed);
         }
     }
 
-    ROUTES = new int*[NUMBEROFANTS];
-    for (int i=0; i<NUMBEROFANTS; i++) {
-        ROUTES[i] = new int[NUMBEROFCITIES];
-        for (int j=0; j<NUMBEROFCITIES; j++) {
-            ROUTES[i][j] = -1;
+    routes = new int*[numberOfAnts];
+    bestRoute = new int[NUM_OF_CUSTOMERS+1];
+    for (int ant = 0; ant < numberOfAnts; ant++){
+        routes[ant] = new int[NUM_OF_CUSTOMERS+1];
+        for (int customer = 0; customer <=NUM_OF_CUSTOMERS; customer++){
+            routes[ant][customer] = -1;
+            bestRoute[customer] = -1;
         }
     }
 
-    BESTLENGTH = (double) INT_MAX;
-    BESTROUTE  = new int[NUMBEROFCITIES];
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        BESTROUTE[i] = -1;
+}
+
+char * ACO::getArcCode(int customerA, int customerB) {
+    char *index = new char[4];
+    if(customerA<customerB)
+        sprintf(index,"%d %d",customerA,customerB);
+    else
+        sprintf(index,"%d %d",customerB,customerA);
+    return index;
+}
+
+void ACO::printPheromones(){
+    for (const auto& item : pheromones){
+        printf("%s %f\n", item.first.c_str(), item.second);
     }
 }
 
+ACO::~ACO() {
+    for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
+        pheromones.erase(iterator);
+    for (int ant = 0; ant < numOfAnts; ant++)
+        delete[] routes[ant];
+    delete[] routes;
+}
 
-void ACO::connectCustomers (int cityi, int cityj) {
-    GRAPH[cityi][cityj] = 1;
-    PHEROMONES[cityi][cityj] = randoms -> Uniforme() * TAUMAX;
-    GRAPH[cityj][cityi] = 1;
-    PHEROMONES[cityj][cityi] = PHEROMONES[cityi][cityj];
+void ACO::resetRoute(int ant) {
+    for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++)
+        routes[ant][customer] = -1;
 }
-void ACO::setCustomerLocation (int city, double x, double y) {
-    CITIES[city][0] = x;
-    CITIES[city][1] = y;
+
+void ACO::resetProbability(){
+    for (int index = 0; index < probabilitySize; index++){
+        probability[index][0] = -1;
+        probability[index][1] = -1;
+    }
 }
-void ACO::printPHEROMONES () {
-    cout << " PHEROMONES: " << endl;
-    cout << "  | ";
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        printf("%5d   ", i);
-    }
-    cout << endl << "- | ";
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        cout << "--------";
-    }
-    cout << endl;
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        cout << i << " | ";
-        for (int j=0; j<NUMBEROFCITIES; j++) {
-            if (i == j) {
-                printf ("%5s   ", "x");
-                continue;
+
+void ACO::optimize(int iterations) {
+    for (int iter = 1; iter <= iterations; iter++){
+        //printf("Iteration %d\n",iter); //DEBUGGING
+        for (int ant = 0; ant < numOfAnts; ant++ ){
+            //printf("Ant : %d\n",ant); //DEBUGGING
+            while(valid(ant)){
+                resetRoute(ant);
+                //printf("Route Reset\n"); //DEBUGGING
+                route(ant);
+                //printf("Created Route\n"); //DEBUGGING
             }
-            if (exists(i, j)) {
-                printf ("%7.3f ", PHEROMONES[i][j]);
+            //printf("Found Route\n"); //DEBUGGING
+            double routeLength = length(ant);
+
+            if (routeLength < bestRouteLength) { //If the new route is shorter than the current best it updates the best.
+                bestRouteLength = routeLength;
+                for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++)
+                    bestRoute[customer] = routes[ant][customer];
             }
-            else {
-                if(PHEROMONES[i][j] == 0.0) {
-                    printf ("%5.0f   ", PHEROMONES[i][j]);
+
+        }
+        updatePheromones();
+        for (int ant=0; ant < numOfAnts; ant++)
+            resetRoute(ant); //Resets the all the routes;
+        localSearch();
+    }
+
+}
+
+double ACO::getRouteLength(int* route){
+
+        int steps;
+        int * tour = new int[NUM_OF_CUSTOMERS+1];
+        /*
+        * Re-Initialise best_sol
+        */
+        steps = 0;
+        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+            tour[index] = -1;
+        /*
+         * Sets the first item in the tour to DEPOT because all routes start at the depot.
+         * Increment steps to 1 due to first step was DEPOT.
+         */
+        tour[0] = DEPOT;
+        steps++;
+
+        int prev, next, chargingStation;
+        double activeCapacity = 0.0, activeBatteryLevel = 0.0;
+        int i = 1;
+        while (i <= NUM_OF_CUSTOMERS) {
+            prev = tour[steps - 1];
+            next = route[i];
+            if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
+                activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
+                activeCapacity += get_customer_demand(next);
+                activeBatteryLevel += get_energy_consumption(prev, next);
+                tour[steps] = next;
+                steps++;
+                i++;
+            } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY) {
+                activeCapacity = 0.0;
+                activeBatteryLevel = 0.0;
+                tour[steps] = DEPOT;
+                steps++;
+            } else if (activeBatteryLevel + get_energy_consumption(prev, next) > BATTERY_CAPACITY) {
+//            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE - NUM_OF_CUSTOMERS - 1) + NUM_OF_CUSTOMERS + 1;
+                chargingStation = NUM_OF_CUSTOMERS+NUM_OF_STATIONS;
+                for (int index = NUM_OF_CUSTOMERS+1; index <= (NUM_OF_CUSTOMERS+NUM_OF_STATIONS); index++){
+                    if (get_distance(next,index) < get_distance(next,chargingStation) && is_charging_station(index))
+                        chargingStation = index;
                 }
-                else {
-                    printf ("%7.3f ", PHEROMONES[i][j]);
+                if (is_charging_station(chargingStation)) {
+                    activeBatteryLevel = 0.0;
+                    tour[steps] = chargingStation;
+                    steps++;
                 }
+            } else {
+                activeCapacity = 0.0;
+                activeBatteryLevel = 0.0;
+                tour[steps] = DEPOT;
+                steps++;
             }
         }
-        cout << endl;
-    }
-    cout << endl;
+
+        //close EVRP tour to return back to the depot
+        if (tour[steps - 1] != DEPOT) {
+            tour[steps] = DEPOT;
+            steps++;
+        }
+
+        return fitness_evaluation(tour, steps);
 }
 
+void ACO::localSearch(){
+    int* tempRoute = new int[NUM_OF_CUSTOMERS+1];
+    double route_length = getRouteLength(bestRoute);
+    double new_route_length = route_length;
+    int iters = 0;
+    while(new_route_length >= route_length && iters < 100) {
+        for(int index = 0; index <=NUM_OF_CUSTOMERS; index++)
+            tempRoute[index] = bestRoute[index];
+        iters++;
+        int x = rand() % NUM_OF_CUSTOMERS, y = ((rand() % 5)+1+x);
+        if(y > NUM_OF_CUSTOMERS)
+            y = y - (y%NUM_OF_CUSTOMERS);
+//        printf("X = %d, Y = %d\n", x, y); //DEBUGGING
 
-double ACO::distance (int cityi, int cityj) {
-    return (double)
-            sqrt (pow (CITIES[cityi][0] - CITIES[cityj][0], 2) +
-                  pow (CITIES[cityi][1] - CITIES[cityj][1], 2));
-}
-bool ACO::exists (int cityi, int cityc) {
-    return (GRAPH[cityi][cityc] == 1);
-}
-bool ACO::vizited (int antk, int c) {
-    for (int l=0; l<NUMBEROFCITIES; l++) {
-        if (ROUTES[antk][l] == -1) {
-            break;
+        int size = (y - x) + 1;
+        int *routeTemp = new int[size];
+        for (int index = 0; index < size; index++)
+            routeTemp[index] = -1;
+        int tempIndex = 0;
+
+        for (int index = y; index >= x; index--) {
+            routeTemp[tempIndex] = tempRoute[index];
+            tempIndex++;
         }
-        if (ROUTES[antk][l] == c) {
-            return true;
+        tempIndex = 0;
+        for (int index = x; index <= y; index++) {
+            tempRoute[index] = routeTemp[tempIndex];
+            tempIndex++;
+        }
+        delete[] routeTemp;
+        new_route_length = getRouteLength(tempRoute);
+        //DEBUGGING
+//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//            printf("%d, ",tempRoute[index]);
+//        printf("\n");
+    }
+    if (new_route_length < route_length){
+        for(int index = 0; index <=NUM_OF_CUSTOMERS; index++)
+            bestRoute[index] = tempRoute[index];
+    }
+}
+
+double ACO::amountOfPheromone(double routeLength, int customerA, int customerB){
+    return Q/(routeLength);
+}
+
+void ACO::updatePheromones() {
+    for (int ant = 0; ant < numOfAnts; ant++){
+        double routeLength = length(ant);
+        for (int i = 0;i<=NUM_OF_CUSTOMERS; i++){ //Decreases all the pheromones by a constant factor.
+            for(int j = i+1; j<=NUM_OF_CUSTOMERS; j++){
+                pheromones[getArcCode(i,j)] = pheromones[getArcCode(i,j)] * pheromoneDecrease;
+            }
+        }
+        for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
+            int customerA = routes[ant][index], customerB = routes[ant][index+1];
+            pheromones[getArcCode(customerA,customerB)] = amountOfPheromone(routeLength,customerA,customerB);
         }
     }
-    return false;
 }
-double ACO::PHI (int cityi, int cityj, int antk) {
-    double ETAij = (double) pow (1 / distance (cityi, cityj), BETA);
-    double TAUij = (double) pow (PHEROMONES[cityi][cityj],   ALPHA);
+
+int ACO::getNextCustomer(){
+    /*
+     * Find the 3 largest probabilities then randomly select one.
+     */
+    int count = 0;
+    for (int index = 0; index < probabilitySize; index++){
+        if(probability[index][1] != -1)
+            count++;
+    }
+
+    std::uniform_int_distribution<int> nextCustomerSelector(0,count-1);
+    int nextCustomer = nextCustomerSelector(seed);
+    //printf("Random Selection %d\n",nextCustomer); //DEBUGGING
+    return (int)probability[nextCustomer][1];
+
+}
+
+/*
+ * NEEDS CHANGING.
+ * This function gets the probability for choosing the next customer.
+ */
+double ACO::getProbability(int customerA, int customerB,int ant){
+    double pheromone = pheromones[getArcCode(customerA,customerB)];
+    double distance = (get_distance(customerA,customerB)*1) + (get_energy_consumption(customerA,customerB)*0) + (get_customer_demand(customerB) * 0);
 
     double sum = 0.0;
-    for (int c=0; c<NUMBEROFCITIES; c++) {
-        if (exists(cityi, c)) {
-            if (!vizited(antk, c)) {
-                double ETA = (double) pow (1 / distance (cityi, c), BETA);
-                double TAU = (double) pow (PHEROMONES[cityi][c],   ALPHA);
+    for (int customer=0; customer <= NUM_OF_CUSTOMERS; customer++) {
+        if (exists(customerA, customer)) {
+            if (!visited(ant, customer)) {
+                double ETA = (double) pow (1 / ((get_distance(customerA, customer)*1) + (get_energy_consumption(customerA,customer)*0) + (get_customer_demand(customer) * 0)), beta);
+                double TAU = (double) pow (pheromones[getArcCode(customerA, customer)], alpha);
                 sum += ETA * TAU;
             }
         }
     }
-    return (ETAij * TAUij) / sum;
+
+    double prob = (((double) pow (pheromone,alpha)) * ((double) pow (1/distance,beta))) / sum;
+
+    return prob;
 }
 
-double ACO::length (int antk) {
-    double sum = 0.0;
-    for (int j=0; j<NUMBEROFCITIES-1; j++) {
-        sum += distance (ROUTES[antk][j], ROUTES[antk][j+1]);
-    }
-    return sum;
-}
-
-int ACO::city () {
-    double xi = randoms -> Uniforme();
-    int i = 0;
-    double sum = PROBS[i][0];
-    while (sum < xi) {
-        i++;
-        sum += PROBS[i][0];
-    }
-    return (int) PROBS[i][1];
-}
-
-void ACO::route (int antk) {
-    ROUTES[antk][0] = INITIALCITY;
-    for (int i=0; i<NUMBEROFCITIES-1; i++) {
-        int cityi = ROUTES[antk][i];
-        int count = 0;
-        for (int c=0; c<NUMBEROFCITIES; c++) {
-            if (cityi == c) {
+void ACO::route(int ant) {
+    //printf("Started Creating Route\n"); //DEBUGGING
+    routes[ant][0] = DEPOT; // Start route at depot
+    for (int i=0; i < NUM_OF_CUSTOMERS; i++) { //loop through all but one customer
+        int customerA = routes[ant][i]; //first customerA is the depot
+        //printf("Selected a customer %d\n",customerA); //DEBUGGING
+        for (int customerB=0; customerB <= NUM_OF_CUSTOMERS; customerB++) { //loop through all the customers to look for connections
+            //printf("Looking at customer %d\n",customerB); //DEBUGGING
+            if (customerA == customerB) { //If the customerA is the same as the customer selected skip.
                 continue;
             }
-            if (exists (cityi, c)) {
-                if (!vizited (antk, c)) {
-                    PROBS[count][0] = PHI (cityi, c, antk);
-                    PROBS[count][1] = (double) c;
-                    count++;
+            if (exists (customerA, customerB)) { //checks if a path exists between the customers.
+                if (!visited(ant, customerB)) { //checks whether the customer has already been visited
+                    double prob = getProbability(customerA,customerB,ant);
+                    for (int index = 0; index < probabilitySize; index ++){
+                        if (prob > probability[index][0]){
+                            probability[index][0] = prob;
+                            probability[index][1] = (double) customerB;
+                            break;
+                        }
+                    }
                 }
 
             }
         }
 
-        // deadlock
-        if (0 == count) {
+        int nextCustomer = getNextCustomer();
+        if (nextCustomer == -1) //deadlock
             return;
-        }
 
-        ROUTES[antk][i+1] = city();
+        routes[ant][i + 1] = nextCustomer;
+        //printf("Next Customer %d\n", routes[ant][i + 1]); //DEBUGGING
+        resetProbability();
     }
 }
-int ACO::valid (int antk, int iteration) {
-    for(int i=0; i<NUMBEROFCITIES-1; i++) {
-        int cityi = ROUTES[antk][i];
-        int cityj = ROUTES[antk][i+1];
-        if (cityi < 0 || cityj < 0) {
-            return -1;
+
+bool ACO::exists (int customerA, int customerB) {
+    return (get_distance(customerA,customerB) > 0);
+}
+
+bool ACO::valid(int ant){
+    for(int i=0; i < NUM_OF_CUSTOMERS; i++) {
+        int customerA = routes[ant][i];
+        int customerB = routes[ant][i + 1];
+        if (customerA < 0 || customerB < 0) {
+            return true;
         }
-        if (!exists(cityi, cityj)) {
-            return -2;
+        if (!exists(customerA, customerB)) {
+            return true;
         }
         for (int j=0; j<i-1; j++) {
-            if (ROUTES[antk][i] == ROUTES[antk][j]) {
-                return -3;
+            if (routes[ant][i] == routes[ant][j]) {
+                return true;
             }
         }
     }
 
-    if (!exists (INITIALCITY, ROUTES[antk][NUMBEROFCITIES-1])) {
-        return -4;
+    if (!exists (DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
+        return true;
     }
 
-    return 0;
+    return false;
 }
 
-void ACO::printGRAPH () {
-    cout << " GRAPH: " << endl;
-    cout << "  | ";
-    for( int i=0; i<NUMBEROFCITIES; i++) {
-        cout << i << " ";
+bool ACO::visited(int ant, int customer) {
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+        if (routes[ant][index] == -1)
+            break; //No customer at that index
+        if (routes[ant][index] == customer)
+                return true; //Found customer
     }
-    cout << endl << "- | ";
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        cout << "- ";
-    }
-    cout << endl;
-    int count = 0;
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        cout << i << " | ";
-        for (int j=0; j<NUMBEROFCITIES; j++) {
-            if(i == j) {
-                cout << "x ";
-            }
-            else {
-                cout << GRAPH[i][j] << " ";
-            }
-            if (GRAPH[i][j] == 1) {
-                count++;
-            }
-        }
-        cout << endl;
-    }
-    cout << endl;
-    cout << "Number of connections: " << count << endl << endl;
+    return false;
 }
-void ACO::printRESULTS () {
-    BESTLENGTH += distance (BESTROUTE[NUMBEROFCITIES-1], INITIALCITY);
-    cout << " BEST ROUTE:" << endl;
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        cout << BESTROUTE[i] << " ";
-    }
-    cout << endl << "length: " << BESTLENGTH << endl;
 
+double ACO::length(int ant) {
+    double total_length = 0.0;
+    for (int customer=0; customer < NUM_OF_CUSTOMERS; customer++) {
+        total_length += get_distance(routes[ant][customer], routes[ant][customer + 1]);
+    }
+    return total_length;
 }
 
 int* ACO::returnResults(){
-    return BESTROUTE;
+    return bestRoute;
 }
 
-void ACO::updatePHEROMONES () {
-    for (int k=0; k<NUMBEROFANTS; k++) {
-        double rlength = length(k);
-        for (int r=0; r<NUMBEROFCITIES-1; r++) {
-            int cityi = ROUTES[k][r];
-            int cityj = ROUTES[k][r+1];
-            DELTAPHEROMONES[cityi][cityj] += Q / rlength;
-            DELTAPHEROMONES[cityj][cityi] += Q / rlength;
-        }
-    }
-    for (int i=0; i<NUMBEROFCITIES; i++) {
-        for (int j=0; j<NUMBEROFCITIES; j++) {
-            PHEROMONES[i][j] = (1 - RO) * PHEROMONES[i][j] + DELTAPHEROMONES[i][j];
-            DELTAPHEROMONES[i][j] = 0.0;
-        }
-    }
-}
-
-
-void ACO::optimize (int ITERATIONS) {
-    for (int iterations=1; iterations<=ITERATIONS; iterations++) {
-        //cout << flush;
-        //cout << "ITERATION " << iterations << " HAS STARTED!" << endl << endl;
-
-        for (int k=0; k<NUMBEROFANTS; k++) {
-            //cout << " : ant " << k << " has been released!" << endl;
-            while (0 != valid(k, iterations)) {
-                //cout << "  :: releasing ant " << k << " again!" << endl;
-                for (int i=0; i<NUMBEROFCITIES; i++) {
-                    ROUTES[k][i] = -1;
-                }
-                route(k);
-            }
-
-//            for (int i=0; i<NUMBEROFCITIES; i++) {
-//                cout << ROUTES[k][i] << " ";
-//            }
-//            cout << endl;
-//
-//            cout << "  :: route done" << endl;
-            double rlength = length(k);
-
-            if (rlength < BESTLENGTH) {
-                BESTLENGTH = rlength;
-                for (int i=0; i<NUMBEROFCITIES; i++) {
-                    BESTROUTE[i] = ROUTES[k][i];
-                }
-            }
-            //cout << " : ant " << k << " has ended!" << endl;
-        }
-
-        //cout << endl << "updating PHEROMONES . . .";
-        updatePHEROMONES ();
-        //cout << " done!" << endl << endl;
-        //printPHEROMONES ();
-
-        for (int i=0; i<NUMBEROFANTS; i++) {
-            for (int j=0; j<NUMBEROFCITIES; j++) {
-                ROUTES[i][j] = -1;
-            }
-        }
-
-        //cout << endl << "ITERATION " << iterations << " HAS ENDED!" << endl << endl;
-    }
-}
