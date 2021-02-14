@@ -50,11 +50,11 @@ char *ACO::getArcCode(int customerA, int customerB) {
     return index;
 }
 
-void ACO::printPheromones() {
-    for (const auto &item : pheromones) {
-        printf("%s %f\n", item.first.c_str(), item.second);
-    }
-}
+//void ACO::printPheromones() {
+//    for (const auto &item : pheromones) {
+//        printf("%s %f\n", item.first.c_str(), item.second);
+//    }
+//}
 
 ACO::~ACO() {
     for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
@@ -106,19 +106,19 @@ void ACO::optimize(int iterations) {
         /*
          * LOCAL SEARCH EVERY ITERATION OF THE ANTS
          */
-        randomPheromoneLocalSearch();
+        //randomPheromoneLocalSearch();
         //randomLocalSearch();
         //twoOptLocalSearch();
     }
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS
      */
-    //twoOptLocalSearch();
-    randomPheromoneLocalSearch();
+    //randomPheromoneLocalSearch();
     //randomLocalSearch();
+    //twoOptLocalSearch();
 }
 
-double ACO::getRouteLength(int *route) {
+double ACO::getRouteLength(const int *route) {
 
     int steps;
     int *tour = new int[NUM_OF_CUSTOMERS + 1];
@@ -137,9 +137,13 @@ double ACO::getRouteLength(int *route) {
 
     int prev, next, chargingStation;
     double activeCapacity = 0.0, activeBatteryLevel = 0.0;
-    int i = 1;
+    int i = 0;
     while (i <= NUM_OF_CUSTOMERS) {
         prev = tour[steps - 1];
+        if (route[i] == 0) {
+            i++;
+            continue;
+        }
         next = route[i];
         if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
             activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
@@ -179,38 +183,76 @@ double ACO::getRouteLength(int *route) {
         steps++;
     }
 
-    return fitness_evaluation(tour, steps);
+    return fitness_evaluation(tour,steps);
 }
 
 void ACO::twoOptLocalSearch() {
-    int firstSelectionUpperBound, secondSelectionUpperBand, iters = 0;
-    int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
-    double route_length = getRouteLength(bestRoute);
-    double new_route_length = route_length;
-    while (new_route_length >= route_length && iters < 100) {
-        firstSelectionUpperBound = rand() % (int) (NUM_OF_CUSTOMERS / 2);
-        secondSelectionUpperBand = (rand() % (int) (NUM_OF_CUSTOMERS / 2)) + firstSelectionUpperBound;
-//        printf("FU %d, SU %d\n",firstSelectionUpperBound,secondSelectionUpperBand); //DEBUGGING
-        int tempIndex = 0;
-        //Stage 1
-        for (int index = 0; index < firstSelectionUpperBound; index++)
-            tempRoute[tempIndex++] = bestRoute[index];
-        //Stage 2
-        for (int index = secondSelectionUpperBand; index >= firstSelectionUpperBound; index--)
-            tempRoute[tempIndex++] = bestRoute[index];
-        //Stage 3
-        for (int index = secondSelectionUpperBand + 1; index <= NUM_OF_CUSTOMERS; index++)
-            tempRoute[tempIndex++] = bestRoute[index];
-
-        iters++;
-        new_route_length = getRouteLength(tempRoute);
-        printf("Current : %f, New : %f\n", route_length, new_route_length);
-    }
-    if (new_route_length < route_length) {
+    int improve = 0;
+    int* tempRoute = new int[NUM_OF_CUSTOMERS+1];
+    while ( improve < 20 ){
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-            bestRoute[index] = tempRoute[index];
+            tempRoute[index] = bestRoute[index];
+        double route_length = ACO::getRouteLength(bestRoute);
+        for (int i = 0; i < NUM_OF_CUSTOMERS; ++i){
+            for (int j = i + 1; j <= NUM_OF_CUSTOMERS ; ++j) {
+                //printf("i %d, j %d\n",i,j);
+                ACO::twoOptSwap(i,j,tempRoute,bestRoute);
+                double new_route_length = ACO::getRouteLength(tempRoute);
+                if (new_route_length < route_length){
+                    improve = 0;
+                    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+                        bestRoute[index] = tempRoute[index];
+                    route_length = new_route_length;
+                }
+            }
+        }
+        improve++;
     }
     delete[] tempRoute;
+    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i)
+        printf("%d, ",bestRoute[i]);
+    printf("\n");
+}
+
+void ACO::twoOptSwap(int i , int j, int* route, const int* currRoute){
+    for (int k = 0; k < i; ++k)
+        route[k] = currRoute[k];
+    int index = i;
+    for (int k = j; k >= i; --k) {
+        route[index] = currRoute[k];
+        index++;
+    }
+    for (int k = j+1; k <= NUM_OF_CUSTOMERS; ++k) {
+        route[k] = currRoute[k];
+    }
+}
+
+void ACO::twoOptLocalPheromoneAddonSearch(int* currentRoute) {
+    int improve = 0;
+    int* tempRoute = new int[NUM_OF_CUSTOMERS+1];
+    while ( improve < 2 ){
+        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+            tempRoute[index] = currentRoute[index];
+        double route_length = ACO::getRouteLength(currentRoute);
+        for (int i = 0; i < NUM_OF_CUSTOMERS; ++i){
+            for (int j = i + 1; j <= NUM_OF_CUSTOMERS ; ++j) {
+                //printf("i %d, j %d\n",i,j);
+                ACO::twoOptSwap(i,j,tempRoute,currentRoute);
+                double new_route_length = ACO::getRouteLength(tempRoute);
+                if (new_route_length < route_length){
+                    improve = 0;
+                    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+                        currentRoute[index] = tempRoute[index];
+                    route_length = new_route_length;
+                }
+            }
+        }
+        improve++;
+    }
+    delete[] tempRoute;
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i)
+//        printf("%d, ",bestRoute[i]);
+//    printf("\n");
 }
 
 void ACO::decreaseLocalSearchPheromone() {
@@ -255,10 +297,10 @@ std::vector<int> ACO::getRandomNumber() { //type either x (0) or y (1).
 
 void ACO::randomLocalSearch() {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
-    double route_length = getRouteLength(bestRoute);
+    double route_length = ACO::getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
-    while (new_route_length >= route_length && iters < 100) {
+    while (new_route_length >= route_length && iters < 3) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
@@ -285,13 +327,14 @@ void ACO::randomLocalSearch() {
             tempIndex++;
         }
         delete[] routeTemp;
-        new_route_length = getRouteLength(tempRoute);
+        new_route_length = ACO::getRouteLength(tempRoute);
         //DEBUGGING
 //        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
 //            printf("%d, ",tempRoute[index]);
 //        printf("\n");
     }
-
+    //Two Opt Local As Well
+    //ACO::twoOptLocalPheromoneAddonSearch(tempRoute);
     if (new_route_length < route_length) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             bestRoute[index] = tempRoute[index];
@@ -301,11 +344,11 @@ void ACO::randomLocalSearch() {
 
 void ACO::randomPheromoneLocalSearch() {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
-    double route_length = getRouteLength(bestRoute);
+    double route_length = ACO::getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
     std::vector<int> xy(2);
-    while (new_route_length >= route_length && iters < (rand()%10)+10) {
+    while (new_route_length >= route_length && iters < 3) { //(rand()%5)+10)
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
@@ -347,7 +390,9 @@ void ACO::randomPheromoneLocalSearch() {
             tempIndex++;
         }
         delete[] routeTemp;
-        new_route_length = getRouteLength(tempRoute);
+        //2-Opt As well
+        ACO::twoOptLocalPheromoneAddonSearch(tempRoute);
+        new_route_length = ACO::getRouteLength(tempRoute);
         //DEBUGGING
 //        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
 //            printf("%d, ",tempRoute[index]);
@@ -364,18 +409,18 @@ void ACO::randomPheromoneLocalSearch() {
 
 }
 
-void ACO::printLocalSearchPheromones() {
-    printf("Pheromones for XY : ");
-    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
-        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
-            printf("%d, ", localSearchPheromone[getArcCode(i,j)]);
-        }
+//void ACO::printLocalSearchPheromones() {
+//    printf("Pheromones for XY : ");
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+//        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+//            printf("%d, ", localSearchPheromone[getArcCode(i,j)]);
+//        }
+//
+//        }
+//    printf("\n");
+//}
 
-        }
-    printf("\n");
-}
-
-double ACO::amountOfPheromone(double routeLength, int customerA, int customerB) {
+double ACO::amountOfPheromone(double routeLength) const {
     return Q / (routeLength);
 }
 
@@ -389,7 +434,7 @@ void ACO::updatePheromones() {
         }
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
-            pheromones[getArcCode(customerA, customerB)] = amountOfPheromone(routeLength, customerA, customerB);
+            pheromones[getArcCode(customerA, customerB)] = amountOfPheromone(routeLength);
         }
     }
 }
@@ -422,9 +467,9 @@ double ACO::getProbability(int customerA, int customerB, int ant) {
 
     double sum = 0.0;
     for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++) {
-        if (exists(customerA, customer)) {
+        if (ACO::exists(customerA, customer)) {
             if (!visited(ant, customer)) {
-                double ETA = (double) pow(1 / ((get_distance(customerA, customer) * 1) +
+                auto ETA = (double) pow(1 / ((get_distance(customerA, customer) * 1) +
                                                (get_energy_consumption(customerA, customer) * 0) +
                                                (get_customer_demand(customer) * 0)), beta);
                 double TAU = (double) pow(pheromones[getArcCode(customerA, customer)], alpha);
@@ -450,7 +495,7 @@ void ACO::route(int ant) {
             if (customerA == customerB) { //If the customerA is the same as the customer selected skip.
                 continue;
             }
-            if (exists(customerA, customerB)) { //checks if a path exists between the customers.
+            if (ACO::exists(customerA, customerB)) { //checks if a path exists between the customers.
                 if (!visited(ant, customerB)) { //checks whether the customer has already been visited
                     double prob = getProbability(customerA, customerB, ant);
                     for (int index = 0; index < probabilitySize; index++) {
@@ -486,7 +531,7 @@ bool ACO::valid(int ant) {
         if (customerA < 0 || customerB < 0) {
             return true;
         }
-        if (!exists(customerA, customerB)) {
+        if (!ACO::exists(customerA, customerB)) {
             return true;
         }
         for (int j = 0; j < i - 1; j++) {
@@ -496,7 +541,7 @@ bool ACO::valid(int ant) {
         }
     }
 
-    if (!exists(DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
+    if (!ACO::exists(DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
         return true;
     }
 

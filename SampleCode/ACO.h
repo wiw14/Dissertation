@@ -28,7 +28,7 @@ private:
     std::uniform_real_distribution<double> distribution;
 
     static char* getArcCode(int,int);
-    void printPheromones();
+    //void printPheromones();
     void resetRoute(int);
     void resetProbability();
     void randomPheromoneLocalSearch();
@@ -37,14 +37,16 @@ private:
     void updatePheromones ();
     void route(int);
     void decreaseLocalSearchPheromone();
-    void printLocalSearchPheromones();
+    //void printLocalSearchPheromones();
+    static void twoOptLocalPheromoneAddonSearch(int* );
+    static void twoOptSwap(int , int , int*,const int*);
     bool visited(int,int);
     bool valid(int);
-    bool exists (int, int);
+    static bool exists (int, int);
     double length(int);
-    double amountOfPheromone(double,int,int);
+    double amountOfPheromone(double) const;
     double getProbability(int,int,int);
-    double getRouteLength(int*);
+    static double getRouteLength(const int*);
     int getNextCustomer();
     std::vector<int> getRandomNumber();
     int getTotalWeight();

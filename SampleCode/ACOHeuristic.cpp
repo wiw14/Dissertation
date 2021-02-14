@@ -40,6 +40,10 @@ void generateACOTour(const int *nextNode) {
     double activeCapacity = 0.0, activeBatteryLevel = 0.0;
     int i = 0;
     while (i <= NUM_OF_CUSTOMERS) {
+        if (nextNode[i] == 0) {
+            i++;
+            continue;
+        }
         prev = best_sol->tour[best_sol->steps - 1];
         next = nextNode[i];
         if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
@@ -81,6 +85,7 @@ void generateACOTour(const int *nextNode) {
     }
 
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
+    //printf("TL : %f\n",best_sol->tour_length);
     //DEBUGGING
 //    for (int index = 0; index < best_sol->steps; ++index)
 //        printf("%d, ",best_sol->tour[index]);
