@@ -251,6 +251,60 @@ AStarHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.s
 .PHONY : AStarHeuristic.cpp.s
 
+BCO.o: BCO.cpp.o
+
+.PHONY : BCO.o
+
+# target to build an object file
+BCO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCO.cpp.o
+.PHONY : BCO.cpp.o
+
+BCO.i: BCO.cpp.i
+
+.PHONY : BCO.i
+
+# target to preprocess a source file
+BCO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCO.cpp.i
+.PHONY : BCO.cpp.i
+
+BCO.s: BCO.cpp.s
+
+.PHONY : BCO.s
+
+# target to generate assembly for a file
+BCO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCO.cpp.s
+.PHONY : BCO.cpp.s
+
+BCOHeuristic.o: BCOHeuristic.cpp.o
+
+.PHONY : BCOHeuristic.o
+
+# target to build an object file
+BCOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCOHeuristic.cpp.o
+.PHONY : BCOHeuristic.cpp.o
+
+BCOHeuristic.i: BCOHeuristic.cpp.i
+
+.PHONY : BCOHeuristic.i
+
+# target to preprocess a source file
+BCOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCOHeuristic.cpp.i
+.PHONY : BCOHeuristic.cpp.i
+
+BCOHeuristic.s: BCOHeuristic.cpp.s
+
+.PHONY : BCOHeuristic.s
+
+# target to generate assembly for a file
+BCOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/BCOHeuristic.cpp.s
+.PHONY : BCOHeuristic.cpp.s
+
 DijkstrasHeuristic.o: DijkstrasHeuristic.cpp.o
 
 .PHONY : DijkstrasHeuristic.o
@@ -488,6 +542,12 @@ help:
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"
+	@echo "... BCO.o"
+	@echo "... BCO.i"
+	@echo "... BCO.s"
+	@echo "... BCOHeuristic.o"
+	@echo "... BCOHeuristic.i"
+	@echo "... BCOHeuristic.s"
 	@echo "... DijkstrasHeuristic.o"
 	@echo "... DijkstrasHeuristic.i"
 	@echo "... DijkstrasHeuristic.s"

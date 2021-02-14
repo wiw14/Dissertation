@@ -111,7 +111,7 @@ void generateTour(const int *nextNode) {
     best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
 }
 
-void DijkstrasHeuristic() {
+int* Dijkstra(){
     int start = DEPOT;
     int *shortestPath;
     shortestPath = new int[NUM_OF_CUSTOMERS + 1];
@@ -208,6 +208,9 @@ void DijkstrasHeuristic() {
 //        printf("node->%d ", nextNode[i]);
 //    }
 //    printf("\n");
+return nextNode;
+}
 
-    generateTour(nextNode);
+void DijkstrasHeuristic() {
+    generateTour(Dijkstra());
 }

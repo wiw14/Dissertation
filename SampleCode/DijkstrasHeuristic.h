@@ -7,6 +7,7 @@
 
 
 void DijkstrasHeuristic();
+int* Dijkstra();
 
 
 #endif //TESTSAMPLECODE_DIJKSTRASHEURISTIC_H
