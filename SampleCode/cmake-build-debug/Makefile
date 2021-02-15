@@ -305,6 +305,60 @@ EVRP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
 .PHONY : EVRP.cpp.s
 
+KNN.o: KNN.cpp.o
+
+.PHONY : KNN.o
+
+# target to build an object file
+KNN.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.o
+.PHONY : KNN.cpp.o
+
+KNN.i: KNN.cpp.i
+
+.PHONY : KNN.i
+
+# target to preprocess a source file
+KNN.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.i
+.PHONY : KNN.cpp.i
+
+KNN.s: KNN.cpp.s
+
+.PHONY : KNN.s
+
+# target to generate assembly for a file
+KNN.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.s
+.PHONY : KNN.cpp.s
+
+KNNHeuristic.o: KNNHeuristic.cpp.o
+
+.PHONY : KNNHeuristic.o
+
+# target to build an object file
+KNNHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o
+.PHONY : KNNHeuristic.cpp.o
+
+KNNHeuristic.i: KNNHeuristic.cpp.i
+
+.PHONY : KNNHeuristic.i
+
+# target to preprocess a source file
+KNNHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i
+.PHONY : KNNHeuristic.cpp.i
+
+KNNHeuristic.s: KNNHeuristic.cpp.s
+
+.PHONY : KNNHeuristic.s
+
+# target to generate assembly for a file
+KNNHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s
+.PHONY : KNNHeuristic.cpp.s
+
 Randoms.o: Randoms.cpp.o
 
 .PHONY : Randoms.o
@@ -494,6 +548,12 @@ help:
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"
+	@echo "... KNN.o"
+	@echo "... KNN.i"
+	@echo "... KNN.s"
+	@echo "... KNNHeuristic.o"
+	@echo "... KNNHeuristic.i"
+	@echo "... KNNHeuristic.s"
 	@echo "... Randoms.o"
 	@echo "... Randoms.i"
 	@echo "... Randoms.s"

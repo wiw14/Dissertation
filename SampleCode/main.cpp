@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
         while(!termination_condition()){
             //Execute your heuristic
             run_heuristic();  //heuristic.h
-            printf("iter %d - eval %f, termination %d\n",count++,get_evals(),TERMINATION);
+            //printf("iter %d - eval %f, termination %d\n",count++,get_evals(),TERMINATION);
         }
 
 

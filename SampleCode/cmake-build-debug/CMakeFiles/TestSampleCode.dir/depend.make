@@ -31,6 +31,17 @@ CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o: ../heuristic.hpp
 CMakeFiles/TestSampleCode.dir/EVRP.cpp.o: ../EVRP.cpp
 CMakeFiles/TestSampleCode.dir/EVRP.cpp.o: ../EVRP.hpp
 
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: ../KNN.cpp
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: ../KNN.h
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: ../heuristic.hpp
+
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../KNN.h
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../KNNHeuristic.cpp
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../KNNHeuristic.h
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../heuristic.hpp
+
 CMakeFiles/TestSampleCode.dir/Randoms.cpp.o: ../Randoms.cpp
 
 CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../EVRP.hpp
@@ -41,6 +52,7 @@ CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../heuristic.hpp
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../ACOHeuristic.h
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../DijkstrasHeuristic.h
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../KNNHeuristic.h
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../greedyEuclideanHeuristic.h
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../heuristic.cpp
 CMakeFiles/TestSampleCode.dir/heuristic.cpp.o: ../heuristic.hpp

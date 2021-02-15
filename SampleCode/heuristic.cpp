@@ -2,17 +2,18 @@
 #include<string>
 #include<limits.h>
 
-#include "heuristic.hpp"
-#include "EVRP.hpp"
+
 
 /*
  * Approaches.
  */
+#include "EVRP.hpp"
 #include "greedyEuclideanHeuristic.h"
 #include "randomHeuristic.h"
 #include "ACOHeuristic.h"
 #include "DijkstrasHeuristic.h"
-
+#include "KNNHeuristic.h"
+#include "heuristic.hpp"
 using namespace std;
 
 
@@ -36,6 +37,7 @@ void run_heuristic(){
    //ACOHeuristic();
    ACOCSHeuristic();
    //DijkstrasHeuristic();
+   //KNNHeuristic();
 }
 
 /*free memory structures*/

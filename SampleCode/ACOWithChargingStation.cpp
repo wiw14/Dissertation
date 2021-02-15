@@ -133,7 +133,7 @@ void ACOCS::optimize(int iterations) {
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS
      */
-    //randomPheromoneLocalSearch();
+    randomPheromoneLocalSearch();
     //randomLocalSearch();
     //twoOptLocalSearch();
 }

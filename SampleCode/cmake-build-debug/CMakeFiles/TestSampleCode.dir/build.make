@@ -233,6 +233,32 @@ CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.cpp -o CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s
 
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/KNN.cpp.o: ../KNN.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/TestSampleCode.dir/KNN.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/KNN.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN.cpp
+
+CMakeFiles/TestSampleCode.dir/KNN.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/KNN.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN.cpp > CMakeFiles/TestSampleCode.dir/KNN.cpp.i
+
+CMakeFiles/TestSampleCode.dir/KNN.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/KNN.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN.cpp -o CMakeFiles/TestSampleCode.dir/KNN.cpp.s
+
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o: ../KNNHeuristic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.cpp
+
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.cpp > CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i
+
+CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.cpp -o CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s
+
 # Object files for target TestSampleCode
 TestSampleCode_OBJECTS = \
 "CMakeFiles/TestSampleCode.dir/main.cpp.o" \
@@ -246,7 +272,9 @@ TestSampleCode_OBJECTS = \
 "CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/Randoms.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/ACO.cpp.o" \
-"CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o"
+"CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/KNN.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o"
 
 # External object files for target TestSampleCode
 TestSampleCode_EXTERNAL_OBJECTS =
@@ -263,9 +291,11 @@ TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/Randoms.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ACO.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/KNN.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/build.make
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable TestSampleCode.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable TestSampleCode.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TestSampleCode.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
