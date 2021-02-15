@@ -27,7 +27,7 @@ private:
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
 
-    static char* getArcCode(int,int);
+    static std::string getArcCode(int,int);
     //void printPheromones();
     void resetRoute(int);
     void resetProbability();

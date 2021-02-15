@@ -104,18 +104,6 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AStarHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/BCO.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/BCO.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/BCOHeuristic.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/BCOHeuristic.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>

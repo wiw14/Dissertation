@@ -3,8 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o"
   "CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o"
-  "CMakeFiles/TestSampleCode.dir/BCO.cpp.o"
-  "CMakeFiles/TestSampleCode.dir/BCOHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/EVRP.cpp.o"
   "CMakeFiles/TestSampleCode.dir/Randoms.cpp.o"

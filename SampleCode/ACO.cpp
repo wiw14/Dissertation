@@ -41,13 +41,15 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
 
 }
 
-char *ACO::getArcCode(int customerA, int customerB) {
+std::string ACO::getArcCode(int customerA, int customerB) {
     char *index = new char[4];
     if (customerA < customerB)
         sprintf(index, "%d %d", customerA, customerB);
     else
         sprintf(index, "%d %d", customerB, customerA);
-    return index;
+    std::string arcCode(index);
+    delete[] index;
+    return arcCode;
 }
 
 //void ACO::printPheromones() {
@@ -57,13 +59,17 @@ char *ACO::getArcCode(int customerA, int customerB) {
 //}
 
 ACO::~ACO() {
-    for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
-        pheromones.erase(iterator);
-    for (auto iter = localSearchPheromone.begin(); iter != localSearchPheromone.end(); iter++)
-        localSearchPheromone.erase(iter);
+//    for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
+//        pheromones.erase(iterator);
+//    for (auto iter = localSearchPheromone.begin(); iter != localSearchPheromone.end(); iter++)
+//        localSearchPheromone.erase(iter);
     for (int ant = 0; ant < numOfAnts; ant++)
         delete[] routes[ant];
+    for (int prob = 0; prob < probabilitySize; ++prob)
+        delete[] probability[prob];
     delete[] routes;
+    delete[] probability;
+    delete[] bestRoute;
 }
 
 void ACO::resetRoute(int ant) {
@@ -106,14 +112,14 @@ void ACO::optimize(int iterations) {
         /*
          * LOCAL SEARCH EVERY ITERATION OF THE ANTS
          */
-        //randomPheromoneLocalSearch();
+        randomPheromoneLocalSearch();
         //randomLocalSearch();
         //twoOptLocalSearch();
     }
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS
      */
-    //randomPheromoneLocalSearch();
+    randomPheromoneLocalSearch();
     //randomLocalSearch();
     //twoOptLocalSearch();
 }

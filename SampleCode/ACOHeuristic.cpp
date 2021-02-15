@@ -116,7 +116,7 @@ void generateACOTour(const int *nextNode) {
 //
 //}
 void ACOHeuristic(){
-    int numAnts=3, iterations = 1000, probabilityArraySize = 2;
+    int numAnts=4, iterations = 300, probabilityArraySize = 2;
     double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8;
     ACO* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta);
     //printf("ACO Initialised\n"); //DEBUGGING
@@ -128,4 +128,5 @@ void ACOHeuristic(){
 //        printf("%d, ",route[index]);
 //    printf("\n");
     generateACOTour(route);
+    delete a;
 }
