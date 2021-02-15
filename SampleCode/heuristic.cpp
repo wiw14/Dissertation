@@ -1,11 +1,5 @@
 #include<cmath>
-#include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
 #include<string>
-#include<cstring>
-#include<math.h>
-#include<fstream>
 #include<limits.h>
 
 #include "heuristic.hpp"
@@ -39,7 +33,8 @@ void initialize_heuristic(){
 void run_heuristic(){
    //greedyHeuristic();
    //randomHeuristic();
-   ACOHeuristic();
+   //ACOHeuristic();
+   ACOCSHeuristic();
    //DijkstrasHeuristic();
 }
 

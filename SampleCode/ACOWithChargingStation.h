@@ -1,12 +1,15 @@
 //
+// Created by wmw13 on 15/02/2021.
+//
+
+#ifndef TESTSAMPLECODE_ACOWITHCHARGINGSTATION_H
+#define TESTSAMPLECODE_ACOWITHCHARGINGSTATION_H
+
+//
 // Created by wmw13 on 11/02/2021.
 //
 
-#ifndef TESTSAMPLECODE_ACO_H
-#define TESTSAMPLECODE_ACO_H
-
-#include "EVRP.hpp"
-#include "heuristic.hpp"
+#include "ACO.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -14,7 +17,7 @@
 #include <random>
 
 
-class ACO {
+class ACOCS {
 private:
     std::map<std::string,double>::iterator iterator;
     std::map<std::string, double> pheromones;
@@ -29,7 +32,6 @@ private:
     std::uniform_real_distribution<double> distribution;
 
     static std::string getArcCode(int,int);
-    //void printPheromones();
     void resetRoute(int);
     void resetProbability();
     void randomPheromoneLocalSearch();
@@ -38,7 +40,6 @@ private:
     void updatePheromones ();
     void route(int);
     void decreaseLocalSearchPheromone();
-    //void printLocalSearchPheromones();
     void twoOptLocalPheromoneAddonSearch(int* );
     static void twoOptSwap(int , int , int*,const int*);
     bool visited(int,int);
@@ -52,12 +53,13 @@ private:
     int getTotalWeight();
 
 public:
-    ACO(int,double,double,int,double,double,int,int);
-    virtual ~ACO ();
+    ACOCS(int,double,double,int,double,double,int,int);
+    virtual ~ACOCS ();
     void optimize (int);
     int* returnResults();
     static double getRouteLength(const int*);
 };
 
 
-#endif //TESTSAMPLECODE_ACO_H
+
+#endif //TESTSAMPLECODE_ACOWITHCHARGINGSTATION_H

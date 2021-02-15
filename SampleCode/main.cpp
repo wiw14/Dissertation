@@ -30,8 +30,9 @@ void end_run(int r){
 bool termination_condition(void) {
 
     bool flag;
-    if(get_evals() >= TERMINATION)
+    if(get_evals() >= TERMINATION){
         flag = true;
+    }
     else
         flag = false;
 
@@ -60,9 +61,11 @@ int main(int argc, char *argv[]) {
         initialize_heuristic(); //heuristic.h
 
         /*Step 4*/
+        int count = 1;
         while(!termination_condition()){
             //Execute your heuristic
             run_heuristic();  //heuristic.h
+            printf("iter %d - eval %f, termination %d\n",count++,get_evals(),TERMINATION);
         }
 
 

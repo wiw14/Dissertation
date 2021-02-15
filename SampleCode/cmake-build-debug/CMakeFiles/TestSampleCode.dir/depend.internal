@@ -5,19 +5,19 @@ CMakeFiles/TestSampleCode.dir/ACO.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.cpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOv1.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
-CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOv1.cpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOv1.h
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Randoms.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AStarHeuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AStarHeuristic.h

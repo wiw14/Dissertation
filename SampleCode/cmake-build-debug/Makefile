@@ -197,32 +197,32 @@ ACOHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
 .PHONY : ACOHeuristic.cpp.s
 
-ACOv1.o: ACOv1.cpp.o
+ACOWithChargingStation.o: ACOWithChargingStation.cpp.o
 
-.PHONY : ACOv1.o
+.PHONY : ACOWithChargingStation.o
 
 # target to build an object file
-ACOv1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o
-.PHONY : ACOv1.cpp.o
+ACOWithChargingStation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
+.PHONY : ACOWithChargingStation.cpp.o
 
-ACOv1.i: ACOv1.cpp.i
+ACOWithChargingStation.i: ACOWithChargingStation.cpp.i
 
-.PHONY : ACOv1.i
+.PHONY : ACOWithChargingStation.i
 
 # target to preprocess a source file
-ACOv1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.i
-.PHONY : ACOv1.cpp.i
+ACOWithChargingStation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.i
+.PHONY : ACOWithChargingStation.cpp.i
 
-ACOv1.s: ACOv1.cpp.s
+ACOWithChargingStation.s: ACOWithChargingStation.cpp.s
 
-.PHONY : ACOv1.s
+.PHONY : ACOWithChargingStation.s
 
 # target to generate assembly for a file
-ACOv1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.s
-.PHONY : ACOv1.cpp.s
+ACOWithChargingStation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s
+.PHONY : ACOWithChargingStation.cpp.s
 
 AStarHeuristic.o: AStarHeuristic.cpp.o
 
@@ -482,9 +482,9 @@ help:
 	@echo "... ACOHeuristic.o"
 	@echo "... ACOHeuristic.i"
 	@echo "... ACOHeuristic.s"
-	@echo "... ACOv1.o"
-	@echo "... ACOv1.i"
-	@echo "... ACOv1.s"
+	@echo "... ACOWithChargingStation.o"
+	@echo "... ACOWithChargingStation.i"
+	@echo "... ACOWithChargingStation.s"
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"

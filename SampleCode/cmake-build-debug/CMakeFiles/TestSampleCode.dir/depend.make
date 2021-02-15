@@ -4,19 +4,19 @@
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../ACO.cpp
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../ACO.h
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../heuristic.hpp
 
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACO.h
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOHeuristic.cpp
-CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOHeuristic.h
-CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOv1.h
+CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOWithChargingStation.h
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../EVRP.hpp
-CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../Randoms.cpp
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../heuristic.hpp
 
-CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o: ../ACOv1.cpp
-CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o: ../ACOv1.h
-CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o: ../EVRP.hpp
-CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o: ../Randoms.cpp
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../ACO.h
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../ACOWithChargingStation.cpp
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../ACOWithChargingStation.h
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../heuristic.hpp
 
 CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o: ../AStarHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o: ../AStarHeuristic.h

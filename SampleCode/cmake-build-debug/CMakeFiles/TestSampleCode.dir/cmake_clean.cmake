@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/ACO.cpp.o"
   "CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o"
-  "CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o"
   "CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/EVRP.cpp.o"
