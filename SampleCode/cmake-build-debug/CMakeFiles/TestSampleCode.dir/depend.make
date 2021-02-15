@@ -57,6 +57,7 @@ CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../randomHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o: ../randomHeuristic.h
 
 CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../heuristic.hpp
 CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../stats.cpp
 CMakeFiles/TestSampleCode.dir/stats.cpp.o: ../stats.hpp
 

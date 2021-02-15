@@ -21,7 +21,7 @@
 
 using namespace std;
 
-FILE * jsonTour;
+
 solution *best_sol;   //see heuristic.hpp for the solution structure
 
 /*initialize the structure of your heuristic in this function*/
@@ -34,22 +34,6 @@ void initialize_heuristic(){
     best_sol->tour_length = INT_MAX;
 }
 
-void openTourFile(void){
-    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
-}
-void closeTourFile(void){
-    fclose(jsonTour);
-}
-
-void storeTour(int run){
-    int index = 0;
-    while (best_sol->tour[index] != 0 || best_sol->tour[index+1] !=0 || best_sol->tour[index+2] != 0|| best_sol->tour[index+3] !=0 || best_sol->tour[index+4] != 0){
-        fprintf(jsonTour,"%d\n",best_sol->tour[index]);
-        index ++;
-    }
-    fprintf(jsonTour,"- %d\n",run);
-
-}
 
 /*implement your heuristic in this function*/
 void run_heuristic(){
