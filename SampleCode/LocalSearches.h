@@ -21,6 +21,7 @@ private:
     static int findClosestChargingStation(int customer);
     double getTotalEnergyConsumption(int* route, int startCustomer,int upperBound);
     int getTotalLoad(int* route, int startCustomer);
+    void findOptimalCS(int* subRoute, int size);
 
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);

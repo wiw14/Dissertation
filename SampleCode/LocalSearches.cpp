@@ -472,6 +472,22 @@ int localSearch::findClosestChargingStation(int customer) {
     return chargingStation;
 }
 
+void localSearch::findOptimalCS(int* subRoute, int size){
+    double* lengths = new double[size];
+    for (int i = 0; i < size-1; ++i)
+        lengths[i] = get_distance(subRoute[i],findClosestChargingStation(subRoute[i]))+get_distance(findClosestChargingStation(subRoute[i]),subRoute[i+1]);
+    double minLength = INT_MAX;
+    int customer = -1;
+    for (int i = 0; i < size-1; ++i) {
+        if(lengths[i] < minLength){
+            minLength = lengths[i];
+            customer = i;
+        }
+    }
+    double activeEnergy = 0.0;
+
+}
+
 double localSearch::getRouteLength(const int *route) {
     int* tempRoute = new int[NUM_OF_CUSTOMERS], *tour = new int[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS], tempIndex = 0,step = 0;
     //INITALISE ARRAYS.
@@ -503,9 +519,12 @@ double localSearch::getRouteLength(const int *route) {
             /*
             * FIND OPTIMAL PATH WITH CHARGING STATIONS.
             */
-            for (int i = start; i < start + maxDistForCap && i < NUM_OF_CUSTOMERS; ++i)
-                tour[step++] = tempRoute[i];
-
+            int* tempTempRoute = new int[maxDistForCap];
+            int index = 0;
+            for (int i = start; i < start + maxDistForCap; ++i)
+                tempTempRoute[index++] = tempRoute[i];
+            findOptimalCS(tempTempRoute,index);
+            delete[]tempTempRoute;
         }
         tour[step++] = DEPOT;
         start+=maxDistForCap;
