@@ -2,26 +2,17 @@
 // Created by wmw13 on 06/02/2021.
 //
 
-#include<cmath>
-#include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
-#include<string>
-#include<cstring>
-#include<fstream>
-#include<limits.h>
-#include <vector>
 #include <queue>
 #include <functional>
+#include <climits>
 
 using namespace std;
 
-#include "EVRP.hpp"
-#include "heuristic.hpp"
+#include "LocalSearches.h"
 
 #include "DijkstrasHeuristic.h"
 
-#define KNN 1
+#define KNN 5
 
 bool *visited;
 
@@ -38,7 +29,7 @@ int **findAdjacentNodes(int center) {
     for (int index = 0; index < KNN; ++index) {
         closestNodes[index] = new int[2];
         closestNodes[index][0] = -1;
-        closestNodes[index][1] = 9999;
+        closestNodes[index][1] = INT_MAX;
     }
     for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
         if (index != center && !visited[index]) {
@@ -125,7 +116,7 @@ int* Dijkstra(){
     }
 
     for (int index = 1; index <= NUM_OF_CUSTOMERS; index++) {
-        shortestPath[index] = 100000; //Set shortestPath to infinity
+        shortestPath[index] = INT_MAX; //Set shortestPath to infinity
     }
 
     int *sourcePair = new int[2];
@@ -164,7 +155,8 @@ int* Dijkstra(){
                 }
             }
         }
-
+        for (int i = 0; i < KNN; ++i)
+            delete[] closestNodes[i];
         delete[] closestNodes;
     }
     bool *checked;
@@ -185,8 +177,8 @@ int* Dijkstra(){
 //        printf("path->%d ", shortestPath[i]);
 //    }
 //    printf("\n");
-
-    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
+    nextNode[0] = 0;
+    for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i) {
         for (int j = 1; j <= NUM_OF_CUSTOMERS; j++) {
             if (!checked[j] && shortestPath[j] < currentBest[1]) {
                 currentBest[1] = shortestPath[j];
@@ -194,6 +186,7 @@ int* Dijkstra(){
             }
         }
         nextNode[i] = currentBest[0];
+        //printf("%d\n",nextNode[i]);
         checked[currentBest[0]] = true;
         currentBest = new int[2];
         currentBest[0] = -1;
@@ -208,9 +201,18 @@ int* Dijkstra(){
 //        printf("node->%d ", nextNode[i]);
 //    }
 //    printf("\n");
+delete[] currentBest;
+delete[] checked;
+delete[] shortestPath;
+delete[] sourcePair;
+delete[] currentNode;
 return nextNode;
 }
 
 void DijkstrasHeuristic() {
-    generateTour(Dijkstra());
+    auto* LS = new localSearch(3,3);
+    int* tour = Dijkstra();
+    LS->randomPheromoneLocalSearchWithTwoOpt(tour);
+    double val = LS->getRouteLength(tour);
+    delete LS;
 }

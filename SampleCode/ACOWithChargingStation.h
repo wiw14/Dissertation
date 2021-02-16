@@ -9,7 +9,7 @@
 // Created by wmw13 on 11/02/2021.
 //
 
-#include "ACO.h"
+#include "LocalSearches.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -25,8 +25,9 @@ private:
     int* bestRoute;
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
-    int numOfAnts, probabilitySize, twoOptIterations, randomSearchIteration;
-    std::map<std::string, int> localSearchPheromone;
+    localSearch* LS;
+    int numOfAnts, probabilitySize;//, twoOptIterations, randomSearchIteration;
+    //std::map<std::string, int> localSearchPheromone;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
@@ -57,7 +58,7 @@ public:
     virtual ~ACOCS ();
     void optimize (int);
     int* returnResults();
-    static double getRouteLength(const int*);
+    double getRL(int*);
 };
 
 

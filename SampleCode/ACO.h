@@ -5,8 +5,7 @@
 #ifndef TESTSAMPLECODE_ACO_H
 #define TESTSAMPLECODE_ACO_H
 
-#include "EVRP.hpp"
-#include "heuristic.hpp"
+#include "LocalSearches.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -22,25 +21,17 @@ private:
     int* bestRoute;
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
-    int numOfAnts, probabilitySize, twoOptIterations, randomSearchIteration;
-    std::map<std::string, int> localSearchPheromone;
+    int numOfAnts, probabilitySize;
+    localSearch* LS;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
 
     static std::string getArcCode(int,int);
-    //void printPheromones();
     void resetRoute(int);
     void resetProbability();
-    void randomPheromoneLocalSearch();
-    void randomLocalSearch();
-    void twoOptLocalSearch();
     void updatePheromones ();
     void route(int);
-    void decreaseLocalSearchPheromone();
-    //void printLocalSearchPheromones();
-    void twoOptLocalPheromoneAddonSearch(int* );
-    static void twoOptSwap(int , int , int*,const int*);
     bool visited(int,int);
     bool valid(int);
     static bool exists (int, int);
@@ -48,15 +39,13 @@ private:
     double amountOfPheromone(double) const;
     double getProbability(int,int,int);
     int getNextCustomer();
-    std::vector<int> getRandomNumber();
-    int getTotalWeight();
 
 public:
     ACO(int,double,double,int,double,double,int,int);
     virtual ~ACO ();
     void optimize (int);
     int* returnResults();
-    static double getRouteLength(const int*);
+    double getRL(int* route);
 };
 
 

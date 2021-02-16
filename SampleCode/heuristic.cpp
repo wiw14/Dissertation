@@ -34,10 +34,11 @@ void initialize_heuristic(){
 void run_heuristic(){
    //greedyHeuristic();
    //randomHeuristic();
-   //ACOHeuristic();
-   ACOCSHeuristic();
+   ACOHeuristic();
+   //ACOCSHeuristic();
    //DijkstrasHeuristic();
    //KNNHeuristic();
+
 }
 
 /*free memory structures*/

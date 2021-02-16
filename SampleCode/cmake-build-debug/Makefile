@@ -359,32 +359,32 @@ KNNHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s
 .PHONY : KNNHeuristic.cpp.s
 
-Randoms.o: Randoms.cpp.o
+LocalSearches.o: LocalSearches.cpp.o
 
-.PHONY : Randoms.o
+.PHONY : LocalSearches.o
 
 # target to build an object file
-Randoms.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.o
-.PHONY : Randoms.cpp.o
+LocalSearches.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o
+.PHONY : LocalSearches.cpp.o
 
-Randoms.i: Randoms.cpp.i
+LocalSearches.i: LocalSearches.cpp.i
 
-.PHONY : Randoms.i
+.PHONY : LocalSearches.i
 
 # target to preprocess a source file
-Randoms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.i
-.PHONY : Randoms.cpp.i
+LocalSearches.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.i
+.PHONY : LocalSearches.cpp.i
 
-Randoms.s: Randoms.cpp.s
+LocalSearches.s: LocalSearches.cpp.s
 
-.PHONY : Randoms.s
+.PHONY : LocalSearches.s
 
 # target to generate assembly for a file
-Randoms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.s
-.PHONY : Randoms.cpp.s
+LocalSearches.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.s
+.PHONY : LocalSearches.cpp.s
 
 greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
 
@@ -554,9 +554,9 @@ help:
 	@echo "... KNNHeuristic.o"
 	@echo "... KNNHeuristic.i"
 	@echo "... KNNHeuristic.s"
-	@echo "... Randoms.o"
-	@echo "... Randoms.i"
-	@echo "... Randoms.s"
+	@echo "... LocalSearches.o"
+	@echo "... LocalSearches.i"
+	@echo "... LocalSearches.s"
 	@echo "... greedyEuclideanHeuristic.o"
 	@echo "... greedyEuclideanHeuristic.i"
 	@echo "... greedyEuclideanHeuristic.s"
