@@ -18,10 +18,15 @@ private:
     int randomSearchIteration;
     int twoOptIterations;
     std::map<std::string, int> localSearchPheromone;
+    static int findClosestChargingStation(int customer);
+    double getTotalEnergyConsumption(int* route, int startCustomer,int upperBound);
+    int getTotalLoad(int* route, int startCustomer);
+
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
     virtual ~localSearch();
     double getRouteLength(const int *route);
+    double getRouteLengthImproved(int *route);
     int getTotalWeight();
     void randomPheromoneLocalSearch(int* bestRoute);
     void randomPheromoneLocalSearchWithTwoOpt(int* bestRoute);

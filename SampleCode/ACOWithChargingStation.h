@@ -26,8 +26,7 @@ private:
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     localSearch* LS;
-    int numOfAnts, probabilitySize;//, twoOptIterations, randomSearchIteration;
-    //std::map<std::string, int> localSearchPheromone;
+    int numOfAnts, probabilitySize;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
@@ -35,14 +34,8 @@ private:
     static std::string getArcCode(int,int);
     void resetRoute(int);
     void resetProbability();
-    void randomPheromoneLocalSearch();
-    void randomLocalSearch();
-    void twoOptLocalSearch();
     void updatePheromones ();
     void route(int);
-    void decreaseLocalSearchPheromone();
-    void twoOptLocalPheromoneAddonSearch(int* );
-    static void twoOptSwap(int , int , int*,const int*);
     bool visited(int,int);
     bool valid(int);
     static bool exists (int, int);
@@ -50,8 +43,6 @@ private:
     double amountOfPheromone(double) const;
     double getProbability(int,int,int);
     int getNextCustomer();
-    std::vector<int> getRandomNumber();
-    int getTotalWeight();
 
 public:
     ACOCS(int,double,double,int,double,double,int,int);

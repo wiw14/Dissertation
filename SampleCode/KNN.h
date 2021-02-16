@@ -16,25 +16,11 @@ private:
     int *v;
     int*filter;
     int **neighbours;
-    //int randomSearchIteration,twoOptIterations;
-    std::map<std::string, int> localSearchPheromone;
     localSearch* LS;
-
-//    void randomPheromoneLocalSearch();
-//    void decreaseLocalSearchPheromone();
-//    int getTotalWeight();
-//    std::vector<int> getRandomNumber();
-//    void randomLocalSearch();
-//    void twoOptLocalPheromoneAddonSearch(int* currentRoute);
-//    void twoOptSwap(int i , int j, int* route, const int* currRoute);
-//    void twoOptLocalSearch();
-//    std::string getArcCode(int customerA, int customerB);
-
 public:
 
     void generateRoute(int);
     int findNextClosestNode(int);
-//    double getRouteLength(const int *);
     KNN(int);
     int *getKNN(int, int);
     void printRoute();

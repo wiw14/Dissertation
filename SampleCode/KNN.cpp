@@ -8,7 +8,7 @@
 using namespace std;
 
 KNN::KNN(int KNN) {
-    LS = new localSearch(3,3);
+    LS = new localSearch(10,3);
     v = new int[NUM_OF_CUSTOMERS+1];
     filter = new int[NUM_OF_CUSTOMERS+1];
     neighbours = new int*[NUM_OF_CUSTOMERS+1];
@@ -30,7 +30,16 @@ KNN::KNN(int KNN) {
 //    }
     generateRoute(KNN);
     LS->randomPheromoneLocalSearchWithTwoOpt(v);
+    //LS->randomPheromoneLocalSearch(v);
+    //LS->randomLocalSearch(v);
+    //LS->twoOptLocalSearch(v);
     LS->getRouteLength(v);
+    int* vReverse = new int[NUM_OF_CUSTOMERS+1];
+    int tempIndex = NUM_OF_CUSTOMERS;
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index)
+        vReverse[index]=v[tempIndex--];
+    LS->getRouteLength(vReverse);
+    delete[]vReverse;
 }
 
 int * KNN::getKNN(int customer, int KNN) {
