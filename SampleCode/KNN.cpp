@@ -8,7 +8,7 @@
 using namespace std;
 
 KNN::KNN(int KNN) {
-    LS = new localSearch(10,3);
+    LS = new localSearch(3,3);
     v = new int[NUM_OF_CUSTOMERS+1];
     filter = new int[NUM_OF_CUSTOMERS+1];
     neighbours = new int*[NUM_OF_CUSTOMERS+1];

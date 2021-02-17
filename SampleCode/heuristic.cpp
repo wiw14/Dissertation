@@ -35,10 +35,10 @@ void initialize_heuristic() {
 void run_heuristic() {
     //greedyHeuristic();
     //randomHeuristic();
-    //ACOHeuristic();
+    ACOHeuristic();
     //ACOCSHeuristic();
     //DijkstrasHeuristic();
-    KNNHeuristic();
+    //KNNHeuristic();
 }
 
 
