@@ -5,6 +5,8 @@
 #include <climits>
 #include <functional>
 #include "ACO.h"
+#include<string>
+using namespace std;
 
 
 ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
@@ -41,14 +43,28 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
 }
 
 std::string ACO::getArcCode(int customerA, int customerB) {
-    char *index = new char[4];
-    if (customerA < customerB)
-        sprintf(index, "%d %d", customerA, customerB);
-    else
-        sprintf(index, "%d %d", customerB, customerA);
-    std::string arcCode(index);
-    delete[] index;
-    return arcCode;
+//    char *index = new char[4];
+//    if (customerA < customerB)
+//        sprintf(index, "%d %d", customerA, customerB);
+//    else
+//        sprintf(index, "%d %d", customerB, customerA);
+//    std::string arcCode(index);
+//    delete[] index;
+//    return arcCode;
+    string output;
+    string CustomerA = to_string(customerA);
+    string CustomerB = to_string(customerB);
+    if (customerA < customerB) {
+        output.append(CustomerA);
+        output.append(" ");
+        output.append(CustomerB);
+    }
+    else{
+        output.append(CustomerB);
+        output.append(" ");
+        output.append(CustomerA);
+    }
+    return output;
 }
 
 ACO::~ACO() {

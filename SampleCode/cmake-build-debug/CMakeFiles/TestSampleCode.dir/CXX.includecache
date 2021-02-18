@@ -6,39 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.cpp
+climits
+-
+LocalSearches.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.cpp
-cmath
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+EVRP.hpp
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+heuristic.hpp
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+map
+-
+iostream
 -
 string
 -
-limits.h
+stdio.h
 -
-EVRP.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-greedyEuclideanHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
-randomHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
-ACOHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
-DijkstrasHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
-KNNHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.h
-heuristic.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+random
+-
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 

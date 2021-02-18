@@ -29,7 +29,6 @@ public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
     virtual ~localSearch();
     double getRouteLength(const int *route);
-    double getRouteLengthImproved(int *route);
     int getTotalWeight();
     void randomPheromoneLocalSearch(int* bestRoute);
     void randomPheromoneLocalSearchWithTwoOpt(int* bestRoute);

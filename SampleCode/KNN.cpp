@@ -40,6 +40,7 @@ KNN::KNN(int KNN) {
         vReverse[index]=v[tempIndex--];
     LS->getRouteLength(vReverse);
     delete[]vReverse;
+    delete LS;
 }
 
 int * KNN::getKNN(int customer, int KNN) {

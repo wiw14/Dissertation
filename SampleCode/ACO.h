@@ -18,7 +18,7 @@ private:
     std::map<std::string,double>::iterator iterator;
     std::map<std::string, double> pheromones;
     int ** routes;
-    int* bestRoute;
+    int *bestRoute;
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     int numOfAnts, probabilitySize;

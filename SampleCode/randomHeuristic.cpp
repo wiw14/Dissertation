@@ -88,5 +88,5 @@ void randomHeuristic(){
 
     //free memory
     delete[] r;
-    //delete LS;
+    delete LS;
 }
