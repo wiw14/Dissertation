@@ -1007,86 +1007,87 @@ double localSearch::getRouteLength(const int *routeA) {
 //        subRoute[size + 1] = DEPOT;
         size += 2;
     /*
-     * LOOK INTO NON OPTIMAL CS. LOOK INTO Y
+     * Look into getIsValidEnergy line below, should create upper bound optimum.
      */
-        while (!isValidRoute && additions > 0) {
-            additions = 0;
-            for (int index = 0; index < size - 1; ++index) {
-                if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
-                    continue;
-                int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
-                for (int i = 0; i < size + size; ++i)
-                    subRouteWithCS[i] = -1;
+        if(!getIsValidEnergy(subRoute, subRouteINDEX)) {
+            while (!isValidRoute && additions > 0) {
+                additions = 0;
+                for (int index = 0; index < size - 1; ++index) {
+                    if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
+                        continue;
+                    int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
+                    for (int i = 0; i < size + size; ++i)
+                        subRouteWithCS[i] = -1;
 
-                for (int i = 0; i < size; ++i) { //CHANGE
-                    subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
-                    ++subRouteWithCSIndex;
-
-                    if (i == index) {
-//                        printf("%d ++ %d\n", subRoute[i],findClosestChargingStation(subRoute[i]));
-                        subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
+                    for (int i = 0; i < size; ++i) { //CHANGE
+                        subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
                         ++subRouteWithCSIndex;
-                        ++additions;
-                    }
 
-                }
+                        if (i == index) {
+//                        printf("%d ++ %d\n", subRoute[i],findClosestChargingStation(subRoute[i]));
+                            subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
+                            ++subRouteWithCSIndex;
+                            ++additions;
+                        }
+
+                    }
 //                for (int i = 0; i < subRouteWithCSIndex; ++i) {
 //                    printf("=%d, ", subRouteWithCS[i]);
 //                }
 //                printf("\n");
 
-                double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
-                isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
+                    double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
+                    isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
 //                printf("dis %f=%f -- %d\n",tempDis,minLength,isValid);
-                if (!isValidRoute && tempDis < minLength) {
-                    minLength = tempDis;
-                    pos = index;
-                    if (isValid)
-                        isValidRoute = isValid;
-                } else if (isValidRoute && isValid && tempDis < minLength) {
-                    minLength = tempDis;
-                    pos = index;
-                }
-            }
-            if (!isValidRoute) {
-                int tempRoute[size + size];
-                for (int i = 0; i < size + size; ++i)
-                    tempRoute[i] = -1;
-
-                for (int i = 0; i < size; ++i) {
-                    tempRoute[i] = subRoute[i];
-                }
-                int subRouteIndex = 0;
-                for (int i = 0; i < size; ++i) {
-                    subRoute[subRouteIndex] = tempRoute[i];
-                    ++subRouteIndex;
-                    if (i == pos) {
-                        subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
-                        ++subRouteIndex;
+                    if (!isValidRoute && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
+                        if (isValid)
+                            isValidRoute = isValid;
+                    } else if (isValidRoute && isValid && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
                     }
-
                 }
-                size = subRouteIndex;
-                minLength = INT_MAX;
-                pos = -1;
+                if (!isValidRoute) {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex] = tempRoute[i];
+                        ++subRouteIndex;
+                        if (i == pos) {
+                            subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
+                            ++subRouteIndex;
+                        }
+
+                    }
+                    size = subRouteIndex;
+                    minLength = INT_MAX;
+                    pos = -1;
+                } else {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex++] = tempRoute[i];
+                        if (i == pos)
+                            subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
+
+                    }
+                }
+
             }
-            else{
-                int tempRoute[size + size];
-                for (int i = 0; i < size + size; ++i)
-                    tempRoute[i] = -1;
-
-                for (int i = 0; i < size; ++i) {
-                    tempRoute[i] = subRoute[i];
-                }
-                int subRouteIndex = 0;
-                for (int i = 0; i < size; ++i) {
-                    subRoute[subRouteIndex++] = tempRoute[i];
-                    if (i == pos)
-                        subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
-
-                }
-            }
-
         }
 //        printf("Pos %d\n",pos); //where is the adding to the tour for 1 CS
 //        if(pos==-1){ printf("minus pos\n");}
@@ -1122,7 +1123,7 @@ double localSearch::getRouteLength(const int *routeA) {
 //    printf("%f -- %f\n",route_length, best_sol->tour_length);
     if (route_length < best_sol->tour_length) {
 
-//        check_solution(tour,step);
+        check_solution(tour,step);
         for (int index = 0; index < step; ++index) {
             int temp = tour[index];
             best_sol->tour[index] = temp;
