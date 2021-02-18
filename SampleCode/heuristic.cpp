@@ -38,7 +38,7 @@ void run_heuristic() {
     ACOHeuristic();
     //ACOCSHeuristic();
     //DijkstrasHeuristic();
-//    KNNHeuristic();
+    //KNNHeuristic();
 }
 
 

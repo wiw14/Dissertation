@@ -6,29 +6,39 @@
 
 #IncludeRegexTransform: 
 
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
+
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
+
 /mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 
-/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.cpp
-climits
--
-LocalSearches.h
-/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.h
 
-/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
-EVRP.hpp
-/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-heuristic.hpp
-/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
-map
--
-iostream
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.cpp
+cmath
 -
 string
 -
-stdio.h
+limits.h
 -
-random
--
+EVRP.hpp
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+greedyEuclideanHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+randomHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
+ACOHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOHeuristic.h
+DijkstrasHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/DijkstrasHeuristic.h
+KNNHeuristic.h
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.h
+heuristic.hpp
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 
 /mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+
+/mnt/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/randomHeuristic.h
 
