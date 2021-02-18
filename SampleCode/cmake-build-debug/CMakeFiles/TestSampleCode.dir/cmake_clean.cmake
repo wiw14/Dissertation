@@ -13,8 +13,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/main.cpp.o"
   "CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/stats.cpp.o"
-  "TestSampleCode"
+  "TestSampleCode.exe"
   "TestSampleCode.pdb"
+  "libTestSampleCode.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
