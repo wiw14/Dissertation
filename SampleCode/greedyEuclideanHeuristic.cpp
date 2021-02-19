@@ -15,6 +15,15 @@
 #include "LocalSearches.h"
 #include "greedyEuclideanHeuristic.h"
 
+/*
+ * ================================================================================ *
+ * GREEDY HEURISTIC, USING EUCLIDEAN DISTANCE
+ * ================================================================================ *
+ */
+
+/*
+ *
+ */
 int findClosestNode(const bool* validNode, int anchor){
     double HEURISTIC_VALUE = 2.0;
     double shortDist = INT_MAX, dist;
@@ -33,8 +42,11 @@ int findClosestNode(const bool* validNode, int anchor){
     return currentBest;
 }
 
+/*
+ *
+ */
 void greedyHeuristic(){
-    localSearch * LS = new localSearch(3,3);
+    auto * LS = new localSearch(3,3);
     /*
     * Re-Initialise best_sol
     */

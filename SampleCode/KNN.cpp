@@ -4,16 +4,22 @@
 
 #include "KNN.h"
 
+/*
+ * ================================================================================ *
+ * KNN CLASS
+ * ================================================================================ *
+ */
 
 using namespace std;
 
+/*
+ *
+ */
 KNN::KNN(int KNN) {
     LS = new localSearch(3,3);
     v = new int[NUM_OF_CUSTOMERS+1];
     filter = new int[NUM_OF_CUSTOMERS+1];
     neighbours = new int*[NUM_OF_CUSTOMERS+1];
-//    randomSearchIteration = 3;
-//    twoOptIterations = 3;
 
     for (int index = 0; index <= NUM_OF_CUSTOMERS ; ++index) {
         neighbours[index] = new int[KNN];
@@ -23,11 +29,7 @@ KNN::KNN(int KNN) {
     for (int customer = 0; customer <= NUM_OF_CUSTOMERS; ++customer) {
         neighbours[customer] = getKNN(customer,KNN);
     }
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
-//        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
-//            localSearchPheromone[getArcCode(i,j)] = 1;
-//        }
-//    }
+
     generateRoute(KNN);
     LS->randomPheromoneLocalSearchWithTwoOpt(v);
     //LS->randomPheromoneLocalSearch(v);

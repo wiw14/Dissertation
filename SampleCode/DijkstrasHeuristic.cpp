@@ -14,14 +14,18 @@ using namespace std;
 
 #define KNN 5
 
+/*
+ * ================================================================================ *
+ * DIJKSTRA HEURISTIC
+ * ================================================================================ *
+ */
+
+//Stores whether the node is visited.
 bool *visited;
 
 /*
- * adjList is nodes connected to current node
- * cluster design?
- * closest 5 nodes or so
+ *
  */
-
 int **findAdjacentNodes(int center) {
     int **closestNodes;
     double dist;
@@ -46,63 +50,10 @@ int **findAdjacentNodes(int center) {
     return closestNodes;
 }
 
-void generateTour(const int *nextNode) {
-    /*
-    * Re-Initialise best_sol
-    */
-    best_sol->steps = 0;
-    best_sol->tour_length = INT_MAX;
-
-    /*
-     * Sets the first item in the tour to DEPOT because all routes start at the depot.
-     * Increment steps to 1 due to first step was DEPOT.
-     */
-    best_sol->tour[0] = DEPOT;
-    best_sol->steps++;
-
-    int prev, next, chargingStation;
-    double activeCapacity = 0.0, activeBatteryLevel = 0.0;
-    int i = 0;
-    while (i < NUM_OF_CUSTOMERS) {
-        prev = best_sol->tour[best_sol->steps - 1];
-        next = nextNode[i];
-        if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
-            activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
-            activeCapacity += get_customer_demand(next);
-            activeBatteryLevel += get_energy_consumption(prev, next);
-            best_sol->tour[best_sol->steps] = next;
-            best_sol->steps++;
-            i++;
-        } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY) {
-            activeCapacity = 0.0;
-            activeBatteryLevel = 0.0;
-            best_sol->tour[best_sol->steps] = DEPOT;
-            best_sol->steps++;
-        } else if (activeBatteryLevel + get_energy_consumption(prev, next) > BATTERY_CAPACITY) {
-            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE - NUM_OF_CUSTOMERS - 1) + NUM_OF_CUSTOMERS + 1;
-            if (is_charging_station(chargingStation)) {
-                activeBatteryLevel = 0.0;
-                best_sol->tour[best_sol->steps] = chargingStation;
-                best_sol->steps++;
-            }
-        } else {
-            activeCapacity = 0.0;
-            activeBatteryLevel = 0.0;
-            best_sol->tour[best_sol->steps] = DEPOT;
-            best_sol->steps++;
-        }
-    }
-
-    //close EVRP tour to return back to the depot
-    if (best_sol->tour[best_sol->steps - 1] != DEPOT) {
-        best_sol->tour[best_sol->steps] = DEPOT;
-        best_sol->steps++;
-    }
-
-    best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
-}
-
-int* Dijkstra(){
+/*
+ *
+ */
+int *Dijkstra() {
     int start = DEPOT;
     int *shortestPath;
     shortestPath = new int[NUM_OF_CUSTOMERS + 1];
@@ -115,8 +66,9 @@ int* Dijkstra(){
         visited[i] = false;
     }
 
+    //Sets the shortestPaths to infinity.
     for (int index = 1; index <= NUM_OF_CUSTOMERS; index++) {
-        shortestPath[index] = INT_MAX; //Set shortestPath to infinity
+        shortestPath[index] = INT_MAX;
     }
 
     int *sourcePair = new int[2];
@@ -135,7 +87,6 @@ int* Dijkstra(){
         nodeWeight = currentNode[1];
 
         nodeQueue.pop();
-
 
 
         if (visited[currentNode[0]])
@@ -170,13 +121,7 @@ int* Dijkstra(){
     currentBest[0] = -1;
     currentBest[1] = 9999;
 
-    /*
-     * Debugging
-     */
-//    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
-//        printf("path->%d ", shortestPath[i]);
-//    }
-//    printf("\n");
+
     nextNode[0] = 0;
     for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i) {
         for (int j = 1; j <= NUM_OF_CUSTOMERS; j++) {
@@ -186,7 +131,6 @@ int* Dijkstra(){
             }
         }
         nextNode[i] = currentBest[0];
-        //printf("%d\n",nextNode[i]);
         checked[currentBest[0]] = true;
         currentBest = new int[2];
         currentBest[0] = -1;
@@ -194,24 +138,21 @@ int* Dijkstra(){
 
     }
 
-    /*
-     * Debugging
-     */
-//    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
-//        printf("node->%d ", nextNode[i]);
-//    }
-//    printf("\n");
-delete[] currentBest;
-delete[] checked;
-delete[] shortestPath;
-delete[] sourcePair;
-delete[] currentNode;
-return nextNode;
+
+    delete[] currentBest;
+    delete[] checked;
+    delete[] shortestPath;
+    delete[] sourcePair;
+    delete[] currentNode;
+    return nextNode;
 }
 
+/*
+ *
+ */
 void DijkstrasHeuristic() {
-    auto* LS = new localSearch(3,3);
-    int* tour = Dijkstra();
+    auto *LS = new localSearch(3, 3);
+    int *tour = Dijkstra();
     LS->randomPheromoneLocalSearchWithTwoOpt(tour);
     double val = LS->getRouteLength(tour);
     delete LS;

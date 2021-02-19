@@ -269,20 +269,29 @@ void ACOCS::route(int ant) {
     }
 }
 
+/*
+ * Checks whether then is an arc from A to B.
+ */
 bool ACOCS::exists(int customerA, int customerB) {
     return (get_distance(customerA, customerB) > 0);
 }
 
+/*
+ * Determines whether a route is valid, essentially the termination criteria for route searching.
+ */
 bool ACOCS::valid(int ant) {
     for (int i = 0; i < NUM_OF_CUSTOMERS; i++) {
+        //Checks customers are valid.
         int customerA = routes[ant][i];
         int customerB = routes[ant][i + 1];
         if (customerA < 0 || customerB < 0) {
             return true;
         }
+        //Checks that there is an arc between the customers.
         if (!ACOCS::exists(customerA, customerB)) {
             return true;
         }
+        //Checks that none of the customers appear in duplicate within the route.
         for (int j = 0; j < i - 1; j++) {
             if (routes[ant][i] == routes[ant][j]) {
                 return true;
@@ -290,23 +299,35 @@ bool ACOCS::valid(int ant) {
         }
     }
 
+    //Checks that there is an arc from the last customer to the DEPOT.
     if (!ACOCS::exists(DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
         return true;
     }
 
+    //If all the checks are satisfied then the function returns false
+    //signifying the route inputted is valid.
     return false;
 }
 
+/*
+ * Checks whether the customer has already been visited by the current ant.
+ */
 bool ACOCS::visited(int ant, int customer) {
     for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
+        //No customer at that index
         if (routes[ant][index] == -1)
             break; //No customer at that index
+        //Found customer
         if (routes[ant][index] == customer)
-            return true; //Found customer
+            return true;
     }
     return false;
 }
 
+/*
+ * Gets the total length of the current route.
+ * Utilises get_distance() method which is part of the sample framework for the competition.
+ */
 double ACOCS::length(int ant) {
     double total_length = 0.0;
     for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
@@ -315,9 +336,17 @@ double ACOCS::length(int ant) {
     return total_length;
 }
 
+/*
+ * Getter method, returns the current best route stored in the object for use in other class files.
+ */
 int *ACOCS::returnResults() {
     return bestRoute;
 }
+
+/*
+ * Uses the generate tour function within LocalSearch to calculate the total distance
+ * including charging stations and depots.
+ */
  double ACOCS::getRL(int* route){
     return LS->getRouteLength(route);
 }

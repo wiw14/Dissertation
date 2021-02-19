@@ -313,7 +313,7 @@ bool ACO::valid(int ant) {
         }
     }
 
-    //Checks that there is a arc from DEPOT to a customer.
+    //Checks that there is an arc from the last customer to the DEPOT.
     if (!ACO::exists(DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
         return true;
     }
@@ -329,10 +329,12 @@ bool ACO::valid(int ant) {
  */
 bool ACO::visited(int ant, int customer) {
     for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
+        //No customer at that index
         if (routes[ant][index] == -1)
-            break; //No customer at that index
+            break;
+        //Found customer
         if (routes[ant][index] == customer)
-            return true; //Found customer
+            return true;
     }
     return false;
 }

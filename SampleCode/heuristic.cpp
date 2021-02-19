@@ -13,11 +13,12 @@
 
 using namespace std;
 
-solution *best_sol;   //see heuristic.hpp for the solution structure
+solution *best_sol;
 
-/*initialize the structure of your heuristic in this function*/
+/*
+ * Initialize the structure of your heuristic in this function
+ */
 void initialize_heuristic() {
-
     best_sol = new solution;
     best_sol->tour = new int[NUM_OF_CUSTOMERS + 1000];
     best_sol->id = 1;
@@ -26,7 +27,10 @@ void initialize_heuristic() {
 }
 
 
-/*implement your heuristic in this function*/
+/*
+ * List of all the currently implemented heuristics.
+ * Activate heuristics by uncommenting.
+ */
 void run_heuristic() {
     //greedyHeuristic();
     //randomHeuristic();
@@ -38,7 +42,9 @@ void run_heuristic() {
 }
 
 
-/*free memory structures*/
+/*
+ * free memory used by the tour array.
+ */
 void free_heuristic() {
     delete[] best_sol->tour;
 

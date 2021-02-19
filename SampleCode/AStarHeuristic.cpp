@@ -23,10 +23,22 @@
 #include <tuple>
 using namespace std;
 
+/*
+ * ================================================================================ *
+ * A* HEURISTIC, UTILISES A* ALGORITHM <CURRENTLY NOT IMPLEMENTED>
+ * ================================================================================ *
+ */
+
+/*
+ * Utilises A* search algorithm to develop route.
+ */
 void aStarSearch(const int src, const int dest){
 
 }
 
+/*
+ * Runs the A* search to develop a route between the customers.
+ */
 void AStarHeuristic(){
 
 }
