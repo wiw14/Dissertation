@@ -475,27 +475,27 @@ double localSearch::getTotalDistance(int *route, int size) {
     return totalDist;
 }
 
-bool localSearch::getIsValidEnergy(int *route, int size) {
-//    printf("Max Battery %d\n",BATTERY_CAPACITY);
-    bool isValid = true;
-    double activeBattery = 0.0;
-//    for (int i = 0; i <size ; ++i) {
-//        printf("%d, ",route[i]);
-//    }printf("\n");
-    for (int i = 1; i < size; ++i) {
-        activeBattery += get_energy_consumption(route[i - 1], route[i]);
-//        printf("checking %d -- %d energy %f, current load %f\n",route[i - 1],route[i],get_energy_consumption(route[i - 1], route[i]),activeBattery);
-        if (activeBattery > BATTERY_CAPACITY) {
-//            printf("FALSE\n");
-            isValid = false;
-            break;
-        }
-        if (is_charging_station(route[i]))
-            activeBattery = 0.0;
-    }
-
-    return isValid;
-}
+//bool localSearch::getIsValidEnergy(int *route, int size) {
+////    printf("Max Battery %d\n",BATTERY_CAPACITY);
+//    bool isValid = true;
+//    double activeBattery = 0.0;
+////    for (int i = 0; i <size ; ++i) {
+////        printf("%d, ",route[i]);
+////    }printf("\n");
+//    for (int i = 1; i < size; ++i) {
+//        activeBattery += get_energy_consumption(route[i - 1], route[i]);
+////        printf("checking %d -- %d energy %f, current load %f\n",route[i - 1],route[i],get_energy_consumption(route[i - 1], route[i]),activeBattery);
+//        if (activeBattery > BATTERY_CAPACITY) {
+////            printf("FALSE\n");
+//            isValid = false;
+//            break;
+//        }
+//        if (is_charging_station(route[i]))
+//            activeBattery = 0.0;
+//    }
+//
+//    return isValid;
+//}
 
 int *localSearch::findOptimalCS(int *route, int size) {
 
@@ -914,6 +914,28 @@ int *localSearch::findOptimalCS(int *route, int size) {
 //
 //}
 
+bool localSearch::getIsValidEnergy(int *route, int size) {
+//    printf("Max Battery %d\n",BATTERY_CAPACITY);
+    bool isValid = true;
+    double activeBattery = 0.0;
+//    for (int i = 0; i <size ; ++i) {
+//        printf("%d, ",route[i]);
+//    }printf("\n");
+    for (int i = 1; i < size; ++i) {
+        activeBattery += get_energy_consumption(route[i - 1], route[i]);
+//        printf("checking %d -- %d energy %f, current load %f\n",route[i - 1],route[i],get_energy_consumption(route[i - 1], route[i]),activeBattery);
+        if (activeBattery > BATTERY_CAPACITY) {
+//            printf("FALSE\n");
+            isValid = false;
+            break;
+        }
+        if (is_charging_station(route[i]))
+            activeBattery = 0.0;
+    }
+
+    return isValid;
+}
+
 double localSearch::getRouteLength(const int *routeA) {
 /*
  * GENERATE TOUR VERSION 2.2
@@ -967,7 +989,7 @@ double localSearch::getRouteLength(const int *routeA) {
                     break;
             }
         }
-        subRoute[subRouteINDEX] = DEPOT;
+        subRoute[subRouteINDEX++] = DEPOT;
 //        printf("\n");
 
 //        for (int i = front; i < end; ++i) {

@@ -23,7 +23,7 @@ private:
     int getTotalLoad(int* route, int startCustomer);
     int* findOptimalCS(int* subRoute, int size);
     static double getTotalDistance(int*route,int size);
-    bool getIsValidEnergy(int*route,int size);
+    static bool getIsValidEnergy(int*route,int size);
 
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
