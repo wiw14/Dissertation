@@ -197,32 +197,32 @@ ACOHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
 .PHONY : ACOHeuristic.cpp.s
 
-ACOv1.o: ACOv1.cpp.o
+ACOWithChargingStation.o: ACOWithChargingStation.cpp.o
 
-.PHONY : ACOv1.o
+.PHONY : ACOWithChargingStation.o
 
 # target to build an object file
-ACOv1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.o
-.PHONY : ACOv1.cpp.o
+ACOWithChargingStation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
+.PHONY : ACOWithChargingStation.cpp.o
 
-ACOv1.i: ACOv1.cpp.i
+ACOWithChargingStation.i: ACOWithChargingStation.cpp.i
 
-.PHONY : ACOv1.i
+.PHONY : ACOWithChargingStation.i
 
 # target to preprocess a source file
-ACOv1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.i
-.PHONY : ACOv1.cpp.i
+ACOWithChargingStation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.i
+.PHONY : ACOWithChargingStation.cpp.i
 
-ACOv1.s: ACOv1.cpp.s
+ACOWithChargingStation.s: ACOWithChargingStation.cpp.s
 
-.PHONY : ACOv1.s
+.PHONY : ACOWithChargingStation.s
 
 # target to generate assembly for a file
-ACOv1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOv1.cpp.s
-.PHONY : ACOv1.cpp.s
+ACOWithChargingStation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s
+.PHONY : ACOWithChargingStation.cpp.s
 
 AStarHeuristic.o: AStarHeuristic.cpp.o
 
@@ -305,32 +305,86 @@ EVRP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
 .PHONY : EVRP.cpp.s
 
-Randoms.o: Randoms.cpp.o
+KNN.o: KNN.cpp.o
 
-.PHONY : Randoms.o
+.PHONY : KNN.o
 
 # target to build an object file
-Randoms.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.o
-.PHONY : Randoms.cpp.o
+KNN.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.o
+.PHONY : KNN.cpp.o
 
-Randoms.i: Randoms.cpp.i
+KNN.i: KNN.cpp.i
 
-.PHONY : Randoms.i
+.PHONY : KNN.i
 
 # target to preprocess a source file
-Randoms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.i
-.PHONY : Randoms.cpp.i
+KNN.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.i
+.PHONY : KNN.cpp.i
 
-Randoms.s: Randoms.cpp.s
+KNN.s: KNN.cpp.s
 
-.PHONY : Randoms.s
+.PHONY : KNN.s
 
 # target to generate assembly for a file
-Randoms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Randoms.cpp.s
-.PHONY : Randoms.cpp.s
+KNN.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.s
+.PHONY : KNN.cpp.s
+
+KNNHeuristic.o: KNNHeuristic.cpp.o
+
+.PHONY : KNNHeuristic.o
+
+# target to build an object file
+KNNHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o
+.PHONY : KNNHeuristic.cpp.o
+
+KNNHeuristic.i: KNNHeuristic.cpp.i
+
+.PHONY : KNNHeuristic.i
+
+# target to preprocess a source file
+KNNHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i
+.PHONY : KNNHeuristic.cpp.i
+
+KNNHeuristic.s: KNNHeuristic.cpp.s
+
+.PHONY : KNNHeuristic.s
+
+# target to generate assembly for a file
+KNNHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s
+.PHONY : KNNHeuristic.cpp.s
+
+LocalSearches.o: LocalSearches.cpp.o
+
+.PHONY : LocalSearches.o
+
+# target to build an object file
+LocalSearches.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o
+.PHONY : LocalSearches.cpp.o
+
+LocalSearches.i: LocalSearches.cpp.i
+
+.PHONY : LocalSearches.i
+
+# target to preprocess a source file
+LocalSearches.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.i
+.PHONY : LocalSearches.cpp.i
+
+LocalSearches.s: LocalSearches.cpp.s
+
+.PHONY : LocalSearches.s
+
+# target to generate assembly for a file
+LocalSearches.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.s
+.PHONY : LocalSearches.cpp.s
 
 greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
 
@@ -482,9 +536,9 @@ help:
 	@echo "... ACOHeuristic.o"
 	@echo "... ACOHeuristic.i"
 	@echo "... ACOHeuristic.s"
-	@echo "... ACOv1.o"
-	@echo "... ACOv1.i"
-	@echo "... ACOv1.s"
+	@echo "... ACOWithChargingStation.o"
+	@echo "... ACOWithChargingStation.i"
+	@echo "... ACOWithChargingStation.s"
 	@echo "... AStarHeuristic.o"
 	@echo "... AStarHeuristic.i"
 	@echo "... AStarHeuristic.s"
@@ -494,9 +548,15 @@ help:
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"
-	@echo "... Randoms.o"
-	@echo "... Randoms.i"
-	@echo "... Randoms.s"
+	@echo "... KNN.o"
+	@echo "... KNN.i"
+	@echo "... KNN.s"
+	@echo "... KNNHeuristic.o"
+	@echo "... KNNHeuristic.i"
+	@echo "... KNNHeuristic.s"
+	@echo "... LocalSearches.o"
+	@echo "... LocalSearches.i"
+	@echo "... LocalSearches.s"
 	@echo "... greedyEuclideanHeuristic.o"
 	@echo "... greedyEuclideanHeuristic.i"
 	@echo "... greedyEuclideanHeuristic.s"

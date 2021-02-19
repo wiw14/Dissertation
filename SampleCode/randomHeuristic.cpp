@@ -12,11 +12,10 @@
 #include<limits.h>
 
 #include "randomHeuristic.h"
-#include "EVRP.hpp"
-#include "heuristic.hpp"
+#include "LocalSearches.h"
 
 void randomHeuristic(){
-
+    localSearch* LS = new localSearch(3,3);
     /*generate a random solution for the random heuristic*/
     int i,help, object, tot_assigned =0;
     int *r;
@@ -40,51 +39,54 @@ void randomHeuristic(){
         tot_assigned++;
     }
 
-    best_sol->steps = 0;
-    best_sol->tour_length = INT_MAX;
-
-    best_sol->tour[0] = DEPOT;
-    best_sol->steps++;
-
-    i = 0;
-    while(i < NUM_OF_CUSTOMERS) {
-        from = best_sol->tour[best_sol->steps-1];
-        to = r[i];
-        if((capacity_temp + get_customer_demand(to)) <= MAX_CAPACITY && energy_temp+get_energy_consumption(from,to) <= BATTERY_CAPACITY){
-            capacity_temp  += get_customer_demand(to);
-            energy_temp += get_energy_consumption(from,to);
-            best_sol->tour[best_sol->steps] = to;
-            best_sol->steps++;
-            i++;
-        } else if ((capacity_temp + get_customer_demand(to)) > MAX_CAPACITY){
-            capacity_temp = 0.0;
-            energy_temp = 0.0;
-            best_sol->tour[best_sol->steps] = DEPOT;
-            best_sol->steps++;
-        } else if (energy_temp+get_energy_consumption(from,to) > BATTERY_CAPACITY){
-            charging_station = rand() % (ACTUAL_PROBLEM_SIZE-NUM_OF_CUSTOMERS-1)+NUM_OF_CUSTOMERS+1;
-            if(is_charging_station(charging_station)==true){
-                energy_temp = 0.0;
-                best_sol->tour[best_sol->steps] =  charging_station;
-                best_sol->steps++;
-            }
-        } else {
-            capacity_temp = 0.0;
-            energy_temp = 0.0;
-            best_sol->tour[best_sol->steps] =  DEPOT;
-            best_sol->steps++;
-        }
-    }
-
-    //close EVRP tour to return back to the depot
-    if(best_sol->tour[best_sol->steps-1]!=DEPOT){
-        best_sol->tour[best_sol->steps] = DEPOT;
-        best_sol->steps++;
-    }
-
-    best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
+    LS->randomPheromoneLocalSearchWithTwoOpt(r);
+    double val = LS->getRouteLength(r);
+//    best_sol->steps = 0;
+//    best_sol->tour_length = INT_MAX;
+//
+//    best_sol->tour[0] = DEPOT;
+//    best_sol->steps++;
+//
+//    i = 0;
+//    while(i < NUM_OF_CUSTOMERS) {
+//        from = best_sol->tour[best_sol->steps-1];
+//        to = r[i];
+//        if((capacity_temp + get_customer_demand(to)) <= MAX_CAPACITY && energy_temp+get_energy_consumption(from,to) <= BATTERY_CAPACITY){
+//            capacity_temp  += get_customer_demand(to);
+//            energy_temp += get_energy_consumption(from,to);
+//            best_sol->tour[best_sol->steps] = to;
+//            best_sol->steps++;
+//            i++;
+//        } else if ((capacity_temp + get_customer_demand(to)) > MAX_CAPACITY){
+//            capacity_temp = 0.0;
+//            energy_temp = 0.0;
+//            best_sol->tour[best_sol->steps] = DEPOT;
+//            best_sol->steps++;
+//        } else if (energy_temp+get_energy_consumption(from,to) > BATTERY_CAPACITY){
+//            charging_station = rand() % (ACTUAL_PROBLEM_SIZE-NUM_OF_CUSTOMERS-1)+NUM_OF_CUSTOMERS+1;
+//            if(is_charging_station(charging_station)==true){
+//                energy_temp = 0.0;
+//                best_sol->tour[best_sol->steps] =  charging_station;
+//                best_sol->steps++;
+//            }
+//        } else {
+//            capacity_temp = 0.0;
+//            energy_temp = 0.0;
+//            best_sol->tour[best_sol->steps] =  DEPOT;
+//            best_sol->steps++;
+//        }
+//    }
+//
+//    //close EVRP tour to return back to the depot
+//    if(best_sol->tour[best_sol->steps-1]!=DEPOT){
+//        best_sol->tour[best_sol->steps] = DEPOT;
+//        best_sol->steps++;
+//    }
+//
+//    best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
 
 
     //free memory
     delete[] r;
+    delete LS;
 }

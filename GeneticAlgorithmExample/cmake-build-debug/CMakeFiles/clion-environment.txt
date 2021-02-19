@@ -1,0 +1,4 @@
+ToolSet: Ubuntu 20.04.1 LTS (local)@C:\Users\wmw13\AppData\Local\Microsoft\WindowsApps\ubuntu2004.exe
+Options: 
+
+Options:

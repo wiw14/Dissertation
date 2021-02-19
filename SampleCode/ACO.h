@@ -5,7 +5,7 @@
 #ifndef TESTSAMPLECODE_ACO_H
 #define TESTSAMPLECODE_ACO_H
 
-#include "EVRP.hpp"
+#include "LocalSearches.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -18,35 +18,34 @@ private:
     std::map<std::string,double>::iterator iterator;
     std::map<std::string, double> pheromones;
     int ** routes;
-    int* bestRoute;
+    int *bestRoute;
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     int numOfAnts, probabilitySize;
+    localSearch* LS;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;
 
-    static char* getArcCode(int,int);
-    void printPheromones();
+    static std::string getArcCode(int,int);
     void resetRoute(int);
     void resetProbability();
-    void localSearch();
+    void updatePheromones ();
+    void route(int);
     bool visited(int,int);
     bool valid(int);
-    bool exists (int, int);
+    static bool exists (int, int);
     double length(int);
-    double amountOfPheromone(double,int,int);
+    double amountOfPheromone(double) const;
     double getProbability(int,int,int);
-    double getRouteLength(int*);
     int getNextCustomer();
 
 public:
-    ACO(int,double,double,int,double,double);
+    ACO(int,double,double,int,double,double,int,int);
     virtual ~ACO ();
     void optimize (int);
-    void updatePheromones ();
-    void route(int);
     int* returnResults();
+    double getRL(int* route);
 };
 
 

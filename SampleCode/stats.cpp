@@ -11,6 +11,7 @@
 
 #include "EVRP.hpp"
 #include "stats.hpp"
+#include "heuristic.hpp"
 
 using namespace std;
 
@@ -20,7 +21,22 @@ FILE *log_performance;
 //output files
 char *perf_filename;
 
+FILE * jsonTour;
+
 double* perf_of_trials;
+
+void openTourFile(void){
+    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
+}
+void closeTourFile(void){
+    fclose(jsonTour);
+}
+
+void storeTour(int run){
+    for (int tourIndex = 0; tourIndex < best_sol->steps; ++tourIndex)
+        fprintf(jsonTour,"%d\n",best_sol->tour[tourIndex]);
+    fprintf(jsonTour,"- %d\n",run);
+}
 
 void open_stats(void){
     //Initialize

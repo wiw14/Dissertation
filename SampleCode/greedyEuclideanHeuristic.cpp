@@ -12,9 +12,7 @@
 #include<fstream>
 #include<limits.h>
 
-#include "heuristic.hpp"
-#include "EVRP.hpp"
-
+#include "LocalSearches.h"
 #include "greedyEuclideanHeuristic.h"
 
 int findClosestNode(const bool* validNode, int anchor){
@@ -36,6 +34,7 @@ int findClosestNode(const bool* validNode, int anchor){
 }
 
 void greedyHeuristic(){
+    localSearch * LS = new localSearch(3,3);
     /*
     * Re-Initialise best_sol
     */
@@ -60,13 +59,14 @@ void greedyHeuristic(){
     validNode[DEPOT] = true;
 
     nextNode[0] = findClosestNode(validNode,DEPOT);
+
     validNode[nextNode[0]] = true;
 
     for (int index = 1; index <= NUM_OF_CUSTOMERS; index++){
         nextNode[index] = findClosestNode(validNode,nextNode[index-1]);
         validNode[nextNode[index]] = true;
     }
-
+    LS->randomPheromoneLocalSearchWithTwoOpt(nextNode);
     int i = 0;
     while(i < NUM_OF_CUSTOMERS) {
         prev = best_sol->tour[best_sol->steps-1];
