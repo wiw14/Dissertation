@@ -19,9 +19,9 @@ private:
     int twoOptIterations;
     std::map<std::string, int> localSearchPheromone;
     static int findClosestChargingStation(int customer);
-    static double getTotalEnergyConsumption(int* route, int startCustomer,int upperBound);
-    static int getTotalLoad(int* route, int startCustomer);
-    int* findOptimalCS(int* subRoute, int size);
+//    static double getTotalEnergyConsumption(int* route, int startCustomer,int upperBound);
+//    static int getTotalLoad(int* route, int startCustomer);
+//    int* findOptimalCS(int* subRoute, int size);
     static double getTotalDistance(int*route,int size);
     static bool getIsValidEnergy(int*route,int size);
     static bool getIsValidCapacity(int *route, int size);
@@ -40,5 +40,7 @@ public:
     std::string getArcCode(int customerA, int customerB);
     void twoOptSwap(int i , int j, int* route, const int* currRoute);
     void twoOptLocalSearch(int* bestRoute);
+    double getBasicLength(int* bestRoute);
+
 };
 #endif //TESTSAMPLECODE_LOCALSEARCHES_H

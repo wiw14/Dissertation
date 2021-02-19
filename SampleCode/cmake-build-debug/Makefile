@@ -305,6 +305,60 @@ EVRP.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
 .PHONY : EVRP.cpp.s
 
+GAHeuristic.o: GAHeuristic.cpp.o
+
+.PHONY : GAHeuristic.o
+
+# target to build an object file
+GAHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.o
+.PHONY : GAHeuristic.cpp.o
+
+GAHeuristic.i: GAHeuristic.cpp.i
+
+.PHONY : GAHeuristic.i
+
+# target to preprocess a source file
+GAHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.i
+.PHONY : GAHeuristic.cpp.i
+
+GAHeuristic.s: GAHeuristic.cpp.s
+
+.PHONY : GAHeuristic.s
+
+# target to generate assembly for a file
+GAHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.s
+.PHONY : GAHeuristic.cpp.s
+
+GeneticAlgorithm.o: GeneticAlgorithm.cpp.o
+
+.PHONY : GeneticAlgorithm.o
+
+# target to build an object file
+GeneticAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.o
+.PHONY : GeneticAlgorithm.cpp.o
+
+GeneticAlgorithm.i: GeneticAlgorithm.cpp.i
+
+.PHONY : GeneticAlgorithm.i
+
+# target to preprocess a source file
+GeneticAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.i
+.PHONY : GeneticAlgorithm.cpp.i
+
+GeneticAlgorithm.s: GeneticAlgorithm.cpp.s
+
+.PHONY : GeneticAlgorithm.s
+
+# target to generate assembly for a file
+GeneticAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.s
+.PHONY : GeneticAlgorithm.cpp.s
+
 KNN.o: KNN.cpp.o
 
 .PHONY : KNN.o
@@ -548,6 +602,12 @@ help:
 	@echo "... EVRP.o"
 	@echo "... EVRP.i"
 	@echo "... EVRP.s"
+	@echo "... GAHeuristic.o"
+	@echo "... GAHeuristic.i"
+	@echo "... GAHeuristic.s"
+	@echo "... GeneticAlgorithm.o"
+	@echo "... GeneticAlgorithm.i"
+	@echo "... GeneticAlgorithm.s"
 	@echo "... KNN.o"
 	@echo "... KNN.i"
 	@echo "... KNN.s"

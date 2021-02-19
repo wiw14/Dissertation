@@ -150,6 +150,14 @@ std::vector<int> localSearch::getRandomNumber() { //type either x (0) or y (1).
 /*
  * Randomly switches two customers in the route, to find an optimal solution.
  */
+
+double localSearch::getBasicLength(int* bestRoute){
+    double routeLength = 0.0;
+    for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i)
+        routeLength += get_distance(bestRoute[i-1], bestRoute[i]);
+    return routeLength;
+}
+
 void localSearch::randomLocalSearch(int *bestRoute) {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
     double route_length = getRouteLength(bestRoute);
@@ -265,6 +273,79 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
 
 }
 
+/*
+ * Uses basic route length to determine which route is better.
+ */
+//void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
+//    int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
+//    double route_length = getBasicLength(bestRoute);
+//    double new_route_length = route_length;
+//    int iters = 0, x, y;
+//    std::vector<int> xy(2);
+//    while (new_route_length >= route_length && iters < randomSearchIteration) { //(rand()%5)+10)
+//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//            tempRoute[index] = bestRoute[index];
+//        iters++;
+//        //x = rand() % NUM_OF_CUSTOMERS;
+//        //y = ((rand() % 5) + 1 + x);
+//
+//        xy = getRandomNumber();
+//        if (xy.operator[](0) < xy.operator[](1)) {
+//            x = xy.operator[](0);
+//            y = xy.operator[](1);
+//        } else {
+//            x = xy.operator[](1);
+//            y = xy.operator[](0);
+//        }
+//
+////        y = getRandomNumber(1);
+////        int tempx;
+////        if (y < x) {
+////            tempx = x;
+////            x = y;
+////            y = tempx;
+////        }
+//        //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
+//
+//        int size = (y - x) + 1;
+//        int *routeTemp = new int[size];
+//        for (int index = 0; index < size; index++)
+//            routeTemp[index] = -1;
+//        int tempIndex = 0;
+//
+//        for (int index = y; index >= x; index--) {
+//            routeTemp[tempIndex] = tempRoute[index];
+//            tempIndex++;
+//        }
+//        tempIndex = 0;
+//        for (int index = x; index <= y; index++) {
+//            tempRoute[index] = routeTemp[tempIndex];
+//            tempIndex++;
+//        }
+//        delete[] routeTemp;
+//        //2-Opt As well
+//        twoOptLocalPheromoneAddonSearch(tempRoute);
+//        new_route_length = getBasicLength(tempRoute);
+//        //DEBUGGING
+////        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+////            printf("%d, ",tempRoute[index]);
+////        printf("\n");
+//    }
+//    decreaseLocalSearchPheromone();
+//    if (new_route_length < route_length) {
+//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//            bestRoute[index] = tempRoute[index];
+//        localSearchPheromone[getArcCode(x, y)] =
+//                localSearchPheromone[getArcCode(x, y)] + (int) ((route_length - new_route_length));
+//    }
+//    //printLocalSearchPheromones();
+//    delete[] tempRoute;
+//
+//}
+
+/*
+ * Uses generate tour to determine which route is better.
+ */
 void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
     double route_length = getRouteLength(bestRoute);
@@ -490,456 +571,159 @@ bool localSearch::getIsValidCapacity(int *route, int size) {
     return isValid;
 }
 
-//double localSearch::getRouteLength(const int *routeA) {
-///*
-// * GENERATE TOUR VERSION 2.2
-// */
-//
-//    int route[NUM_OF_CUSTOMERS];
-//    int ind = 0;
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
-//        if(routeA[i] != DEPOT)
-//            route[ind++] = routeA[i];
-//    }
-//
-////    printf("ROUTE:  ");
-////    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
-////        printf("%d, ",route[i]);
-////    }printf("\n");
-//
-//    //Initialise variables.
-//    int step = 0, front = 0, end = 0, tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
-//    for (int i = 0; i < NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS; ++i)
-//        tour[i] = -1;
-//
-//    //Set start to DEPOT
-//    tour[step] = DEPOT;
-//    step++;
-//    //front++;
-//
-//    while (front < NUM_OF_CUSTOMERS) {
-//        double total = 0.0;
-//        end = front;
-//        //get total load. Finds Front to End pointers is the entire route for one load.
-//        int subRoute[NUM_OF_CUSTOMERS];
-//        for (int i = 0; i < NUM_OF_CUSTOMERS; ++i)
-//            subRoute[i] = -1;
-//
-//        int subRouteINDEX = 0;
-//        subRoute[subRouteINDEX] = DEPOT;
-//        ++subRouteINDEX;
-////        printf("MAX CAP:: %d  ",MAX_CAPACITY);
-//        for (int customers = front; customers <= NUM_OF_CUSTOMERS; ++customers) {
-//            if (route[customers] != 0) {
-//                total += get_customer_demand(route[customers]);
-//
-//                if (total <= MAX_CAPACITY) {
-////                    printf("^%d::%f, ", route[customers],total);
-//                    subRoute[subRouteINDEX] = route[customers];
-//                    ++subRouteINDEX;
-//                    end++;
-//                }
-//                else
-//                    break;
-//            }
-//        }
-//        subRoute[subRouteINDEX++] = DEPOT;
-////        printf("\n");
-//
-////        for (int i = front; i < end; ++i) {
-////            printf("%d, ", route[i]);
-////        }printf("\n");
-////        if(end >= NUM_OF_CUSTOMERS)
-////            end=NUM_OF_CUSTOMERS-1;
-////        printf("\n");
-////        printf("f %d e %d\n",front,end);
-//
-//        /*
-//         *          F         E
-//         *          |         |
-//         * |0|1|2|3|4|5|6|7|8|9|10|11|12|13|
-//         *
-//         * start at 4, loop up to 9 i=4; i<=9; i++
-//         */
-//
-//        //Find optimal place for CS.
-//        double minLength = INT_MAX;
-//        int pos = -1, additions = 1, size = ((end - front));
-//        bool isValidRoute = false, isValid;
-//
-////        int subRoute[size + size];
-////        for (int i = 0; i < size + size; ++i)
-////            subRoute[i] = -1;
-//
-////        subRoute[0] = DEPOT;
-////        int routeIndex = front;
-////        for (int i = 1; i < size + 1; ++i) {
-//////            printf("ri %d ",routeIndex);
-////            subRoute[i] = route[routeIndex];
-////            ++routeIndex;
-//////           printf("%d, ",subRoute[i]);
-////        }
-////        printf("\n");
-////        subRoute[size + 1] = DEPOT;
-//        size += 2;
-//    /*
-//     * Look into getIsValidEnergy line below, should create upper bound optimum.
-//     */
-//        if(!getIsValidEnergy(subRoute, subRouteINDEX)) {
-//            while (!isValidRoute && additions > 0) {
-//                additions = 0;
-//                for (int index = 0; index < size - 1; ++index) {
-//                    if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
-//                        continue;
-//                    int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
-//                    for (int i = 0; i < size + size; ++i)
-//                        subRouteWithCS[i] = -1;
-//
-//                    for (int i = 0; i < size; ++i) { //CHANGE
-//                        subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
-//                        ++subRouteWithCSIndex;
-//
-//                        if (i == index) {
-////                        printf("%d ++ %d\n", subRoute[i],findClosestChargingStation(subRoute[i]));
-//                            subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
-//                            ++subRouteWithCSIndex;
-//                            ++additions;
-//                        }
-//
-//                    }
-////                for (int i = 0; i < subRouteWithCSIndex; ++i) {
-////                    printf("=%d, ", subRouteWithCS[i]);
-////                }
-////                printf("\n");
-//
-//                    double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
-//                    isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
-////                printf("dis %f=%f -- %d\n",tempDis,minLength,isValid);
-//                    if (!isValidRoute && tempDis < minLength) {
-//                        minLength = tempDis;
-//                        pos = index;
-//                        if (isValid)
-//                            isValidRoute = isValid;
-//                    } else if (isValidRoute && isValid && tempDis < minLength) {
-//                        minLength = tempDis;
-//                        pos = index;
-//                    }
-//                }
-//                if (!isValidRoute) {
-//                    int tempRoute[size + size];
-//                    for (int i = 0; i < size + size; ++i)
-//                        tempRoute[i] = -1;
-//
-//                    for (int i = 0; i < size; ++i) {
-//                        tempRoute[i] = subRoute[i];
-//                    }
-//                    int subRouteIndex = 0;
-//                    for (int i = 0; i < size; ++i) {
-//                        subRoute[subRouteIndex] = tempRoute[i];
-//                        ++subRouteIndex;
-//                        if (i == pos) {
-//                            subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
-//                            ++subRouteIndex;
-//                        }
-//
-//                    }
-//                    size = subRouteIndex;
-//                    minLength = INT_MAX;
-//                    pos = -1;
-//                } else {
-//                    int tempRoute[size + size];
-//                    for (int i = 0; i < size + size; ++i)
-//                        tempRoute[i] = -1;
-//
-//                    for (int i = 0; i < size; ++i) {
-//                        tempRoute[i] = subRoute[i];
-//                    }
-//                    int subRouteIndex = 0;
-//                    for (int i = 0; i < size; ++i) {
-//                        subRoute[subRouteIndex++] = tempRoute[i];
-//                        if (i == pos)
-//                            subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
-//
-//                    }
-//                }
-//
-//            }
-//        }
-////        printf("Pos %d\n",pos); //where is the adding to the tour for 1 CS
-////        if(pos==-1){ printf("minus pos\n");}
-//        for (int i = 0; i < size; ++i) {
-//            if (subRoute[i] != DEPOT) {
-//                tour[step] = subRoute[i];
-////                printf("*%d, ", tour[step]);
-//                ++step;
-//            }
-//        }
-//
-//        tour[step++] = DEPOT;
-////        printf("%d, ",tour[step-1]);
-////        printf("\n");
-////        printf("--f %d e %d\n",front,end);
-////
-////        for (int i = 0; i <step; ++i) {
-////            printf("$%d, ",tour[i]);
-////        }printf("\n");
-//
-//        front += (end-front);
-////        printf("-=f %d e %d\n",front,end);
-//
-//
-//    }
-////    printf("=======================================\n");
-//
-////    for (int i = 0; i <step; ++i) {
-////        printf("%d, ",tour[i]);
-////    }printf("\n");
-//
-//    double route_length = fitness_evaluation(tour, step);
-////    printf("%f -- %f\n",route_length, best_sol->tour_length);
-//    if (route_length < best_sol->tour_length) {
-//
-//        //check_solution(tour,step);
-//        for (int index = 0; index < step; ++index) {
-//            int temp = tour[index];
-//            best_sol->tour[index] = temp;
-//        }
-//        best_sol->steps = step;
-//        best_sol->tour_length = route_length;
-//    }
-//    return route_length;
-//
-//}
-
 double localSearch::getRouteLength(const int *routeA) {
-    /*
-     * GENERATE TOUR VERSION 3
-     */
-    //Removes the depot from the input route.
-    int route[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
+/*
+ * GENERATE TOUR VERSION 2.2
+ */
+    int route[NUM_OF_CUSTOMERS];
     int ind = 0;
-    route[ind++] = DEPOT;
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
         if(routeA[i] != DEPOT)
             route[ind++] = routeA[i];
     }
-    route[ind++] = DEPOT;
-    int size = ind;
 
-    int current = -1, next = -1, pos = -1, step = 0, additions = 1,tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
+
+    //Initialise variables.
+    int step = 0, front = 0, end = 0, tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
     for (int i = 0; i < NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS; ++i)
         tour[i] = -1;
-    bool isValidRoute = false, isValid = false;
-    double totalEnergy = 0.0;
-    double minLength = INT_MAX;
 
-    //STAGE 1: locate CS for whole route.
-    while (!isValidRoute && additions > 0) {
-        additions = 0;
-        for (int i = 0; i < NUM_OF_CUSTOMERS+1; ++i) {
-            if ((is_charging_station(route[i]) || is_charging_station(route[i + 1])))
-                continue;
+    tour[step] = DEPOT;
+    step++;
 
-            //Initialise temp array routeCalc.
-            int routeCalcIndex = 0, routeCalc[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
-            for (int j = 0; j < NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS; ++j) {
-                routeCalc[j] = -1;
-            }
+    while (front < NUM_OF_CUSTOMERS) {
+        double total = 0.0;
+        end = front;
+        int subRoute[NUM_OF_CUSTOMERS];
+        for (int i = 0; i < NUM_OF_CUSTOMERS; ++i)
+            subRoute[i] = -1;
 
-            //Find placement of CS.
-            for (int j = 0; j < NUM_OF_CUSTOMERS+2; ++j) {
-                routeCalc[routeCalcIndex] = route[j];
-                ++routeCalcIndex;
-                if (j == i) {
-                    routeCalc[routeCalcIndex] = findClosestChargingStation(route[j]);
-                    ++routeCalcIndex;
-                    ++additions;
+        int subRouteINDEX = 0;
+        subRoute[subRouteINDEX] = DEPOT;
+        ++subRouteINDEX;
+        for (int customers = front; customers < NUM_OF_CUSTOMERS; ++customers) {
+            if (route[customers] != 0) {
+                total += get_customer_demand(route[customers]);
+
+                if (total <= MAX_CAPACITY) {
+                    subRoute[subRouteINDEX] = route[customers];
+                    ++subRouteINDEX;
+                    end++;
                 }
-            }
-
-            //Check whether placement of CS is valid.
-            double tempDis = getTotalDistance(routeCalc, routeCalcIndex);
-            isValid = getIsValidEnergy(routeCalc, routeCalcIndex);
-            if (!isValidRoute && tempDis < minLength) {
-                minLength = tempDis;
-                pos = i;
-                if (isValid)
-                    isValidRoute = isValid;
-            } else if (isValidRoute && isValid && tempDis < minLength) {
-                minLength = tempDis;
-                pos = i;
+                else
+                    break;
             }
         }
+        subRoute[subRouteINDEX++] = DEPOT;
 
-        //If route with CS is not valid prepare array for while loop iteration.
-        if (!isValidRoute) {
-            int tempRoute[size + size];
-            for (int i = 0; i < size + size; ++i)
-                tempRoute[i] = -1;
-            for (int i = 0; i < size; ++i) {
-                tempRoute[i] = route[i];
-            }
-            int routeIndex = 0;
-            for (int i = 0; i < size; ++i) {
-                route[routeIndex] = tempRoute[i];
-                ++routeIndex;
-                if (i == pos) {
-                    route[routeIndex] = findClosestChargingStation(tempRoute[i]);
-                    ++routeIndex;
+        //Find optimal place for CS.
+        double minLength = INT_MAX;
+        int pos = -1, additions = 1, size = ((end - front));
+        bool isValidRoute = false, isValid;
+
+        size += 2;
+
+        if(!getIsValidEnergy(subRoute, subRouteINDEX)) {
+            while (!isValidRoute && additions > 0) {
+                additions = 0;
+                for (int index = 0; index < size - 1; ++index) {
+                    if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
+                        continue;
+                    int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
+                    for (int i = 0; i < size + size; ++i)
+                        subRouteWithCS[i] = -1;
+
+                    for (int i = 0; i < size; ++i) { //CHANGE
+                        subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
+                        ++subRouteWithCSIndex;
+
+                        if (i == index) {
+                            subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
+                            ++subRouteWithCSIndex;
+                            ++additions;
+                        }
+
+                    }
+
+                    double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
+                    isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
+                    if (!isValidRoute && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
+                        if (isValid)
+                            isValidRoute = isValid;
+                    } else if (isValidRoute && isValid && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
+                    }
+                }
+                if (!isValidRoute) {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex] = tempRoute[i];
+                        ++subRouteIndex;
+                        if (i == pos) {
+                            subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
+                            ++subRouteIndex;
+                        }
+
+                    }
+                    size = subRouteIndex;
+                    minLength = INT_MAX;
+                    pos = -1;
+                } else {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex++] = tempRoute[i];
+                        if (i == pos)
+                            subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
+
+                    }
                 }
 
             }
-            size = routeIndex;
-            minLength = INT_MAX;
-            pos = -1;
         }
-        //Route with CS is valid, move to next stage.
-        else {
-            int tempRoute[size + size];
-            for (int i = 0; i < size + size; ++i)
-                tempRoute[i] = -1;
 
-            for (int i = 0; i < size; ++i) {
-                tempRoute[i] = route[i];
-            }
-            int routeIndex = 0;
-            for (int i = 0; i < size; ++i) {
-                route[routeIndex++] = tempRoute[i];
-                if (i == pos)
-                    route[routeIndex++] = findClosestChargingStation(tempRoute[i]);
-
-            }
+        for (int i = 0; i < size; ++i) {
+//            if (subRoute[i] != DEPOT) {
+                tour[step] = subRoute[i];
+                ++step;
+            //}
         }
+
+        tour[step++] = DEPOT;
+        front += (end-front);
     }
 
-
-
-    //STAGE 2: Find depot placement.
-    isValidRoute = false; isValid = false; additions = 1;
-
-//    while (!isValidRoute && additions > 0) {
-//        additions = 0;
-//        for (int i = 0; i < NUM_OF_CUSTOMERS+1; ++i) {
-//            //Skip if current or next is the DEPOT.
-//            if (route[i] == DEPOT || route[i + 1] == DEPOT)
-//                continue;
-//
-//            //Initialise temp array routeCalc.
-//            int routeCalcIndex = 0, routeCalc[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
-//            for (int j = 0; j < NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS; ++j) {
-//                routeCalc[j] = -1;
-//            }
-//
-//            //Find placement of DEPOTs.
-//            for (int j = 0; j < NUM_OF_CUSTOMERS+2; ++j) {
-//                routeCalc[routeCalcIndex] = route[j];
-//                ++routeCalcIndex;
-//                if (j == i) {
-//                    routeCalc[routeCalcIndex] = DEPOT;
-//                    ++routeCalcIndex;
-//                    ++additions;
-//                }
-//            }
-//
-//            //Check whether placement of CS is valid.
-//            double tempDis = getTotalDistance(routeCalc, routeCalcIndex);
-//            isValid = getIsValidCapacity(routeCalc, routeCalcIndex);
-//            if (!isValidRoute && tempDis < minLength) {
-//                minLength = tempDis;
-//                pos = i;
-//                if (isValid)
-//                    isValidRoute = isValid;
-//            } else if (isValidRoute && isValid && tempDis < minLength) {
-//                minLength = tempDis;
-//                pos = i;
-//            }
-//        }
-//
-//        //If route with CS is not valid prepare array for while loop iteration.
-//        if (!isValidRoute) {
-//            int tempRoute[size + size];
-//            for (int i = 0; i < size + size; ++i)
-//                tempRoute[i] = -1;
-//            for (int i = 0; i < size; ++i) {
-//                tempRoute[i] = route[i];
-//            }
-//            int routeIndex = 0;
-//            for (int i = 0; i < size; ++i) {
-//                route[routeIndex] = tempRoute[i];
-//                ++routeIndex;
-//                if (i == pos) {
-//                    route[routeIndex] = DEPOT;
-//                    ++routeIndex;
-//                }
-//
-//            }
-//            size = routeIndex;
-//            minLength = INT_MAX;
-//            pos = -1;
-//        }
-//            //Route with CS is valid, move to next stage.
-//        else {
-//            int tempRoute[size + size];
-//            for (int i = 0; i < size + size; ++i)
-//                tempRoute[i] = -1;
-//
-//            for (int i = 0; i < size; ++i) {
-//                tempRoute[i] = route[i];
-//            }
-//            int routeIndex = 0;
-//            for (int i = 0; i < size; ++i) {
-//                route[routeIndex++] = tempRoute[i];
-//                if (i == pos)
-//                    route[routeIndex++] = DEPOT;
-//
-//            }
-//        }
-//    }
-    double totalCapacity = 0.0;
-    int tempRoute[size];
-    for (int i = 0; i < size; ++i) {
-        tempRoute[i] = route[i];
-    }
-    int routeIndex = 0;
-    for (int i = 0; i < size; ++i) {
-        if(tempRoute[i] == DEPOT)
-            totalCapacity = 0.0;
-        else{
-        totalCapacity += get_customer_demand(tempRoute[i]);
-        if (totalCapacity >= MAX_CAPACITY){
-            totalCapacity = 0.0;
-            route[routeIndex++] = DEPOT;
-        }
-        }
-        route[routeIndex++] = tempRoute[i];
-    }
-
-    //STAGE 3: Remove unnecessary CS within the route.
-
-
-
-    //STAGE 4: Set the final route found to the tour for evaluation.
-     for (int i = 0; i < size; ++i)
-            tour[i] = route[i];
-
-    for (int i = 0; i < size; ++i)
-        printf("%d, ",tour[i]);
-    printf("\n");
-
-     //STAGE 5: Check solution is valid. If solution is better than current best set it to current best.
-    double route_length = fitness_evaluation(tour, size);
-    printf("rl %f\n",route_length);
+//    for (int i = 0; i < step; ++i) {
+//        printf("%d, ",tour[i]);
+//    }printf("\n");
+    double route_length = fitness_evaluation(tour, step);
     if (route_length < best_sol->tour_length) {
-
-        check_solution(tour,size);
-        for (int index = 0; index < size; ++index) {
+        //check_solution(tour,step);
+        for (int index = 0; index < step; ++index) {
             int temp = tour[index];
             best_sol->tour[index] = temp;
         }
-        best_sol->steps = size;
+        best_sol->steps = step;
         best_sol->tour_length = route_length;
     }
     return route_length;
+
 }
 
 /*
@@ -1411,4 +1195,235 @@ double localSearch::getRouteLength(const int *routeA) {
 //    }
 //    return route_length;
 //
+//}
+
+//double localSearch::getRouteLength(const int *routeA) {
+//    /*
+//     * GENERATE TOUR VERSION 3
+//     */
+//    //Removes the depot from the input route.
+//    int route[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
+//    int ind = 0;
+//    route[ind++] = DEPOT;
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+//        if(routeA[i] != DEPOT)
+//            route[ind++] = routeA[i];
+//    }
+//    route[ind++] = DEPOT;
+//    int size = ind;
+//
+//    int current = -1, next = -1, pos = -1, step = 0, additions = 1,tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
+//    for (int i = 0; i < NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS; ++i)
+//        tour[i] = -1;
+//    bool isValidRoute = false, isValid = false;
+//    double totalEnergy = 0.0;
+//    double minLength = INT_MAX;
+//
+//    //STAGE 1: locate CS for whole route.
+//    while (!isValidRoute && additions > 0) {
+//        additions = 0;
+//        for (int i = 0; i < NUM_OF_CUSTOMERS+1; ++i) {
+//            if ((is_charging_station(route[i]) || is_charging_station(route[i + 1])))
+//                continue;
+//
+//            //Initialise temp array routeCalc.
+//            int routeCalcIndex = 0, routeCalc[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
+//            for (int j = 0; j < NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS; ++j) {
+//                routeCalc[j] = -1;
+//            }
+//
+//            //Find placement of CS.
+//            for (int j = 0; j < NUM_OF_CUSTOMERS+2; ++j) {
+//                routeCalc[routeCalcIndex] = route[j];
+//                ++routeCalcIndex;
+//                if (j == i) {
+//                    routeCalc[routeCalcIndex] = findClosestChargingStation(route[j]);
+//                    ++routeCalcIndex;
+//                    ++additions;
+//                }
+//            }
+//
+//            //Check whether placement of CS is valid.
+//            double tempDis = getTotalDistance(routeCalc, routeCalcIndex);
+//            isValid = getIsValidEnergy(routeCalc, routeCalcIndex);
+//            if (!isValidRoute && tempDis < minLength) {
+//                minLength = tempDis;
+//                pos = i;
+//                if (isValid)
+//                    isValidRoute = isValid;
+//            } else if (isValidRoute && isValid && tempDis < minLength) {
+//                minLength = tempDis;
+//                pos = i;
+//            }
+//        }
+//
+//        //If route with CS is not valid prepare array for while loop iteration.
+//        if (!isValidRoute) {
+//            int tempRoute[size + size];
+//            for (int i = 0; i < size + size; ++i)
+//                tempRoute[i] = -1;
+//            for (int i = 0; i < size; ++i) {
+//                tempRoute[i] = route[i];
+//            }
+//            int routeIndex = 0;
+//            for (int i = 0; i < size; ++i) {
+//                route[routeIndex] = tempRoute[i];
+//                ++routeIndex;
+//                if (i == pos) {
+//                    route[routeIndex] = findClosestChargingStation(tempRoute[i]);
+//                    ++routeIndex;
+//                }
+//
+//            }
+//            size = routeIndex;
+//            minLength = INT_MAX;
+//            pos = -1;
+//        }
+//            //Route with CS is valid, move to next stage.
+//        else {
+//            int tempRoute[size + size];
+//            for (int i = 0; i < size + size; ++i)
+//                tempRoute[i] = -1;
+//
+//            for (int i = 0; i < size; ++i) {
+//                tempRoute[i] = route[i];
+//            }
+//            int routeIndex = 0;
+//            for (int i = 0; i < size; ++i) {
+//                route[routeIndex++] = tempRoute[i];
+//                if (i == pos)
+//                    route[routeIndex++] = findClosestChargingStation(tempRoute[i]);
+//
+//            }
+//        }
+//    }
+//
+//
+//
+//    //STAGE 2: Find depot placement.
+//    isValidRoute = false; isValid = false; additions = 1;
+//
+////    while (!isValidRoute && additions > 0) {
+////        additions = 0;
+////        for (int i = 0; i < NUM_OF_CUSTOMERS+1; ++i) {
+////            //Skip if current or next is the DEPOT.
+////            if (route[i] == DEPOT || route[i + 1] == DEPOT)
+////                continue;
+////
+////            //Initialise temp array routeCalc.
+////            int routeCalcIndex = 0, routeCalc[NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS];
+////            for (int j = 0; j < NUM_OF_CUSTOMERS+NUM_OF_CUSTOMERS; ++j) {
+////                routeCalc[j] = -1;
+////            }
+////
+////            //Find placement of DEPOTs.
+////            for (int j = 0; j < NUM_OF_CUSTOMERS+2; ++j) {
+////                routeCalc[routeCalcIndex] = route[j];
+////                ++routeCalcIndex;
+////                if (j == i) {
+////                    routeCalc[routeCalcIndex] = DEPOT;
+////                    ++routeCalcIndex;
+////                    ++additions;
+////                }
+////            }
+////
+////            //Check whether placement of CS is valid.
+////            double tempDis = getTotalDistance(routeCalc, routeCalcIndex);
+////            isValid = getIsValidCapacity(routeCalc, routeCalcIndex);
+////            if (!isValidRoute && tempDis < minLength) {
+////                minLength = tempDis;
+////                pos = i;
+////                if (isValid)
+////                    isValidRoute = isValid;
+////            } else if (isValidRoute && isValid && tempDis < minLength) {
+////                minLength = tempDis;
+////                pos = i;
+////            }
+////        }
+////
+////        //If route with CS is not valid prepare array for while loop iteration.
+////        if (!isValidRoute) {
+////            int tempRoute[size + size];
+////            for (int i = 0; i < size + size; ++i)
+////                tempRoute[i] = -1;
+////            for (int i = 0; i < size; ++i) {
+////                tempRoute[i] = route[i];
+////            }
+////            int routeIndex = 0;
+////            for (int i = 0; i < size; ++i) {
+////                route[routeIndex] = tempRoute[i];
+////                ++routeIndex;
+////                if (i == pos) {
+////                    route[routeIndex] = DEPOT;
+////                    ++routeIndex;
+////                }
+////
+////            }
+////            size = routeIndex;
+////            minLength = INT_MAX;
+////            pos = -1;
+////        }
+////            //Route with CS is valid, move to next stage.
+////        else {
+////            int tempRoute[size + size];
+////            for (int i = 0; i < size + size; ++i)
+////                tempRoute[i] = -1;
+////
+////            for (int i = 0; i < size; ++i) {
+////                tempRoute[i] = route[i];
+////            }
+////            int routeIndex = 0;
+////            for (int i = 0; i < size; ++i) {
+////                route[routeIndex++] = tempRoute[i];
+////                if (i == pos)
+////                    route[routeIndex++] = DEPOT;
+////
+////            }
+////        }
+////    }
+//    double totalCapacity = 0.0;
+//    int tempRoute[size];
+//    for (int i = 0; i < size; ++i) {
+//        tempRoute[i] = route[i];
+//    }
+//    int routeIndex = 0;
+//    for (int i = 0; i < size; ++i) {
+//        if(tempRoute[i] == DEPOT)
+//            totalCapacity = 0.0;
+//        else{
+//            totalCapacity += get_customer_demand(tempRoute[i]);
+//            if (totalCapacity >= MAX_CAPACITY*0.98){
+//                totalCapacity = 0.0;
+//                route[routeIndex++] = DEPOT;
+//            }
+//        }
+//        route[routeIndex++] = tempRoute[i];
+//    }
+//
+//    //STAGE 3: Remove unnecessary CS within the route.
+//
+//
+//
+//    //STAGE 4: Set the final route found to the tour for evaluation.
+//    for (int i = 0; i < size; ++i)
+//        tour[i] = route[i];
+//
+////    for (int i = 0; i < size; ++i)
+////        printf("%d, ",tour[i]);
+////    printf("\n");
+//
+//    //STAGE 5: Check solution is valid. If solution is better than current best set it to current best.
+//    double route_length = fitness_evaluation(tour, size);
+//    // printf("rl %f\n",route_length);
+//    if (route_length < best_sol->tour_length) {
+//
+//        //check_solution(tour,size);
+//        for (int index = 0; index < size; ++index) {
+//            int temp = tour[index];
+//            best_sol->tour[index] = temp;
+//        }
+//        best_sol->steps = size;
+//        best_sol->tour_length = route_length;
+//    }
+//    return route_length;
 //}

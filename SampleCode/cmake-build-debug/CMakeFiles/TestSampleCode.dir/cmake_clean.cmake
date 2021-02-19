@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/EVRP.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.o"
   "CMakeFiles/TestSampleCode.dir/KNN.cpp.o"
   "CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o"

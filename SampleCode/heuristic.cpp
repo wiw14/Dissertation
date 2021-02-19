@@ -2,21 +2,16 @@
 #include<string>
 #include<limits.h>
 
-
-
-/*
- * Approaches.
- */
 #include "EVRP.hpp"
 #include "greedyEuclideanHeuristic.h"
 #include "randomHeuristic.h"
 #include "ACOHeuristic.h"
 #include "DijkstrasHeuristic.h"
 #include "KNNHeuristic.h"
+#include "GAHeuristic.h"
 #include "heuristic.hpp"
 
 using namespace std;
-
 
 solution *best_sol;   //see heuristic.hpp for the solution structure
 
@@ -39,6 +34,7 @@ void run_heuristic() {
     //ACOCSHeuristic();
     //DijkstrasHeuristic();
 //    KNNHeuristic();
+    //GAHeuristic();
 }
 
 
