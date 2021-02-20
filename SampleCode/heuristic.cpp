@@ -32,13 +32,20 @@ void initialize_heuristic() {
  * Activate heuristics by uncommenting.
  */
 void run_heuristic() {
-    //greedyHeuristic();
+    /*
+    * Shortest Path Algorithms.
+    */
+    greedyHeuristic();
     //randomHeuristic();
-    ACOHeuristic();
-    //ACOCSHeuristic();
     //DijkstrasHeuristic();
-//    KNNHeuristic();
+    //KNNHeuristic();
+
+    /*
+     * Evolutionary Algorithms
+     */
     //GAHeuristic();
+    //ACOHeuristic();
+    //ACOCSHeuristic();
 }
 
 

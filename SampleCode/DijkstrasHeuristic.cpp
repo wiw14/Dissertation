@@ -24,17 +24,21 @@ using namespace std;
 bool *visited;
 
 /*
- *
+ * Finds K nearest neighbours to the inputted customer.
  */
 int **findAdjacentNodes(int center) {
     int **closestNodes;
     double dist;
+
+    //Initiates closestNode array.
     closestNodes = new int *[KNN];
     for (int index = 0; index < KNN; ++index) {
         closestNodes[index] = new int[2];
         closestNodes[index][0] = -1;
         closestNodes[index][1] = INT_MAX;
     }
+
+    //Loop through all customers and find K closest neighbours.
     for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
         if (index != center && !visited[index]) {
             dist = get_distance(center, index);
@@ -47,11 +51,12 @@ int **findAdjacentNodes(int center) {
             }
         }
     }
+
     return closestNodes;
 }
 
 /*
- *
+ * Dijkstra algorithm used to find route between customers.
  */
 int *Dijkstra() {
     int start = DEPOT;
@@ -80,6 +85,7 @@ int *Dijkstra() {
     priority_queue<int *> nodeQueue;
     nodeQueue.push(sourcePair);
 
+    //Loops through all the customers.
     while (!nodeQueue.empty()) {
         currentNode = nodeQueue.top();
 
@@ -138,7 +144,7 @@ int *Dijkstra() {
 
     }
 
-
+    //Frees memory used for the Dijkstra Algorithm.
     delete[] currentBest;
     delete[] checked;
     delete[] shortestPath;
@@ -148,7 +154,7 @@ int *Dijkstra() {
 }
 
 /*
- *
+ * Creates local search object, finds tour between customers, runs local search, then evaluates the tour.
  */
 void DijkstrasHeuristic() {
     auto *LS = new localSearch(3, 3);

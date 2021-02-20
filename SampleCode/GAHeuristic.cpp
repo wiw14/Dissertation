@@ -4,6 +4,9 @@
 
 #include "GAHeuristic.h"
 
+/*
+ * Creates and runs a Genetic Algorithm.
+ */
 void GAHeuristic(){
 
 }

@@ -1,11 +1,13 @@
-//
-// Created by wmw13 on 16/02/2021.
-//
-
 #include <climits>
 #include "LocalSearches.h"
 
+/*
+ * ================================================================================ *
+ * LOCAL SEARCHES AND GENERATE TOUR FUNCTIONS
+ * ================================================================================ *
+ */
 
+//Constructor, sets the number of iterations for each of the local searches.
 localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
     randomSearchIteration = RandomSearchIteration;
     twoOptIterations = TwoOptIterations;
@@ -16,22 +18,26 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
     }
 }
 
+//Destructor for the Local Search class.
 localSearch::~localSearch() {
 }
 
 /*
- * 2-opt local search.
+ * Complete 2-opt local search.
+ * Loops through all possible instances of the 2-opt approach.
+ * Swaps the order of the route between i and j.
  */
 void localSearch::twoOptLocalSearch(int *bestRoute) {
     int improve = 0;
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
+    //Checks whether there has been an improvement within x number of iterations.
     while (improve < twoOptIterations) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         double route_length = getRouteLength(bestRoute);
         for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
-                //printf("i %d, j %d\n",i,j);
+                //Swaps the route between index i and j.
                 twoOptSwap(i, j, tempRoute, bestRoute);
                 double new_route_length = getRouteLength(tempRoute);
                 if (new_route_length < route_length) {
@@ -44,10 +50,9 @@ void localSearch::twoOptLocalSearch(int *bestRoute) {
         }
         improve++;
     }
+
+    //De-allocates the memory used above.
     delete[] tempRoute;
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i)
-//        printf("%d, ",bestRoute[i]);
-//    printf("\n");
 }
 
 /*
@@ -78,7 +83,6 @@ void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
         double route_length = getRouteLength(currentRoute);
         for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
-                //printf("i %d, j %d\n",i,j);
                 twoOptSwap(i, j, tempRoute, currentRoute);
                 double new_route_length = getRouteLength(tempRoute);
                 if (new_route_length < route_length) {
@@ -92,9 +96,6 @@ void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
         improve++;
     }
     delete[] tempRoute;
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i)
-//        printf("%d, ",bestRoute[i]);
-//    printf("\n");
 }
 
 /*
@@ -158,6 +159,10 @@ double localSearch::getBasicLength(int* bestRoute){
     return routeLength;
 }
 
+/*
+ * Exchange local search.
+ * Switches two customers based on randomly selected indexes.
+ */
 void localSearch::randomLocalSearch(int *bestRoute) {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
     double route_length = getRouteLength(bestRoute);
@@ -172,7 +177,6 @@ void localSearch::randomLocalSearch(int *bestRoute) {
         if (y > NUM_OF_CUSTOMERS) {
             y = NUM_OF_CUSTOMERS;
         }
-        //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
 
         int size = (y - x) + 1;
         int *routeTemp = new int[size];
@@ -190,12 +194,9 @@ void localSearch::randomLocalSearch(int *bestRoute) {
             tempIndex++;
         }
         delete[] routeTemp;
+        //2-opt local search.
         //twoOptLocalPheromoneAddonSearch(tempRoute);
         new_route_length = getRouteLength(tempRoute);
-        //DEBUGGING
-//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-//            printf("%d, ",tempRoute[index]);
-//        printf("\n");
     }
     if (new_route_length < route_length) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
@@ -205,6 +206,7 @@ void localSearch::randomLocalSearch(int *bestRoute) {
 }
 
 /*
+ * Exchange local search.
  * Switches two customers based on a weighted average determined by pheromones.
  */
 void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
@@ -217,8 +219,6 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
-        //x = rand() % NUM_OF_CUSTOMERS;
-        //y = ((rand() % 5) + 1 + x);
 
         xy = getRandomNumber();
         if (xy.operator[](0) < xy.operator[](1)) {
@@ -228,15 +228,6 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
             x = xy.operator[](1);
             y = xy.operator[](0);
         }
-
-//        y = getRandomNumber(1);
-//        int tempx;
-//        if (y < x) {
-//            tempx = x;
-//            x = y;
-//            y = tempx;
-//        }
-        //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
 
         int size = (y - x) + 1;
         int *routeTemp = new int[size];
@@ -254,12 +245,7 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
             tempIndex++;
         }
         delete[] routeTemp;
-        //2-Opt As well
         new_route_length = getRouteLength(tempRoute);
-        //DEBUGGING
-//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-//            printf("%d, ",tempRoute[index]);
-//        printf("\n");
     }
     decreaseLocalSearchPheromone();
     if (new_route_length < route_length) {
@@ -268,12 +254,13 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
         localSearchPheromone[getArcCode(x, y)] =
                 localSearchPheromone[getArcCode(x, y)] + (int) ((route_length - new_route_length));
     }
-    //printLocalSearchPheromones();
     delete[] tempRoute;
 
 }
 
 /*
+ * Exchange local search with 2-opt local search.
+ * Switches two customers based on a weighted average determined by pheromones.
  * Uses basic route length to determine which route is better.
  */
 //void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
@@ -344,6 +331,8 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
 //}
 
 /*
+ * Exchange local search with 2-opt local search.
+ * Switches two customers based on a weighted average determined by pheromones.
  * Uses generate tour to determine which route is better.
  */
 void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
@@ -356,8 +345,6 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
-        //x = rand() % NUM_OF_CUSTOMERS;
-        //y = ((rand() % 5) + 1 + x);
 
         xy = getRandomNumber();
         if (xy.operator[](0) < xy.operator[](1)) {
@@ -367,15 +354,6 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
             x = xy.operator[](1);
             y = xy.operator[](0);
         }
-
-//        y = getRandomNumber(1);
-//        int tempx;
-//        if (y < x) {
-//            tempx = x;
-//            x = y;
-//            y = tempx;
-//        }
-        //printf("X = %d, Y = %d\n", x, y); //DEBUGGING
 
         int size = (y - x) + 1;
         int *routeTemp = new int[size];
@@ -393,13 +371,11 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
             tempIndex++;
         }
         delete[] routeTemp;
+
         //2-Opt As well
         twoOptLocalPheromoneAddonSearch(tempRoute);
+
         new_route_length = getRouteLength(tempRoute);
-        //DEBUGGING
-//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-//            printf("%d, ",tempRoute[index]);
-//        printf("\n");
     }
     decreaseLocalSearchPheromone();
     if (new_route_length < route_length) {
@@ -408,9 +384,7 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
         localSearchPheromone[getArcCode(x, y)] =
                 localSearchPheromone[getArcCode(x, y)] + (int) ((route_length - new_route_length));
     }
-    //printLocalSearchPheromones();
     delete[] tempRoute;
-
 }
 
 
@@ -426,7 +400,9 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
  */
 //double localSearch::getRouteLength(const int *route) {
 //    /*
-//    * GENERATE TOUR VERSION 1
+//    * GENERATE TOUR VERSION 1.
+//    * Generates tour using a greedy approach.
+//    * Provided with the competition framework.
 //    */
 //    int steps;
 //    int *tour = new int[NUM_OF_CUSTOMERS + 1];
@@ -498,6 +474,9 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
 //    return route_length;
 //}
 
+/*
+ * Generates a string which references the arc between A and B.
+ */
 std::string localSearch::getArcCode(int customerA, int customerB) {
     std::string output;
     std::string CustomerA = std::to_string(customerA);
@@ -514,6 +493,9 @@ std::string localSearch::getArcCode(int customerA, int customerB) {
     return output;
 }
 
+/*
+ * Finds the closest charging station to the inputted customer.
+ */
 int localSearch::findClosestChargingStation(int customer) {
     int chargingStation = NUM_OF_CUSTOMERS + NUM_OF_STATIONS;
     for (int index = NUM_OF_CUSTOMERS + 1; index <= (NUM_OF_CUSTOMERS + NUM_OF_STATIONS); index++) {
@@ -523,6 +505,9 @@ int localSearch::findClosestChargingStation(int customer) {
     return chargingStation;
 }
 
+/*
+ * Gets the route's total distance, used to compare routes.
+ */
 double localSearch::getTotalDistance(int *route, int size) {
     double totalDist = 0.0;
     for (int i = 1; i < size; ++i)
@@ -530,29 +515,28 @@ double localSearch::getTotalDistance(int *route, int size) {
     return totalDist;
 }
 
-
+/*
+ * Runs through the route and determines whether the route satisfies the energy constraint.
+ */
 bool localSearch::getIsValidEnergy(int *route, int size) {
-//    printf("Max Battery %d\n",BATTERY_CAPACITY);
     bool isValid = true;
     double activeBattery = 0.0;
-//    for (int i = 0; i <size ; ++i) {
-//        printf("%d, ",route[i]);
-//    }printf("\n");
+
     for (int i = 1; i < size; ++i) {
         activeBattery += get_energy_consumption(route[i - 1], route[i]);
-//        printf("checking %d -- %d energy %f, current load %f\n",route[i - 1],route[i],get_energy_consumption(route[i - 1], route[i]),activeBattery);
         if (activeBattery > BATTERY_CAPACITY) {
-//            printf("FALSE\n");
             isValid = false;
             break;
         }
         if (is_charging_station(route[i]))
             activeBattery = 0.0;
     }
-
     return isValid;
 }
 
+/*
+ * Runs through the route and determines whether the route satisfies the load capacity constraint.
+ */
 bool localSearch::getIsValidCapacity(int *route, int size) {
     bool isValid = true;
     double activeCapacity = 0.0;
@@ -565,15 +549,19 @@ bool localSearch::getIsValidCapacity(int *route, int size) {
             isValid = false;
             break;
         }
-
     }
-
     return isValid;
 }
 
+/*
+ * Generates a route between charging stations and depot using the route of customers.
+ * Returns a value determining the fitness of the inputted route.
+ */
 double localSearch::getRouteLength(const int *routeA) {
 /*
  * GENERATE TOUR VERSION 2.2
+ * Uses a greedy approach to determine when to visit the depot.
+ * Locates an optimal charging station location within the route.
  */
     int route[NUM_OF_CUSTOMERS];
     int ind = 0;
@@ -709,9 +697,7 @@ double localSearch::getRouteLength(const int *routeA) {
         front += (end-front);
     }
 
-//    for (int i = 0; i < step; ++i) {
-//        printf("%d, ",tour[i]);
-//    }printf("\n");
+
     double route_length = fitness_evaluation(tour, step);
     if (route_length < best_sol->tour_length) {
         //check_solution(tour,step);
@@ -728,7 +714,7 @@ double localSearch::getRouteLength(const int *routeA) {
 
 /*
  * ================================================================================ *
- * Old code versions
+ * OLD CODE
  * ================================================================================ *
  */
 

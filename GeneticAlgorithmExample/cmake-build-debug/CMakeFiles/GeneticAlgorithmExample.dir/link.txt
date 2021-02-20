@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/GeneticAlgorithmExample.dir/example.cpp.o  -o GeneticAlgorithmExample 
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/GeneticAlgorithmExample.dir/example.cpp.o  -o GeneticAlgorithmExample.exe -Wl,--out-implib,libGeneticAlgorithmExample.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

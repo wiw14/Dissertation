@@ -37,10 +37,10 @@ public:
     void decreaseLocalSearchPheromone();
     void twoOptLocalPheromoneAddonSearch(int* currentRoute);
     std::vector<int> getRandomNumber();
-    std::string getArcCode(int customerA, int customerB);
+    static std::string getArcCode(int customerA, int customerB);
     void twoOptSwap(int i , int j, int* route, const int* currRoute);
     void twoOptLocalSearch(int* bestRoute);
-    double getBasicLength(int* bestRoute);
+    static double getBasicLength(int* bestRoute);
 
 };
 #endif //TESTSAMPLECODE_LOCALSEARCHES_H
