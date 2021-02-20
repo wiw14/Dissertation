@@ -25,6 +25,7 @@ private:
     static double getTotalDistance(int*route,int size);
     static bool getIsValidEnergy(int*route,int size);
     static bool getIsValidCapacity(int *route, int size);
+    double getTotalLoadWithAddedDepot(int* route,int depotPos);
 
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
