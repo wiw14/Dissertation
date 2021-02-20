@@ -78,9 +78,11 @@ def displayTemp():
     patch = createPath(node)
     # ax.set_title('Run '+str(n))
     fig,ax = plt.subplots()
-    ax.plot(customers[0], customers[1], "b.")
+
     ax.plot(csList[0], csList[1], "rs")
     ax.plot(depot[0], depot[1], "ys")
+    ax.plot(customers[0], customers[1], "b.")
+
     ax.add_patch(patch)
     plt.draw()
 
@@ -109,9 +111,10 @@ def displayList():
         # ax.set_title('Run '+str(n))
         ax = fig.add_subplot(4, 5, n)
         n += 1
-        ax.plot(customers[0], customers[1], "b.")
+
         ax.plot(csList[0], csList[1], "rs")
         ax.plot(depot[0], depot[1], "ys")
+        ax.plot(customers[0], customers[1], "b.")
         ax.add_patch(patch)
         plt.draw()
 

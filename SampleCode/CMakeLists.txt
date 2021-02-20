@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.16.3)
 project(TestSampleCode)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TestSampleCode main.cpp EVRP.cpp EVRP.hpp heuristic.cpp heuristic.hpp stats.cpp stats.hpp randomHeuristic.cpp randomHeuristic.h greedyEuclideanHeuristic.cpp greedyEuclideanHeuristic.h ACOHeuristic.cpp ACOHeuristic.h AStarHeuristic.cpp AStarHeuristic.h DijkstrasHeuristic.cpp DijkstrasHeuristic.h ACOv1.cpp ACOv1.h Randoms.cpp ACO.cpp ACO.h)
+add_executable(TestSampleCode main.cpp EVRP.cpp EVRP.hpp heuristic.cpp heuristic.hpp stats.cpp stats.hpp randomHeuristic.cpp randomHeuristic.h greedyEuclideanHeuristic.cpp greedyEuclideanHeuristic.h ACOHeuristic.cpp ACOHeuristic.h AStarHeuristic.cpp AStarHeuristic.h DijkstrasHeuristic.cpp DijkstrasHeuristic.h ACO.cpp ACO.h ACOWithChargingStation.cpp ACOWithChargingStation.h KNN.cpp KNN.h KNNHeuristic.cpp KNNHeuristic.h LocalSearches.cpp LocalSearches.h GeneticAlgorithm.cpp GeneticAlgorithm.h GAHeuristic.cpp GAHeuristic.h)

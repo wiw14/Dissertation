@@ -6,17 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.cpp
-climits
--
-functional
--
-ACO.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
 EVRP.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 map
 -
 iostream
@@ -28,5 +24,31 @@ stdio.h
 random
 -
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.cpp
+cmath
+-
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+string
+-
+cstring
+-
+math.h
+-
+fstream
+-
+limits.h
+-
+LocalSearches.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+greedyEuclideanHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 

@@ -36,7 +36,10 @@ double current_best;
 
 FILE* jsonNodes;
 
-
+/*
+ * Stores the node data to a file so that it can be used for visualisation.
+ * Not part of the competition framework.
+ */
 void storeNodes(){
     printf("saving....\n");
     if ((jsonNodes = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeNodes.txt)","w")) == NULL) { printf("ERROR\n");}
@@ -102,7 +105,10 @@ double ** generate_2D_matrix_double(int n, int m){
     return matrix;
 }
 
-
+/*
+ * Displays the node data at the beginning of the program.
+ * Not part of the competition framework.
+ */
 void displayNodeData(void){
     for (int index=0; index < ACTUAL_PROBLEM_SIZE; index++){
         printf("Node %d at %f,%f",node_list[index].id,node_list[index].x,node_list[index].y);

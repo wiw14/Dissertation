@@ -1,289 +1,266 @@
-//
-// Created by wmw13 on 11/02/2021.
-//
-
 #include <climits>
 #include <functional>
 #include "ACO.h"
-#define SIZEOFPHEROMONES (((NUM_OF_CUSTOMERS+1)*(NUM_OF_CUSTOMERS+1))-(NUM_OF_CUSTOMERS+1))/2
+#include<string>
 
-ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize,double Alpha,double Beta){
-    numOfAnts = numberOfAnts;
+/*
+ * ================================================================================ *
+ * ANT COLONY OPTIMISATION
+ * ================================================================================ *
+ */
+
+/*
+ * Ant Colony Optimization (ACO) constructor, sets the instance variables needed in the configuration of ACO.
+ */
+ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
+         double Beta, int TwoOptIteration, int RandomSearchIteration) {
+    //Creates a local search object to allow local searches to be used after a path has been found.
+    LS = new localSearch(RandomSearchIteration,TwoOptIteration);
+
+    //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;
+
+    //Sets the needed parameters for ACO configuration.
+    numOfAnts = numberOfAnts;
     pheromoneDecrease = pheromoneDecreaseFactor;
     Q = q;
     alpha = Alpha;
     beta = Beta;
     probabilitySize = ProbabilityArraySize;
-    probability = new double*[probabilitySize];
-    for (int index = 0; index <probabilitySize; index++)
+
+    //Creates and instantiates probability array.
+    //Used to Store the probability of choosing a next customer.
+    probability = new double *[probabilitySize];
+    for (int index = 0; index < probabilitySize; index++)
         probability[index] = new double[2];
     resetProbability();
 
-    for (int i = 0;i<=NUM_OF_CUSTOMERS; i++){
-        for(int j = i+1; j<=NUM_OF_CUSTOMERS; j++){
-            pheromones[getArcCode(i,j)] = distribution(seed);
+    //Instantiates pheromones to a random integer.
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+        for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+            pheromones[getArcCode(i, j)] = distribution(seed);
         }
     }
 
-    routes = new int*[numberOfAnts];
-    bestRoute = new int[NUM_OF_CUSTOMERS+1];
-    for (int ant = 0; ant < numberOfAnts; ant++){
-        routes[ant] = new int[NUM_OF_CUSTOMERS+1];
-        for (int customer = 0; customer <=NUM_OF_CUSTOMERS; customer++){
+    //Creates and instantiates the route arrays which are used to store a route
+    //while processing; and the best possible found route.
+    routes = new int *[numberOfAnts];
+    bestRoute = new int[NUM_OF_CUSTOMERS + 1];
+    for (int ant = 0; ant < numberOfAnts; ant++) {
+        routes[ant] = new int[NUM_OF_CUSTOMERS + 1];
+        for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++) {
             routes[ant][customer] = -1;
             bestRoute[customer] = -1;
         }
     }
-
 }
 
-char * ACO::getArcCode(int customerA, int customerB) {
-    char *index = new char[4];
-    if(customerA<customerB)
-        sprintf(index,"%d %d",customerA,customerB);
-    else
-        sprintf(index,"%d %d",customerB,customerA);
-    return index;
-}
-
-void ACO::printPheromones(){
-    for (const auto& item : pheromones){
-        printf("%s %f\n", item.first.c_str(), item.second);
+/*
+ * Function is used to get the index used to access the pheromones map.
+ * It takes two customer as input and returns the string index of the pheromone of the arc
+ * between the two customers.
+ */
+std::string ACO::getArcCode(int customerA, int customerB) {
+    //Utilises std::string to build a string.
+    std::string output;
+    std::string CustomerA = std::to_string(customerA);
+    std::string CustomerB = std::to_string(customerB);
+    //The index string for the arc between A and B is the same as between B and A.
+    if (customerA < customerB) {
+        output.append(CustomerA);
+        output.append(" ");
+        output.append(CustomerB);
     }
+    else{
+        output.append(CustomerB);
+        output.append(" ");
+        output.append(CustomerA);
+    }
+    return output;
 }
 
+/*
+ * ACO destructor, frees all used arrays, as well as freeing the local search object.
+ */
 ACO::~ACO() {
-    for (iterator = pheromones.begin(); iterator != pheromones.end(); iterator++)
-        pheromones.erase(iterator);
+    //Deletes local search object.
+    delete LS;
+
+    //Frees multi-dimensional arrays.
     for (int ant = 0; ant < numOfAnts; ant++)
         delete[] routes[ant];
+    for (int prob = 0; prob < probabilitySize; ++prob)
+        delete[] probability[prob];
     delete[] routes;
+    delete[] probability;
+    delete[] bestRoute;
 }
 
+/*
+ * Resets the route for the inputted ant all to -1.
+ */
 void ACO::resetRoute(int ant) {
     for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++)
         routes[ant][customer] = -1;
 }
 
-void ACO::resetProbability(){
-    for (int index = 0; index < probabilitySize; index++){
+/*
+ * Resets all the probabilities to -1.
+ */
+void ACO::resetProbability() {
+    for (int index = 0; index < probabilitySize; index++) {
         probability[index][0] = -1;
         probability[index][1] = -1;
     }
 }
 
+/*
+ * Iterates for specified number of iterations, then for each ant it finds a route and
+ * evaluates the route. If the route is better it updates the current best.
+ */
 void ACO::optimize(int iterations) {
-    for (int iter = 1; iter <= iterations; iter++){
-        //printf("Iteration %d\n",iter); //DEBUGGING
-        for (int ant = 0; ant < numOfAnts; ant++ ){
-            //printf("Ant : %d\n",ant); //DEBUGGING
-            while(valid(ant)){
+    for (int iter = 1; iter <= iterations; iter++) {
+        for (int ant = 0; ant < numOfAnts; ant++) {
+            //While the route for the ant isn't valid.
+            //The route is reset and re-calculated.
+            while (valid(ant)) {
                 resetRoute(ant);
-                //printf("Route Reset\n"); //DEBUGGING
                 route(ant);
-                //printf("Created Route\n"); //DEBUGGING
             }
-            //printf("Found Route\n"); //DEBUGGING
+
+            //Calculate the length of the route.
             double routeLength = length(ant);
 
-            if (routeLength < bestRouteLength) { //If the new route is shorter than the current best it updates the best.
+            //If the new route is shorter than the current best it updates the best.
+            if (routeLength <
+                bestRouteLength) {
                 bestRouteLength = routeLength;
                 for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++)
                     bestRoute[customer] = routes[ant][customer];
             }
 
         }
+        //Pheromones are updated with the new found routes.
         updatePheromones();
-        for (int ant=0; ant < numOfAnts; ant++)
-            resetRoute(ant); //Resets the all the routes;
-        localSearch();
-    }
 
-}
-
-double ACO::getRouteLength(int* route){
-
-        int steps;
-        int * tour = new int[NUM_OF_CUSTOMERS+1];
+        //Resets the all the routes.
+        for (int ant = 0; ant < numOfAnts; ant++)
+            resetRoute(ant);
         /*
-        * Re-Initialise best_sol
-        */
-        steps = 0;
-        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-            tour[index] = -1;
-        /*
-         * Sets the first item in the tour to DEPOT because all routes start at the depot.
-         * Increment steps to 1 due to first step was DEPOT.
+         * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
          */
-        tour[0] = DEPOT;
-        steps++;
-
-        int prev, next, chargingStation;
-        double activeCapacity = 0.0, activeBatteryLevel = 0.0;
-        int i = 1;
-        while (i <= NUM_OF_CUSTOMERS) {
-            prev = tour[steps - 1];
-            next = route[i];
-            if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
-                activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
-                activeCapacity += get_customer_demand(next);
-                activeBatteryLevel += get_energy_consumption(prev, next);
-                tour[steps] = next;
-                steps++;
-                i++;
-            } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY) {
-                activeCapacity = 0.0;
-                activeBatteryLevel = 0.0;
-                tour[steps] = DEPOT;
-                steps++;
-            } else if (activeBatteryLevel + get_energy_consumption(prev, next) > BATTERY_CAPACITY) {
-//            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE - NUM_OF_CUSTOMERS - 1) + NUM_OF_CUSTOMERS + 1;
-                chargingStation = NUM_OF_CUSTOMERS+NUM_OF_STATIONS;
-                for (int index = NUM_OF_CUSTOMERS+1; index <= (NUM_OF_CUSTOMERS+NUM_OF_STATIONS); index++){
-                    if (get_distance(next,index) < get_distance(next,chargingStation) && is_charging_station(index))
-                        chargingStation = index;
-                }
-                if (is_charging_station(chargingStation)) {
-                    activeBatteryLevel = 0.0;
-                    tour[steps] = chargingStation;
-                    steps++;
-                }
-            } else {
-                activeCapacity = 0.0;
-                activeBatteryLevel = 0.0;
-                tour[steps] = DEPOT;
-                steps++;
-            }
-        }
-
-        //close EVRP tour to return back to the depot
-        if (tour[steps - 1] != DEPOT) {
-            tour[steps] = DEPOT;
-            steps++;
-        }
-
-        return fitness_evaluation(tour, steps);
-}
-
-void ACO::localSearch(){
-    int* tempRoute = new int[NUM_OF_CUSTOMERS+1];
-    double route_length = getRouteLength(bestRoute);
-    double new_route_length = route_length;
-    int iters = 0;
-    while(new_route_length >= route_length && iters < 100) {
-        for(int index = 0; index <=NUM_OF_CUSTOMERS; index++)
-            tempRoute[index] = bestRoute[index];
-        iters++;
-        int x = rand() % NUM_OF_CUSTOMERS, y = ((rand() % 5)+1+x);
-        if(y > NUM_OF_CUSTOMERS)
-            y = y - (y%NUM_OF_CUSTOMERS);
-//        printf("X = %d, Y = %d\n", x, y); //DEBUGGING
-
-        int size = (y - x) + 1;
-        int *routeTemp = new int[size];
-        for (int index = 0; index < size; index++)
-            routeTemp[index] = -1;
-        int tempIndex = 0;
-
-        for (int index = y; index >= x; index--) {
-            routeTemp[tempIndex] = tempRoute[index];
-            tempIndex++;
-        }
-        tempIndex = 0;
-        for (int index = x; index <= y; index++) {
-            tempRoute[index] = routeTemp[tempIndex];
-            tempIndex++;
-        }
-        delete[] routeTemp;
-        new_route_length = getRouteLength(tempRoute);
-        //DEBUGGING
-//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-//            printf("%d, ",tempRoute[index]);
-//        printf("\n");
+//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+        //LS->randomLocalSearch();
+        //LS->twoOptLocalSearch(bestRoute);
     }
-    if (new_route_length < route_length){
-        for(int index = 0; index <=NUM_OF_CUSTOMERS; index++)
-            bestRoute[index] = tempRoute[index];
-    }
-}
-
-double ACO::amountOfPheromone(double routeLength, int customerA, int customerB){
-    return Q/(routeLength);
-}
-
-void ACO::updatePheromones() {
-    for (int ant = 0; ant < numOfAnts; ant++){
-        double routeLength = length(ant);
-        for (int i = 0;i<=NUM_OF_CUSTOMERS; i++){ //Decreases all the pheromones by a constant factor.
-            for(int j = i+1; j<=NUM_OF_CUSTOMERS; j++){
-                pheromones[getArcCode(i,j)] = pheromones[getArcCode(i,j)] * pheromoneDecrease;
-            }
-        }
-        for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
-            int customerA = routes[ant][index], customerB = routes[ant][index+1];
-            pheromones[getArcCode(customerA,customerB)] = amountOfPheromone(routeLength,customerA,customerB);
-        }
-    }
-}
-
-int ACO::getNextCustomer(){
     /*
-     * Find the 3 largest probabilities then randomly select one.
+     * LOCAL SEARCH AFTER THE ITERATIONS.
      */
-    int count = 0;
-    for (int index = 0; index < probabilitySize; index++){
-        if(probability[index][1] != -1)
-            count++;
-    }
-
-    std::uniform_int_distribution<int> nextCustomerSelector(0,count-1);
-    int nextCustomer = nextCustomerSelector(seed);
-    //printf("Random Selection %d\n",nextCustomer); //DEBUGGING
-    return (int)probability[nextCustomer][1];
-
+//    LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+//    LS->randomLocalSearch();
+    //LS->twoOptLocalSearch(bestRoute);
 }
 
 /*
- * NEEDS CHANGING.
- * This function gets the probability for choosing the next customer.
+ * Function calculates the amount of pheromones to add to an edge.
+ * Based on route length.
  */
-double ACO::getProbability(int customerA, int customerB,int ant){
-    double pheromone = pheromones[getArcCode(customerA,customerB)];
-    double distance = (get_distance(customerA,customerB)*1) + (get_energy_consumption(customerA,customerB)*0) + (get_customer_demand(customerB) * 0);
+double ACO::amountOfPheromone(double routeLength) const {
+    return Q / (routeLength);
+}
+
+/*
+ * Iterates over all the ants, updating the pheromones for the customers used in the route.
+ */
+void ACO::updatePheromones() {
+    for (int ant = 0; ant < numOfAnts; ant++) {
+        double routeLength = length(ant);
+
+        //Decreases all the pheromones by a constant factor.
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
+            for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
+                pheromones[getArcCode(i, j)] = pheromones[getArcCode(i, j)] * pheromoneDecrease;
+            }
+        }
+
+        //Run local search to improve the route before updating the pheromones.
+        LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+
+        //Update the pheromones of the customers in the route from the local search.
+        for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
+            int customerA = routes[ant][index], customerB = routes[ant][index + 1];
+            pheromones[getArcCode(customerA, customerB)] = amountOfPheromone(routeLength);
+        }
+    }
+}
+
+/*
+ * Finds customers with the largest probability, then selects one at random.
+ */
+int ACO::getNextCustomer() {
+    int count = 0;
+    for (int index = 0; index < probabilitySize; index++) {
+        if (probability[index][1] != -1)
+            count++;
+    }
+
+    std::uniform_int_distribution<int> nextCustomerSelector(0, count - 1);
+    int nextCustomer = nextCustomerSelector(seed);
+
+    return (int) probability[nextCustomer][1];
+}
+
+/*
+ * This function gets the probability for choosing the next customer using a heuristic.
+ */
+double ACO::getProbability(int customerA, int customerB, int ant) {
+    double pheromone = pheromones[getArcCode(customerA, customerB)];
+    double distance = (get_distance(customerA, customerB) * 1) + (get_energy_consumption(customerA, customerB) * 0) +
+                      (get_customer_demand(customerB) * 0);
 
     double sum = 0.0;
-    for (int customer=0; customer <= NUM_OF_CUSTOMERS; customer++) {
-        if (exists(customerA, customer)) {
+    for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++) {
+        if (ACO::exists(customerA, customer)) {
             if (!visited(ant, customer)) {
-                double ETA = (double) pow (1 / ((get_distance(customerA, customer)*1) + (get_energy_consumption(customerA,customer)*0) + (get_customer_demand(customer) * 0)), beta);
-                double TAU = (double) pow (pheromones[getArcCode(customerA, customer)], alpha);
+                auto ETA = (double) pow(1 / ((get_distance(customerA, customer) * 1) +
+                                               (get_energy_consumption(customerA, customer) * 0) +
+                                               (get_customer_demand(customer) * 0)), beta);
+                double TAU = (double) pow(pheromones[getArcCode(customerA, customer)], alpha);
                 sum += ETA * TAU;
             }
         }
     }
 
-    double prob = (((double) pow (pheromone,alpha)) * ((double) pow (1/distance,beta))) / sum;
 
-    return prob;
+    return (((double) pow(pheromone, alpha)) * ((double) pow(1 / distance, beta))) / sum;
 }
 
+/*
+ * Generates a route from the DEPOT which can be then evaluated in the optimise function.
+ */
 void ACO::route(int ant) {
-    //printf("Started Creating Route\n"); //DEBUGGING
-    routes[ant][0] = DEPOT; // Start route at depot
-    for (int i=0; i < NUM_OF_CUSTOMERS; i++) { //loop through all but one customer
-        int customerA = routes[ant][i]; //first customerA is the depot
-        //printf("Selected a customer %d\n",customerA); //DEBUGGING
-        for (int customerB=0; customerB <= NUM_OF_CUSTOMERS; customerB++) { //loop through all the customers to look for connections
-            //printf("Looking at customer %d\n",customerB); //DEBUGGING
-            if (customerA == customerB) { //If the customerA is the same as the customer selected skip.
+    // Start route at depot
+    routes[ant][0] = DEPOT;
+
+    //loop through all but one customer
+    for (int i = 0; i < NUM_OF_CUSTOMERS; i++) {
+        int customerA = routes[ant][i];
+
+        //loop through all the customers to look for connections
+        for (int customerB = 0; customerB <= NUM_OF_CUSTOMERS; customerB++) {
+            //If the customerA is the same as the customer selected skip.
+            if (customerA == customerB) {
                 continue;
             }
-            if (exists (customerA, customerB)) { //checks if a path exists between the customers.
-                if (!visited(ant, customerB)) { //checks whether the customer has already been visited
-                    double prob = getProbability(customerA,customerB,ant);
-                    for (int index = 0; index < probabilitySize; index ++){
-                        if (prob > probability[index][0]){
+            //Checks if a path exists between the customers.
+            if (ACO::exists(customerA, customerB)) {
+                //Checks whether the customer has already been visited.
+                if (!visited(ant, customerB)) {
+                    //Calculates the probability from A to B, if its better than the current probability
+                    //set the current next customer to B.
+                    double prob = getProbability(customerA, customerB, ant);
+                    for (int index = 0; index < probabilitySize; index++) {
+                        if (prob > probability[index][0]) {
                             probability[index][0] = prob;
                             probability[index][1] = (double) customerB;
                             break;
@@ -294,63 +271,98 @@ void ACO::route(int ant) {
             }
         }
 
+        //Gets the next customer based on the calculated probabilities.
         int nextCustomer = getNextCustomer();
-        if (nextCustomer == -1) //deadlock
+        //Checks for deadlock.
+        if (nextCustomer == -1)
             return;
 
+        //Sets the next customer and resets the probabilities.
         routes[ant][i + 1] = nextCustomer;
-        //printf("Next Customer %d\n", routes[ant][i + 1]); //DEBUGGING
         resetProbability();
     }
 }
 
-bool ACO::exists (int customerA, int customerB) {
-    return (get_distance(customerA,customerB) > 0);
+/*
+ * Checks whether then is an arc from A to B.
+ */
+bool ACO::exists(int customerA, int customerB) {
+    return (get_distance(customerA, customerB) > 0);
 }
 
-bool ACO::valid(int ant){
-    for(int i=0; i < NUM_OF_CUSTOMERS; i++) {
+/*
+ * Determines whether a route is valid, essentially the termination criteria for route searching.
+ */
+bool ACO::valid(int ant) {
+    for (int i = 0; i < NUM_OF_CUSTOMERS; i++) {
+        //Checks customers are valid.
         int customerA = routes[ant][i];
         int customerB = routes[ant][i + 1];
         if (customerA < 0 || customerB < 0) {
             return true;
         }
-        if (!exists(customerA, customerB)) {
+        //Checks that there is an arc between the customers.
+        if (!ACO::exists(customerA, customerB)) {
             return true;
         }
-        for (int j=0; j<i-1; j++) {
+        //Checks that none of the customers appear in duplicate within the route.
+        for (int j = 0; j < i - 1; j++) {
             if (routes[ant][i] == routes[ant][j]) {
                 return true;
             }
         }
     }
 
-    if (!exists (DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
+    //Checks that there is an arc from the last customer to the DEPOT.
+    if (!ACO::exists(DEPOT, routes[ant][NUM_OF_CUSTOMERS])) {
         return true;
     }
 
+
+    //If all the checks are satisfied then the function returns false
+    //signifying the route inputted is valid.
     return false;
 }
 
+/*
+ * Checks whether the customer has already been visited by the current ant.
+ */
 bool ACO::visited(int ant, int customer) {
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
+        //No customer at that index
         if (routes[ant][index] == -1)
-            break; //No customer at that index
+            break;
+        //Found customer
         if (routes[ant][index] == customer)
-                return true; //Found customer
+            return true;
     }
     return false;
 }
 
+/*
+ * Gets the total length of the current route.
+ * Utilises get_distance() method which is part of the sample framework for the competition.
+ */
 double ACO::length(int ant) {
     double total_length = 0.0;
-    for (int customer=0; customer < NUM_OF_CUSTOMERS; customer++) {
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
         total_length += get_distance(routes[ant][customer], routes[ant][customer + 1]);
     }
     return total_length;
 }
 
-int* ACO::returnResults(){
+/*
+ * Getter method, returns the current best route stored in the object for use in other class files.
+ */
+int *ACO::returnResults() {
     return bestRoute;
+}
+
+/*
+ * Uses the generate tour function within LocalSearch to calculate the total distance
+ * including charging stations and depots.
+ */
+double ACO::getRL(int* route){
+    return LS->getRouteLength(route);
 }
 

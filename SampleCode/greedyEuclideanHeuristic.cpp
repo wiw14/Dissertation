@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 05/02/2021.
-//
-
 #include<cmath>
 #include<iostream>
 #include<stdio.h>
@@ -12,11 +8,18 @@
 #include<fstream>
 #include<limits.h>
 
-#include "heuristic.hpp"
-#include "EVRP.hpp"
-
+#include "LocalSearches.h"
 #include "greedyEuclideanHeuristic.h"
 
+/*
+ * ================================================================================ *
+ * GREEDY HEURISTIC, USING EUCLIDEAN DISTANCE
+ * ================================================================================ *
+ */
+
+/*
+ * Finds the closest neighbour which hasn't been visited.
+ */
 int findClosestNode(const bool* validNode, int anchor){
     double HEURISTIC_VALUE = 2.0;
     double shortDist = INT_MAX, dist;
@@ -35,7 +38,11 @@ int findClosestNode(const bool* validNode, int anchor){
     return currentBest;
 }
 
+/*
+ * Finds a route between customers based on a greedy approach which chooses the closest neighbour.
+ */
 void greedyHeuristic(){
+    auto * LS = new localSearch(3,10);
     /*
     * Re-Initialise best_sol
     */
@@ -59,50 +66,20 @@ void greedyHeuristic(){
 
     validNode[DEPOT] = true;
 
+    //Finds the closest node to the depot.
     nextNode[0] = findClosestNode(validNode,DEPOT);
+
     validNode[nextNode[0]] = true;
 
+    //Loop through all the customers finding the closest node.
     for (int index = 1; index <= NUM_OF_CUSTOMERS; index++){
         nextNode[index] = findClosestNode(validNode,nextNode[index-1]);
         validNode[nextNode[index]] = true;
     }
 
-    int i = 0;
-    while(i < NUM_OF_CUSTOMERS) {
-        prev = best_sol->tour[best_sol->steps-1];
-        next = nextNode[i];
-        if((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY && activeBatteryLevel+get_energy_consumption(prev,next) <= BATTERY_CAPACITY){
-            activeCapacity  += get_customer_demand(next);
-            activeBatteryLevel += get_energy_consumption(prev,next);
-            best_sol->tour[best_sol->steps] = next;
-            best_sol->steps++;
-            i++;
-        } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY){
-            activeCapacity = 0.0;
-            activeBatteryLevel = 0.0;
-            best_sol->tour[best_sol->steps] = DEPOT;
-            best_sol->steps++;
-        } else if (activeBatteryLevel+get_energy_consumption(prev,next) > BATTERY_CAPACITY){
-            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE-NUM_OF_CUSTOMERS-1)+NUM_OF_CUSTOMERS+1;
-            if(is_charging_station(chargingStation)){
-                activeBatteryLevel = 0.0;
-                best_sol->tour[best_sol->steps] =  chargingStation;
-                best_sol->steps++;
-            }
-        } else {
-            activeCapacity = 0.0;
-            activeBatteryLevel = 0.0;
-            best_sol->tour[best_sol->steps] =  DEPOT;
-            best_sol->steps++;
-        }
-    }
+    //Run local search on the current route.
+    LS->randomPheromoneLocalSearchWithTwoOpt(nextNode);
 
-    //close EVRP tour to return back to the depot
-    if(best_sol->tour[best_sol->steps-1]!=DEPOT){
-        best_sol->tour[best_sol->steps] = DEPOT;
-        best_sol->steps++;
-    }
-
-    best_sol->tour_length = fitness_evaluation(best_sol->tour, best_sol->steps);
-
+    //Evaluate route.
+    LS->getRouteLength(nextNode);
 }
