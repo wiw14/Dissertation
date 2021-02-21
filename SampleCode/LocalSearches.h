@@ -26,6 +26,7 @@ private:
     static bool getIsValidEnergy(int*route,int size);
     static bool getIsValidCapacity(int *route, int size);
     double getTotalLoadWithAddedDepot(int* route,int depotPos);
+    bool checkAllCustomersVisited(int* tour,int size);
 
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
@@ -42,6 +43,7 @@ public:
     void twoOptSwap(int i , int j, int* route, const int* currRoute);
     void twoOptLocalSearch(int* bestRoute);
     static double getBasicLength(int* bestRoute);
+    bool checkSolution(int* tour, int size);
 
 };
 #endif //TESTSAMPLECODE_LOCALSEARCHES_H

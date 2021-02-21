@@ -918,8 +918,8 @@ double localSearch::getRouteLength(const int *routeA) {
 //    printf("\n");
 
     double route_length = fitness_evaluation(tour, step);
-    if (route_length < best_sol->tour_length) {
-        //check_solution(tour,step);
+    if (route_length < best_sol->tour_length && checkSolution(tour,step)) {
+        check_solution(tour,step);
         for (int index = 0; index < step; ++index) {
             int temp = tour[index];
             best_sol->tour[index] = temp;
@@ -929,6 +929,32 @@ double localSearch::getRouteLength(const int *routeA) {
     }
     return route_length;
 
+}
+
+bool localSearch::checkAllCustomersVisited(int* tour,int size){
+    bool visited[NUM_OF_CUSTOMERS];
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        visited[customer] = false;
+    }
+    for (int customer = 0; customer < size; ++customer) {
+        if (!is_charging_station(tour[customer])){
+            visited[tour[customer]-1] = true;
+        }
+    }
+    bool isValid = true;
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        if(!visited[customer])
+            isValid = false;
+    }
+    return isValid;
+}
+
+bool localSearch::checkSolution(int* tour, int size){
+    bool energyValid = getIsValidEnergy(tour,size);
+    bool capacityValid = getIsValidCapacity(tour,size);
+    bool allCustomersVisited = checkAllCustomersVisited(tour,size);
+
+    return energyValid && capacityValid && allCustomersVisited;
 }
 
 /*

@@ -2,14 +2,14 @@
 #include<string>
 #include<limits.h>
 
-#include "EVRP.hpp"
+//#include "EVRP.hpp"
 #include "greedyEuclideanHeuristic.h"
 #include "randomHeuristic.h"
 #include "ACOHeuristic.h"
 #include "DijkstrasHeuristic.h"
 #include "KNNHeuristic.h"
 #include "GAHeuristic.h"
-#include "heuristic.hpp"
+//#include "heuristic.hpp"
 
 using namespace std;
 

@@ -5,14 +5,24 @@
 #ifndef TESTSAMPLECODE_GENETICALGORITHM_H
 #define TESTSAMPLECODE_GENETICALGORITHM_H
 
-//#include "LocalSearches.h"
+#include "LocalSearches.h"
 
 class GeneticAlgorithm {
 private:
+    int sizeOfPopulation;
+    int generations;
+    int** parentPopulation;
+    int** childPopulation;
+    localSearch* LS;
+
+    void randomRoute(int*);
 
 public:
-    GeneticAlgorithm();
+    GeneticAlgorithm(int,int);
     virtual ~GeneticAlgorithm();
+    void generateStartingPopulation();
+    void runGenerations();
+    void displayPopulation();
 };
 
 
