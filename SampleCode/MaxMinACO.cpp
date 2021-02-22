@@ -41,7 +41,7 @@ MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q,
     //Sets tMax to an arbitrary large value.
     tMAX = INT_MAX;
 
-    pBest = 0.05;
+    pBest = 1/(double)NUM_OF_CUSTOMERS;
 
     //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;

@@ -210,7 +210,7 @@ void ACO::updatePheromones(int iterations) {
         }
 
         //Run local search to improve the route before updating the pheromones.
-        //LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+        LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
 
         //For visualisation
         //addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
