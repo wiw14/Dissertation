@@ -18,7 +18,7 @@ private:
     std::map<std::string, double> pheromones;
     int ** routes;
     int *bestRoute;
-    double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
+    double pheromoneDecrease, Q, bestRouteLength,alpha,beta, tMAX,tMIN, pBest;
     double ** probability;
     int numOfAnts, probabilitySize;
     localSearch* LS;
@@ -29,7 +29,7 @@ private:
     static std::string getArcCode(int,int);
     void resetRoute(int);
     void resetProbability();
-    void updatePheromones (int);
+    void updatePheromones (int, double, int);
     void route(int);
     bool visited(int,int);
     bool valid(int);
@@ -38,6 +38,9 @@ private:
     double amountOfPheromone(double) const;
     double getProbability(int,int,int);
     int getNextCustomer();
+    void instantiatePheromones();
+    void calculateTMAX(double);
+    void calculateTMIN();
 
 public:
     MaxMinACO(int,double,double,int,double,double,int,int);

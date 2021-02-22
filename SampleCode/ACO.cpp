@@ -210,7 +210,7 @@ void ACO::updatePheromones(int iterations) {
         }
 
         //Run local search to improve the route before updating the pheromones.
-        LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+        //LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
 
         //For visualisation
         //addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
@@ -218,7 +218,7 @@ void ACO::updatePheromones(int iterations) {
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
-            pheromones[getArcCode(customerA, customerB)] = amountOfPheromone(routeLength);
+            pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
     }
 }
