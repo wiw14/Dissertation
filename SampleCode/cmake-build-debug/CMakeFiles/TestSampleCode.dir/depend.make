@@ -12,6 +12,7 @@ CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACOWithChargingStation.h
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../LocalSearches.h
+CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../MaxMinACO.h
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../heuristic.hpp
 
 CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o: ../ACOWithChargingStation.cpp
@@ -64,6 +65,12 @@ CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o: ../LocalSearches.cpp
 CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o: ../LocalSearches.h
 CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o: ../heuristic.hpp
+
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o: ../EVRP.hpp
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o: ../LocalSearches.h
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o: ../MaxMinACO.cpp
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o: ../MaxMinACO.h
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o: ../heuristic.hpp
 
 CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o: ../LocalSearches.h

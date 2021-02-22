@@ -44,8 +44,9 @@ void run_heuristic() {
      * Evolutionary Algorithms
      */
     //GAHeuristic();
-    ACOHeuristic();
+    //ACOHeuristic();
     //ACOCSHeuristic();
+    MMACOHeuristic();
 }
 
 

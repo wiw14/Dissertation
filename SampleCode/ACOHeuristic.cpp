@@ -1,5 +1,6 @@
 #include<string>
 
+#include "MaxMinACO.h"
 #include "ACOWithChargingStation.h"
 #include "ACO.h"
 
@@ -12,7 +13,7 @@
  * charging stations, and depots.
  */
 void ACOHeuristic(){
-    int numAnts=3, iterations = 75, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    int numAnts=3, iterations = 30, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
     double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8;
     auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
     a->optimize(iterations);
@@ -33,6 +34,16 @@ void ACOCSHeuristic(){
     int numAnts=3, iterations = 30, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
     double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8;
     auto* a = new ACOCS(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
+    a->optimize(iterations);
+    int * route = a->returnResults();
+    a->getRL(route);
+    delete a;
+}
+
+void MMACOHeuristic(){
+    int numAnts=3, iterations = 30, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8;
+    auto* a = new MaxMinACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
     a->optimize(iterations);
     int * route = a->returnResults();
     a->getRL(route);

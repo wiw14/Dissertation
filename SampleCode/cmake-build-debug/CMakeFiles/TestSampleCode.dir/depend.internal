@@ -13,6 +13,7 @@ CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.cpp
@@ -64,6 +65,12 @@ CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp

@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/KNN.cpp.o"
   "CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o"
   "CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/heuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/main.cpp.o"
