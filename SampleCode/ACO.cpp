@@ -3,6 +3,27 @@
 #include "ACO.h"
 #include<string>
 
+///*
+// * ================================================================================ *
+// * ACO FILE METHODS
+// * ================================================================================ *
+// */
+//
+//FILE* ACOFile;
+//
+//void openACOFile(){
+//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
+//    fprintf(ACOFile," , , \n");
+//}
+//
+//void closeACOFile(){
+//    fclose(ACOFile);
+//}
+//
+//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
+//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
+//}
+
 /*
  * ================================================================================ *
  * ANT COLONY OPTIMISATION
@@ -53,6 +74,8 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
             bestRoute[customer] = -1;
         }
     }
+    //Opens ACO file to store optimas.
+//    openACOFile();
 }
 
 /*
@@ -94,6 +117,9 @@ ACO::~ACO() {
     delete[] routes;
     delete[] probability;
     delete[] bestRoute;
+
+    //Closes ACO file after it has been used.
+    //closeACOFile();
 }
 
 /*
@@ -141,7 +167,7 @@ void ACO::optimize(int iterations) {
 
         }
         //Pheromones are updated with the new found routes.
-        updatePheromones();
+        updatePheromones(iter);
 
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
@@ -172,7 +198,7 @@ double ACO::amountOfPheromone(double routeLength) const {
 /*
  * Iterates over all the ants, updating the pheromones for the customers used in the route.
  */
-void ACO::updatePheromones() {
+void ACO::updatePheromones(int iterations) {
     for (int ant = 0; ant < numOfAnts; ant++) {
         double routeLength = length(ant);
 
@@ -185,6 +211,9 @@ void ACO::updatePheromones() {
 
         //Run local search to improve the route before updating the pheromones.
         LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+
+        //For visualisation
+        //addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

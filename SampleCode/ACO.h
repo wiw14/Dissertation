@@ -30,7 +30,7 @@ private:
     static std::string getArcCode(int,int);
     void resetRoute(int);
     void resetProbability();
-    void updatePheromones ();
+    void updatePheromones (int);
     void route(int);
     bool visited(int,int);
     bool valid(int);

@@ -9,6 +9,7 @@ depot = []
 customers = []
 nodes = []
 numSolutions = 0
+optimums = []
 
 
 def clearLists():
