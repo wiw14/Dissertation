@@ -22,6 +22,10 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
 localSearch::~localSearch() {
 }
 
+void localSearch::LKSearch(int *bestRoute) {
+
+}
+
 /*
  * Complete 2-opt local search.
  * Loops through all possible instances of the 2-opt approach.

@@ -44,6 +44,7 @@ public:
     void twoOptLocalSearch(int* bestRoute);
     static double getBasicLength(int* bestRoute);
     bool checkSolution(int* tour, int size);
+    void LKSearch(int* bestRoute);
 
 };
 #endif //TESTSAMPLECODE_LOCALSEARCHES_H

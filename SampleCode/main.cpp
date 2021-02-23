@@ -5,7 +5,6 @@
 #include "EVRP.hpp"
 #include "heuristic.hpp"
 #include "stats.hpp"
-
 using namespace std;
 
 
@@ -38,6 +37,7 @@ bool termination_condition(void) {
 
     return flag;
 }
+
 
 
 /****************************************************************/

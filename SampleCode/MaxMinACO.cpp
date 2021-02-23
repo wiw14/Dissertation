@@ -33,7 +33,7 @@
 /*
  * Ant Colony Optimization (ACO) constructor, sets the instance variables needed in the configuration of ACO.
  */
-MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
+MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,double PBest,
          double Beta, int TwoOptIteration, int RandomSearchIteration) {
     //Creates a local search object to allow local searches to be used after a path has been found.
     LS = new localSearch(RandomSearchIteration,TwoOptIteration);
@@ -41,7 +41,7 @@ MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q,
     //Sets tMax to an arbitrary large value.
     tMAX = INT_MAX;
 
-    pBest = 1/(double)NUM_OF_CUSTOMERS;
+    pBest = PBest;
 
     //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;
@@ -175,6 +175,7 @@ void MaxMinACO::optimize(int iterations) {
                     bestRoute[customer] = routes[ant][customer];
             }
             if (routeLength < iterBestLength) {
+                LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
                 routeLength = length(ant);
                 iterBestLength = routeLength;
                 iterBestAnt = ant;
@@ -199,14 +200,14 @@ void MaxMinACO::optimize(int iterations) {
          * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
          */
 //        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-        //LS->randomLocalSearch();
+        //LS->randomLocalSearch(bestRoute);
         //LS->twoOptLocalSearch(bestRoute);
     }
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS.
      */
     //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-//    LS->randomLocalSearch();
+    //LS->randomLocalSearch(bestRoute);
     //LS->twoOptLocalSearch(bestRoute);
 }
 

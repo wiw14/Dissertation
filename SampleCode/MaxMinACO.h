@@ -43,7 +43,7 @@ private:
     void calculateTMIN();
 
 public:
-    MaxMinACO(int,double,double,int,double,double,int,int);
+    MaxMinACO(int,double,double,int,double,double,double,int,int);
     virtual ~MaxMinACO ();
     void optimize (int);
     int* returnResults();
