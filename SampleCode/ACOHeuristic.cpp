@@ -13,12 +13,14 @@
  * charging stations, and depots.
  */
 void ACOHeuristic(){
-    int numAnts=3, iterations = 30, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.9, Q = 40,alpha = 0.8, beta=0.8;
+    int numAnts=3, iterations = 20, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    double pheromoneDecrease = 0.6, Q = 21,alpha = 1.6, beta=2.6;
     auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
+
     a->optimize(iterations);
     int * route = a->returnResults();
     a->getRL(route);
+
     delete a;
 }
 
@@ -41,8 +43,8 @@ void ACOCSHeuristic(){
 }
 
 void MMACOHeuristic(){
-    int numAnts=8, iterations = 100, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8, pBest = 0.005;
+    int numAnts=8, iterations = 1000, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    double pheromoneDecrease = 0.9, Q = 80,alpha = 0.8, beta=0.8, pBest = 0.05;
     auto* a = new MaxMinACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha, pBest,beta,twoOptIteration,randomSearchIteration);
     a->optimize(iterations);
     int * route = a->returnResults();

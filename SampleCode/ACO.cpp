@@ -2,13 +2,14 @@
 #include <functional>
 #include "ACO.h"
 #include<string>
+#include "greedyEuclideanHeuristic.h"
 
-///*
-// * ================================================================================ *
-// * ACO FILE METHODS
-// * ================================================================================ *
-// */
-//
+/*
+ * ================================================================================ *
+ * ACO FILE METHODS
+ * ================================================================================ *
+ */
+
 //FILE* ACOFile;
 //
 //void openACOFile(){
@@ -62,6 +63,7 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
             pheromones[getArcCode(i, j)] = distribution(seed);
         }
     }
+
 
     //Creates and instantiates the route arrays which are used to store a route
     //while processing; and the best possible found route.
@@ -119,7 +121,7 @@ ACO::~ACO() {
     delete[] bestRoute;
 
     //Closes ACO file after it has been used.
-    //closeACOFile();
+//    closeACOFile();
 }
 
 /*
@@ -165,9 +167,11 @@ void ACO::optimize(int iterations) {
                     bestRoute[customer] = routes[ant][customer];
             }
 
+
         }
         //Pheromones are updated with the new found routes.
         updatePheromones(iter);
+
 
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
@@ -213,7 +217,7 @@ void ACO::updatePheromones(int iterations) {
         LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
 
         //For visualisation
-        //addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
+//        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

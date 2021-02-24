@@ -40,6 +40,7 @@ private:
     double getProbability(int,int,int);
     int getNextCustomer();
 
+
 public:
     ACO(int,double,double,int,double,double,int,int);
     virtual ~ACO ();

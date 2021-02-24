@@ -3,26 +3,26 @@
 #include "MaxMinACO.h"
 #include<string>
 
-///*
-// * ================================================================================ *
-// * ACO FILE METHODS
-// * ================================================================================ *
-// */
-//
-//FILE* ACOFile;
-//
-//void openACOFile(){
-//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-//    fprintf(ACOFile," , , \n");
-//}
-//
-//void closeACOFile(){
-//    fclose(ACOFile);
-//}
-//
-//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-//}
+/*
+ * ================================================================================ *
+ * ACO FILE METHODS
+ * ================================================================================ *
+ */
+
+FILE* ACOFile;
+
+void openACOFile(){
+    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
+    fprintf(ACOFile," , , \n");
+}
+
+void closeACOFile(){
+    fclose(ACOFile);
+}
+
+void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
+    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
+}
 
 /*
  * ================================================================================ *
@@ -75,7 +75,7 @@ MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q,
         }
     }
     //Opens ACO file to store optimas.
-//    openACOFile();
+    openACOFile();
 }
 
 /*
@@ -119,7 +119,7 @@ MaxMinACO::~MaxMinACO() {
     delete[] bestRoute;
 
     //Closes ACO file after it has been used.
-    //closeACOFile();
+    closeACOFile();
 }
 
 void MaxMinACO::instantiatePheromones(){
@@ -187,6 +187,9 @@ void MaxMinACO::optimize(int iterations) {
         calculateTMAX(bestRouteLength);
         calculateTMIN();
 
+        if(tMAX == tMIN)
+            break;
+
         if(iter == 1)
             instantiatePheromones();
 
@@ -216,7 +219,7 @@ void MaxMinACO::optimize(int iterations) {
  * Based on route length.
  */
 double MaxMinACO::amountOfPheromone(double routeLength) const {
-    return Q / (routeLength);
+    return 1/(routeLength);
 }
 
 void MaxMinACO::calculateTMAX(double globalBestLength){
@@ -242,7 +245,14 @@ void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAn
         //Decreases all the pheromones by a constant factor.
         for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
-                pheromones[getArcCode(i, j)] = pheromones[getArcCode(i, j)] * pheromoneDecrease;
+               double tempPheromone = pheromones[getArcCode(i, j)] * pheromoneDecrease;
+                //Enforces pheromone range constraint.
+                if(tempPheromone > tMAX)
+                    tempPheromone = tMAX;
+                else if(tempPheromone < tMIN)
+                    tempPheromone = tMIN;
+
+                pheromones[getArcCode(i, j)] = tempPheromone;
             }
         }
 
@@ -250,7 +260,7 @@ void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAn
         //LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
 
         //For visualisation
-        //addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
+        addLocalOptimumToFile(LS->getRouteLength(routes[bestAnt]),iterations,bestAnt);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

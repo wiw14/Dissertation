@@ -5,6 +5,7 @@ CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../ACO.cpp
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../ACO.h
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../EVRP.hpp
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../LocalSearches.h
+CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../greedyEuclideanHeuristic.h
 CMakeFiles/TestSampleCode.dir/ACO.cpp.o: ../heuristic.hpp
 
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o: ../ACO.h
