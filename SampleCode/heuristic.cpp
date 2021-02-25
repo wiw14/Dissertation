@@ -35,18 +35,18 @@ void run_heuristic() {
     /*
     * Shortest Path Algorithms.
     */
-    //greedyHeuristic();
+//    greedyHeuristic();
     //randomHeuristic();
-    //DijkstrasHeuristic();
+//    DijkstrasHeuristic();
     //KNNHeuristic();
 
     /*
      * Evolutionary Algorithms
      */
     //GAHeuristic();
-    //ACOHeuristic();
+    ACOHeuristic();
     //ACOCSHeuristic();
-    MMACOHeuristic();
+    //MMACOHeuristic();
 }
 
 

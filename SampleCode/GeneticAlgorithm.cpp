@@ -53,7 +53,7 @@ void GeneticAlgorithm::randomRoute(int *route) {
     }
 
     //THIS IS WHERE LK-SEARCH WOULD BE CALLED.
-    //LS->twoOptLocalSearch(route);
+    LS->randomPheromoneLocalSearchWithTwoOpt(route);
 }
 
 void GeneticAlgorithm::generateStartingPopulation() {

@@ -67,7 +67,7 @@ void greedyHeuristic(){
 
     //Run local search on the current route.
     LS->randomPheromoneLocalSearchWithTwoOpt(nextNode);
-
+//
     //Evaluate route.
     LS->getRouteLength(nextNode);
     delete LS;

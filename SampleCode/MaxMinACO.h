@@ -41,6 +41,7 @@ private:
     void instantiatePheromones();
     void calculateTMAX(double);
     void calculateTMIN();
+    void displayPheromones();
 
 public:
     MaxMinACO(int,double,double,int,double,double,double,int,int);
