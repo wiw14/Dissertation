@@ -43,7 +43,7 @@ void ACOCSHeuristic(){
 }
 
 void MMACOHeuristic(){
-    int numAnts=8, iterations = 20, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    int numAnts=8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
     double pheromoneDecrease = 0.9, Q = 1,alpha = 0.6, beta=2.1, pBest = 0.05;
     auto* a = new MaxMinACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha, pBest,beta,twoOptIteration,randomSearchIteration);
     a->optimize(iterations);

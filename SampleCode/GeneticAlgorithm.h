@@ -9,13 +9,19 @@
 
 class GeneticAlgorithm {
 private:
-    int sizeOfPopulation;
+    int sizeOfPopulation,childPopulationCounter;
     int generations;
     int** parentPopulation;
     int** childPopulation;
     localSearch* LS;
 
     void randomRoute(int*);
+    static void deleteSegmentOfArray(int**, int, int);
+    std::pair<int*,int> getBestRoute();
+    void selectChildrenForParents();
+
+    void partitionCrossoverOperator();
+    void PCRecombine(int*, int*);
 
 public:
     GeneticAlgorithm(int,int);

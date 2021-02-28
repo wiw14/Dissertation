@@ -54,8 +54,8 @@ int *numAntsBound, *iterationsBound, *twoOptIterationBound, *randomSearchIterati
 double *pheromoneDecreaseBound, *QBound, *alphaBound, *betaBound;
 
 void initialiseBounds() {
-    numAntsBound = new int[2]{3, 3};
-    iterationsBound = new int[2]{10,50};
+    numAntsBound = new int[2]{3, 5};
+    iterationsBound = new int[2]{40,70};
     twoOptIterationBound = new int[2]{1, 10};
     randomSearchIterationBound = new int[2]{1, 10};
     pheromoneDecreaseBound = new double[2]{0.5, 0.9};
