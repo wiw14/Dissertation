@@ -20,6 +20,9 @@ private:
     std::pair<int*,int> getBestRoute();
     void selectChildrenForParents();
 
+    //Testing
+    void testRecombination(int*, int*);
+
     void partitionCrossoverOperator();
     void PCRecombine(int*, int*);
 
@@ -29,6 +32,7 @@ public:
     void generateStartingPopulation();
     void runGenerations();
     void displayPopulation();
+    void checkSolution();
 };
 
 
