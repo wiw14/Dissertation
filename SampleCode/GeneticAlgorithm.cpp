@@ -64,7 +64,7 @@ void GeneticAlgorithm::randomRoute(int *route) {
     }
 
     //Local Search to create local optimums.
-    LS->randomPheromoneLocalSearchWithTwoOpt(route);
+    //LS->randomPheromoneLocalSearchWithTwoOpt(route);
     // LS->LKSearch(route);
 }
 

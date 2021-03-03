@@ -76,7 +76,29 @@ def readTour():
 def displayTemp():
     node = [0,14,16,12,15,17,13,18,19,20,21,11,8,10,9,7,5,6,2,1,3,4] #Dijkstra path
     #node = [0,8,6,1,9,4,3,5,7,15,16,10,11,2,19,21,20,18,14,17,12,13]
-    patch = createPath(node)
+
+    #RANDOM PHEROMONE TWO OPT LOCAL SEARCH POPULATION
+    partitionOne = [0,1,2,5,7,9,13,11,4,3,6,8,10,17,20,18,15,12,16,19,21,14,0]
+#partitionTwo = [0,14,17,20,18,15,11,4,3,1,2,6,8,10,7,5,9,12,21,13,19,16,0]
+    partitionTwo = [0,12,8,6,1,2,5,7,9,14,21,19,16,13,11,4,3,10,17,20,18,15,0]
+    #partitionTwo = [0,16,17,20,18,15,12,6,1,2,5,7,9,13,11,4,2,8,10,14,21,19,0]
+
+    #LK-Search POPULATION
+    #partitionOne = [17, 20, 21, 19, 13, 11, 4, 3, 8, 10, 12, 15, 18, 14, 0, 16, 6, 1, 2, 5, 7, 9,17]
+    #partitionTwo = [6, 1, 2, 5, 7, 9, 13, 11, 4, 3, 8, 10, 12, 0, 15, 18, 20, 17, 14, 21, 19, 16, 6]
+    #partitionTwo = [11, 4, 3, 8, 10, 12, 13, 19, 16, 15, 18, 20, 21, 17, 14, 0, 9, 7, 5, 2, 1, 6,11]
+
+    #RANDOM POPULATIONS
+    #partitionOne = [11, 3, 0, 10, 14, 18, 9, 1, 7, 15, 12, 8, 4, 5, 6, 2, 13, 16, 21, 19, 20, 17, 11]
+    #partitionTwo = [6, 1, 2, 5, 7, 9, 13, 11, 4, 3, 8, 10, 12, 0, 15, 18, 20, 17, 14, 21, 19, 16, 6]
+    #partitionTwo = [15, 21, 20, 14, 16, 4, 1, 0, 18, 19, 13, 11, 2, 10, 8, 7, 5, 9, 12, 17, 3, 6,15]
+
+# partitionOne = [0,4]
+   # partitionTwo = [0,8]
+    patchOne = createPath(partitionOne)
+    patchTwo = createPath(partitionTwo)
+    patchOne.set_edgecolor(color='red')
+    patchTwo.set_linestyle('dashed')
     # ax.set_title('Run '+str(n))
     fig,ax = plt.subplots()
 
@@ -84,7 +106,8 @@ def displayTemp():
     ax.plot(depot[0], depot[1], "ys")
     ax.plot(customers[0], customers[1], "b.")
 
-    ax.add_patch(patch)
+    ax.add_patch(patchOne)
+    ax.add_patch(patchTwo)
     plt.draw()
 
     plt.show()
@@ -123,5 +146,5 @@ def displayList():
 
 
 readFile()
-displayList()
-#displayTemp()
+#displayList()
+displayTemp()
