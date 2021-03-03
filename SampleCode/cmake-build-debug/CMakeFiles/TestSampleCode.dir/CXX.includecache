@@ -13,6 +13,10 @@ climits
 -
 algorithm
 -
+deque
+-
+list
+-
 GeneticAlgorithm.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
 
