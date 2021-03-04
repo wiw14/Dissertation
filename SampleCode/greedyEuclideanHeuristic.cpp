@@ -43,18 +43,6 @@ int findClosestNode(const bool* validNode, int anchor){
  */
 void greedyHeuristic(){
     auto * LS = new localSearch(3,10);
-    /*
-    * Re-Initialise best_sol
-    */
-    best_sol->steps = 0;
-    best_sol->tour_length = INT_MAX;
-
-    /*
-     * Sets the first item in the tour to DEPOT because all routes start at the depot.
-     * Increment steps to 1 due to first step was DEPOT.
-     */
-    best_sol->tour[0] = DEPOT;
-    best_sol->steps++;
 
     int prev, next, chargingStation;
     double activeCapacity = 0.0, activeBatteryLevel = 0.0;
@@ -79,7 +67,10 @@ void greedyHeuristic(){
 
     //Run local search on the current route.
     LS->randomPheromoneLocalSearchWithTwoOpt(nextNode);
-
+//
     //Evaluate route.
     LS->getRouteLength(nextNode);
+    delete LS;
+    delete[] validNode;
+    delete[] nextNode;
 }

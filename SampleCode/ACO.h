@@ -30,7 +30,7 @@ private:
     static std::string getArcCode(int,int);
     void resetRoute(int);
     void resetProbability();
-    void updatePheromones ();
+    void updatePheromones (int,int);
     void route(int);
     bool visited(int,int);
     bool valid(int);
@@ -39,6 +39,7 @@ private:
     double amountOfPheromone(double) const;
     double getProbability(int,int,int);
     int getNextCustomer();
+
 
 public:
     ACO(int,double,double,int,double,double,int,int);

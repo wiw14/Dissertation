@@ -8,5 +8,6 @@
 
 void ACOHeuristic();
 void ACOCSHeuristic();
+void MMACOHeuristic();
 
 #endif //TESTSAMPLECODE_ACOHEURISTIC_H

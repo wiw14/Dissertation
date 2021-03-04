@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/ACOHeuristic.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/EVRP.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/heuristic.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/parameteriser.cpp
+iostream
+-
+climits
+-
+ACOHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/ACOHeuristic.h
+EVRP.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/EVRP.hpp
+heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/heuristic.hpp
+stats.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/stats.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AutomaticParameterisation/stats.hpp
+

@@ -6,6 +6,7 @@ CMakeFiles/TestSampleCode.dir/ACO.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACO.h
@@ -13,6 +14,7 @@ CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ACOWithChargingStation.cpp
@@ -35,12 +37,18 @@ CMakeFiles/TestSampleCode.dir/EVRP.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GAHeuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GAHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/KNN.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN.cpp
@@ -59,6 +67,12 @@ CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/MaxMinACO.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
@@ -72,6 +86,7 @@ CMakeFiles/TestSampleCode.dir/heuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GAHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNNHeuristic.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/greedyEuclideanHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp

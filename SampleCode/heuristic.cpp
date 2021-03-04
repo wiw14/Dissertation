@@ -2,14 +2,14 @@
 #include<string>
 #include<limits.h>
 
-#include "EVRP.hpp"
+//#include "EVRP.hpp"
 #include "greedyEuclideanHeuristic.h"
 #include "randomHeuristic.h"
 #include "ACOHeuristic.h"
 #include "DijkstrasHeuristic.h"
 #include "KNNHeuristic.h"
 #include "GAHeuristic.h"
-#include "heuristic.hpp"
+//#include "heuristic.hpp"
 
 using namespace std;
 
@@ -35,17 +35,18 @@ void run_heuristic() {
     /*
     * Shortest Path Algorithms.
     */
-    //greedyHeuristic();
+//    greedyHeuristic();
     //randomHeuristic();
-    //DijkstrasHeuristic();
+//    DijkstrasHeuristic();
     //KNNHeuristic();
 
     /*
      * Evolutionary Algorithms
      */
-    //GAHeuristic();
-    ACOHeuristic();
+    GAHeuristic();
+    //ACOHeuristic();
     //ACOCSHeuristic();
+    //MMACOHeuristic();
 }
 
 
@@ -54,7 +55,6 @@ void run_heuristic() {
  */
 void free_heuristic() {
     delete[] best_sol->tour;
-
-
+    delete best_sol;
 }
 

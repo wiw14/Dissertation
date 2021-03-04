@@ -440,6 +440,33 @@ LocalSearches.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.s
 .PHONY : LocalSearches.cpp.s
 
+MaxMinACO.o: MaxMinACO.cpp.o
+
+.PHONY : MaxMinACO.o
+
+# target to build an object file
+MaxMinACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o
+.PHONY : MaxMinACO.cpp.o
+
+MaxMinACO.i: MaxMinACO.cpp.i
+
+.PHONY : MaxMinACO.i
+
+# target to preprocess a source file
+MaxMinACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.i
+.PHONY : MaxMinACO.cpp.i
+
+MaxMinACO.s: MaxMinACO.cpp.s
+
+.PHONY : MaxMinACO.s
+
+# target to generate assembly for a file
+MaxMinACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.s
+.PHONY : MaxMinACO.cpp.s
+
 greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
 
 .PHONY : greedyEuclideanHeuristic.o
@@ -617,6 +644,9 @@ help:
 	@echo "... LocalSearches.o"
 	@echo "... LocalSearches.i"
 	@echo "... LocalSearches.s"
+	@echo "... MaxMinACO.o"
+	@echo "... MaxMinACO.i"
+	@echo "... MaxMinACO.s"
 	@echo "... greedyEuclideanHeuristic.o"
 	@echo "... greedyEuclideanHeuristic.i"
 	@echo "... greedyEuclideanHeuristic.s"

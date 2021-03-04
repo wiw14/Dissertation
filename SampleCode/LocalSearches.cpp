@@ -23,6 +23,60 @@ localSearch::~localSearch() {
 }
 
 /*
+ * Lin-Kernighan Heuristic.
+ * Version 2.
+ */
+void localSearch::LKSearch(int *bestRoute) {
+    double bestLength = getRouteLength(bestRoute);
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
+        if (get_distance(bestRoute[customer], bestRoute[customer + 1]) > get_distance(bestRoute[customer], bestRoute[NUM_OF_CUSTOMERS])) {
+            int tempRoute[NUM_OF_CUSTOMERS + 1], tempRouteIndex = 0;
+
+            for (int forwardCustomer = 0; forwardCustomer <= customer; ++forwardCustomer)
+                tempRoute[tempRouteIndex++] = bestRoute[forwardCustomer];
+
+
+            for (int reverseCustomer = NUM_OF_CUSTOMERS; reverseCustomer > customer; --reverseCustomer) {
+                tempRoute[tempRouteIndex++] = bestRoute[reverseCustomer];
+            }
+            randomPheromoneLocalSearchWithTwoOpt(tempRoute);
+        double currentLength = getRouteLength(tempRoute);
+        if (currentLength < bestLength){
+            for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
+                bestRoute[copyCustomer] = tempRoute[copyCustomer];
+            bestLength = currentLength;
+            customer = 0;
+        }
+        }
+    }
+}
+
+/*
+ * Lin-Kernighan Heuristic.
+ * Version 1.
+ */
+//void localSearch::LKSearch(int *bestRoute) {
+//    double bestLength = getRouteLength(bestRoute);
+//    for (int customer = 0; customer <= NUM_OF_CUSTOMERS; customer++){
+//        int tempRoute[NUM_OF_CUSTOMERS+1], tempRouteIndex = 0;
+//
+//        for (int forwardCustomer = 0; forwardCustomer <= customer; ++forwardCustomer)
+//            tempRoute[tempRouteIndex++] = bestRoute[forwardCustomer];
+//
+//
+//        for (int reverseCustomer = NUM_OF_CUSTOMERS; reverseCustomer > customer; --reverseCustomer) {
+//            tempRoute[tempRouteIndex++] = bestRoute[reverseCustomer];
+//        }
+//        double currentLength = getRouteLength(tempRoute);
+//        if (currentLength < bestLength){
+//            for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
+//                bestRoute[copyCustomer] = tempRoute[copyCustomer];
+//            bestLength = currentLength;
+//        }
+//    }
+//}
+
+/*
  * Complete 2-opt local search.
  * Loops through all possible instances of the 2-opt approach.
  * Swaps the order of the route between i and j.
@@ -73,6 +127,67 @@ void localSearch::twoOptSwap(int i, int j, int *route, const int *currRoute) {
 
 /*
  * 2-opt local search modified to work alongside Pheromone Random Local Search.
+ * Version 2. (worse results, better efficiency).
+ */
+//void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
+//    int improve = 0;
+//    int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
+//    while (improve < twoOptIterations) {
+//        for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//            tempRoute[index] = currentRoute[index];
+//        double route_length = getRouteLength(currentRoute);
+//        for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
+//            for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
+//                if(i == 0){
+//                    if(get_distance(currentRoute[i],currentRoute[j+1]) < get_distance(currentRoute[j],currentRoute[j+1]) &&get_energy_consumption(currentRoute[i],currentRoute[j+1]) < get_energy_consumption(currentRoute[j],currentRoute[j+1])){
+//                        twoOptSwap(i, j, tempRoute, currentRoute);
+//                        double new_route_length = getRouteLength(tempRoute);
+//                        if (new_route_length < route_length) {
+//                            improve = 0;
+//                            for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//                                currentRoute[index] = tempRoute[index];
+//                            route_length = new_route_length;
+//                        }
+//                    }
+//                    improve++;
+//                }
+//                else if(j == NUM_OF_CUSTOMERS){
+//                    if(get_distance(currentRoute[i-1],currentRoute[j]) < get_distance(currentRoute[i-1],currentRoute[i]) && get_energy_consumption(currentRoute[i-1],currentRoute[j]) < get_energy_consumption(currentRoute[i-1],currentRoute[i])){
+//                        twoOptSwap(i, j, tempRoute, currentRoute);
+//                        double new_route_length = getRouteLength(tempRoute);
+//                        if (new_route_length < route_length) {
+//                            improve = 0;
+//                            for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//                                currentRoute[index] = tempRoute[index];
+//                            route_length = new_route_length;
+//                        }
+//                    }
+//                    improve++;
+//                }
+//                else{
+//                    if(get_distance(currentRoute[i-1],currentRoute[j]) < get_distance(currentRoute[i-1],currentRoute[i]) || get_distance(currentRoute[i],currentRoute[j+1]) < get_distance(currentRoute[j],currentRoute[j+1]) &&
+//                    get_energy_consumption(currentRoute[i-1],currentRoute[j]) < get_energy_consumption(currentRoute[i-1],currentRoute[i]) || get_energy_consumption(currentRoute[i],currentRoute[j+1]) < get_energy_consumption(currentRoute[j],currentRoute[j+1])){
+//                        twoOptSwap(i, j, tempRoute, currentRoute);
+//                        double new_route_length = getRouteLength(tempRoute);
+//                        if (new_route_length < route_length) {
+//                            improve = 0;
+//                            for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//                                currentRoute[index] = tempRoute[index];
+//                            route_length = new_route_length;
+//                        }
+//                    }        improve++;
+//                }
+//
+//            }
+//        }
+//
+//    }
+//    delete[] tempRoute;
+//}
+
+/*
+ * 2-opt local search modified to work alongside Pheromone Random Local Search.
+ * Version 1.
  */
 void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
     int improve = 0;
@@ -83,14 +198,15 @@ void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
         double route_length = getRouteLength(currentRoute);
         for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
-                twoOptSwap(i, j, tempRoute, currentRoute);
-                double new_route_length = getRouteLength(tempRoute);
-                if (new_route_length < route_length) {
-                    improve = 0;
-                    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-                        currentRoute[index] = tempRoute[index];
-                    route_length = new_route_length;
-                }
+                        twoOptSwap(i, j, tempRoute, currentRoute);
+                        double new_route_length = getRouteLength(tempRoute);
+                        if (new_route_length < route_length) {
+                            improve = 0;
+                            for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+                                currentRoute[index] = tempRoute[index];
+                            route_length = new_route_length;
+                        }
+
             }
         }
         improve++;
@@ -195,7 +311,7 @@ void localSearch::randomLocalSearch(int *bestRoute) {
         }
         delete[] routeTemp;
         //2-opt local search.
-        //twoOptLocalPheromoneAddonSearch(tempRoute);
+        twoOptLocalPheromoneAddonSearch(tempRoute);
         new_route_length = getRouteLength(tempRoute);
     }
     if (new_route_length < route_length) {
@@ -712,18 +828,17 @@ bool localSearch::getIsValidCapacity(int *route, int size) {
 //
 //}
 
-double localSearch::getTotalLoadWithAddedDepot(int* route,int depotPos){
+double localSearch::getTotalLoadWithAddedDepot(int *route, int depotPos) {
     //out of bounds within this method.
     double total = 0.0;
     for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
-        if(i == depotPos){
-            total += get_distance(route[i],DEPOT);
-            if(i+1 <NUM_OF_CUSTOMERS-1)
-                total += get_distance(DEPOT,route[i+1]);
-        }
-        else{
-            if(i+1 <NUM_OF_CUSTOMERS-1)
-                total += get_distance(route[i],route[i+1]);
+        if (i == depotPos) {
+            total += get_distance(route[i], DEPOT);
+            if (i + 1 < NUM_OF_CUSTOMERS - 1)
+                total += get_distance(DEPOT, route[i + 1]);
+        } else {
+            if (i + 1 < NUM_OF_CUSTOMERS - 1)
+                total += get_distance(route[i], route[i + 1]);
         }
     }
     return total;
@@ -762,21 +877,21 @@ double localSearch::getRouteLength(const int *routeA) {
 
     bool loadValid = false;
     int lastDepot = 0;
-    while(lastDepot<NUM_OF_CUSTOMERS){
+    while (lastDepot < NUM_OF_CUSTOMERS) {
         int maxDepotPos = -1;
         double total = 0.0;
         for (int i = lastDepot; i < NUM_OF_CUSTOMERS; ++i) {
             total += get_customer_demand(route[i]);
-            if(total>MAX_CAPACITY){
-                maxDepotPos = i-1;
+            if (total > MAX_CAPACITY) {
+                maxDepotPos = i - 1;
                 break;
             }
         }
         //printf("MaxDepotPos : %d, LastDepot : %d\n",maxDepotPos,lastDepot);
 
         //Exit while loop when depot can't be found.
-        if(maxDepotPos == -1)
-            maxDepotPos = NUM_OF_CUSTOMERS-1;
+        if (maxDepotPos == -1)
+            maxDepotPos = NUM_OF_CUSTOMERS - 1;
 
         //Depot goes after maxDepotPos.
         //Search starts at lastDepot (including lastDepot).
@@ -787,9 +902,9 @@ double localSearch::getRouteLength(const int *routeA) {
         //Finds the optimal placement of the depot.
         for (int i = maxDepotPos; i >= lowerBound; --i) {
             //Gets the route length with the Depot at i.
-            currentLength = getTotalLoadWithAddedDepot(route,i);
+            currentLength = getTotalLoadWithAddedDepot(route, i);
 //            printf("bestLength = %f, currentLength = %f\n",currentBestLength,currentLength);
-            if(currentLength<currentBestLength){
+            if (currentLength < currentBestLength) {
                 currentBestLength = currentLength;
                 currentBestDepot = i;
             }
@@ -797,8 +912,8 @@ double localSearch::getRouteLength(const int *routeA) {
 
 //        printf("CurrentBest : %d, LastDepot : %d\n",currentBestDepot,lastDepot);
         //lastDepot to currentBestDepot is the sub-route for cs search (including currentBestDepot).
-        int size = (currentBestDepot-lastDepot)+1;
-        int subRoute[size+size];
+        int size = (currentBestDepot - lastDepot) + 1;
+        int subRoute[size + size];
         int subRouteINDEX = 0;
         subRoute[subRouteINDEX++] = DEPOT;
 
@@ -906,7 +1021,7 @@ double localSearch::getRouteLength(const int *routeA) {
 
         //CurrentBestDepot is the optimal depot placement.
         //Start searching for next depot from currentBestDepot+1;
-        lastDepot = currentBestDepot+1;
+        lastDepot = currentBestDepot + 1;
     }
 
     //MAY NEED CHANGING
@@ -918,8 +1033,8 @@ double localSearch::getRouteLength(const int *routeA) {
 //    printf("\n");
 
     double route_length = fitness_evaluation(tour, step);
-    if (route_length < best_sol->tour_length) {
-        //check_solution(tour,step);
+    if (route_length < best_sol->tour_length && checkSolution(tour, step)) {
+        check_solution(tour, step);
         for (int index = 0; index < step; ++index) {
             int temp = tour[index];
             best_sol->tour[index] = temp;
@@ -929,6 +1044,32 @@ double localSearch::getRouteLength(const int *routeA) {
     }
     return route_length;
 
+}
+
+bool localSearch::checkAllCustomersVisited(int *tour, int size) {
+    bool visited[NUM_OF_CUSTOMERS];
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        visited[customer] = false;
+    }
+    for (int customer = 0; customer < size; ++customer) {
+        if (!is_charging_station(tour[customer])) {
+            visited[tour[customer] - 1] = true;
+        }
+    }
+    bool isValid = true;
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        if (!visited[customer])
+            isValid = false;
+    }
+    return isValid;
+}
+
+bool localSearch::checkSolution(int *tour, int size) {
+    bool energyValid = getIsValidEnergy(tour, size);
+    bool capacityValid = getIsValidCapacity(tour, size);
+    bool allCustomersVisited = checkAllCustomersVisited(tour, size);
+
+    return energyValid && capacityValid && allCustomersVisited;
 }
 
 /*

@@ -2,6 +2,28 @@
 #include <functional>
 #include "ACO.h"
 #include<string>
+#include "greedyEuclideanHeuristic.h"
+
+/*
+ * ================================================================================ *
+ * ACO FILE METHODS
+ * ================================================================================ *
+ */
+
+//FILE* ACOFile;
+//
+//void openACOFile(){
+//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
+//    fprintf(ACOFile," , , \n");
+//}
+//
+//void closeACOFile(){
+//    fclose(ACOFile);
+//}
+//
+//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
+//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
+//}
 
 /*
  * ================================================================================ *
@@ -15,7 +37,7 @@
 ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
          double Beta, int TwoOptIteration, int RandomSearchIteration) {
     //Creates a local search object to allow local searches to be used after a path has been found.
-    LS = new localSearch(RandomSearchIteration,TwoOptIteration);
+    LS = new localSearch(RandomSearchIteration, TwoOptIteration);
 
     //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;
@@ -42,6 +64,7 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
         }
     }
 
+
     //Creates and instantiates the route arrays which are used to store a route
     //while processing; and the best possible found route.
     routes = new int *[numberOfAnts];
@@ -53,6 +76,8 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
             bestRoute[customer] = -1;
         }
     }
+    //Opens ACO file to store optimas.
+//    openACOFile();
 }
 
 /*
@@ -70,8 +95,7 @@ std::string ACO::getArcCode(int customerA, int customerB) {
         output.append(CustomerA);
         output.append(" ");
         output.append(CustomerB);
-    }
-    else{
+    } else {
         output.append(CustomerB);
         output.append(" ");
         output.append(CustomerA);
@@ -94,6 +118,9 @@ ACO::~ACO() {
     delete[] routes;
     delete[] probability;
     delete[] bestRoute;
+
+    //Closes ACO file after it has been used.
+//    closeACOFile();
 }
 
 /*
@@ -139,9 +166,11 @@ void ACO::optimize(int iterations) {
                     bestRoute[customer] = routes[ant][customer];
             }
 
+
         }
         //Pheromones are updated with the new found routes.
-        updatePheromones();
+        updatePheromones(iter,iterations);
+
 
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
@@ -156,7 +185,7 @@ void ACO::optimize(int iterations) {
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS.
      */
-//    LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+    //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
 //    LS->randomLocalSearch();
     //LS->twoOptLocalSearch(bestRoute);
 }
@@ -172,7 +201,7 @@ double ACO::amountOfPheromone(double routeLength) const {
 /*
  * Iterates over all the ants, updating the pheromones for the customers used in the route.
  */
-void ACO::updatePheromones() {
+void ACO::updatePheromones(int iterations,int maxIterations) {
     for (int ant = 0; ant < numOfAnts; ant++) {
         double routeLength = length(ant);
 
@@ -184,14 +213,21 @@ void ACO::updatePheromones() {
         }
 
         //Run local search to improve the route before updating the pheromones.
-        LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+        //LS->LKSearch(routes[ant]);
+            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+//            LS->randomLocalSearch(routes[ant]);
+
+
+        //For visualisation
+//        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
-            pheromones[getArcCode(customerA, customerB)] = amountOfPheromone(routeLength);
+            pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
     }
+
 }
 
 /*
@@ -223,8 +259,8 @@ double ACO::getProbability(int customerA, int customerB, int ant) {
         if (ACO::exists(customerA, customer)) {
             if (!visited(ant, customer)) {
                 auto ETA = (double) pow(1 / ((get_distance(customerA, customer) * 1) +
-                                               (get_energy_consumption(customerA, customer) * 0) +
-                                               (get_customer_demand(customer) * 0)), beta);
+                                             (get_energy_consumption(customerA, customer) * 0) +
+                                             (get_customer_demand(customer) * 0)), beta);
                 double TAU = (double) pow(pheromones[getArcCode(customerA, customer)], alpha);
                 sum += ETA * TAU;
             }
@@ -362,7 +398,7 @@ int *ACO::returnResults() {
  * Uses the generate tour function within LocalSearch to calculate the total distance
  * including charging stations and depots.
  */
-double ACO::getRL(int* route){
+double ACO::getRL(int *route) {
     return LS->getRouteLength(route);
 }
 
