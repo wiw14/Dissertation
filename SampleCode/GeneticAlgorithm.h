@@ -6,6 +6,10 @@
 #define TESTSAMPLECODE_GENETICALGORITHM_H
 
 #include "LocalSearches.h"
+#include <climits>
+#include <algorithm>
+#include <deque>
+#include <list>
 
 class GeneticAlgorithm {
 private:
@@ -25,6 +29,12 @@ private:
 
     void partitionCrossoverOperator();
     void PCRecombine(int*, int*);
+    static std::map<int, std::pair<int, std::string> *>* createEdgeTable(int*,int*);
+    static void displayEdgeTable(std::map<int, std::pair<int, std::string> *>*);
+    static std::list<int>* createDegreeList(std::map<int, std::pair<int, std::string> *>*);
+    std::list<std::list<int>*>* createPartitions(std::map<int, std::pair<int, std::string> *>*, std::list<int>* );
+    static bool checkIfCustomerVisited(std::list<int>*, int);
+    static void displayList(std::list<int>*);
 
 public:
     GeneticAlgorithm(int,int);

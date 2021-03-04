@@ -9,6 +9,12 @@
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.cpp
+GeneticAlgorithm.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
+LocalSearches.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
 climits
 -
 algorithm
@@ -17,12 +23,6 @@ deque
 -
 list
 -
-GeneticAlgorithm.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
-LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
 EVRP.hpp
