@@ -5,11 +5,11 @@
 #ifndef TESTSAMPLECODE_SELECTION_H
 #define TESTSAMPLECODE_SELECTION_H
 
-#include "../LocalSearchAndGenerateTour/LocalSearches.h"
+#include "RepairOperators.h"
+#include <algorithm>
 
 class Selection {
-
+public:
+    static int** greedySelection(int **, int, int);
 };
-
-
 #endif //TESTSAMPLECODE_SELECTION_H

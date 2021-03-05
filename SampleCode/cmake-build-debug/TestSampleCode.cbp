@@ -116,6 +116,12 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
@@ -156,6 +162,12 @@
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.cpp">

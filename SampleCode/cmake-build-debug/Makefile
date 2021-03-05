@@ -305,6 +305,33 @@ Dijkstra/DijkstrasHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.s
 .PHONY : Dijkstra/DijkstrasHeuristic.cpp.s
 
+Experimental/Clusterer.o: Experimental/Clusterer.cpp.o
+
+.PHONY : Experimental/Clusterer.o
+
+# target to build an object file
+Experimental/Clusterer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o
+.PHONY : Experimental/Clusterer.cpp.o
+
+Experimental/Clusterer.i: Experimental/Clusterer.cpp.i
+
+.PHONY : Experimental/Clusterer.i
+
+# target to preprocess a source file
+Experimental/Clusterer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.i
+.PHONY : Experimental/Clusterer.cpp.i
+
+Experimental/Clusterer.s: Experimental/Clusterer.cpp.s
+
+.PHONY : Experimental/Clusterer.s
+
+# target to generate assembly for a file
+Experimental/Clusterer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.s
+.PHONY : Experimental/Clusterer.cpp.s
+
 Framework/EVRP.o: Framework/EVRP.cpp.o
 
 .PHONY : Framework/EVRP.o
@@ -493,6 +520,33 @@ GeneticAlgorithm/Mutation.s: GeneticAlgorithm/Mutation.cpp.s
 GeneticAlgorithm/Mutation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.s
 .PHONY : GeneticAlgorithm/Mutation.cpp.s
+
+GeneticAlgorithm/RepairOperators.o: GeneticAlgorithm/RepairOperators.cpp.o
+
+.PHONY : GeneticAlgorithm/RepairOperators.o
+
+# target to build an object file
+GeneticAlgorithm/RepairOperators.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.o
+
+GeneticAlgorithm/RepairOperators.i: GeneticAlgorithm/RepairOperators.cpp.i
+
+.PHONY : GeneticAlgorithm/RepairOperators.i
+
+# target to preprocess a source file
+GeneticAlgorithm/RepairOperators.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.i
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.i
+
+GeneticAlgorithm/RepairOperators.s: GeneticAlgorithm/RepairOperators.cpp.s
+
+.PHONY : GeneticAlgorithm/RepairOperators.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/RepairOperators.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.s
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.s
 
 GeneticAlgorithm/Selection.o: GeneticAlgorithm/Selection.cpp.o
 
@@ -737,6 +791,9 @@ help:
 	@echo "... Dijkstra/DijkstrasHeuristic.o"
 	@echo "... Dijkstra/DijkstrasHeuristic.i"
 	@echo "... Dijkstra/DijkstrasHeuristic.s"
+	@echo "... Experimental/Clusterer.o"
+	@echo "... Experimental/Clusterer.i"
+	@echo "... Experimental/Clusterer.s"
 	@echo "... Framework/EVRP.o"
 	@echo "... Framework/EVRP.i"
 	@echo "... Framework/EVRP.s"
@@ -758,6 +815,9 @@ help:
 	@echo "... GeneticAlgorithm/Mutation.o"
 	@echo "... GeneticAlgorithm/Mutation.i"
 	@echo "... GeneticAlgorithm/Mutation.s"
+	@echo "... GeneticAlgorithm/RepairOperators.o"
+	@echo "... GeneticAlgorithm/RepairOperators.i"
+	@echo "... GeneticAlgorithm/RepairOperators.s"
 	@echo "... GeneticAlgorithm/Selection.o"
 	@echo "... GeneticAlgorithm/Selection.i"
 	@echo "... GeneticAlgorithm/Selection.s"
