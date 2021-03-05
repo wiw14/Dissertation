@@ -15,6 +15,11 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
             localSearchPheromone[GenerateTour::getArcCode(i, j)] = 1;
         }
     }
+    for (int i = 0; i < Clusterer::numOfClusters; i++) {
+        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+            localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] = 1;
+        }
+    }
 }
 
 //Destructor for the Local Search class.
@@ -226,6 +231,18 @@ void localSearch::decreaseLocalSearchPheromone() {
 }
 
 /*
+ * Decreases all the pheromones being used for the weighted random number generator used in the local search.
+ */
+void localSearch::decreaseLocalSearchPheromoneCluster() {
+    for (int i = 0; i < Clusterer::numOfClusters; i++) {
+        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+            if (localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] > 1)
+                localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] = localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
+        }
+    }
+}
+
+/*
  * Gets the total number of pheromones in the system, used for weighted random number generator.
  */
 int localSearch::getTotalWeight() {
@@ -233,6 +250,19 @@ int localSearch::getTotalWeight() {
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
         for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
             totalWeight += localSearchPheromone[GenerateTour::getArcCode(i, j)];
+        }
+    }
+    return totalWeight;
+}
+
+/*
+ * Gets the total number of pheromones in the system, used for weighted random number generator.
+ */
+int localSearch::getTotalWeightCluster() {
+    int totalWeight = 0;
+    for (int i = 0; i < Clusterer::numOfClusters; i++) {
+        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+            totalWeight += localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)];
         }
     }
     return totalWeight;
@@ -252,6 +282,31 @@ std::vector<int> localSearch::getRandomNumber() { //type either x (0) or y (1).
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
         for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
             totalWeight += localSearchPheromone[GenerateTour::getArcCode(i, j)];
+            if (val <= (totalWeight)) {
+                //printf("%d\n",index); //DEBUGGING
+                xy.operator[](0) = i;
+                xy.operator[](1) = j;
+                return xy;
+            }
+        }
+    }
+    return xy;
+}
+
+/*
+ * Generates a random number pair (x and y) based on the local search pheromones.
+ */
+std::vector<int> localSearch::getRandomNumberCluster() { //type either x (0) or y (1).
+    std::vector<int> xy(2);
+    int totalWeight = getTotalWeightCluster();
+    xy.operator[](0) = -1;
+    xy.operator[](1) = -1;
+    //printf("type: %d tw: %d\n",type ,totalWeight); //DEBUGGING
+    int val = rand() % (totalWeight - 1);
+    totalWeight = 0;
+    for (int i = 0; i < Clusterer::numOfClusters; i++) {
+        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+            totalWeight += localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)];
             if (val <= (totalWeight)) {
                 //printf("%d\n",index); //DEBUGGING
                 xy.operator[](0) = i;
@@ -433,6 +488,63 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
 //    delete[] tempRoute;
 //
 //}
+
+/*
+ * Exchange local search with 2-opt local search.
+ * Switches two customers based on a weighted average determined by pheromones.
+ * Uses generate tour to determine which route is better.
+ */
+void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
+    int *tempRoute = new int[Clusterer::numOfClusters];
+    double route_length = Clusterer::getRouteLength(bestRoute);
+    double new_route_length = route_length;
+    int iters = 0, x, y;
+    std::vector<int> xy(2);
+    while (new_route_length >= route_length && iters < randomSearchIteration) { //(rand()%5)+10)
+        for (int index = 0; index < Clusterer::numOfClusters; index++)
+            tempRoute[index] = bestRoute[index];
+        iters++;
+
+        xy = getRandomNumberCluster();
+        if (xy.operator[](0) < xy.operator[](1)) {
+            x = xy.operator[](0);
+            y = xy.operator[](1);
+        } else {
+            x = xy.operator[](1);
+            y = xy.operator[](0);
+        }
+
+        int size = (y - x) + 1;
+        int *routeTemp = new int[size];
+        for (int index = 0; index < size; index++)
+            routeTemp[index] = -1;
+        int tempIndex = 0;
+
+        for (int index = y; index >= x; index--) {
+            routeTemp[tempIndex] = tempRoute[index];
+            tempIndex++;
+        }
+        tempIndex = 0;
+        for (int index = x; index <= y; index++) {
+            tempRoute[index] = routeTemp[tempIndex];
+            tempIndex++;
+        }
+        delete[] routeTemp;
+
+        //2-Opt As well
+        //twoOptLocalPheromoneAddonSearch(tempRoute);
+
+        new_route_length = Clusterer::getRouteLength(tempRoute);
+    }
+    decreaseLocalSearchPheromoneCluster();
+    if (new_route_length < route_length) {
+        for (int index = 0; index < Clusterer::numOfClusters; index++)
+            bestRoute[index] = tempRoute[index];
+        localSearchPheromoneCluster[GenerateTour::getArcCode(x, y)] =
+                localSearchPheromoneCluster[GenerateTour::getArcCode(x, y)] + (int) ((route_length - new_route_length));
+    }
+    delete[] tempRoute;
+}
 
 /*
  * Exchange local search with 2-opt local search.

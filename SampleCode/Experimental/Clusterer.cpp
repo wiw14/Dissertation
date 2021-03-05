@@ -4,12 +4,20 @@
 
 #include <climits>
 #include "Clusterer.h"
-Clusterer::Clusterer(int K) {
-    k = K;
-    clusters = new struct Node*[((NUM_OF_CUSTOMERS+1)/K)+1];
-    numOfClusters = 0;
+
+int Clusterer::k;
+struct Clusterer::Node** Clusterer::clusters;
+int Clusterer::numOfClusters;
+
+double Clusterer::getRouteLength(int* clusterRoute) {
+    double length = 0.0;
+    for (int i = 1; i < numOfClusters; ++i) {
+        length+=getClosestDistance(clusterRoute[i-1],clusterRoute[i]);
+    }
+    return length;
 }
-Clusterer::~Clusterer() {
+
+void Clusterer::freeClusters() {
     for (int i = 0; i < numOfClusters; ++i) {
         delete[] clusters[i]->customers;
         delete clusters[i];
@@ -47,7 +55,11 @@ int * Clusterer::getKNN(int customer, int KNN,const bool* visited) {
     return neighbour;
 }
 
-void Clusterer::createClusters(){
+void Clusterer::createClusters(int K){
+    k = K;
+    clusters = new struct Node*[((NUM_OF_CUSTOMERS+1)/K)+1];
+    numOfClusters = 0;
+
     bool* visited = new bool[NUM_OF_CUSTOMERS+1];
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
         visited[i] = false;

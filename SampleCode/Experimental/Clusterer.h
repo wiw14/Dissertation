@@ -7,24 +7,24 @@
 #include "../LocalSearchAndGenerateTour/LocalSearches.h"
 
 class Clusterer {
-private:
+public:
     struct Node{
         int* customers;
         double distance;
         int sizeOfCluster;
     };
-    int k;
-    struct Node** clusters;
+    static int k;
+    static struct Node** clusters;
     static int * getKNN(int, int, const bool*);
 
-public:
-    int numOfClusters;
-    Clusterer(int);
-    ~Clusterer();
-    double getClosestDistance(int, int);
-    void displayClusters();
-    void createClusters();
-    int* getRouteFromClusters(int*);
+    static void optimiseClusters();
+    static int numOfClusters;
+    static void freeClusters();
+    static double getClosestDistance(int, int);
+    static void displayClusters();
+    static void createClusters(int);
+    static int* getRouteFromClusters(int*);
+    static double getRouteLength(int*);
 };
 
 

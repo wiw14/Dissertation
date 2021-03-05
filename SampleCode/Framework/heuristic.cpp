@@ -10,6 +10,7 @@
 #include "../KNN/KNNHeuristic.h"
 #include "../GeneticAlgorithm/GAHeuristic.h"
 #include "../Experimental/CACOHeuristic.h"
+#include "../Experimental/Clusterer.h"
 //#include "heuristic.hpp"
 
 using namespace std;
@@ -25,6 +26,8 @@ void initialize_heuristic() {
     best_sol->id = 1;
     best_sol->steps = 0;
     best_sol->tour_length = INT_MAX;
+
+    Clusterer::createClusters(2);
 }
 
 
@@ -45,11 +48,11 @@ void run_heuristic() {
      * Evolutionary Algorithms
      */
     //GAHeuristic();
-    //ACOHeuristic();
+    ACOHeuristic();
     //ACOCSHeuristic();
     //MMACOHeuristic();
 
-    CACOHeuristic();
+    //CACOHeuristic();
 }
 
 
@@ -57,6 +60,7 @@ void run_heuristic() {
  * free memory used by the tour array.
  */
 void free_heuristic() {
+    Clusterer::freeClusters();
     delete[] best_sol->tour;
     delete best_sol;
 }

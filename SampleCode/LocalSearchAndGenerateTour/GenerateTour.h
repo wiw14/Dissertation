@@ -7,6 +7,7 @@
 
 #include "../Framework/EVRP.hpp"
 #include "../Framework/heuristic.hpp"
+#include "../Experimental/Clusterer.h"
 #include <map>
 #include <iostream>
 #include <string>

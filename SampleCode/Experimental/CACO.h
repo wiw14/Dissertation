@@ -8,7 +8,6 @@
 
 class CACO {
 private:
-    Clusterer* C;
     std::map<std::string,double>::iterator iterator;
     std::map<std::string, double> pheromones;
     int ** routes;

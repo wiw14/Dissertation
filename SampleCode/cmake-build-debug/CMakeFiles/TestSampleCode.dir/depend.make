@@ -8,6 +8,7 @@ CMakeFiles/TestSampleCode.dir/AStar/AStarHeuristic.cpp.o: ../Framework/heuristic
 
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../AntColonyOptimisation/ACO.cpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../AntColonyOptimisation/ACO.h
+CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o: ../GreedyEuclidean/greedyEuclideanHeuristic.h
@@ -18,6 +19,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../AntCo
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../AntColonyOptimisation/ACOHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../AntColonyOptimisation/ACOWithChargingStation.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../AntColonyOptimisation/MaxMinACO.h
+CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
@@ -25,6 +27,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o: ../Local
 
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../AntColonyOptimisation/ACOWithChargingStation.cpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../AntColonyOptimisation/ACOWithChargingStation.h
+CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
@@ -32,6 +35,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o
 
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../AntColonyOptimisation/MaxMinACO.cpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../AntColonyOptimisation/MaxMinACO.h
+CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
@@ -39,6 +43,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../LocalSea
 
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.h
+CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
@@ -74,6 +79,7 @@ CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../AntColonyOptimisation/ACOHeuristic.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Experimental/CACOHeuristic.h
+CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Framework/heuristic.cpp
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Framework/heuristic.hpp
@@ -94,6 +100,7 @@ CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o: ../Framework/stats.cpp
 CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o: ../Framework/stats.hpp
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../GeneticAlgorithm/CrossoverOperators.cpp
@@ -104,6 +111,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../Gene
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../GeneticAlgorithm/CrossoverOperators.h
@@ -116,6 +124,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../GeneticAlgo
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../GeneticAlgorithm/CrossoverOperators.h
@@ -127,6 +136,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../Geneti
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../GeneticAlgorithm/Mutation.cpp
@@ -136,6 +146,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../GeneticAlgorit
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../GeneticAlgorithm/RepairOperators.cpp
@@ -143,6 +154,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../Genetic
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../GeneticAlgorithm/RepairOperators.h
@@ -151,6 +163,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../GeneticAlgori
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../GreedyEuclidean/greedyEuclideanHeuristic.cpp
@@ -158,6 +171,7 @@ CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ..
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../KNN/KNN.cpp
@@ -165,6 +179,7 @@ CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../KNN/KNN.h
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../KNN/KNN.h
@@ -173,17 +188,21 @@ CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../KNN/KNNHeuristic.h
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.cpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
+CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.cpp
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o: ../Experimental/Clusterer.h
 CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o: ../Framework/EVRP.hpp
 CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o: ../Framework/heuristic.hpp
 CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h

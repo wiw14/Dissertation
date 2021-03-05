@@ -42,8 +42,6 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
          double Beta, int TwoOptIteration, int RandomSearchIteration) {
     //Creates a local search object to allow local searches to be used after a path has been found.
     LS = new localSearch(RandomSearchIteration, TwoOptIteration);
-    C = new Clusterer(2);
-    C->createClusters();
     //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;
 
@@ -63,8 +61,8 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
     resetProbability();
 
     //Instantiates pheromones to a random integer.
-    for (int i = 0; i < C->numOfClusters; i++) {
-        for (int j = i + 1; j < C->numOfClusters; j++) {
+    for (int i = 0; i < Clusterer::numOfClusters; i++) {
+        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
             pheromones[getArcCode(i, j)] = distribution(seed);
         }
     }
@@ -73,10 +71,10 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
     //Creates and instantiates the route arrays which are used to store a route
     //while processing; and the best possible found route.
     routes = new int *[numberOfAnts];
-    bestRoute = new int[C->numOfClusters];
+    bestRoute = new int[Clusterer::numOfClusters];
     for (int ant = 0; ant < numberOfAnts; ant++) {
-        routes[ant] = new int[C->numOfClusters];
-        for (int customer = 0; customer < C->numOfClusters; customer++) {
+        routes[ant] = new int[Clusterer::numOfClusters];
+        for (int customer = 0; customer < Clusterer::numOfClusters; customer++) {
             routes[ant][customer] = -1;
             bestRoute[customer] = -1;
         }
@@ -114,7 +112,6 @@ std::string CACO::getArcCode(int customerA, int customerB) {
 CACO::~CACO() {
     //Deletes local search object.
     delete LS;
-    delete C;
 
     //Frees multi-dimensional arrays.
     for (int ant = 0; ant < numOfAnts; ant++)
@@ -134,7 +131,7 @@ CACO::~CACO() {
  * Resets the route for the inputted ant all to -1.
  */
 void CACO::resetRoute(int ant) {
-    for (int customer = 0; customer < C->numOfClusters; customer++)
+    for (int customer = 0; customer < Clusterer::numOfClusters; customer++)
         routes[ant][customer] = -1;
 }
 
@@ -169,7 +166,7 @@ void CACO::optimize(int iterations) {
             if (routeLength <
                 bestRouteLength) {
                 bestRouteLength = routeLength;
-                for (int customer = 0; customer < C->numOfClusters; customer++)
+                for (int customer = 0; customer < Clusterer::numOfClusters; customer++)
                     bestRoute[customer] = routes[ant][customer];
             }
 
@@ -213,15 +210,15 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
         double routeLength = length(ant);
 
         //Decreases all the pheromones by a constant factor.
-        for (int i = 0; i < C->numOfClusters; i++) {
-            for (int j = i + 1; j < C->numOfClusters; j++) {
+        for (int i = 0; i < Clusterer::numOfClusters; i++) {
+            for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
                 pheromones[getArcCode(i, j)] = pheromones[getArcCode(i, j)] * pheromoneDecrease;
             }
         }
 
         //Run local search to improve the route before updating the pheromones.
         //LS->LKSearch(routes[ant]);
-       // LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+        LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
 //            LS->randomLocalSearch(routes[ant]);
 
 
@@ -229,7 +226,7 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
 //        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
-        for (int index = 0; index < C->numOfClusters-1; index++) {
+        for (int index = 0; index < Clusterer::numOfClusters-1; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
@@ -258,13 +255,13 @@ int CACO::getNextCustomer() {
  */
 double CACO::getProbability(int customerA, int customerB, int ant) {
     double pheromone = pheromones[getArcCode(customerA, customerB)];
-    double distance = (C->getClosestDistance(customerA, customerB) * 1);
+    double distance = (Clusterer::getClosestDistance(customerA, customerB) * 1);
 
     double sum = 0.0;
-    for (int customer = 0; customer < C->numOfClusters; customer++) {
+    for (int customer = 0; customer < Clusterer::numOfClusters; customer++) {
         if (CACO::exists(customerA, customer)) {
             if (!visited(ant, customer)) {
-                auto ETA = (double) pow(1 / (C->getClosestDistance(customerA, customer) * 1), beta);
+                auto ETA = (double) pow(1 / (Clusterer::getClosestDistance(customerA, customer) * 1), beta);
                 double TAU = (double) pow(pheromones[getArcCode(customerA, customer)], alpha);
                 sum += ETA * TAU;
             }
@@ -283,11 +280,11 @@ void CACO::route(int ant) {
     routes[ant][0] = DEPOT;
 
     //loop through all but one customer
-    for (int i = 0; i < C->numOfClusters-1; i++) {
+    for (int i = 0; i < Clusterer::numOfClusters-1; i++) {
         int customerA = routes[ant][i];
 
         //loop through all the customers to look for connections
-        for (int customerB = 0; customerB < C->numOfClusters; customerB++) {
+        for (int customerB = 0; customerB < Clusterer::numOfClusters; customerB++) {
             //If the customerA is the same as the customer selected skip.
             if (customerA == customerB) {
                 continue;
@@ -327,14 +324,14 @@ void CACO::route(int ant) {
  * Checks whether then is an arc from A to B.
  */
 bool CACO::exists(int customerA, int customerB) {
-    return (C->getClosestDistance(customerA, customerB) > 0);
+    return (Clusterer::getClosestDistance(customerA, customerB) > 0);
 }
 
 /*
  * Determines whether a route is valid, essentially the termination criteria for route searching.
  */
 bool CACO::valid(int ant) {
-    for (int i = 0; i < C->numOfClusters-1; i++) {
+    for (int i = 0; i < Clusterer::numOfClusters-1; i++) {
         //Checks customers are valid.
         int customerA = routes[ant][i];
         int customerB = routes[ant][i + 1];
@@ -354,7 +351,7 @@ bool CACO::valid(int ant) {
     }
 
     //Checks that there is an arc from the last customer to the DEPOT.
-    if (!CACO::exists(DEPOT, routes[ant][C->numOfClusters-1])) {
+    if (!CACO::exists(DEPOT, routes[ant][Clusterer::numOfClusters-1])) {
         return true;
     }
 
@@ -368,7 +365,7 @@ bool CACO::valid(int ant) {
  * Checks whether the customer has already been visited by the current ant.
  */
 bool CACO::visited(int ant, int customer) {
-    for (int index = 0; index < C->numOfClusters; index++) {
+    for (int index = 0; index < Clusterer::numOfClusters; index++) {
         //No customer at that index
         if (routes[ant][index] == -1)
             break;
@@ -385,8 +382,8 @@ bool CACO::visited(int ant, int customer) {
  */
 double CACO::length(int ant) {
     double total_length = 0.0;
-    for (int customer = 0; customer < C->numOfClusters-1; customer++) {
-        total_length += C->getClosestDistance(routes[ant][customer], routes[ant][customer + 1]);
+    for (int customer = 0; customer < Clusterer::numOfClusters-1; customer++) {
+        total_length += Clusterer::getClosestDistance(routes[ant][customer], routes[ant][customer + 1]);
     }
     return total_length;
 }
@@ -395,7 +392,7 @@ double CACO::length(int ant) {
  * Getter method, returns the current best route stored in the object for use in other class files.
  */
 int *CACO::returnResults() {
-    return C->getRouteFromClusters(bestRoute);
+    return Clusterer::getRouteFromClusters(bestRoute);
 }
 
 /*
@@ -403,6 +400,7 @@ int *CACO::returnResults() {
  * including charging stations and depots.
  */
 double CACO::getRL(int *route) {
+    LS->randomPheromoneLocalSearchWithTwoOpt(route);
     return GenerateTour::getRouteLength(route);
 }
 
