@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o"
   "CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o"
   "CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o"
+  "CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o"
   "CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o"
   "CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o"

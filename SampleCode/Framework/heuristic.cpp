@@ -9,6 +9,7 @@
 #include "../Dijkstra/DijkstrasHeuristic.h"
 #include "../KNN/KNNHeuristic.h"
 #include "../GeneticAlgorithm/GAHeuristic.h"
+#include "../Experimental/CACOHeuristic.h"
 //#include "heuristic.hpp"
 
 using namespace std;
@@ -43,10 +44,12 @@ void run_heuristic() {
     /*
      * Evolutionary Algorithms
      */
-    GAHeuristic();
+    //GAHeuristic();
     //ACOHeuristic();
     //ACOCSHeuristic();
     //MMACOHeuristic();
+
+    CACOHeuristic();
 }
 
 
