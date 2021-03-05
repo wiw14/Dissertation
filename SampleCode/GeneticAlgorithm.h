@@ -15,6 +15,7 @@ class GeneticAlgorithm {
 private:
     int sizeOfPopulation,childPopulationCounter;
     int generations;
+    int numMutations;
     int** parentPopulation;
     int** childPopulation;
     localSearch* LS;
@@ -27,6 +28,8 @@ private:
     //Testing
     void testRecombination(int*, int*);
 
+    int checkInParition(std::vector<std::pair<int,int>>*, int, int, bool*);
+    void partiallyMappedCrossover(int*, int*);
     void partitionCrossoverOperator();
     void PCRecombine(int*, int*);
     static std::map<int, std::pair<int, std::string> *>* createEdgeTable(int*,int*);
@@ -37,7 +40,7 @@ private:
     static void displayList(std::list<int>*);
 
 public:
-    GeneticAlgorithm(int,int);
+    GeneticAlgorithm(int,int,int);
     virtual ~GeneticAlgorithm();
     void generateStartingPopulation();
     void runGenerations();

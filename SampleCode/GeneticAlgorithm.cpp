@@ -9,11 +9,12 @@
 /*
  * Genetic Algorithm Constructor.
  */
-GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations) {
+GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int NumMutations) {
     LS = new localSearch(3, 3);
 
     sizeOfPopulation = SizeOfPopulation;
     generations = Generations;
+    numMutations = NumMutations;
     childPopulationCounter = 0;
 
     parentPopulation = new int *[sizeOfPopulation];
@@ -119,10 +120,120 @@ void GeneticAlgorithm::runGenerations() {
 
 void GeneticAlgorithm::partitionCrossoverOperator() {
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-        PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+//        PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //        testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
+        partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
     }
-    childPopulation[childPopulationCounter++] = parentPopulation[0];
+    //childPopulation[childPopulationCounter++] = parentPopulation[0];
+}
+
+int GeneticAlgorithm::checkInParition(std::vector<std::pair<int,int>>* subRoutes, int customer, int type, bool* partitionCheck){
+    for (int i = 0; i < subRoutes->size(); ++i) {
+        if(type == 0 && subRoutes->at(i).first == customer){
+            if(partitionCheck[subRoutes->at(i).second])
+                return checkInParition(subRoutes,subRoutes->at(i).second,type,partitionCheck);
+            else
+                return subRoutes->at(i).second;
+        }
+        else if(type == 1 && subRoutes->at(i).second == customer){
+            if(partitionCheck[subRoutes->at(i).first])
+                return checkInParition(subRoutes,subRoutes->at(i).first,type,partitionCheck);
+            else
+                return subRoutes->at(i).first;
+        }
+    }
+    return -1;
+}
+
+void GeneticAlgorithm::partiallyMappedCrossover(int* currentBest, int* toCombine){
+    /*
+     * STEP 1:
+     * Find partition mapping points.
+     */
+    int P1 = rand()%(NUM_OF_CUSTOMERS-1), P2 = rand()%(NUM_OF_CUSTOMERS-P1)+(P1+1);
+    //printf("P1:%d P2:%d\n",P1,P2);
+
+    /*
+     * STEP 2:
+     * Generate sub-route.
+     */
+    auto subRoutes = new std::vector<std::pair<int,int>>();
+    for (int i = P1; i <= P2; ++i) {
+        auto subRoute = std::pair<int,int>();
+        subRoute.first = currentBest[i];
+        subRoute.second = toCombine[i];
+        subRoutes->push_back(subRoute);
+    }
+//    for (auto i : *subRoutes)
+//        printf("%d:%d, ",i.first, i.second);
+//    printf("\n");
+
+    /*
+     * STEP 3:
+     * Generate children.
+     */
+    int *childOne = new int[NUM_OF_CUSTOMERS + 1], *childTwo = new int[NUM_OF_CUSTOMERS + 1];
+    bool* partitionCheckCurrentBest = new bool[NUM_OF_CUSTOMERS + 1], * partitionChecktoCombine = new bool[NUM_OF_CUSTOMERS + 1];
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+        if(i >= P1 && i <= P2) {
+            partitionCheckCurrentBest[currentBest[i]] = true;
+            partitionChecktoCombine[toCombine[i]] = true;
+        }
+        else{
+            partitionCheckCurrentBest[currentBest[i]] = false;
+            partitionChecktoCombine[toCombine[i]] = false;
+        }
+    }
+
+    //Create first sector.
+    for (int i = 0; i < P1; ++i) {
+        if(partitionChecktoCombine[currentBest[i]]){
+            //type 1 is toCombine.
+            int newCustomer = checkInParition(subRoutes,currentBest[i],1,partitionChecktoCombine);
+            childOne[i] = newCustomer;
+        }
+        else{
+            childOne[i] = currentBest[i];
+        }
+
+        if(partitionCheckCurrentBest[toCombine[i]]){
+            //type 1 is toCombine.
+            int newCustomer = checkInParition(subRoutes,toCombine[i],0,partitionCheckCurrentBest);
+            childTwo[i] = newCustomer;
+        }
+        else{
+            childTwo[i] = toCombine[i];
+        }
+    }
+
+    for (int i = P1; i <= P2 ; ++i) {
+        childOne[i] = toCombine[i];
+        childTwo[i] = currentBest[i];
+    }
+
+    //Create second sector.
+    for (int i = P2+1; i <= NUM_OF_CUSTOMERS; ++i) {
+        if(partitionChecktoCombine[currentBest[i]]){
+            //type 1 is toCombine.
+            int newCustomer = checkInParition(subRoutes,currentBest[i],1,partitionChecktoCombine);
+            childOne[i] = newCustomer;
+        }
+        else{
+            childOne[i] = currentBest[i];
+        }
+
+        if(partitionCheckCurrentBest[toCombine[i]]){
+            //type 1 is toCombine.
+            int newCustomer = checkInParition(subRoutes,toCombine[i],0,partitionCheckCurrentBest);
+            childTwo[i] = newCustomer;
+        }
+        else{
+            childTwo[i] = toCombine[i];
+        }
+    }
+
+    childPopulation[childPopulationCounter++] = childOne; childPopulation[childPopulationCounter++] = childTwo;
+//    delete subTwo; delete subOne; delete subRoutes;
 }
 
 void GeneticAlgorithm::testRecombination(int *currentBest, int *toCombine) {
@@ -712,18 +823,22 @@ bool sortCriteria(std::pair<int *, double> A, std::pair<int *, double> B) {
     return (A.second > B.second);
 }
 
+
+
+
+
 void GeneticAlgorithm::selectChildrenForParents() {
     auto children = new std::vector<std::pair<int *, double>>;
 
     //DEBUGGING
-    printf("Number Children = %d\n", childPopulationCounter);
-    for (int i = 0; i < childPopulationCounter; ++i) {
-        printf("childs %d\n", i);
-        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-            printf("%d, ", childPopulation[i][j]);
-        }
-        printf("\n");
-    }
+//    printf("Number Children = %d\n", childPopulationCounter);
+//    for (int i = 0; i < childPopulationCounter; ++i) {
+//        printf("childs %d\n", i);
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            printf("%d, ", childPopulation[i][j]);
+//        }
+//        printf("\n");
+//    }
 
 
     for (int popCounter = 0; popCounter < childPopulationCounter; ++popCounter)
@@ -738,7 +853,12 @@ void GeneticAlgorithm::selectChildrenForParents() {
 
     deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
 
-    for (int popCounter = 0; popCounter < sizeOfPopulation; ++popCounter) {
+    for (int popCounter = 0; popCounter < sizeOfPopulation-numMutations; ++popCounter) {
+        parentPopulation[popCounter] = children->back().first;
+        children->pop_back();
+    }
+    for (int popCounter = sizeOfPopulation - numMutations; popCounter < sizeOfPopulation; ++popCounter) {
+        //Mutate
         parentPopulation[popCounter] = children->back().first;
         children->pop_back();
     }
