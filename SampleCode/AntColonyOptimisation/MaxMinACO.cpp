@@ -285,7 +285,7 @@ void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAn
         }
 
         //Run local search to improve the route before updating the pheromones.
-        //LS->randomPheromoneLocalSearchWithTwoOpt(routes[bestAnt]);
+        LS->randomPheromoneLocalSearchWithTwoOpt(routes[bestAnt]);
 
         //For visualisation
         addLocalOptimumToFile(GenerateTour::getRouteLength(routes[bestAnt]),iterations,bestAnt);

@@ -14,7 +14,7 @@ GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int Nu
 
     sizeOfPopulation = SizeOfPopulation;
     generations = Generations;
-    numMutations = NumMutations;
+    probabiltyOfMutation = NumMutations;
     childPopulationCounter = 0;
 
     parentPopulation = new int *[sizeOfPopulation];
@@ -111,6 +111,7 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
+        randomMutateChildren();
         selectChildrenForParents();
         repairParents();
     }
@@ -139,4 +140,15 @@ void GeneticAlgorithm::selectChildrenForParents() {
 void GeneticAlgorithm::repairParents(){
     for (int i = 0; i < sizeOfPopulation; ++i)
         RepairOperators::basicRepair(parentPopulation[i]);
+}
+
+void GeneticAlgorithm::randomMutateChildren(){
+    for (int i = 0; i < childPopulationCounter; ++i) {
+        int toMutate = rand()%probabiltyOfMutation;
+        if(toMutate == 0) {
+            //printf("Mutate\n");
+            //Mutation::randomSwapMutation(childPopulation[i]);
+            Mutation::LKMutation(childPopulation[i],LS);
+        }
+    }
 }

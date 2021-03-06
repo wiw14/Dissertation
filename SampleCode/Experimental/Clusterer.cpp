@@ -8,6 +8,7 @@
 int Clusterer::k;
 struct Clusterer::Node** Clusterer::clusters;
 int Clusterer::numOfClusters;
+int Clusterer::twoOptIterations = 10;
 
 double Clusterer::getRouteLength(int* clusterRoute) {
     double length = 0.0;
@@ -82,6 +83,7 @@ void Clusterer::createClusters(int K){
                     clusters[numOfClusters]->distance += get_distance(clusters[numOfClusters]->customers[i-1],clusters[numOfClusters]->customers[i]);
                 visited[clusters[numOfClusters]->customers[i]] = true;
             }
+            //optimiseCluster(clusters[numOfClusters]);
             numOfClusters++;
         }
     }
@@ -120,6 +122,72 @@ int* Clusterer::getRouteFromClusters(int* clusterRoute){
             route[counter++] = clusters[clusterRoute[i]]->customers[j];
         }
     }
-    delete[] clusterRoute;
+    //delete[] clusterRoute;
     return route;
 }
+
+double Clusterer::calculateClusterDistance(int* customers,int size){
+    double length = 0.0;
+    for (int i = 0; i < size-1; ++i)
+        length+= get_distance(customers[i],customers[i+1]);
+    return length;
+}
+
+/*
+ * CLUSTER OPTIMISATION.
+ */
+
+void optimiseCluster(struct Node* node){
+
+}
+
+/*
+ * Swaps the route between the inputted points used in 2-opt local search.
+ */
+//void Clusterer::twoOptSwap(int i, int j, int *route, const int *currRoute) {
+//    for (int l = 0; l < i; ++l)
+//        route[l] = currRoute[l];
+//    int index = i;
+//    for (int l = j; l >= i; --l) {
+//        route[index] = currRoute[l];
+//        index++;
+//    }
+//    for (int l = j + 1; l <= NUM_OF_CUSTOMERS; ++l) {
+//        route[l] = currRoute[l];
+//    }
+//}
+//void Clusterer::optimiseCluster(struct Node* node){
+////    printf("Start Optimise\n");
+//    int* bestRoute = node->customers;
+//    int improve = 0;
+//    int *tempRoute = new int[node->sizeOfCluster];
+//    //Checks whether there has been an improvement within x number of iterations.
+//    while (improve < twoOptIterations) {
+//        for (int index = 0; index < node->sizeOfCluster; index++)
+//            tempRoute[index] = bestRoute[index];
+//        double route_length = Clusterer::calculateClusterDistance(bestRoute,node->sizeOfCluster);
+//        for (int i = 0; i < node->sizeOfCluster-1; ++i) {
+//            for (int j = i + 1; j < node->sizeOfCluster; ++j) {
+//                //Swaps the route between index i and j.
+//                twoOptSwap(i, j, tempRoute, bestRoute);
+//                double new_route_length = Clusterer::calculateClusterDistance(tempRoute, node->sizeOfCluster);
+//                if (new_route_length < route_length) {
+//                    improve = 0;
+//                    for (int index = 0; index < node->sizeOfCluster; index++)
+//                        bestRoute[index] = tempRoute[index];
+//                    route_length = new_route_length;
+//                }
+//            }
+//        }
+//        improve++;
+//    }
+//    node->distance = Clusterer::calculateClusterDistance(bestRoute,node->sizeOfCluster);
+////    printf("Finish Optimise\n");
+////
+////    for (int i = 0; i < node->sizeOfCluster; ++i) {
+////        printf("%d, ",node->customers[i]);
+////    }printf("\n");
+//
+//    //De-allocates the memory used above.
+//    //delete[] tempRoute;
+//}

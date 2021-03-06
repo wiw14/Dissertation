@@ -14,6 +14,8 @@ struct solution{
     //Route 3: 0 - 7 - 0
 };
 
+extern long int ms;
+
 
 extern solution *best_sol;
 
@@ -22,6 +24,7 @@ void initialize_heuristic();
 void run_heuristic();
 void openTourFile(void);
 void closeTourFile(void);
+void end_heuristic(void);
 
 
 void free_heuristic();

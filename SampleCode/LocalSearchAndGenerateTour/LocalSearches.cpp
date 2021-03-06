@@ -540,10 +540,12 @@ void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
     if (new_route_length < route_length) {
         for (int index = 0; index < Clusterer::numOfClusters; index++)
             bestRoute[index] = tempRoute[index];
+
         localSearchPheromoneCluster[GenerateTour::getArcCode(x, y)] =
                 localSearchPheromoneCluster[GenerateTour::getArcCode(x, y)] + (int) ((route_length - new_route_length));
     }
     delete[] tempRoute;
+
 }
 
 /*

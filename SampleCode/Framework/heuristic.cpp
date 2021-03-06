@@ -11,11 +11,14 @@
 #include "../GeneticAlgorithm/GAHeuristic.h"
 #include "../Experimental/CACOHeuristic.h"
 #include "../Experimental/Clusterer.h"
+#include "../ChainedLKSearch/CLKSearchHeuristic.h"
 //#include "heuristic.hpp"
+#include <chrono>
 
 using namespace std;
 
 solution *best_sol;
+long int ms;
 
 /*
  * Initialize the structure of your heuristic in this function
@@ -27,7 +30,13 @@ void initialize_heuristic() {
     best_sol->steps = 0;
     best_sol->tour_length = INT_MAX;
 
-    Clusterer::createClusters(2);
+    ms = std::chrono::duration_cast< std::chrono::milliseconds >(
+            std::chrono::system_clock::now().time_since_epoch()
+    ).count();
+
+    //printf("time %ld\n",ms);
+
+    Clusterer::createClusters(4);
 }
 
 
@@ -39,28 +48,38 @@ void run_heuristic() {
     /*
     * Shortest Path Algorithms.
     */
-//    greedyHeuristic();
+    greedyHeuristic();
     //randomHeuristic();
 //    DijkstrasHeuristic();
     //KNNHeuristic();
+    //CLKSearchHeuristic();
 
     /*
      * Evolutionary Algorithms
      */
     //GAHeuristic();
-    ACOHeuristic();
+    //ACOHeuristic();
     //ACOCSHeuristic();
     //MMACOHeuristic();
 
     //CACOHeuristic();
 }
 
+void end_heuristic(){
+    ms = std::chrono::duration_cast< std::chrono::milliseconds >(
+            std::chrono::system_clock::now().time_since_epoch()
+    ).count() - ms;
 
+    printf("time %ld milliseconds\n",ms);
+    printf("time %f seconds\n",((double)ms/(double)1000));
+    printf("\n");
+}
 /*
  * free memory used by the tour array.
  */
 void free_heuristic() {
     Clusterer::freeClusters();
+
     delete[] best_sol->tour;
     delete best_sol;
 }

@@ -9,7 +9,7 @@
  */
 void GAHeuristic() {
 
-    int sizeOfPopulation = 20, generations = 10, numMutations = 5;
+    int sizeOfPopulation = 20, generations = 20, numMutations = 150;
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
     GA->generateStartingPopulation();
 

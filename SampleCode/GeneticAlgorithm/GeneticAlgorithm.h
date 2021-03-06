@@ -12,8 +12,8 @@
 class GeneticAlgorithm {
 private:
     int sizeOfPopulation,childPopulationCounter;
-    int generations;
-    int numMutations;
+    int generations, probabiltyOfMutation;
+
     int** parentPopulation;
     int** childPopulation;
     localSearch* LS;
@@ -24,6 +24,7 @@ private:
     void selectChildrenForParents();
     void repairParents();
     void crossoverOperator();
+    void randomMutateChildren();
 
 public:
     GeneticAlgorithm(int,int,int);

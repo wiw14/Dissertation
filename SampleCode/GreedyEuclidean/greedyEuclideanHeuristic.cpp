@@ -23,7 +23,7 @@
 int findClosestNode(const bool* validNode, int anchor){
     double HEURISTIC_VALUE = 2.0;
     double shortDist = INT_MAX, dist;
-    int currentBest = 0;
+    int currentBest = -1;
     for(int index = 0; index <=NUM_OF_CUSTOMERS;index++){
         if(!validNode[index]){
             dist = get_distance(anchor,index);
@@ -36,6 +36,14 @@ int findClosestNode(const bool* validNode, int anchor){
         }
     }
     return currentBest;
+}
+
+int findNextNode(const bool* validNode){
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+        if(!validNode[i])
+            return i;
+    }
+    return -1;
 }
 
 /*
@@ -51,17 +59,19 @@ void greedyHeuristic(){
 
     validNode = new bool[NUM_OF_CUSTOMERS+1];
     nextNode = new int[NUM_OF_CUSTOMERS+1];
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+        validNode[i] = false;
 
-    validNode[DEPOT] = true;
-
-    //Finds the closest node to the depot.
-    nextNode[0] = findClosestNode(validNode,DEPOT);
-
-    validNode[nextNode[0]] = true;
+    int startIndex = rand()%(NUM_OF_CUSTOMERS-1);
+    validNode[startIndex] = true;
+    nextNode[0] = startIndex;
 
     //Loop through all the customers finding the closest node.
     for (int index = 1; index <= NUM_OF_CUSTOMERS; index++){
-        nextNode[index] = findClosestNode(validNode,nextNode[index-1]);
+        int temp = findClosestNode(validNode,nextNode[index-1]);
+        if (temp == -1)
+            temp = findNextNode(validNode);
+        nextNode[index] = temp;
         validNode[nextNode[index]] = true;
     }
 

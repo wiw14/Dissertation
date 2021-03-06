@@ -120,7 +120,7 @@ CACO::~CACO() {
         delete[] probability[prob];
     delete[] routes;
     delete[] probability;
-    //delete[] bestRoute;
+    delete[] bestRoute;
     //printf("Test\n");
 
     //Closes AntColonyOptimisation file after it has been used.
@@ -182,9 +182,11 @@ void CACO::optimize(int iterations) {
         /*
          * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
          */
-//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+        //LS->randomPheromoneLocalSearchWithTwoOpt(Clusterer::getRouteFromClusters(bestRoute));
         //LS->randomLocalSearch();
         //LS->twoOptLocalSearch(bestRoute);
+        //LS->randomPheromoneLocalSearchWithTwoOptCluster(bestRoute);
+
     }
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS.
@@ -218,7 +220,7 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
 
         //Run local search to improve the route before updating the pheromones.
         //LS->LKSearch(routes[ant]);
-        LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
+        //LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
 //            LS->randomLocalSearch(routes[ant]);
 
 

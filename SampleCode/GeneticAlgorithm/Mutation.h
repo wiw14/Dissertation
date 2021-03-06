@@ -8,7 +8,9 @@
 #include "../GeneticAlgorithm/Selection.h"
 
 class Mutation {
-
+public:
+    static void randomSwapMutation(int*);
+    static void LKMutation(int*, localSearch*);
 };
 
 

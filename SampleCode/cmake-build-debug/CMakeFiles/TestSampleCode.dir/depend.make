@@ -41,6 +41,23 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../Framewor
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
 
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../ChainedLKSearch/CLKSearch.cpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../ChainedLKSearch/CLKSearch.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../Experimental/Clusterer.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../Framework/EVRP.hpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../Framework/heuristic.hpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
+
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../ChainedLKSearch/CLKSearch.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../ChainedLKSearch/CLKSearchHeuristic.cpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../ChainedLKSearch/CLKSearchHeuristic.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../Experimental/Clusterer.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../Framework/EVRP.hpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../Framework/heuristic.hpp
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../LocalSearchAndGenerateTour/GenerateTour.h
+CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../LocalSearchAndGenerateTour/LocalSearches.h
+
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.cpp
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.h
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o: ../Experimental/Clusterer.h
@@ -77,6 +94,8 @@ CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o: ../Framework/EVRP.cpp
 CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o: ../Framework/EVRP.hpp
 
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../AntColonyOptimisation/ACOHeuristic.h
+CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../ChainedLKSearch/CLKSearch.h
+CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../ChainedLKSearch/CLKSearchHeuristic.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Dijkstra/DijkstrasHeuristic.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Experimental/CACOHeuristic.h
 CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o: ../Experimental/Clusterer.h

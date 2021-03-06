@@ -7,6 +7,9 @@
 #include "../LocalSearchAndGenerateTour/LocalSearches.h"
 
 class Clusterer {
+private:
+    //static void twoOptSwap(int,int,int*,const int*);
+    static int twoOptIterations;
 public:
     struct Node{
         int* customers;
@@ -17,7 +20,7 @@ public:
     static struct Node** clusters;
     static int * getKNN(int, int, const bool*);
 
-    static void optimiseClusters();
+    static void optimiseCluster(struct Node*);
     static int numOfClusters;
     static void freeClusters();
     static double getClosestDistance(int, int);
@@ -25,6 +28,7 @@ public:
     static void createClusters(int);
     static int* getRouteFromClusters(int*);
     static double getRouteLength(int*);
+    static double calculateClusterDistance(int*,int);
 };
 
 

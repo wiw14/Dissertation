@@ -278,6 +278,60 @@ AntColonyOptimisation/MaxMinACO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.s
 .PHONY : AntColonyOptimisation/MaxMinACO.cpp.s
 
+ChainedLKSearch/CLKSearch.o: ChainedLKSearch/CLKSearch.cpp.o
+
+.PHONY : ChainedLKSearch/CLKSearch.o
+
+# target to build an object file
+ChainedLKSearch/CLKSearch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o
+.PHONY : ChainedLKSearch/CLKSearch.cpp.o
+
+ChainedLKSearch/CLKSearch.i: ChainedLKSearch/CLKSearch.cpp.i
+
+.PHONY : ChainedLKSearch/CLKSearch.i
+
+# target to preprocess a source file
+ChainedLKSearch/CLKSearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.i
+.PHONY : ChainedLKSearch/CLKSearch.cpp.i
+
+ChainedLKSearch/CLKSearch.s: ChainedLKSearch/CLKSearch.cpp.s
+
+.PHONY : ChainedLKSearch/CLKSearch.s
+
+# target to generate assembly for a file
+ChainedLKSearch/CLKSearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.s
+.PHONY : ChainedLKSearch/CLKSearch.cpp.s
+
+ChainedLKSearch/CLKSearchHeuristic.o: ChainedLKSearch/CLKSearchHeuristic.cpp.o
+
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.o
+
+# target to build an object file
+ChainedLKSearch/CLKSearchHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.o
+
+ChainedLKSearch/CLKSearchHeuristic.i: ChainedLKSearch/CLKSearchHeuristic.cpp.i
+
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.i
+
+# target to preprocess a source file
+ChainedLKSearch/CLKSearchHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.i
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.i
+
+ChainedLKSearch/CLKSearchHeuristic.s: ChainedLKSearch/CLKSearchHeuristic.cpp.s
+
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.s
+
+# target to generate assembly for a file
+ChainedLKSearch/CLKSearchHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.s
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.s
+
 Dijkstra/DijkstrasHeuristic.o: Dijkstra/DijkstrasHeuristic.cpp.o
 
 .PHONY : Dijkstra/DijkstrasHeuristic.o
@@ -842,6 +896,12 @@ help:
 	@echo "... AntColonyOptimisation/MaxMinACO.o"
 	@echo "... AntColonyOptimisation/MaxMinACO.i"
 	@echo "... AntColonyOptimisation/MaxMinACO.s"
+	@echo "... ChainedLKSearch/CLKSearch.o"
+	@echo "... ChainedLKSearch/CLKSearch.i"
+	@echo "... ChainedLKSearch/CLKSearch.s"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.o"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.i"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.s"
 	@echo "... Dijkstra/DijkstrasHeuristic.o"
 	@echo "... Dijkstra/DijkstrasHeuristic.i"
 	@echo "... Dijkstra/DijkstrasHeuristic.s"
