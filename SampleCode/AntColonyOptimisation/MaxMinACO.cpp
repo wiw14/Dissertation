@@ -8,21 +8,21 @@
  * AntColonyOptimisation FILE METHODS
  * ================================================================================ *
  */
-
-FILE* ACOFile;
-
-void openACOFile(){
-    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-    fprintf(ACOFile," , , \n");
-}
-
-void closeACOFile(){
-    fclose(ACOFile);
-}
-
-void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-}
+//
+//FILE* ACOFile;
+//
+//void openACOFile(){
+//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
+//    fprintf(ACOFile," , , \n");
+//}
+//
+//void closeACOFile(){
+//    fclose(ACOFile);
+//}
+//
+//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
+//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
+//}
 
 /*
  * ================================================================================ *
@@ -75,7 +75,7 @@ MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q,
         }
     }
     //Opens AntColonyOptimisation file to store optimas.
-    openACOFile();
+    //openACOFile();
 }
 
 /*
@@ -119,7 +119,7 @@ MaxMinACO::~MaxMinACO() {
     delete[] bestRoute;
 
     //Closes AntColonyOptimisation file after it has been used.
-    closeACOFile();
+    //closeACOFile();
 }
 
 /*
@@ -254,6 +254,9 @@ void MaxMinACO::calculateTMIN() {
         tMIN = tMAX;
 }
 
+/*
+ * Displays all the pheromone values alongside the minimum and maximum limits for the pheromones.
+ */
 void MaxMinACO::displayPheromones(){
     printf("Min: %f, Max: %f\n",tMIN,tMAX);
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
@@ -288,7 +291,7 @@ void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAn
         LS->randomPheromoneLocalSearchWithTwoOpt(routes[bestAnt]);
 
         //For visualisation
-        addLocalOptimumToFile(GenerateTour::getRouteLength(routes[bestAnt]),iterations,bestAnt);
+        //addLocalOptimumToFile(GenerateTour::getRouteLength(routes[bestAnt]),iterations,bestAnt);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

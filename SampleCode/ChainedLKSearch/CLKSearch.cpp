@@ -1,19 +1,26 @@
-//
-// Created by wmw13 on 06/03/2021.
-//
-
 #include "CLKSearch.h"
 
+/*
+ * Constructor, initialises route.
+ * Calls the needed function for CLKSearch to operate.
+ */
 CLKSearch::CLKSearch(){
     route = new int[NUM_OF_CUSTOMERS+1];
     createInitialRoute();
     displayRoute();
 }
 
+/*
+ * Frees memory used for the route.
+ */
 CLKSearch::~CLKSearch() {
     delete[] route;
 }
 
+/*
+ * Displays the current route.
+ * Iterates through all the customers in order.
+ */
 void CLKSearch::displayRoute(){
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
         printf("%d, ",route[i]);
@@ -23,6 +30,9 @@ void CLKSearch::displayRoute(){
 
 /*
  * INITIAL ROUTE GENERATION.
+ */
+/*
+ * Generates a random route.
  */
 void CLKSearch::generaterRandomTour(){
     auto tempRoute = std::vector<int>();
@@ -38,6 +48,9 @@ void CLKSearch::generaterRandomTour(){
     }
 }
 
+/*
+ * Creates the initial route using a route generator.
+ */
 void CLKSearch::createInitialRoute() {
     generaterRandomTour();
 }

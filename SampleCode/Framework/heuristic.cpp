@@ -21,7 +21,8 @@ solution *best_sol;
 long int ms;
 
 /*
- * Initialize the structure of your heuristic in this function
+ * Initialize the structure of your heuristic in this function.
+ * Saves the current time for processing time analysis.
  */
 void initialize_heuristic() {
     best_sol = new solution;
@@ -65,6 +66,9 @@ void run_heuristic() {
     //CACOHeuristic();
 }
 
+/*
+ * Calculates the time the heuristic executed for.
+ */
 void end_heuristic(){
     ms = std::chrono::duration_cast< std::chrono::milliseconds >(
             std::chrono::system_clock::now().time_since_epoch()
@@ -74,6 +78,7 @@ void end_heuristic(){
     printf("time %f seconds\n",((double)ms/(double)1000));
     printf("\n");
 }
+
 /*
  * free memory used by the tour array.
  */

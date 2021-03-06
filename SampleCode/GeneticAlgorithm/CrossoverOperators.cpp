@@ -10,6 +10,10 @@
  * Partially Mapped Crossover Operator.
  * ================================================================================ *
  */
+/*
+ * checks whether a customer is within a sub-route.
+ * used to determine whether mapping is required.
+ */
 int CrossoverOperators::checkInParition(std::vector<std::pair<int,int>>* subRoutes, int customer, int type, bool* partitionCheck){
     for (int i = 0; i < subRoutes->size(); ++i) {
         if(type == 0 && subRoutes->at(i).first == customer){
@@ -28,13 +32,15 @@ int CrossoverOperators::checkInParition(std::vector<std::pair<int,int>>* subRout
     return -1;
 }
 
+/*
+ * Generates two children by partially mapping a sector of two parents.
+ */
 int** CrossoverOperators::partiallyMappedCrossover(int* currentBest, int* toCombine){
     /*
      * STEP 1:
      * Find partition mapping points.
      */
     int P1 = rand()%(NUM_OF_CUSTOMERS-1), P2 = rand()%(NUM_OF_CUSTOMERS-P1)+(P1+1);
-    //printf("P1:%d P2:%d\n",P1,P2);
 
     /*
      * STEP 2:
@@ -47,9 +53,6 @@ int** CrossoverOperators::partiallyMappedCrossover(int* currentBest, int* toComb
         subRoute.second = toCombine[i];
         subRoutes->push_back(subRoute);
     }
-//    for (auto i : *subRoutes)
-//        printf("%d:%d, ",i.first, i.second);
-//    printf("\n");
 
     /*
      * STEP 3:
@@ -80,7 +83,7 @@ int** CrossoverOperators::partiallyMappedCrossover(int* currentBest, int* toComb
         }
 
         if(partitionCheckCurrentBest[toCombine[i]]){
-            //type 1 is toCombine.
+            //type 0 is currentBest.
             int newCustomer = checkInParition(subRoutes,toCombine[i],0,partitionCheckCurrentBest);
             childTwo[i] = newCustomer;
         }
@@ -116,15 +119,17 @@ int** CrossoverOperators::partiallyMappedCrossover(int* currentBest, int* toComb
     }
     int** childPopulation = new int*[2];
     childPopulation[0] = childOne; childPopulation[1] = childTwo;
-//    delete subTwo; delete subOne; delete subRoutes;
     return childPopulation;
 }
 
 
 /*
  * ================================================================================ *
- * Initial Recombination Operator (DOESN'T WORK).
+ * Initial Recombination Operator (Requires Repairing).
  * ================================================================================ *
+ */
+/*
+ * Alternates between two parents to create a child based upon whether parent1[i] == parent2[i].
  */
 int** CrossoverOperators::testRecombination(int *currentBest, int *toCombine) {
     int *childOne = new int[NUM_OF_CUSTOMERS + 1], *childTwo = new int[NUM_OF_CUSTOMERS + 1];
@@ -136,9 +141,11 @@ int** CrossoverOperators::testRecombination(int *currentBest, int *toCombine) {
     }
 
     bool SWITCH = false;
+    //Loops through all customers.
     for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index) {
         if (currentBest[index] == toCombine[index]) {
             SWITCH = !SWITCH;
+            //Loops through all the customers which are the same in both parents.
             while (currentBest[index] == toCombine[index] && index <= NUM_OF_CUSTOMERS) {
                 childOne[index] = currentBest[index];
                 visitedOne[childOne[index]] = true;
@@ -147,19 +154,28 @@ int** CrossoverOperators::testRecombination(int *currentBest, int *toCombine) {
                 index++;
             }
             index--;
-        } else {
+        }
+        //Parent 1 [i] != Parent 2 [i].
+        else {
+            //Child 1 [i] = Parent 1 [i].
+            //Child 2 [i] = Parent 2 [i].
             if (SWITCH && !visitedOne[currentBest[index]] && !visitedTwo[toCombine[index]]) {
                 childOne[index] = currentBest[index];
                 visitedOne[childOne[index]] = true;
                 childTwo[index] = toCombine[index];
                 visitedTwo[childTwo[index]] = true;
-            } else {
+            }else {
+                //Child 1 [i] = Parent 2 [i].
+                //Child 2 [i] = Parent 1 [i].
                 if (!visitedOne[toCombine[index]] && !visitedTwo[currentBest[index]]) {
                     childOne[index] = toCombine[index];
                     visitedOne[childOne[index]] = true;
                     childTwo[index] = currentBest[index];
                     visitedTwo[childTwo[index]] = true;
-                } else {
+                }
+                //Child 1 [i] = Parent 1 [i].
+                //Child 2 [i] = Parent 2 [i].
+                else {
                     childOne[index] = currentBest[index];
                     visitedOne[childOne[index]] = true;
                     childTwo[index] = toCombine[index];
@@ -168,8 +184,11 @@ int** CrossoverOperators::testRecombination(int *currentBest, int *toCombine) {
             }
         }
     }
+    //Frees used memory.
     delete[] visitedOne;
     delete[] visitedTwo;
+
+    //Creates array to return the children to the Genetic Algorithm.
     int ** children = new int*[2];
     children[0] = childOne; children[1] = childTwo;
     return children;
@@ -181,6 +200,9 @@ int** CrossoverOperators::testRecombination(int *currentBest, int *toCombine) {
  * ================================================================================ *
  */
 
+/*
+ * Generates a table of edges based on the two parents.
+ */
 std::map<int, std::pair<int, std::string> *>* CrossoverOperators::createEdgeTable(int* currentBest, int* toCombine){
     /*
      * STEP 1a:
@@ -240,6 +262,9 @@ std::map<int, std::pair<int, std::string> *>* CrossoverOperators::createEdgeTabl
     return edgeTable;
 }
 
+/*
+ * Displays the edge table generated by the two parents.
+ */
 void CrossoverOperators::displayEdgeTable(std::map<int, std::pair<int, std::string> *>* edgeTable){
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
         printf("%d : ", i);
@@ -254,6 +279,10 @@ void CrossoverOperators::displayEdgeTable(std::map<int, std::pair<int, std::stri
     printf("-----------------------------\n");
 }
 
+/*
+ * Creates a list of customers which have greater than 2 edges.
+ * These customers have different edges connecting to them in the two parents.
+ */
 std::list<int>* CrossoverOperators::createDegreeList(std::map<int, std::pair<int, std::string> *>* edgeTable){
     auto degreeList = new std::list<int>();
 
@@ -273,6 +302,10 @@ std::list<int>* CrossoverOperators::createDegreeList(std::map<int, std::pair<int
     return degreeList;
 }
 
+/*
+ * Checks whether the customer has already been visited.
+ * This is done by checking whether the customer is present in the list of customers with more than 2 edges.
+ */
 bool CrossoverOperators::checkIfCustomerVisited(std::list<int>* degreeList, int customer){
     bool visited = true;
     for (auto i : *degreeList){
@@ -284,12 +317,20 @@ bool CrossoverOperators::checkIfCustomerVisited(std::list<int>* degreeList, int 
     return visited;
 }
 
+/*
+ * Displays a std::list by iterating over it.
+ * Used for debugging degreeList.
+ */
 void CrossoverOperators::displayList(std::list<int>* list){
     for (auto i : *list)
         printf("%d, ", i);
     printf("\n");
 }
 
+/*
+ * Generates partitions within the two parent routes based upon breadth first search through the unique edges present in
+ * the edge table.
+ */
 std::list<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int, std::pair<int, std::string> *>* edgeTable, std::list<int>* degreeList){
     auto partitions = new std::list<std::list<int>*>();
     auto queue = new std::deque<int>();
@@ -323,6 +364,9 @@ std::list<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int, s
     return partitions;
 }
 
+/*
+ * Returns the partition the customer is present in.
+ */
 int isInPartition(std::list<int>* partitionOne, std::list<int>* partitionTwo, int customer){
     auto positionOne = std::find(partitionOne->begin(),partitionOne->end(),customer);
     if (positionOne != partitionOne->end()){
@@ -340,6 +384,9 @@ int isInPartition(std::list<int>* partitionOne, std::list<int>* partitionTwo, in
     return 0;
 }
 
+/*
+ * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
+ */
 int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     //DEBUGGING EXAMPLE WITH TWO PARTIONS.
     //    int* currentBest = new int[NUM_OF_CUSTOMERS+1] {0,5,7,9,13,11,4,3,2,1,6,8,10,17,20,18,15,12,16,19,21,14};
@@ -429,6 +476,9 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     delete LS;
 }
 
+/*
+ * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
+ */
 //int** CrossoverOperators::PCRecombine(int *currentBest, int *toCombine) {
 //    /*
 //     * Recombination of routes,

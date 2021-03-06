@@ -1,11 +1,5 @@
-#include<cmath>
-#include<iostream>
-#include<stdio.h>
 #include<stdlib.h>
 #include<string>
-#include<cstring>
-#include<math.h>
-#include<fstream>
 #include<limits.h>
 
 #include "../LocalSearchAndGenerateTour/LocalSearches.h"
@@ -38,6 +32,9 @@ int findClosestNode(const bool* validNode, int anchor){
     return currentBest;
 }
 
+/*
+ * Finds the next valid node if there are node nodes near the current node.
+ */
 int findNextNode(const bool* validNode){
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
         if(!validNode[i])

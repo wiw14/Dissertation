@@ -5,19 +5,29 @@
 #include <climits>
 #include "Clusterer.h"
 
+/*
+ * Initialises static variables.
+ */
 int Clusterer::k;
 struct Clusterer::Node** Clusterer::clusters;
 int Clusterer::numOfClusters;
 int Clusterer::twoOptIterations = 10;
 
+/*
+ * Calculates the length of the route by summing the cluster distances.
+ */
 double Clusterer::getRouteLength(int* clusterRoute) {
     double length = 0.0;
     for (int i = 1; i < numOfClusters; ++i) {
         length+=getClosestDistance(clusterRoute[i-1],clusterRoute[i]);
+        length+=clusterRoute[i-1];
     }
     return length;
 }
 
+/*
+ * Frees all the memory used for the clusters.
+ */
 void Clusterer::freeClusters() {
     for (int i = 0; i < numOfClusters; ++i) {
         delete[] clusters[i]->customers;
@@ -26,6 +36,9 @@ void Clusterer::freeClusters() {
     delete[] clusters;
 }
 
+/*
+ * Determines which customers should be in the cluster based upon the initial customer.
+ */
 int * Clusterer::getKNN(int customer, int KNN,const bool* visited) {
     int *neighbour = new int[KNN+1];
     auto* minDist = new double[KNN];
@@ -56,6 +69,9 @@ int * Clusterer::getKNN(int customer, int KNN,const bool* visited) {
     return neighbour;
 }
 
+/*
+ * Generates all the clusters based on a k value.
+ */
 void Clusterer::createClusters(int K){
     k = K;
     clusters = new struct Node*[((NUM_OF_CUSTOMERS+1)/K)+1];
@@ -90,6 +106,9 @@ void Clusterer::createClusters(int K){
     delete[] visited;
 }
 
+/*
+ * Displays all the cluster information for each cluster..
+ */
 void Clusterer::displayClusters(){
     for (int i = 0; i < numOfClusters; ++i) {
         printf("Cluster %d: \n",i+1);
@@ -102,6 +121,9 @@ void Clusterer::displayClusters(){
     }
 }
 
+/*
+ * Gets the distance between the closest nodes in the clusters.
+ */
 double Clusterer::getClosestDistance(int posA, int posB){
     double minDist = INT_MAX;
     for (int i = 0; i < clusters[posA]->sizeOfCluster; ++i) {
@@ -115,6 +137,9 @@ double Clusterer::getClosestDistance(int posA, int posB){
     return minDist;
 }
 
+/*
+ * Generates a customer route by appending the clusters together using the order determined in the cluster route.
+ */
 int* Clusterer::getRouteFromClusters(int* clusterRoute){
     int* route = new int[NUM_OF_CUSTOMERS+1], counter = 0;
     for (int i = 0; i < numOfClusters; ++i) {
@@ -126,6 +151,9 @@ int* Clusterer::getRouteFromClusters(int* clusterRoute){
     return route;
 }
 
+/*
+ * Generates teh distance within the cluster.
+ */
 double Clusterer::calculateClusterDistance(int* customers,int size){
     double length = 0.0;
     for (int i = 0; i < size-1; ++i)
@@ -134,9 +162,14 @@ double Clusterer::calculateClusterDistance(int* customers,int size){
 }
 
 /*
+ * =================================================================================================================== *
  * CLUSTER OPTIMISATION.
+ * =================================================================================================================== *
  */
 
+/*
+ * Optimises the order of the customers within the cluster.
+ */
 void optimiseCluster(struct Node* node){
 
 }
@@ -156,6 +189,10 @@ void optimiseCluster(struct Node* node){
 //        route[l] = currRoute[l];
 //    }
 //}
+
+/*
+ * Optimises the order of the customers within the cluster, using two-opt local search.
+ */
 //void Clusterer::optimiseCluster(struct Node* node){
 ////    printf("Start Optimise\n");
 //    int* bestRoute = node->customers;

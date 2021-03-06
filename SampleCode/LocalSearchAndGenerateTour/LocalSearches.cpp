@@ -232,6 +232,7 @@ void localSearch::decreaseLocalSearchPheromone() {
 
 /*
  * Decreases all the pheromones being used for the weighted random number generator used in the local search.
+ * Used for clustered processing.
  */
 void localSearch::decreaseLocalSearchPheromoneCluster() {
     for (int i = 0; i < Clusterer::numOfClusters; i++) {
@@ -257,6 +258,7 @@ int localSearch::getTotalWeight() {
 
 /*
  * Gets the total number of pheromones in the system, used for weighted random number generator.
+ * Used for clustered processing.
  */
 int localSearch::getTotalWeightCluster() {
     int totalWeight = 0;
@@ -295,6 +297,7 @@ std::vector<int> localSearch::getRandomNumber() { //type either x (0) or y (1).
 
 /*
  * Generates a random number pair (x and y) based on the local search pheromones.
+ * Used for clustered processing.
  */
 std::vector<int> localSearch::getRandomNumberCluster() { //type either x (0) or y (1).
     std::vector<int> xy(2);
@@ -493,6 +496,7 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
  * Exchange local search with 2-opt local search.
  * Switches two customers based on a weighted average determined by pheromones.
  * Uses generate tour to determine which route is better.
+ * Used for clustered processing.
  */
 void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
     int *tempRoute = new int[Clusterer::numOfClusters];

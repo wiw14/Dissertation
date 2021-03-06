@@ -31,12 +31,12 @@
 
 /*
  * ================================================================================ *
- * ANT COLONY OPTIMISATION
+ * ANT COLONY OPTIMISATION USING CLUSTERS
  * ================================================================================ *
  */
 
 /*
- * Ant Colony Optimization (AntColonyOptimisation) constructor, sets the instance variables needed in the configuration of AntColonyOptimisation.
+ * Ant Colony Optimization Cluster constructor, sets the instance variables needed in the configuration of Ant Colony Optimisation.
  */
 CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
          double Beta, int TwoOptIteration, int RandomSearchIteration) {
@@ -86,7 +86,7 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
 /*
  * Function is used to get the index used to access the pheromones map.
  * It takes two customer as input and returns the string index of the pheromone of the arc
- * between the two customers.
+ * between the two clusters of customers.
  */
 std::string CACO::getArcCode(int customerA, int customerB) {
     //Utilises std::string to build a string.
@@ -107,7 +107,7 @@ std::string CACO::getArcCode(int customerA, int customerB) {
 }
 
 /*
- * AntColonyOptimisation destructor, frees all used arrays, as well as freeing the local search object.
+ * Destructor, frees all used arrays, as well as freeing the local search object.
  */
 CACO::~CACO() {
     //Deletes local search object.
@@ -121,14 +121,13 @@ CACO::~CACO() {
     delete[] routes;
     delete[] probability;
     delete[] bestRoute;
-    //printf("Test\n");
 
     //Closes AntColonyOptimisation file after it has been used.
 //    closeACOFile();
 }
 
 /*
- * Resets the route for the inputted ant all to -1.
+ * Resets the cluster route for the inputted ant all to -1.
  */
 void CACO::resetRoute(int ant) {
     for (int customer = 0; customer < Clusterer::numOfClusters; customer++)
@@ -146,23 +145,23 @@ void CACO::resetProbability() {
 }
 
 /*
- * Iterates for specified number of iterations, then for each ant it finds a route and
- * evaluates the route. If the route is better it updates the current best.
+ * Iterates for specified number of iterations, then for each ant it finds a route of clusters and
+ * evaluates the cluster route. If the cluster route is better it updates the current best route of clusters.
  */
 void CACO::optimize(int iterations) {
     for (int iter = 1; iter <= iterations; iter++) {
         for (int ant = 0; ant < numOfAnts; ant++) {
-            //While the route for the ant isn't valid.
+            //While the cluster route for the ant isn't valid.
             //The route is reset and re-calculated.
             while (valid(ant)) {
                 resetRoute(ant);
                 route(ant);
             }
 
-            //Calculate the length of the route.
+            //Calculate the length of the cluster route.
             double routeLength = length(ant);
 
-            //If the new route is shorter than the current best it updates the best.
+            //If the new cluster route is shorter than the current best it updates the best.
             if (routeLength <
                 bestRouteLength) {
                 bestRouteLength = routeLength;
@@ -176,7 +175,7 @@ void CACO::optimize(int iterations) {
         updatePheromones(iter,iterations);
 
 
-        //Resets the all the routes.
+        //Resets the all the cluster routes.
         for (int ant = 0; ant < numOfAnts; ant++)
             resetRoute(ant);
         /*
@@ -257,6 +256,7 @@ int CACO::getNextCustomer() {
  */
 double CACO::getProbability(int customerA, int customerB, int ant) {
     double pheromone = pheromones[getArcCode(customerA, customerB)];
+    //Generates distance based on the closest nodes in the clusters
     double distance = (Clusterer::getClosestDistance(customerA, customerB) * 1);
 
     double sum = 0.0;

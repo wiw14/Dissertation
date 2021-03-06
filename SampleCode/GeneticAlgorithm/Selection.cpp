@@ -1,13 +1,15 @@
-//
-// Created by wmw13 on 05/03/2021.
-//
-
 #include "Selection.h"
 
+/*
+ * Sorts the routes based upon their route length.
+ */
 bool sortCriteria(std::pair<int *, double> A, std::pair<int *, double> B) {
     return (A.second > B.second);
 }
 
+/*
+ * Selects the best x number of children based upon route length.
+ */
 int** Selection::greedySelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation) {
     auto children = new std::vector<std::pair<int *, double>>;
     int** parentPopulation = new int*[sizeOfPopulation];

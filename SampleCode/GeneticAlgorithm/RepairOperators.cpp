@@ -6,6 +6,10 @@
  * ================================================================================ *
  */
 
+/*
+ * Loops through the route to ensure it contains no duplicates.
+ * If it does it replaces the duplicates with the missing customers.
+ */
 void RepairOperators::basicRepair(int *route) {
     bool* visited = new bool[NUM_OF_CUSTOMERS+1];
     auto duplicates = std::list<int>();

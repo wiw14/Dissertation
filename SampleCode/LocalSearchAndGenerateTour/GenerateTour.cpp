@@ -327,8 +327,10 @@ bool GenerateTour::getIsValidCapacity(int *route, int size) {
 //
 //}
 
+/*
+ * Gets the total amount of load to the next depot.
+ */
 double GenerateTour::getTotalLoadWithAddedDepot(int *route, int depotPos) {
-    //out of bounds within this method.
     double total = 0.0;
     for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
         if (i == depotPos) {
@@ -545,6 +547,9 @@ double GenerateTour::getRouteLength(const int *routeA) {
 
 }
 
+/*
+ * Checks that all the nodes are present within the tour.
+ */
 bool GenerateTour::checkAllCustomersVisited(int *tour, int size) {
     bool visited[NUM_OF_CUSTOMERS];
     for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
@@ -563,6 +568,9 @@ bool GenerateTour::checkAllCustomersVisited(int *tour, int size) {
     return isValid;
 }
 
+/*
+ * Checks that the solution is a valid solution.
+ */
 bool GenerateTour::checkSolution(int *tour, int size) {
     bool energyValid = getIsValidEnergy(tour, size);
     bool capacityValid = getIsValidCapacity(tour, size);
@@ -571,6 +579,9 @@ bool GenerateTour::checkSolution(int *tour, int size) {
     return energyValid && capacityValid && allCustomersVisited;
 }
 
+/*
+ * Gets a route length quickly without generating a route with charging stations and depots.
+ */
 double GenerateTour::getBasicLength(int *bestRoute) {
     double routeLength = 0.0;
     for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i)
