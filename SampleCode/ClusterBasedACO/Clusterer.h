@@ -8,7 +8,7 @@
 
 class Clusterer {
 private:
-    //static void twoOptSwap(int,int,int*,const int*);
+    static void twoOptSwap(int,int,int*,const int*);
     static int twoOptIterations;
 public:
     struct Node{
@@ -16,11 +16,11 @@ public:
         double distance;
         int sizeOfCluster;
     };
+    static int getNodeClosest(int,int,int);
     static int k;
     static struct Node** clusters;
     static int * getKNN(int, int, const bool*);
-
-    static void optimiseCluster(struct Node*);
+    static int* optimiseCluster(struct Node*);
     static int numOfClusters;
     static void freeClusters();
     static double getClosestDistance(int, int);
@@ -29,6 +29,7 @@ public:
     static int* getRouteFromClusters(int*);
     static double getRouteLength(int*);
     static double calculateClusterDistance(int*,int);
+    static void randomRoute(int*);
 };
 
 

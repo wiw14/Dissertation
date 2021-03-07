@@ -33,7 +33,8 @@ localSearch::~localSearch() {
 void localSearch::LKSearch(int *bestRoute) {
     double bestLength = GenerateTour::getRouteLength(bestRoute);
     for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
-        if (get_distance(bestRoute[customer], bestRoute[customer + 1]) > get_distance(bestRoute[customer], bestRoute[NUM_OF_CUSTOMERS])) {
+        if (get_distance(bestRoute[customer], bestRoute[customer + 1]) >
+            get_distance(bestRoute[customer], bestRoute[NUM_OF_CUSTOMERS])) {
             int tempRoute[NUM_OF_CUSTOMERS + 1], tempRouteIndex = 0;
 
             for (int forwardCustomer = 0; forwardCustomer <= customer; ++forwardCustomer)
@@ -44,13 +45,13 @@ void localSearch::LKSearch(int *bestRoute) {
                 tempRoute[tempRouteIndex++] = bestRoute[reverseCustomer];
             }
             randomPheromoneLocalSearchWithTwoOpt(tempRoute);
-        double currentLength = GenerateTour::getRouteLength(tempRoute);
-        if (currentLength < bestLength){
-            for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
-                bestRoute[copyCustomer] = tempRoute[copyCustomer];
-            bestLength = currentLength;
-            customer = 0;
-        }
+            double currentLength = GenerateTour::getRouteLength(tempRoute);
+            if (currentLength < bestLength) {
+                for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
+                    bestRoute[copyCustomer] = tempRoute[copyCustomer];
+                bestLength = currentLength;
+                customer = 0;
+            }
         }
     }
 }
@@ -200,16 +201,20 @@ void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = currentRoute[index];
         double route_length = GenerateTour::getRouteLength(currentRoute);
+//        double route_length = GenerateTour::getRouteLengthQuick(currentRoute);
+
         for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
-                        twoOptSwap(i, j, tempRoute, currentRoute);
-                        double new_route_length = GenerateTour::getRouteLength(tempRoute);
-                        if (new_route_length < route_length) {
-                            improve = 0;
-                            for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-                                currentRoute[index] = tempRoute[index];
-                            route_length = new_route_length;
-                        }
+                twoOptSwap(i, j, tempRoute, currentRoute);
+              double new_route_length = GenerateTour::getRouteLength(tempRoute);
+//                double new_route_length = GenerateTour::getRouteLengthQuick(tempRoute);
+
+                if (new_route_length < route_length) {
+                    improve = 0;
+                    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+                        currentRoute[index] = tempRoute[index];
+                    route_length = new_route_length;
+                }
 
             }
         }
@@ -225,7 +230,8 @@ void localSearch::decreaseLocalSearchPheromone() {
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
         for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
             if (localSearchPheromone[GenerateTour::getArcCode(i, j)] > 1)
-                localSearchPheromone[GenerateTour::getArcCode(i, j)] = localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
+                localSearchPheromone[GenerateTour::getArcCode(i, j)] =
+                        localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
         }
     }
 }
@@ -238,7 +244,8 @@ void localSearch::decreaseLocalSearchPheromoneCluster() {
     for (int i = 0; i < Clusterer::numOfClusters; i++) {
         for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
             if (localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] > 1)
-                localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] = localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
+                localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] =
+                        localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
         }
     }
 }
@@ -560,6 +567,7 @@ void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
 void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
     double route_length = GenerateTour::getRouteLength(bestRoute);
+//    double route_length = GenerateTour::getRouteLengthQuick(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
     std::vector<int> xy(2);
@@ -597,6 +605,7 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
         //2-Opt As well
         twoOptLocalPheromoneAddonSearch(tempRoute);
 
+//        new_route_length = GenerateTour::getRouteLengthQuick(tempRoute);
         new_route_length = GenerateTour::getRouteLength(tempRoute);
     }
     decreaseLocalSearchPheromone();

@@ -7,7 +7,7 @@
 
 #include "../Framework/EVRP.hpp"
 #include "../Framework/heuristic.hpp"
-#include "../Experimental/Clusterer.h"
+#include "../ClusterBasedACO//Clusterer.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -24,6 +24,7 @@ private:
     static double getTotalLoadWithAddedDepot(int* route,int depotPos);
     static bool checkAllCustomersVisited(int* tour,int size);
 public:
+    static double getRouteLengthQuick(const int* route);
     static double getRouteLength(const int *route);
     static std::string getArcCode(int customerA, int customerB);
     static bool checkSolution(int* tour, int size);

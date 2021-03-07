@@ -346,6 +346,27 @@ double GenerateTour::getTotalLoadWithAddedDepot(int *route, int depotPos) {
 }
 
 /*
+ * Generates a route length quickly using a heuristic.
+ */
+double GenerateTour::getRouteLengthQuick(const int* route){
+    double length = 0.0;
+    double capacity = 0.0;
+    double energy = 0.0;
+    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
+        length += get_distance(route[i], route[i + 1]);
+        capacity += get_customer_demand(route[i]);
+        energy += get_energy_consumption(route[i],route[i+1]);
+        if(capacity > MAX_CAPACITY){
+            capacity = 0.0;
+            energy = 0.0;
+            length+= get_distance(route[i],DEPOT);
+        }
+    }
+
+    return length;
+}
+
+/*
  * Generates a route between charging stations and depot using the route of customers.
  * Returns a value determining the fitness of the inputted route.
  */
@@ -536,11 +557,16 @@ double GenerateTour::getRouteLength(const int *routeA) {
     double route_length = fitness_evaluation(tour, step);
     if (route_length < best_sol->tour_length && checkSolution(tour, step)) {
         check_solution(tour, step);
-        for (int index = 0; index < step; ++index) {
+
+        //clean Route
+        int counter = 0;
+        for (int index = 0; index < step-1; ++index) {
             int temp = tour[index];
-            best_sol->tour[index] = temp;
+            if(temp != tour[index+1])
+                best_sol->tour[counter++] = temp;
         }
-        best_sol->steps = step;
+        best_sol->tour[counter++] = tour[step-1];
+        best_sol->steps = counter;
         best_sol->tour_length = route_length;
     }
     return route_length;

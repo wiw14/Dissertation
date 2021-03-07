@@ -6,47 +6,35 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp
+CACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+climits
+-
+functional
+-
+string
+-
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+Clusterer.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
 ../LocalSearchAndGenerateTour/LocalSearches.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.cpp
-cmath
--
-iostream
--
-stdio.h
--
-stdlib.h
--
-string
--
-cstring
--
-math.h
--
-fstream
--
-limits.h
--
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
-greedyEuclideanHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
 ../Framework/EVRP.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
 ../Framework/heuristic.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
-../Experimental/Clusterer.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+../ClusterBasedACO/Clusterer.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
 map
 -
 iostream

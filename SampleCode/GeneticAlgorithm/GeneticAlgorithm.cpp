@@ -75,11 +75,23 @@ void GeneticAlgorithm::randomRoute(int *route) {
  * Creates a random population of children which are then selected to be parents.
  */
 void GeneticAlgorithm::generateStartingPopulation() {
-    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
-        randomRoute(childPopulation[populationIndex]);
-        childPopulationCounter++;
-    }
-    selectChildrenForParents();
+//    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
+//        randomRoute(childPopulation[populationIndex]);
+//        childPopulationCounter++;
+//    }
+//    selectChildrenForParents();
+
+    parentPopulation[0] = new int[NUM_OF_CUSTOMERS+1]{0, 31, 14, 17, 15, 1, 13, 11, 2, 30, 26, 29, 4, 5, 6, 7, 8, 9, 10, 32, 12, 3, 18, 19, 21, 22, 20, 23, 24, 16, 28, 27, 25};
+    parentPopulation[1] = new int[NUM_OF_CUSTOMERS+1]{0, 31, 17, 25, 24, 23, 20, 22, 21, 19, 18, 4, 5, 6, 7, 8, 9, 10, 32, 3, 29, 28, 16, 27, 26, 15, 13, 30, 14, 1, 11, 12, 2};
+    parentPopulation[2] = new int[NUM_OF_CUSTOMERS+1]{0, 29, 28, 16, 27, 26, 17, 15, 25, 24, 23, 20, 22, 21, 19, 18, 13, 12, 4, 30, 14, 1, 31, 3, 5, 6, 7, 8, 9, 10, 32, 11, 2};
+    parentPopulation[3] = new int[NUM_OF_CUSTOMERS+1]{0, 3, 5, 6, 32, 10, 9, 8, 7, 4, 1, 25, 23, 20, 22, 21, 19, 18, 11, 12, 2, 29, 28, 16, 27, 26, 24, 13, 30, 17, 15, 14, 31};
+    parentPopulation[4] = new int[NUM_OF_CUSTOMERS+1]{0, 1, 14, 31, 30, 13, 18, 19, 22, 21, 20, 23, 24, 27, 16, 28, 29, 15, 26, 25, 17, 10, 12, 3, 4, 5, 6, 7, 9, 8, 32, 11, 2};
+    parentPopulation[5] = new int[NUM_OF_CUSTOMERS+1]{0, 30, 31, 14, 11, 12, 2, 1, 15, 17, 25, 24, 23, 20, 22, 21, 19, 18, 13, 4, 7, 6, 8, 9, 10, 32, 5, 3, 29, 28, 16, 27, 26};
+    parentPopulation[6] = new int[NUM_OF_CUSTOMERS+1]{0, 30, 31, 14, 1, 3, 2, 12, 11, 32, 9, 7, 5, 4, 13, 25, 24, 23, 20, 22, 21, 19, 18, 10, 8, 6, 15, 17, 26, 27, 16, 28, 29};
+    parentPopulation[7] = new int[NUM_OF_CUSTOMERS+1]{0, 4, 5, 6, 7, 8, 9, 10, 32, 3, 1, 14, 15, 17, 24, 23, 20, 22, 21, 19, 18, 13, 26, 25, 11, 12, 2, 30, 29, 28, 16, 27, 31};
+    parentPopulation[8] = new int[NUM_OF_CUSTOMERS+1]{0, 13, 25, 26, 27, 16, 29, 31, 15, 17, 19, 18, 21, 22, 20, 23, 24, 28, 30, 14, 1, 11, 12, 3, 4, 5, 6, 7, 8, 9, 10, 32, 2};
+    parentPopulation[9] = new int[NUM_OF_CUSTOMERS+1]{0, 3, 2, 12, 11, 32, 10, 8, 9, 4, 13, 18, 19, 21, 22, 20, 23, 24, 25, 17, 15, 1, 30, 31, 14, 6, 7, 5, 26, 27, 16, 28, 29};
+
 }
 
 /*
@@ -128,7 +140,7 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
-        randomMutateChildren();
+        //randomMutateChildren();
         selectChildrenForParents();
         //repairParents();
     }
@@ -139,9 +151,9 @@ void GeneticAlgorithm::runGenerations() {
  */
 void GeneticAlgorithm::crossoverOperator() {
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-//        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+ //       int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter++] = tempChildren[0];

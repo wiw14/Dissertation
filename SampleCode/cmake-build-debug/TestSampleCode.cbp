@@ -122,28 +122,28 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearchHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.cpp">

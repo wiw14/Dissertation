@@ -9,7 +9,7 @@ CMakeFiles/TestSampleCode.dir/AStar/AStarHeuristic.cpp.o
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
@@ -20,7 +20,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOHeuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOWithChargingStation.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
@@ -28,7 +28,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOWithChargingStation.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOWithChargingStation.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
@@ -36,7 +36,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o
 CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
@@ -44,7 +44,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o
 CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearch.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearch.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
@@ -53,39 +53,39 @@ CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearch.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearchHeuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearchHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
-CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.cpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
-CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.cpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
-CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
@@ -97,9 +97,9 @@ CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearch.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearchHeuristic.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.h
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
@@ -120,7 +120,7 @@ CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.cpp
@@ -131,7 +131,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
@@ -144,7 +144,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
@@ -156,7 +156,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.cpp
@@ -166,7 +166,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.cpp
@@ -174,7 +174,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.h
@@ -183,7 +183,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.cpp
@@ -191,7 +191,7 @@ CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNN.cpp
@@ -199,7 +199,7 @@ CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNN.h
@@ -208,21 +208,21 @@ CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o
- /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.h
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h

@@ -218,8 +218,8 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
         }
 
         //Run local search to improve the route before updating the pheromones.
-        //LS->LKSearch(routes[ant]);
-        //LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
+//        LS->LKSearch(Clusterer::getRouteFromClusters(routes[ant]));
+//        LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
 //            LS->randomLocalSearch(routes[ant]);
 
 
@@ -402,7 +402,9 @@ int *CACO::returnResults() {
  * including charging stations and depots.
  */
 double CACO::getRL(int *route) {
+
     LS->randomPheromoneLocalSearchWithTwoOpt(route);
+//    LS->LKSearch(route);
     return GenerateTour::getRouteLength(route);
 }
 

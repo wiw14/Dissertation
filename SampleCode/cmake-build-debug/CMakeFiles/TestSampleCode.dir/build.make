@@ -350,18 +350,18 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.cpp -o CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.s
 
-CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
-CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o: ../Experimental/Clusterer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o: ../ClusterBasedACO/Clusterer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp
 
-CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp > CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.i
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp > CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.i
 
-CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Clusterer.cpp -o CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.s
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s
 
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
 CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o: ../GeneticAlgorithm/RepairOperators.cpp
@@ -376,31 +376,31 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.cpp -o CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.s
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
-CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o: ../Experimental/CACO.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.cpp
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o: ../ClusterBasedACO/CACO.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.cpp > CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.i
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp > CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.i
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACO.cpp -o CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.s
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.s
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
-CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o: ../Experimental/CACOHeuristic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.cpp
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o: ../ClusterBasedACO/CACOHeuristic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o -c /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.cpp > CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.i
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp > CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.i
 
-CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/CACOHeuristic.cpp -o CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.s
+CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp -o CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.s
 
 CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: CMakeFiles/TestSampleCode.dir/flags.make
 CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o: ../ChainedLKSearch/CLKSearchHeuristic.cpp
@@ -451,10 +451,10 @@ TestSampleCode_OBJECTS = \
 "CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o" \
-"CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o" \
-"CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o" \
-"CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o" \
+"CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o" \
 "CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o"
 
@@ -482,10 +482,10 @@ TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/Gen
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o
-TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/Experimental/Clusterer.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o
-TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/Experimental/CACO.cpp.o
-TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/Experimental/CACOHeuristic.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o
+TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o
 TestSampleCode.exe: CMakeFiles/TestSampleCode.dir/build.make

@@ -69,6 +69,26 @@ int * Clusterer::getKNN(int customer, int KNN,const bool* visited) {
     return neighbour;
 }
 
+void Clusterer::randomRoute(int* route) {
+    auto LS = new localSearch(3,3);
+    auto tempRoute = std::vector<int>();
+    //Creates list of customers.
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+        tempRoute.push_back(i);
+
+    int randIndex;
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+        randIndex = rand() % tempRoute.size();
+        route[i] = tempRoute[randIndex];
+        tempRoute.erase(tempRoute.begin() + randIndex);
+    }
+
+    //Local Search to create local optimums.
+    LS->randomPheromoneLocalSearchWithTwoOpt(route);
+//     LS->LKSearch(route);
+    delete LS;
+}
+
 /*
  * Generates all the clusters based on a k value.
  */
@@ -80,8 +100,15 @@ void Clusterer::createClusters(int K){
     bool* visited = new bool[NUM_OF_CUSTOMERS+1];
     for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
         visited[i] = false;
+    int* customers = new int[NUM_OF_CUSTOMERS+1];
+    int tIndex = 0;
+    for (int i = NUM_OF_CUSTOMERS; i >= 0; --i) {
+        customers[tIndex++] = i;
+    }
 
-    for (int customer = 0; customer <=NUM_OF_CUSTOMERS; ++customer) {
+//    randomRoute(customers);
+    for (int index = 0; index <=NUM_OF_CUSTOMERS; ++index) {
+        int customer = customers[index];
         if(!visited[customer]) {
             clusters[numOfClusters] = new struct Node;
             clusters[numOfClusters]->customers = getKNN(customer,k,visited);
@@ -104,6 +131,9 @@ void Clusterer::createClusters(int K){
         }
     }
     delete[] visited;
+    delete[] customers;
+    //DEBUGGING
+//    printf("Finished Creating\n");
 }
 
 /*
@@ -143,16 +173,72 @@ double Clusterer::getClosestDistance(int posA, int posB){
 int* Clusterer::getRouteFromClusters(int* clusterRoute){
     int* route = new int[NUM_OF_CUSTOMERS+1], counter = 0;
     for (int i = 0; i < numOfClusters; ++i) {
+        int* tempClusterRoute = optimiseCluster(clusters[clusterRoute[i]]);
         for (int j = 0; j < clusters[clusterRoute[i]]->sizeOfCluster; ++j) {
-            route[counter++] = clusters[clusterRoute[i]]->customers[j];
+            route[counter++] = tempClusterRoute[j];
         }
+        //delete[] tempClusterRoute;
     }
     //delete[] clusterRoute;
     return route;
 }
 
+int Clusterer::getNodeClosest(int posA, int posB,int filterCustomer){
+    double minDist = INT_MAX;
+    int pos = -1;
+    for (int i = 0; i < clusters[posA]->sizeOfCluster; ++i) {
+        for (int j = 0; j < clusters[posB]->sizeOfCluster; ++j) {
+            if(i != filterCustomer && j != filterCustomer) {
+                double currentDist = get_distance(clusters[posA]->customers[i], clusters[posB]->customers[j]);
+                if (currentDist < minDist) {
+                    minDist = currentDist;
+                    pos = j;
+                }
+            }
+        }
+
+    }
+    return pos;
+}
+
+//int* Clusterer::getRouteFromClusters(int* clusterRoute){
+//    int* route = new int[NUM_OF_CUSTOMERS+1], counter = 0;
+//
+//    int tempPos = getNodeClosest(clusterRoute[0],clusterRoute[0],-1);
+//    for (int j = 0; j < clusters[clusterRoute[0]]->sizeOfCluster; ++j) {
+//        if( j != tempPos){
+//            route[counter++] = clusters[clusterRoute[0]]->customers[j];
+//        }
+//    }
+//    route[counter++] = clusters[clusterRoute[0]]->customers[tempPos];
+//
+//    for (int i = 1; i < numOfClusters-1; ++i) {
+//        int tempPosBefore = getNodeClosest(clusterRoute[i-1],clusterRoute[i],-1);
+//        int tempPosAfter = getNodeClosest(clusterRoute[i+1],clusterRoute[i],tempPosBefore);
+//        route[counter++] = clusters[clusterRoute[i]]->customers[tempPosBefore];
+//        for (int j = 0; j < clusters[clusterRoute[i]]->sizeOfCluster; ++j) {
+//            if(j != tempPosBefore && j != tempPosAfter){
+//                route[counter++] = clusters[clusterRoute[i]]->customers[j];
+//            }
+//        }
+//        route[counter++] = clusters[clusterRoute[i]]->customers[tempPosAfter];
+//    }
+//
+//    tempPos = getNodeClosest(clusterRoute[numOfClusters-2],clusterRoute[numOfClusters-1],-1);
+//    route[counter++] = clusters[clusterRoute[numOfClusters-1]]->customers[tempPos];
+//    for (int j = 0; j < clusters[clusterRoute[numOfClusters-1]]->sizeOfCluster; ++j) {
+//        if( j != tempPos){
+//            route[counter++] = clusters[clusterRoute[numOfClusters-1]]->customers[j];
+//        }
+//    }
+//
+//
+//    //delete[] clusterRoute;
+//    return route;
+//}
+
 /*
- * Generates teh distance within the cluster.
+ * Generates the distance within the cluster.
  */
 double Clusterer::calculateClusterDistance(int* customers,int size){
     double length = 0.0;
@@ -170,8 +256,8 @@ double Clusterer::calculateClusterDistance(int* customers,int size){
 /*
  * Optimises the order of the customers within the cluster.
  */
-void optimiseCluster(struct Node* node){
-
+int* Clusterer::optimiseCluster(struct Node * node){
+    return node->customers;
 }
 
 /*

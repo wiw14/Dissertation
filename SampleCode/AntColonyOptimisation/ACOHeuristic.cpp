@@ -15,6 +15,7 @@
 void ACOHeuristic(){
     int numAnts= 3, iterations = 14, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
     double pheromoneDecrease = 0.1, Q = 1,alpha = 0.6, beta=2.1;
+
     auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
 
     a->optimize(iterations);
