@@ -143,383 +143,707 @@ TestSampleCode/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/build
 .PHONY : TestSampleCode/fast
 
-ACO.o: ACO.cpp.o
+AStar/AStarHeuristic.o: AStar/AStarHeuristic.cpp.o
 
-.PHONY : ACO.o
-
-# target to build an object file
-ACO.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACO.cpp.o
-.PHONY : ACO.cpp.o
-
-ACO.i: ACO.cpp.i
-
-.PHONY : ACO.i
-
-# target to preprocess a source file
-ACO.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACO.cpp.i
-.PHONY : ACO.cpp.i
-
-ACO.s: ACO.cpp.s
-
-.PHONY : ACO.s
-
-# target to generate assembly for a file
-ACO.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACO.cpp.s
-.PHONY : ACO.cpp.s
-
-ACOHeuristic.o: ACOHeuristic.cpp.o
-
-.PHONY : ACOHeuristic.o
+.PHONY : AStar/AStarHeuristic.o
 
 # target to build an object file
-ACOHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.o
-.PHONY : ACOHeuristic.cpp.o
+AStar/AStarHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStar/AStarHeuristic.cpp.o
+.PHONY : AStar/AStarHeuristic.cpp.o
 
-ACOHeuristic.i: ACOHeuristic.cpp.i
+AStar/AStarHeuristic.i: AStar/AStarHeuristic.cpp.i
 
-.PHONY : ACOHeuristic.i
+.PHONY : AStar/AStarHeuristic.i
 
 # target to preprocess a source file
-ACOHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.i
-.PHONY : ACOHeuristic.cpp.i
+AStar/AStarHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStar/AStarHeuristic.cpp.i
+.PHONY : AStar/AStarHeuristic.cpp.i
 
-ACOHeuristic.s: ACOHeuristic.cpp.s
+AStar/AStarHeuristic.s: AStar/AStarHeuristic.cpp.s
 
-.PHONY : ACOHeuristic.s
+.PHONY : AStar/AStarHeuristic.s
 
 # target to generate assembly for a file
-ACOHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOHeuristic.cpp.s
-.PHONY : ACOHeuristic.cpp.s
+AStar/AStarHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStar/AStarHeuristic.cpp.s
+.PHONY : AStar/AStarHeuristic.cpp.s
 
-ACOWithChargingStation.o: ACOWithChargingStation.cpp.o
+AntColonyOptimisation/ACO.o: AntColonyOptimisation/ACO.cpp.o
 
-.PHONY : ACOWithChargingStation.o
+.PHONY : AntColonyOptimisation/ACO.o
 
 # target to build an object file
-ACOWithChargingStation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.o
-.PHONY : ACOWithChargingStation.cpp.o
+AntColonyOptimisation/ACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o
+.PHONY : AntColonyOptimisation/ACO.cpp.o
 
-ACOWithChargingStation.i: ACOWithChargingStation.cpp.i
+AntColonyOptimisation/ACO.i: AntColonyOptimisation/ACO.cpp.i
 
-.PHONY : ACOWithChargingStation.i
+.PHONY : AntColonyOptimisation/ACO.i
 
 # target to preprocess a source file
-ACOWithChargingStation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.i
-.PHONY : ACOWithChargingStation.cpp.i
+AntColonyOptimisation/ACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.i
+.PHONY : AntColonyOptimisation/ACO.cpp.i
 
-ACOWithChargingStation.s: ACOWithChargingStation.cpp.s
+AntColonyOptimisation/ACO.s: AntColonyOptimisation/ACO.cpp.s
 
-.PHONY : ACOWithChargingStation.s
+.PHONY : AntColonyOptimisation/ACO.s
 
 # target to generate assembly for a file
-ACOWithChargingStation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ACOWithChargingStation.cpp.s
-.PHONY : ACOWithChargingStation.cpp.s
+AntColonyOptimisation/ACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.s
+.PHONY : AntColonyOptimisation/ACO.cpp.s
 
-AStarHeuristic.o: AStarHeuristic.cpp.o
+AntColonyOptimisation/ACOHeuristic.o: AntColonyOptimisation/ACOHeuristic.cpp.o
 
-.PHONY : AStarHeuristic.o
+.PHONY : AntColonyOptimisation/ACOHeuristic.o
 
 # target to build an object file
-AStarHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.o
-.PHONY : AStarHeuristic.cpp.o
+AntColonyOptimisation/ACOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o
+.PHONY : AntColonyOptimisation/ACOHeuristic.cpp.o
 
-AStarHeuristic.i: AStarHeuristic.cpp.i
+AntColonyOptimisation/ACOHeuristic.i: AntColonyOptimisation/ACOHeuristic.cpp.i
 
-.PHONY : AStarHeuristic.i
+.PHONY : AntColonyOptimisation/ACOHeuristic.i
 
 # target to preprocess a source file
-AStarHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.i
-.PHONY : AStarHeuristic.cpp.i
+AntColonyOptimisation/ACOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.i
+.PHONY : AntColonyOptimisation/ACOHeuristic.cpp.i
 
-AStarHeuristic.s: AStarHeuristic.cpp.s
+AntColonyOptimisation/ACOHeuristic.s: AntColonyOptimisation/ACOHeuristic.cpp.s
 
-.PHONY : AStarHeuristic.s
+.PHONY : AntColonyOptimisation/ACOHeuristic.s
 
 # target to generate assembly for a file
-AStarHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AStarHeuristic.cpp.s
-.PHONY : AStarHeuristic.cpp.s
+AntColonyOptimisation/ACOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.s
+.PHONY : AntColonyOptimisation/ACOHeuristic.cpp.s
 
-DijkstrasHeuristic.o: DijkstrasHeuristic.cpp.o
+AntColonyOptimisation/ACOWithChargingStation.o: AntColonyOptimisation/ACOWithChargingStation.cpp.o
 
-.PHONY : DijkstrasHeuristic.o
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.o
 
 # target to build an object file
-DijkstrasHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.o
-.PHONY : DijkstrasHeuristic.cpp.o
+AntColonyOptimisation/ACOWithChargingStation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.cpp.o
 
-DijkstrasHeuristic.i: DijkstrasHeuristic.cpp.i
+AntColonyOptimisation/ACOWithChargingStation.i: AntColonyOptimisation/ACOWithChargingStation.cpp.i
 
-.PHONY : DijkstrasHeuristic.i
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.i
 
 # target to preprocess a source file
-DijkstrasHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.i
-.PHONY : DijkstrasHeuristic.cpp.i
+AntColonyOptimisation/ACOWithChargingStation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.i
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.cpp.i
 
-DijkstrasHeuristic.s: DijkstrasHeuristic.cpp.s
+AntColonyOptimisation/ACOWithChargingStation.s: AntColonyOptimisation/ACOWithChargingStation.cpp.s
 
-.PHONY : DijkstrasHeuristic.s
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.s
 
 # target to generate assembly for a file
-DijkstrasHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/DijkstrasHeuristic.cpp.s
-.PHONY : DijkstrasHeuristic.cpp.s
+AntColonyOptimisation/ACOWithChargingStation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.s
+.PHONY : AntColonyOptimisation/ACOWithChargingStation.cpp.s
 
-EVRP.o: EVRP.cpp.o
+AntColonyOptimisation/MaxMinACO.o: AntColonyOptimisation/MaxMinACO.cpp.o
 
-.PHONY : EVRP.o
+.PHONY : AntColonyOptimisation/MaxMinACO.o
 
 # target to build an object file
-EVRP.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.o
-.PHONY : EVRP.cpp.o
+AntColonyOptimisation/MaxMinACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o
+.PHONY : AntColonyOptimisation/MaxMinACO.cpp.o
 
-EVRP.i: EVRP.cpp.i
+AntColonyOptimisation/MaxMinACO.i: AntColonyOptimisation/MaxMinACO.cpp.i
 
-.PHONY : EVRP.i
+.PHONY : AntColonyOptimisation/MaxMinACO.i
 
 # target to preprocess a source file
-EVRP.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.i
-.PHONY : EVRP.cpp.i
+AntColonyOptimisation/MaxMinACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.i
+.PHONY : AntColonyOptimisation/MaxMinACO.cpp.i
 
-EVRP.s: EVRP.cpp.s
+AntColonyOptimisation/MaxMinACO.s: AntColonyOptimisation/MaxMinACO.cpp.s
 
-.PHONY : EVRP.s
+.PHONY : AntColonyOptimisation/MaxMinACO.s
 
 # target to generate assembly for a file
-EVRP.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/EVRP.cpp.s
-.PHONY : EVRP.cpp.s
+AntColonyOptimisation/MaxMinACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.s
+.PHONY : AntColonyOptimisation/MaxMinACO.cpp.s
 
-GAHeuristic.o: GAHeuristic.cpp.o
+ChainedLKSearch/CLKSearch.o: ChainedLKSearch/CLKSearch.cpp.o
 
-.PHONY : GAHeuristic.o
+.PHONY : ChainedLKSearch/CLKSearch.o
 
 # target to build an object file
-GAHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.o
-.PHONY : GAHeuristic.cpp.o
+ChainedLKSearch/CLKSearch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o
+.PHONY : ChainedLKSearch/CLKSearch.cpp.o
 
-GAHeuristic.i: GAHeuristic.cpp.i
+ChainedLKSearch/CLKSearch.i: ChainedLKSearch/CLKSearch.cpp.i
 
-.PHONY : GAHeuristic.i
+.PHONY : ChainedLKSearch/CLKSearch.i
 
 # target to preprocess a source file
-GAHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.i
-.PHONY : GAHeuristic.cpp.i
+ChainedLKSearch/CLKSearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.i
+.PHONY : ChainedLKSearch/CLKSearch.cpp.i
 
-GAHeuristic.s: GAHeuristic.cpp.s
+ChainedLKSearch/CLKSearch.s: ChainedLKSearch/CLKSearch.cpp.s
 
-.PHONY : GAHeuristic.s
+.PHONY : ChainedLKSearch/CLKSearch.s
 
 # target to generate assembly for a file
-GAHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GAHeuristic.cpp.s
-.PHONY : GAHeuristic.cpp.s
+ChainedLKSearch/CLKSearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.s
+.PHONY : ChainedLKSearch/CLKSearch.cpp.s
 
-GeneticAlgorithm.o: GeneticAlgorithm.cpp.o
+ChainedLKSearch/CLKSearchHeuristic.o: ChainedLKSearch/CLKSearchHeuristic.cpp.o
 
-.PHONY : GeneticAlgorithm.o
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.o
 
 # target to build an object file
-GeneticAlgorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.o
-.PHONY : GeneticAlgorithm.cpp.o
+ChainedLKSearch/CLKSearchHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.o
 
-GeneticAlgorithm.i: GeneticAlgorithm.cpp.i
+ChainedLKSearch/CLKSearchHeuristic.i: ChainedLKSearch/CLKSearchHeuristic.cpp.i
 
-.PHONY : GeneticAlgorithm.i
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.i
 
 # target to preprocess a source file
-GeneticAlgorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.i
-.PHONY : GeneticAlgorithm.cpp.i
+ChainedLKSearch/CLKSearchHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.i
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.i
 
-GeneticAlgorithm.s: GeneticAlgorithm.cpp.s
+ChainedLKSearch/CLKSearchHeuristic.s: ChainedLKSearch/CLKSearchHeuristic.cpp.s
 
-.PHONY : GeneticAlgorithm.s
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.s
 
 # target to generate assembly for a file
-GeneticAlgorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm.cpp.s
-.PHONY : GeneticAlgorithm.cpp.s
+ChainedLKSearch/CLKSearchHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.s
+.PHONY : ChainedLKSearch/CLKSearchHeuristic.cpp.s
 
-KNN.o: KNN.cpp.o
+ClusterBasedACO/CACO.o: ClusterBasedACO/CACO.cpp.o
 
-.PHONY : KNN.o
+.PHONY : ClusterBasedACO/CACO.o
 
 # target to build an object file
-KNN.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.o
-.PHONY : KNN.cpp.o
+ClusterBasedACO/CACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o
+.PHONY : ClusterBasedACO/CACO.cpp.o
 
-KNN.i: KNN.cpp.i
+ClusterBasedACO/CACO.i: ClusterBasedACO/CACO.cpp.i
 
-.PHONY : KNN.i
+.PHONY : ClusterBasedACO/CACO.i
 
 # target to preprocess a source file
-KNN.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.i
-.PHONY : KNN.cpp.i
+ClusterBasedACO/CACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.i
+.PHONY : ClusterBasedACO/CACO.cpp.i
 
-KNN.s: KNN.cpp.s
+ClusterBasedACO/CACO.s: ClusterBasedACO/CACO.cpp.s
 
-.PHONY : KNN.s
+.PHONY : ClusterBasedACO/CACO.s
 
 # target to generate assembly for a file
-KNN.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN.cpp.s
-.PHONY : KNN.cpp.s
+ClusterBasedACO/CACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.s
+.PHONY : ClusterBasedACO/CACO.cpp.s
 
-KNNHeuristic.o: KNNHeuristic.cpp.o
+ClusterBasedACO/CACOHeuristic.o: ClusterBasedACO/CACOHeuristic.cpp.o
 
-.PHONY : KNNHeuristic.o
+.PHONY : ClusterBasedACO/CACOHeuristic.o
 
 # target to build an object file
-KNNHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.o
-.PHONY : KNNHeuristic.cpp.o
+ClusterBasedACO/CACOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o
+.PHONY : ClusterBasedACO/CACOHeuristic.cpp.o
 
-KNNHeuristic.i: KNNHeuristic.cpp.i
+ClusterBasedACO/CACOHeuristic.i: ClusterBasedACO/CACOHeuristic.cpp.i
 
-.PHONY : KNNHeuristic.i
+.PHONY : ClusterBasedACO/CACOHeuristic.i
 
 # target to preprocess a source file
-KNNHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.i
-.PHONY : KNNHeuristic.cpp.i
+ClusterBasedACO/CACOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.i
+.PHONY : ClusterBasedACO/CACOHeuristic.cpp.i
 
-KNNHeuristic.s: KNNHeuristic.cpp.s
+ClusterBasedACO/CACOHeuristic.s: ClusterBasedACO/CACOHeuristic.cpp.s
 
-.PHONY : KNNHeuristic.s
+.PHONY : ClusterBasedACO/CACOHeuristic.s
 
 # target to generate assembly for a file
-KNNHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNNHeuristic.cpp.s
-.PHONY : KNNHeuristic.cpp.s
+ClusterBasedACO/CACOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.s
+.PHONY : ClusterBasedACO/CACOHeuristic.cpp.s
 
-LocalSearches.o: LocalSearches.cpp.o
+ClusterBasedACO/Clusterer.o: ClusterBasedACO/Clusterer.cpp.o
 
-.PHONY : LocalSearches.o
+.PHONY : ClusterBasedACO/Clusterer.o
 
 # target to build an object file
-LocalSearches.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.o
-.PHONY : LocalSearches.cpp.o
+ClusterBasedACO/Clusterer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o
+.PHONY : ClusterBasedACO/Clusterer.cpp.o
 
-LocalSearches.i: LocalSearches.cpp.i
+ClusterBasedACO/Clusterer.i: ClusterBasedACO/Clusterer.cpp.i
 
-.PHONY : LocalSearches.i
+.PHONY : ClusterBasedACO/Clusterer.i
 
 # target to preprocess a source file
-LocalSearches.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.i
-.PHONY : LocalSearches.cpp.i
+ClusterBasedACO/Clusterer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.i
+.PHONY : ClusterBasedACO/Clusterer.cpp.i
 
-LocalSearches.s: LocalSearches.cpp.s
+ClusterBasedACO/Clusterer.s: ClusterBasedACO/Clusterer.cpp.s
 
-.PHONY : LocalSearches.s
+.PHONY : ClusterBasedACO/Clusterer.s
 
 # target to generate assembly for a file
-LocalSearches.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearches.cpp.s
-.PHONY : LocalSearches.cpp.s
+ClusterBasedACO/Clusterer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s
+.PHONY : ClusterBasedACO/Clusterer.cpp.s
 
-MaxMinACO.o: MaxMinACO.cpp.o
+Dijkstra/DijkstrasHeuristic.o: Dijkstra/DijkstrasHeuristic.cpp.o
 
-.PHONY : MaxMinACO.o
+.PHONY : Dijkstra/DijkstrasHeuristic.o
 
 # target to build an object file
-MaxMinACO.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.o
-.PHONY : MaxMinACO.cpp.o
+Dijkstra/DijkstrasHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o
+.PHONY : Dijkstra/DijkstrasHeuristic.cpp.o
 
-MaxMinACO.i: MaxMinACO.cpp.i
+Dijkstra/DijkstrasHeuristic.i: Dijkstra/DijkstrasHeuristic.cpp.i
 
-.PHONY : MaxMinACO.i
+.PHONY : Dijkstra/DijkstrasHeuristic.i
 
 # target to preprocess a source file
-MaxMinACO.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.i
-.PHONY : MaxMinACO.cpp.i
+Dijkstra/DijkstrasHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.i
+.PHONY : Dijkstra/DijkstrasHeuristic.cpp.i
 
-MaxMinACO.s: MaxMinACO.cpp.s
+Dijkstra/DijkstrasHeuristic.s: Dijkstra/DijkstrasHeuristic.cpp.s
 
-.PHONY : MaxMinACO.s
+.PHONY : Dijkstra/DijkstrasHeuristic.s
 
 # target to generate assembly for a file
-MaxMinACO.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/MaxMinACO.cpp.s
-.PHONY : MaxMinACO.cpp.s
+Dijkstra/DijkstrasHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.s
+.PHONY : Dijkstra/DijkstrasHeuristic.cpp.s
 
-greedyEuclideanHeuristic.o: greedyEuclideanHeuristic.cpp.o
+Framework/EVRP.o: Framework/EVRP.cpp.o
 
-.PHONY : greedyEuclideanHeuristic.o
+.PHONY : Framework/EVRP.o
 
 # target to build an object file
-greedyEuclideanHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.o
-.PHONY : greedyEuclideanHeuristic.cpp.o
+Framework/EVRP.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o
+.PHONY : Framework/EVRP.cpp.o
 
-greedyEuclideanHeuristic.i: greedyEuclideanHeuristic.cpp.i
+Framework/EVRP.i: Framework/EVRP.cpp.i
 
-.PHONY : greedyEuclideanHeuristic.i
+.PHONY : Framework/EVRP.i
 
 # target to preprocess a source file
-greedyEuclideanHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.i
-.PHONY : greedyEuclideanHeuristic.cpp.i
+Framework/EVRP.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.i
+.PHONY : Framework/EVRP.cpp.i
 
-greedyEuclideanHeuristic.s: greedyEuclideanHeuristic.cpp.s
+Framework/EVRP.s: Framework/EVRP.cpp.s
 
-.PHONY : greedyEuclideanHeuristic.s
+.PHONY : Framework/EVRP.s
 
 # target to generate assembly for a file
-greedyEuclideanHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/greedyEuclideanHeuristic.cpp.s
-.PHONY : greedyEuclideanHeuristic.cpp.s
+Framework/EVRP.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.s
+.PHONY : Framework/EVRP.cpp.s
 
-heuristic.o: heuristic.cpp.o
+Framework/heuristic.o: Framework/heuristic.cpp.o
 
-.PHONY : heuristic.o
+.PHONY : Framework/heuristic.o
 
 # target to build an object file
-heuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/heuristic.cpp.o
-.PHONY : heuristic.cpp.o
+Framework/heuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o
+.PHONY : Framework/heuristic.cpp.o
 
-heuristic.i: heuristic.cpp.i
+Framework/heuristic.i: Framework/heuristic.cpp.i
 
-.PHONY : heuristic.i
+.PHONY : Framework/heuristic.i
 
 # target to preprocess a source file
-heuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/heuristic.cpp.i
-.PHONY : heuristic.cpp.i
+Framework/heuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.i
+.PHONY : Framework/heuristic.cpp.i
 
-heuristic.s: heuristic.cpp.s
+Framework/heuristic.s: Framework/heuristic.cpp.s
 
-.PHONY : heuristic.s
+.PHONY : Framework/heuristic.s
 
 # target to generate assembly for a file
-heuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/heuristic.cpp.s
-.PHONY : heuristic.cpp.s
+Framework/heuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.s
+.PHONY : Framework/heuristic.cpp.s
+
+Framework/stats.o: Framework/stats.cpp.o
+
+.PHONY : Framework/stats.o
+
+# target to build an object file
+Framework/stats.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o
+.PHONY : Framework/stats.cpp.o
+
+Framework/stats.i: Framework/stats.cpp.i
+
+.PHONY : Framework/stats.i
+
+# target to preprocess a source file
+Framework/stats.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.i
+.PHONY : Framework/stats.cpp.i
+
+Framework/stats.s: Framework/stats.cpp.s
+
+.PHONY : Framework/stats.s
+
+# target to generate assembly for a file
+Framework/stats.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.s
+.PHONY : Framework/stats.cpp.s
+
+GeneticAlgorithm/CrossoverOperators.o: GeneticAlgorithm/CrossoverOperators.cpp.o
+
+.PHONY : GeneticAlgorithm/CrossoverOperators.o
+
+# target to build an object file
+GeneticAlgorithm/CrossoverOperators.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o
+.PHONY : GeneticAlgorithm/CrossoverOperators.cpp.o
+
+GeneticAlgorithm/CrossoverOperators.i: GeneticAlgorithm/CrossoverOperators.cpp.i
+
+.PHONY : GeneticAlgorithm/CrossoverOperators.i
+
+# target to preprocess a source file
+GeneticAlgorithm/CrossoverOperators.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.i
+.PHONY : GeneticAlgorithm/CrossoverOperators.cpp.i
+
+GeneticAlgorithm/CrossoverOperators.s: GeneticAlgorithm/CrossoverOperators.cpp.s
+
+.PHONY : GeneticAlgorithm/CrossoverOperators.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/CrossoverOperators.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.s
+.PHONY : GeneticAlgorithm/CrossoverOperators.cpp.s
+
+GeneticAlgorithm/GAHeuristic.o: GeneticAlgorithm/GAHeuristic.cpp.o
+
+.PHONY : GeneticAlgorithm/GAHeuristic.o
+
+# target to build an object file
+GeneticAlgorithm/GAHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o
+.PHONY : GeneticAlgorithm/GAHeuristic.cpp.o
+
+GeneticAlgorithm/GAHeuristic.i: GeneticAlgorithm/GAHeuristic.cpp.i
+
+.PHONY : GeneticAlgorithm/GAHeuristic.i
+
+# target to preprocess a source file
+GeneticAlgorithm/GAHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.i
+.PHONY : GeneticAlgorithm/GAHeuristic.cpp.i
+
+GeneticAlgorithm/GAHeuristic.s: GeneticAlgorithm/GAHeuristic.cpp.s
+
+.PHONY : GeneticAlgorithm/GAHeuristic.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/GAHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.s
+.PHONY : GeneticAlgorithm/GAHeuristic.cpp.s
+
+GeneticAlgorithm/GeneticAlgorithm.o: GeneticAlgorithm/GeneticAlgorithm.cpp.o
+
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.o
+
+# target to build an object file
+GeneticAlgorithm/GeneticAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.cpp.o
+
+GeneticAlgorithm/GeneticAlgorithm.i: GeneticAlgorithm/GeneticAlgorithm.cpp.i
+
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.i
+
+# target to preprocess a source file
+GeneticAlgorithm/GeneticAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.i
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.cpp.i
+
+GeneticAlgorithm/GeneticAlgorithm.s: GeneticAlgorithm/GeneticAlgorithm.cpp.s
+
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/GeneticAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.s
+.PHONY : GeneticAlgorithm/GeneticAlgorithm.cpp.s
+
+GeneticAlgorithm/Mutation.o: GeneticAlgorithm/Mutation.cpp.o
+
+.PHONY : GeneticAlgorithm/Mutation.o
+
+# target to build an object file
+GeneticAlgorithm/Mutation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o
+.PHONY : GeneticAlgorithm/Mutation.cpp.o
+
+GeneticAlgorithm/Mutation.i: GeneticAlgorithm/Mutation.cpp.i
+
+.PHONY : GeneticAlgorithm/Mutation.i
+
+# target to preprocess a source file
+GeneticAlgorithm/Mutation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.i
+.PHONY : GeneticAlgorithm/Mutation.cpp.i
+
+GeneticAlgorithm/Mutation.s: GeneticAlgorithm/Mutation.cpp.s
+
+.PHONY : GeneticAlgorithm/Mutation.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/Mutation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.s
+.PHONY : GeneticAlgorithm/Mutation.cpp.s
+
+GeneticAlgorithm/RepairOperators.o: GeneticAlgorithm/RepairOperators.cpp.o
+
+.PHONY : GeneticAlgorithm/RepairOperators.o
+
+# target to build an object file
+GeneticAlgorithm/RepairOperators.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.o
+
+GeneticAlgorithm/RepairOperators.i: GeneticAlgorithm/RepairOperators.cpp.i
+
+.PHONY : GeneticAlgorithm/RepairOperators.i
+
+# target to preprocess a source file
+GeneticAlgorithm/RepairOperators.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.i
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.i
+
+GeneticAlgorithm/RepairOperators.s: GeneticAlgorithm/RepairOperators.cpp.s
+
+.PHONY : GeneticAlgorithm/RepairOperators.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/RepairOperators.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.s
+.PHONY : GeneticAlgorithm/RepairOperators.cpp.s
+
+GeneticAlgorithm/Selection.o: GeneticAlgorithm/Selection.cpp.o
+
+.PHONY : GeneticAlgorithm/Selection.o
+
+# target to build an object file
+GeneticAlgorithm/Selection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o
+.PHONY : GeneticAlgorithm/Selection.cpp.o
+
+GeneticAlgorithm/Selection.i: GeneticAlgorithm/Selection.cpp.i
+
+.PHONY : GeneticAlgorithm/Selection.i
+
+# target to preprocess a source file
+GeneticAlgorithm/Selection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.i
+.PHONY : GeneticAlgorithm/Selection.cpp.i
+
+GeneticAlgorithm/Selection.s: GeneticAlgorithm/Selection.cpp.s
+
+.PHONY : GeneticAlgorithm/Selection.s
+
+# target to generate assembly for a file
+GeneticAlgorithm/Selection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.s
+.PHONY : GeneticAlgorithm/Selection.cpp.s
+
+GreedyEuclidean/greedyEuclideanHeuristic.o: GreedyEuclidean/greedyEuclideanHeuristic.cpp.o
+
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.o
+
+# target to build an object file
+GreedyEuclidean/greedyEuclideanHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.cpp.o
+
+GreedyEuclidean/greedyEuclideanHeuristic.i: GreedyEuclidean/greedyEuclideanHeuristic.cpp.i
+
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.i
+
+# target to preprocess a source file
+GreedyEuclidean/greedyEuclideanHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.i
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.cpp.i
+
+GreedyEuclidean/greedyEuclideanHeuristic.s: GreedyEuclidean/greedyEuclideanHeuristic.cpp.s
+
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.s
+
+# target to generate assembly for a file
+GreedyEuclidean/greedyEuclideanHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.s
+.PHONY : GreedyEuclidean/greedyEuclideanHeuristic.cpp.s
+
+KNN/KNN.o: KNN/KNN.cpp.o
+
+.PHONY : KNN/KNN.o
+
+# target to build an object file
+KNN/KNN.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o
+.PHONY : KNN/KNN.cpp.o
+
+KNN/KNN.i: KNN/KNN.cpp.i
+
+.PHONY : KNN/KNN.i
+
+# target to preprocess a source file
+KNN/KNN.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.i
+.PHONY : KNN/KNN.cpp.i
+
+KNN/KNN.s: KNN/KNN.cpp.s
+
+.PHONY : KNN/KNN.s
+
+# target to generate assembly for a file
+KNN/KNN.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.s
+.PHONY : KNN/KNN.cpp.s
+
+KNN/KNNHeuristic.o: KNN/KNNHeuristic.cpp.o
+
+.PHONY : KNN/KNNHeuristic.o
+
+# target to build an object file
+KNN/KNNHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o
+.PHONY : KNN/KNNHeuristic.cpp.o
+
+KNN/KNNHeuristic.i: KNN/KNNHeuristic.cpp.i
+
+.PHONY : KNN/KNNHeuristic.i
+
+# target to preprocess a source file
+KNN/KNNHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.i
+.PHONY : KNN/KNNHeuristic.cpp.i
+
+KNN/KNNHeuristic.s: KNN/KNNHeuristic.cpp.s
+
+.PHONY : KNN/KNNHeuristic.s
+
+# target to generate assembly for a file
+KNN/KNNHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.s
+.PHONY : KNN/KNNHeuristic.cpp.s
+
+LocalSearchAndGenerateTour/GenerateTour.o: LocalSearchAndGenerateTour/GenerateTour.cpp.o
+
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.o
+
+# target to build an object file
+LocalSearchAndGenerateTour/GenerateTour.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.cpp.o
+
+LocalSearchAndGenerateTour/GenerateTour.i: LocalSearchAndGenerateTour/GenerateTour.cpp.i
+
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.i
+
+# target to preprocess a source file
+LocalSearchAndGenerateTour/GenerateTour.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.i
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.cpp.i
+
+LocalSearchAndGenerateTour/GenerateTour.s: LocalSearchAndGenerateTour/GenerateTour.cpp.s
+
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.s
+
+# target to generate assembly for a file
+LocalSearchAndGenerateTour/GenerateTour.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.s
+.PHONY : LocalSearchAndGenerateTour/GenerateTour.cpp.s
+
+LocalSearchAndGenerateTour/LocalSearches.o: LocalSearchAndGenerateTour/LocalSearches.cpp.o
+
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.o
+
+# target to build an object file
+LocalSearchAndGenerateTour/LocalSearches.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.cpp.o
+
+LocalSearchAndGenerateTour/LocalSearches.i: LocalSearchAndGenerateTour/LocalSearches.cpp.i
+
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.i
+
+# target to preprocess a source file
+LocalSearchAndGenerateTour/LocalSearches.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.i
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.cpp.i
+
+LocalSearchAndGenerateTour/LocalSearches.s: LocalSearchAndGenerateTour/LocalSearches.cpp.s
+
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.s
+
+# target to generate assembly for a file
+LocalSearchAndGenerateTour/LocalSearches.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.s
+.PHONY : LocalSearchAndGenerateTour/LocalSearches.cpp.s
+
+RandomHeuristic/randomHeuristic.o: RandomHeuristic/randomHeuristic.cpp.o
+
+.PHONY : RandomHeuristic/randomHeuristic.o
+
+# target to build an object file
+RandomHeuristic/randomHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o
+.PHONY : RandomHeuristic/randomHeuristic.cpp.o
+
+RandomHeuristic/randomHeuristic.i: RandomHeuristic/randomHeuristic.cpp.i
+
+.PHONY : RandomHeuristic/randomHeuristic.i
+
+# target to preprocess a source file
+RandomHeuristic/randomHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.i
+.PHONY : RandomHeuristic/randomHeuristic.cpp.i
+
+RandomHeuristic/randomHeuristic.s: RandomHeuristic/randomHeuristic.cpp.s
+
+.PHONY : RandomHeuristic/randomHeuristic.s
+
+# target to generate assembly for a file
+RandomHeuristic/randomHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.s
+.PHONY : RandomHeuristic/randomHeuristic.cpp.s
 
 main.o: main.cpp.o
 
@@ -548,60 +872,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-randomHeuristic.o: randomHeuristic.cpp.o
-
-.PHONY : randomHeuristic.o
-
-# target to build an object file
-randomHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.o
-.PHONY : randomHeuristic.cpp.o
-
-randomHeuristic.i: randomHeuristic.cpp.i
-
-.PHONY : randomHeuristic.i
-
-# target to preprocess a source file
-randomHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.i
-.PHONY : randomHeuristic.cpp.i
-
-randomHeuristic.s: randomHeuristic.cpp.s
-
-.PHONY : randomHeuristic.s
-
-# target to generate assembly for a file
-randomHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/randomHeuristic.cpp.s
-.PHONY : randomHeuristic.cpp.s
-
-stats.o: stats.cpp.o
-
-.PHONY : stats.o
-
-# target to build an object file
-stats.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/stats.cpp.o
-.PHONY : stats.cpp.o
-
-stats.i: stats.cpp.i
-
-.PHONY : stats.i
-
-# target to preprocess a source file
-stats.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/stats.cpp.i
-.PHONY : stats.cpp.i
-
-stats.s: stats.cpp.s
-
-.PHONY : stats.s
-
-# target to generate assembly for a file
-stats.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/stats.cpp.s
-.PHONY : stats.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -611,57 +881,87 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... TestSampleCode"
-	@echo "... ACO.o"
-	@echo "... ACO.i"
-	@echo "... ACO.s"
-	@echo "... ACOHeuristic.o"
-	@echo "... ACOHeuristic.i"
-	@echo "... ACOHeuristic.s"
-	@echo "... ACOWithChargingStation.o"
-	@echo "... ACOWithChargingStation.i"
-	@echo "... ACOWithChargingStation.s"
-	@echo "... AStarHeuristic.o"
-	@echo "... AStarHeuristic.i"
-	@echo "... AStarHeuristic.s"
-	@echo "... DijkstrasHeuristic.o"
-	@echo "... DijkstrasHeuristic.i"
-	@echo "... DijkstrasHeuristic.s"
-	@echo "... EVRP.o"
-	@echo "... EVRP.i"
-	@echo "... EVRP.s"
-	@echo "... GAHeuristic.o"
-	@echo "... GAHeuristic.i"
-	@echo "... GAHeuristic.s"
-	@echo "... GeneticAlgorithm.o"
-	@echo "... GeneticAlgorithm.i"
-	@echo "... GeneticAlgorithm.s"
-	@echo "... KNN.o"
-	@echo "... KNN.i"
-	@echo "... KNN.s"
-	@echo "... KNNHeuristic.o"
-	@echo "... KNNHeuristic.i"
-	@echo "... KNNHeuristic.s"
-	@echo "... LocalSearches.o"
-	@echo "... LocalSearches.i"
-	@echo "... LocalSearches.s"
-	@echo "... MaxMinACO.o"
-	@echo "... MaxMinACO.i"
-	@echo "... MaxMinACO.s"
-	@echo "... greedyEuclideanHeuristic.o"
-	@echo "... greedyEuclideanHeuristic.i"
-	@echo "... greedyEuclideanHeuristic.s"
-	@echo "... heuristic.o"
-	@echo "... heuristic.i"
-	@echo "... heuristic.s"
+	@echo "... AStar/AStarHeuristic.o"
+	@echo "... AStar/AStarHeuristic.i"
+	@echo "... AStar/AStarHeuristic.s"
+	@echo "... AntColonyOptimisation/ACO.o"
+	@echo "... AntColonyOptimisation/ACO.i"
+	@echo "... AntColonyOptimisation/ACO.s"
+	@echo "... AntColonyOptimisation/ACOHeuristic.o"
+	@echo "... AntColonyOptimisation/ACOHeuristic.i"
+	@echo "... AntColonyOptimisation/ACOHeuristic.s"
+	@echo "... AntColonyOptimisation/ACOWithChargingStation.o"
+	@echo "... AntColonyOptimisation/ACOWithChargingStation.i"
+	@echo "... AntColonyOptimisation/ACOWithChargingStation.s"
+	@echo "... AntColonyOptimisation/MaxMinACO.o"
+	@echo "... AntColonyOptimisation/MaxMinACO.i"
+	@echo "... AntColonyOptimisation/MaxMinACO.s"
+	@echo "... ChainedLKSearch/CLKSearch.o"
+	@echo "... ChainedLKSearch/CLKSearch.i"
+	@echo "... ChainedLKSearch/CLKSearch.s"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.o"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.i"
+	@echo "... ChainedLKSearch/CLKSearchHeuristic.s"
+	@echo "... ClusterBasedACO/CACO.o"
+	@echo "... ClusterBasedACO/CACO.i"
+	@echo "... ClusterBasedACO/CACO.s"
+	@echo "... ClusterBasedACO/CACOHeuristic.o"
+	@echo "... ClusterBasedACO/CACOHeuristic.i"
+	@echo "... ClusterBasedACO/CACOHeuristic.s"
+	@echo "... ClusterBasedACO/Clusterer.o"
+	@echo "... ClusterBasedACO/Clusterer.i"
+	@echo "... ClusterBasedACO/Clusterer.s"
+	@echo "... Dijkstra/DijkstrasHeuristic.o"
+	@echo "... Dijkstra/DijkstrasHeuristic.i"
+	@echo "... Dijkstra/DijkstrasHeuristic.s"
+	@echo "... Framework/EVRP.o"
+	@echo "... Framework/EVRP.i"
+	@echo "... Framework/EVRP.s"
+	@echo "... Framework/heuristic.o"
+	@echo "... Framework/heuristic.i"
+	@echo "... Framework/heuristic.s"
+	@echo "... Framework/stats.o"
+	@echo "... Framework/stats.i"
+	@echo "... Framework/stats.s"
+	@echo "... GeneticAlgorithm/CrossoverOperators.o"
+	@echo "... GeneticAlgorithm/CrossoverOperators.i"
+	@echo "... GeneticAlgorithm/CrossoverOperators.s"
+	@echo "... GeneticAlgorithm/GAHeuristic.o"
+	@echo "... GeneticAlgorithm/GAHeuristic.i"
+	@echo "... GeneticAlgorithm/GAHeuristic.s"
+	@echo "... GeneticAlgorithm/GeneticAlgorithm.o"
+	@echo "... GeneticAlgorithm/GeneticAlgorithm.i"
+	@echo "... GeneticAlgorithm/GeneticAlgorithm.s"
+	@echo "... GeneticAlgorithm/Mutation.o"
+	@echo "... GeneticAlgorithm/Mutation.i"
+	@echo "... GeneticAlgorithm/Mutation.s"
+	@echo "... GeneticAlgorithm/RepairOperators.o"
+	@echo "... GeneticAlgorithm/RepairOperators.i"
+	@echo "... GeneticAlgorithm/RepairOperators.s"
+	@echo "... GeneticAlgorithm/Selection.o"
+	@echo "... GeneticAlgorithm/Selection.i"
+	@echo "... GeneticAlgorithm/Selection.s"
+	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.o"
+	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.i"
+	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.s"
+	@echo "... KNN/KNN.o"
+	@echo "... KNN/KNN.i"
+	@echo "... KNN/KNN.s"
+	@echo "... KNN/KNNHeuristic.o"
+	@echo "... KNN/KNNHeuristic.i"
+	@echo "... KNN/KNNHeuristic.s"
+	@echo "... LocalSearchAndGenerateTour/GenerateTour.o"
+	@echo "... LocalSearchAndGenerateTour/GenerateTour.i"
+	@echo "... LocalSearchAndGenerateTour/GenerateTour.s"
+	@echo "... LocalSearchAndGenerateTour/LocalSearches.o"
+	@echo "... LocalSearchAndGenerateTour/LocalSearches.i"
+	@echo "... LocalSearchAndGenerateTour/LocalSearches.s"
+	@echo "... RandomHeuristic/randomHeuristic.o"
+	@echo "... RandomHeuristic/randomHeuristic.i"
+	@echo "... RandomHeuristic/randomHeuristic.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... randomHeuristic.o"
-	@echo "... randomHeuristic.i"
-	@echo "... randomHeuristic.s"
-	@echo "... stats.o"
-	@echo "... stats.i"
-	@echo "... stats.s"
 .PHONY : help
 
 

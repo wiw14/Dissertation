@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #include<limits.h>
 
-#include "EVRP.hpp"
-#include "heuristic.hpp"
-#include "stats.hpp"
+#include "Framework/EVRP.hpp"
+#include "Framework/heuristic.hpp"
+#include "Framework/stats.hpp"
 using namespace std;
 
 
@@ -76,11 +76,11 @@ int main(int argc, char *argv[]) {
         The implementation is only for your reference*/
         /*Step 5*/
         end_run(run);  //store the best solution quality for each run
+        end_heuristic();
     }
     /*Step 6*/
     close_stats(); //close text files to calculate the mean result from the 20 runs stats.h
     closeTourFile();
-
     //free memory
     free_stats();
     free_heuristic();

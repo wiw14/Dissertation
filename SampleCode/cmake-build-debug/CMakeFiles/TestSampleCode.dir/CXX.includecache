@@ -6,29 +6,35 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.cpp
-GeneticAlgorithm.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm.h
-LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp
+CACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
 climits
 -
-algorithm
+functional
 -
-deque
--
-list
+string
 -
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearches.h
-EVRP.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/EVRP.hpp
-heuristic.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+Clusterer.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
+../LocalSearchAndGenerateTour/LocalSearches.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
+../Framework/EVRP.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
+../Framework/heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+../ClusterBasedACO/Clusterer.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
 map
 -
 iostream
@@ -39,6 +45,22 @@ stdio.h
 -
 random
 -
+climits
+-
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/heuristic.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+../LocalSearchAndGenerateTour/GenerateTour.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
+map
+-
+iostream
+-
+string
+-
+stdio.h
+-
+random
+-
+climits
+-
 
