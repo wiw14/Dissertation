@@ -39,7 +39,7 @@ void initialize_heuristic() {
 
     //Generates clusters from the input file.
     //Clusterer::createClusters(4);
-//    KMeansClustering::createClusters(4);
+    KMeansClustering::createClusters(4);
 }
 
 
@@ -60,10 +60,10 @@ void run_heuristic() {
     /*
      * Evolutionary Algorithms
      */
-    GAHeuristic();
-    //ACOHeuristic();
+//    GAHeuristic();
+//    ACOHeuristic();
     //ACOCSHeuristic();
-    //MMACOHeuristic();
+    MMACOHeuristic();
 
     //Cluster ACO for Large Data Sets.
 //    CACOHeuristic();
@@ -87,7 +87,7 @@ void end_heuristic(){
 
     //Clustering.
     //Clusterer::freeClusters();
-//    KMeansClustering::freeClusters();
+    KMeansClustering::freeClusters();
 }
 
 /*

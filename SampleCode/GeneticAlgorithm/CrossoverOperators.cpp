@@ -452,7 +452,7 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     int** tempChildren = new int*[2];
 
     if(partitionList->size() > 1){
-        printf("Success\n");
+        printf("S, ");
         auto partitionA = new std::list<int>();
         auto partitionB = new std::list<int>();
 
@@ -517,7 +517,7 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
         tempChildren[0] = childOne; tempChildren[1] = childTwo;
     }
     else{
-        printf("Failure\n");
+        printf("F, ");
 
         int *child = new int[NUM_OF_CUSTOMERS + 1];
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
