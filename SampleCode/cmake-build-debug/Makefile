@@ -413,6 +413,33 @@ ClusterBasedACO/Clusterer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s
 .PHONY : ClusterBasedACO/Clusterer.cpp.s
 
+ClusterBasedACO/KMeansClustering.o: ClusterBasedACO/KMeansClustering.cpp.o
+
+.PHONY : ClusterBasedACO/KMeansClustering.o
+
+# target to build an object file
+ClusterBasedACO/KMeansClustering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.o
+.PHONY : ClusterBasedACO/KMeansClustering.cpp.o
+
+ClusterBasedACO/KMeansClustering.i: ClusterBasedACO/KMeansClustering.cpp.i
+
+.PHONY : ClusterBasedACO/KMeansClustering.i
+
+# target to preprocess a source file
+ClusterBasedACO/KMeansClustering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.i
+.PHONY : ClusterBasedACO/KMeansClustering.cpp.i
+
+ClusterBasedACO/KMeansClustering.s: ClusterBasedACO/KMeansClustering.cpp.s
+
+.PHONY : ClusterBasedACO/KMeansClustering.s
+
+# target to generate assembly for a file
+ClusterBasedACO/KMeansClustering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.s
+.PHONY : ClusterBasedACO/KMeansClustering.cpp.s
+
 Dijkstra/DijkstrasHeuristic.o: Dijkstra/DijkstrasHeuristic.cpp.o
 
 .PHONY : Dijkstra/DijkstrasHeuristic.o
@@ -911,6 +938,9 @@ help:
 	@echo "... ClusterBasedACO/Clusterer.o"
 	@echo "... ClusterBasedACO/Clusterer.i"
 	@echo "... ClusterBasedACO/Clusterer.s"
+	@echo "... ClusterBasedACO/KMeansClustering.o"
+	@echo "... ClusterBasedACO/KMeansClustering.i"
+	@echo "... ClusterBasedACO/KMeansClustering.s"
 	@echo "... Dijkstra/DijkstrasHeuristic.o"
 	@echo "... Dijkstra/DijkstrasHeuristic.i"
 	@echo "... Dijkstra/DijkstrasHeuristic.s"

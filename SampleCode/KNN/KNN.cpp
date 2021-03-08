@@ -9,7 +9,7 @@
 using namespace std;
 
 /*
- * Finds K nearest neighbours to a customer and randomly picks one from the generated list.
+ * Finds numOfClusters nearest neighbours to a customer and randomly picks one from the generated list.
  * The random nature aims to improve upon greedy euclidean heuristic by forcing movement from local optimums.
  */
 KNN::KNN(int KNN) {
@@ -27,12 +27,12 @@ KNN::KNN(int KNN) {
         v[index] = -1;
     }
 
-    //Generates the K nearest neighbours for all the customers.
+    //Generates the numOfClusters nearest neighbours for all the customers.
     for (int customer = 0; customer <= NUM_OF_CUSTOMERS; ++customer) {
         neighbours[customer] = getKNN(customer,KNN);
     }
 
-    //Generates the route using the K nearest neighbours.
+    //Generates the route using the numOfClusters nearest neighbours.
     generateRoute(KNN);
 
     //Run local searches.
@@ -56,7 +56,7 @@ KNN::KNN(int KNN) {
 
 
 /*
- * Locates the K nearest neighbours to the inputted customer.
+ * Locates the numOfClusters nearest neighbours to the inputted customer.
  */
 int * KNN::getKNN(int customer, int KNN) {
     int *neighbour = new int[KNN];

@@ -331,10 +331,10 @@ void CrossoverOperators::displayList(std::list<int>* list){
  * Generates partitions within the two parent routes based upon breadth first search through the unique edges present in
  * the edge table.
  */
-std::list<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int, std::pair<int, std::string> *>* edgeTable, std::list<int>* degreeList){
-    auto partitions = new std::list<std::list<int>*>();
+std::vector<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int, std::pair<int, std::string> *>* edgeTable, std::list<int>* degreeList){
+    auto partitions = new std::vector<std::list<int>*>();
     auto queue = new std::deque<int>();
-    displayList(degreeList);
+//    displayList(degreeList);
     while(!degreeList->empty()) {
         queue->push_back(degreeList->front());
         auto partition = new std::list<int>();
@@ -354,7 +354,7 @@ std::list<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int, s
                     degreeList->remove(tempArray[i].first);
                     queue->push_back(tempArray[i].first);
                     partition->push_back(tempArray[i].first);
-                    displayList(degreeList);
+//                    displayList(degreeList);
                 }
             }
         }
@@ -395,21 +395,21 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     auto LS = new localSearch(3,3);
 
     //DEBUGGING
-    printf("Current Best : ");
-    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-        printf("%d, ", currentBest[i]);
-    printf("\n");
-    printf("To Combine : ");
-    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-        printf("%d, ", toCombine[i]);
-    printf("\n");
+//    printf("Current Best : ");
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//        printf("%d, ", currentBest[i]);
+//    printf("\n");
+//    printf("To Combine : ");
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//        printf("%d, ", toCombine[i]);
+//    printf("\n");
 
     /*
      * STEP 1:
      * Create edge table.
      */
     auto edgeTable = createEdgeTable(currentBest,toCombine);
-    displayEdgeTable(edgeTable);
+//    displayEdgeTable(edgeTable);
 
     /*
      * STEP 2:
@@ -418,9 +418,9 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     auto degreeList = createDegreeList(edgeTable);
 
     //DEBUGGING
-    for (auto i : *degreeList)
-        printf("%d,",i);
-    printf("\n");
+//    for (auto i : *degreeList)
+//        printf("%d,",i);
+//    printf("\n");
 
     /*
      * STEP 3:
@@ -429,12 +429,19 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     auto partitionList = createPartitions(edgeTable,degreeList);
 
     //DEBUGGING
-    int counter = 1;
+    int smallParitionSize = INT_MAX, smallestPartition = -1,counter = 1;
     for (auto p : *partitionList) {
-        printf("Partition %d: ",counter);
-        for (auto c : *p)
-            printf("%d, ",c);
-        printf("\n");
+//        printf("Partition %d: ",counter);
+        int paritionSize = 0;
+        for (auto c : *p) {
+//            printf("%d, ", c);
+            paritionSize++;
+        }
+//        printf("\n");
+        if(paritionSize < INT_MAX){
+            smallParitionSize = paritionSize;
+            smallestPartition = counter-1;
+        }
         counter++;
     }
 
@@ -446,11 +453,66 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
 
     if(partitionList->size() > 1){
         printf("Success\n");
+        auto partitionA = new std::list<int>();
+        auto partitionB = new std::list<int>();
+
+        for (int customerIndex = 0; customerIndex <=  NUM_OF_CUSTOMERS; ++customerIndex) {
+            for (auto p : *partitionList->at(smallestPartition)) {
+                if(currentBest[customerIndex] == p){
+                    partitionA->push_back(currentBest[customerIndex]);
+                }
+                if(toCombine[customerIndex] == p){
+                    partitionB->push_back(toCombine[customerIndex]);
+                }
+            }
+        }
+
+//        for (auto p : *partitionA)
+//            printf("-%d, ",p);
+//        printf("\n");
+//        for (auto p : *partitionB)
+//            printf("=%d, ",p);
+//        printf("\n");
+
         int *childOne = new int[NUM_OF_CUSTOMERS + 1], *childTwo = new int[NUM_OF_CUSTOMERS + 1];
 
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
-            //TODO GENERATE CHILDREN FROM PARTITIONS.
+            bool check = false;
+            for (auto p : *partitionList->at(smallestPartition)) {
+                if(currentBest[i] == p){
+//                    printf("%d::%d\n",currentBest[i], partitionB->front());
+                    childOne[i] = partitionB->front();
+                    partitionB->pop_front();
+                    check = true;
+                    break;
+                }
+            }
+            if(!check){
+                childOne[i] = currentBest[i];
+            }
         }
+//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//            printf("%d, ", childOne[i]);
+//        printf("\n");
+
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+            bool check = false;
+            for (auto p : *partitionList->at(smallestPartition)) {
+                if(toCombine[i] == p){
+//                    printf("%d::%d\n",toCombine[i], partitionA->front());
+                    childTwo[i] = partitionA->front();
+                    partitionA->pop_front();
+                    check = true;
+                    break;
+                }
+            }
+            if(!check){
+                childTwo[i] = toCombine[i];
+            }
+        }
+//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//            printf("%d, ", childTwo[i]);
+//        printf("\n");
 
         tempChildren[0] = childOne; tempChildren[1] = childTwo;
     }
@@ -462,9 +524,9 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
             child[i] = toCombine[i];
         //printf("-%d\n",childPopulationCounter);
         LS->randomPheromoneLocalSearchWithTwoOpt(child);
-        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-            printf("%d, ",child[i]);
-        printf("\n");
+//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//            printf("%d, ",child[i]);
+//        printf("\n");
         tempChildren[0] = child;
         int* fakeChild = new int[NUM_OF_CUSTOMERS+1];
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)

@@ -61,8 +61,8 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
     resetProbability();
 
     //Instantiates pheromones to a random integer.
-    for (int i = 0; i < Clusterer::numOfClusters; i++) {
-        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+        for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             pheromones[getArcCode(i, j)] = distribution(seed);
         }
     }
@@ -71,10 +71,10 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
     //Creates and instantiates the route arrays which are used to store a route
     //while processing; and the best possible found route.
     routes = new int *[numberOfAnts];
-    bestRoute = new int[Clusterer::numOfClusters];
+    bestRoute = new int[KMeansClustering::numOfClusters];
     for (int ant = 0; ant < numberOfAnts; ant++) {
-        routes[ant] = new int[Clusterer::numOfClusters];
-        for (int customer = 0; customer < Clusterer::numOfClusters; customer++) {
+        routes[ant] = new int[KMeansClustering::numOfClusters];
+        for (int customer = 0; customer < KMeansClustering::numOfClusters; customer++) {
             routes[ant][customer] = -1;
             bestRoute[customer] = -1;
         }
@@ -130,7 +130,7 @@ CACO::~CACO() {
  * Resets the cluster route for the inputted ant all to -1.
  */
 void CACO::resetRoute(int ant) {
-    for (int customer = 0; customer < Clusterer::numOfClusters; customer++)
+    for (int customer = 0; customer < KMeansClustering::numOfClusters; customer++)
         routes[ant][customer] = -1;
 }
 
@@ -150,13 +150,17 @@ void CACO::resetProbability() {
  */
 void CACO::optimize(int iterations) {
     for (int iter = 1; iter <= iterations; iter++) {
+//        printf("MARKER START %d\n",iter);
         for (int ant = 0; ant < numOfAnts; ant++) {
             //While the cluster route for the ant isn't valid.
             //The route is reset and re-calculated.
+
             while (valid(ant)) {
                 resetRoute(ant);
                 route(ant);
+//                printf("MARKER END %d\n",iter);
             }
+
 
             //Calculate the length of the cluster route.
             double routeLength = length(ant);
@@ -165,13 +169,12 @@ void CACO::optimize(int iterations) {
             if (routeLength <
                 bestRouteLength) {
                 bestRouteLength = routeLength;
-                for (int customer = 0; customer < Clusterer::numOfClusters; customer++)
+                for (int customer = 0; customer < KMeansClustering::numOfClusters; customer++)
                     bestRoute[customer] = routes[ant][customer];
             }
-
-
         }
         //Pheromones are updated with the new found routes.
+
         updatePheromones(iter,iterations);
 
 
@@ -181,7 +184,7 @@ void CACO::optimize(int iterations) {
         /*
          * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
          */
-        //LS->randomPheromoneLocalSearchWithTwoOpt(Clusterer::getRouteFromClusters(bestRoute));
+        //LS->randomPheromoneLocalSearchWithTwoOpt(KMeansClustering::getRouteFromClusters(bestRoute));
         //LS->randomLocalSearch();
         //LS->twoOptLocalSearch(bestRoute);
         //LS->randomPheromoneLocalSearchWithTwoOptCluster(bestRoute);
@@ -211,14 +214,14 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
         double routeLength = length(ant);
 
         //Decreases all the pheromones by a constant factor.
-        for (int i = 0; i < Clusterer::numOfClusters; i++) {
-            for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+        for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+            for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
                 pheromones[getArcCode(i, j)] = pheromones[getArcCode(i, j)] * pheromoneDecrease;
             }
         }
 
         //Run local search to improve the route before updating the pheromones.
-//        LS->LKSearch(Clusterer::getRouteFromClusters(routes[ant]));
+//        LS->LKSearch(KMeansClustering::getRouteFromClusters(routes[ant]));
 //        LS->randomPheromoneLocalSearchWithTwoOptCluster(routes[ant]);
 //            LS->randomLocalSearch(routes[ant]);
 
@@ -227,7 +230,7 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
 //        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
-        for (int index = 0; index < Clusterer::numOfClusters-1; index++) {
+        for (int index = 0; index < KMeansClustering::numOfClusters-1; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
@@ -240,15 +243,20 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
  */
 int CACO::getNextCustomer() {
     int count = 0;
+//    printf("START NEXT CUSTOMER\n");
     for (int index = 0; index < probabilitySize; index++) {
         if (probability[index][1] != -1)
             count++;
     }
-
+//    printf("MID %d\n",count);
     std::uniform_int_distribution<int> nextCustomerSelector(0, count - 1);
     int nextCustomer = nextCustomerSelector(seed);
 
-    return (int) probability[nextCustomer][1];
+//    printf("END NEXT CUSTOMER\n");
+    if(count > 0)
+        return (int) probability[nextCustomer][1];
+    else
+        return -1;
 }
 
 /*
@@ -257,13 +265,13 @@ int CACO::getNextCustomer() {
 double CACO::getProbability(int customerA, int customerB, int ant) {
     double pheromone = pheromones[getArcCode(customerA, customerB)];
     //Generates distance based on the closest nodes in the clusters
-    double distance = (Clusterer::getClosestDistance(customerA, customerB) * 1);
+    double distance = (KMeansClustering::getClosestDistance(customerA, customerB) * 1);
 
     double sum = 0.0;
-    for (int customer = 0; customer < Clusterer::numOfClusters; customer++) {
+    for (int customer = 0; customer < KMeansClustering::numOfClusters; customer++) {
         if (CACO::exists(customerA, customer)) {
             if (!visited(ant, customer)) {
-                auto ETA = (double) pow(1 / (Clusterer::getClosestDistance(customerA, customer) * 1), beta);
+                auto ETA = (double) pow(1 / (KMeansClustering::getClosestDistance(customerA, customer) * 1), beta);
                 double TAU = (double) pow(pheromones[getArcCode(customerA, customer)], alpha);
                 sum += ETA * TAU;
             }
@@ -278,27 +286,33 @@ double CACO::getProbability(int customerA, int customerB, int ant) {
  * Generates a route from the DEPOT which can be then evaluated in the optimise function.
  */
 void CACO::route(int ant) {
-    // Start route at depot
+    // Start route at cluster 0.
     routes[ant][0] = DEPOT;
 
     //loop through all but one customer
-    for (int i = 0; i < Clusterer::numOfClusters-1; i++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters-1; i++) {
+//        printf("M %d\n",i);
         int customerA = routes[ant][i];
 
         //loop through all the customers to look for connections
-        for (int customerB = 0; customerB < Clusterer::numOfClusters; customerB++) {
+        for (int customerB = 0; customerB < KMeansClustering::numOfClusters; customerB++) {
+//            printf("-M %d\n",i);
             //If the customerA is the same as the customer selected skip.
             if (customerA == customerB) {
                 continue;
             }
+//            printf("=M %d\n",i);
             //Checks if a path exists between the customers.
             if (CACO::exists(customerA, customerB)) {
+//                printf("/M %d\n",i);
                 //Checks whether the customer has already been visited.
                 if (!visited(ant, customerB)) {
+//                    printf(":M %d\n",i);
                     //Calculates the probability from A to B, if its better than the current probability
                     //set the current next customer to B.
                     double prob = getProbability(customerA, customerB, ant);
-                    for (int index = 0; index < probabilitySize; index++) {
+//                    printf("%d:%d=%f\n",customerA,customerB,prob);
+                        for (int index = 0; index < probabilitySize; index++) {
                         if (prob > probability[index][0]) {
                             probability[index][0] = prob;
                             probability[index][1] = (double) customerB;
@@ -308,10 +322,13 @@ void CACO::route(int ant) {
                 }
 
             }
+//            printf("+M %d\n",i);
         }
 
         //Gets the next customer based on the calculated probabilities.
         int nextCustomer = getNextCustomer();
+//        printf("MARK\n");
+
         //Checks for deadlock.
         if (nextCustomer == -1)
             return;
@@ -320,20 +337,22 @@ void CACO::route(int ant) {
         routes[ant][i + 1] = nextCustomer;
         resetProbability();
     }
+//    printf("ROUTE END\n");
 }
 
 /*
  * Checks whether then is an arc from A to B.
  */
 bool CACO::exists(int customerA, int customerB) {
-    return (Clusterer::getClosestDistance(customerA, customerB) > 0);
+//    printf("%d -- %d\n",customerA, customerB);
+    return (KMeansClustering::getClosestDistance(customerA, customerB) != INT_MAX);
 }
 
 /*
  * Determines whether a route is valid, essentially the termination criteria for route searching.
  */
 bool CACO::valid(int ant) {
-    for (int i = 0; i < Clusterer::numOfClusters-1; i++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters-1; i++) {
         //Checks customers are valid.
         int customerA = routes[ant][i];
         int customerB = routes[ant][i + 1];
@@ -353,7 +372,7 @@ bool CACO::valid(int ant) {
     }
 
     //Checks that there is an arc from the last customer to the DEPOT.
-    if (!CACO::exists(DEPOT, routes[ant][Clusterer::numOfClusters-1])) {
+    if (!CACO::exists(DEPOT, routes[ant][KMeansClustering::numOfClusters-1])) {
         return true;
     }
 
@@ -367,7 +386,7 @@ bool CACO::valid(int ant) {
  * Checks whether the customer has already been visited by the current ant.
  */
 bool CACO::visited(int ant, int customer) {
-    for (int index = 0; index < Clusterer::numOfClusters; index++) {
+    for (int index = 0; index < KMeansClustering::numOfClusters; index++) {
         //No customer at that index
         if (routes[ant][index] == -1)
             break;
@@ -384,8 +403,8 @@ bool CACO::visited(int ant, int customer) {
  */
 double CACO::length(int ant) {
     double total_length = 0.0;
-    for (int customer = 0; customer < Clusterer::numOfClusters-1; customer++) {
-        total_length += Clusterer::getClosestDistance(routes[ant][customer], routes[ant][customer + 1]);
+    for (int customer = 0; customer < KMeansClustering::numOfClusters-1; customer++) {
+        total_length += KMeansClustering::getClosestDistance(routes[ant][customer], routes[ant][customer + 1]);
     }
     return total_length;
 }
@@ -394,7 +413,7 @@ double CACO::length(int ant) {
  * Getter method, returns the current best route stored in the object for use in other class files.
  */
 int *CACO::returnResults() {
-    return Clusterer::getRouteFromClusters(bestRoute);
+    return KMeansClustering::getRouteFromClusters(bestRoute);
 }
 
 /*
@@ -404,6 +423,7 @@ int *CACO::returnResults() {
 double CACO::getRL(int *route) {
 
     LS->randomPheromoneLocalSearchWithTwoOpt(route);
+//    LS->twoOptLocalSearch(route);
 //    LS->LKSearch(route);
     return GenerateTour::getRouteLength(route);
 }

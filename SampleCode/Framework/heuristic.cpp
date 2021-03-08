@@ -11,6 +11,7 @@
 #include "../GeneticAlgorithm/GAHeuristic.h"
 #include "../ClusterBasedACO//CACOHeuristic.h"
 #include "../ClusterBasedACO//Clusterer.h"
+#include "../ClusterBasedACO//KMeansClustering.h"
 #include "../ChainedLKSearch/CLKSearchHeuristic.h"
 //#include "heuristic.hpp"
 #include <chrono>
@@ -37,7 +38,8 @@ void initialize_heuristic() {
     ).count();
 
     //Generates clusters from the input file.
-    Clusterer::createClusters(4);
+    //Clusterer::createClusters(4);
+//    KMeansClustering::createClusters(4);
 }
 
 
@@ -58,13 +60,13 @@ void run_heuristic() {
     /*
      * Evolutionary Algorithms
      */
-    //GAHeuristic();
+    GAHeuristic();
     //ACOHeuristic();
     //ACOCSHeuristic();
     //MMACOHeuristic();
 
     //Cluster ACO for Large Data Sets.
-    CACOHeuristic();
+//    CACOHeuristic();
 }
 
 /*
@@ -82,7 +84,10 @@ void end_heuristic(){
     printf("time %ld milliseconds\n",ms);
     printf("time %f seconds\n",((double)ms/(double)1000));
     printf("\n");
-    Clusterer::freeClusters();
+
+    //Clustering.
+    //Clusterer::freeClusters();
+//    KMeansClustering::freeClusters();
 }
 
 /*

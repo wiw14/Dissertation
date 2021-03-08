@@ -11,7 +11,7 @@ void CACOHeuristic(){
     a->optimize(iterations);
     int * route = a->returnResults();
 
-    a->getRL(route);
+//    a->getRL(route);
 
     delete a;
 }

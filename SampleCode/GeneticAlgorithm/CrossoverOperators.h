@@ -15,7 +15,7 @@ private:
     static std::map<int, std::pair<int, std::string> *>* createEdgeTable(int*,int*);
     static void displayEdgeTable(std::map<int, std::pair<int, std::string> *>*);
     static std::list<int>* createDegreeList(std::map<int, std::pair<int, std::string> *>*);
-    static std::list<std::list<int>*>* createPartitions(std::map<int, std::pair<int, std::string> *>*, std::list<int>* );
+    static std::vector<std::list<int>*>* createPartitions(std::map<int, std::pair<int, std::string> *>*, std::list<int>* );
     static bool checkIfCustomerVisited(std::list<int>*, int);
     static void displayList(std::list<int>*);
 public:
