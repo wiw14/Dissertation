@@ -30,7 +30,6 @@ localSearch::~localSearch() {
  * Lin-Kernighan Heuristic
  * Version 3.
  */
-
 void localSearch::LKSearch(int *bestRoute) {
 
 }
