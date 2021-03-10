@@ -52,7 +52,7 @@ void run_heuristic() {
     /*
     * Shortest Path Algorithms.
     */
-    //greedyHeuristic();
+//    greedyHeuristic();
     //randomHeuristic();
 //    DijkstrasHeuristic();
     //KNNHeuristic();
@@ -63,10 +63,10 @@ void run_heuristic() {
     /*
      * Evolutionary Algorithms
      */
-//    GAHeuristic();
+    GAHeuristic();
 //    ACOHeuristic();
     //ACOCSHeuristic();
-    MMACOHeuristic();
+//    MMACOHeuristic();
 
     //Cluster ACO for Large Data Sets.
 //    CACOHeuristic();
