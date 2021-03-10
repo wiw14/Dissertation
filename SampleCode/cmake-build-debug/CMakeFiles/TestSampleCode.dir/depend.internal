@@ -7,6 +7,7 @@ CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
@@ -188,6 +189,7 @@ CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
+ /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.cpp
  /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h

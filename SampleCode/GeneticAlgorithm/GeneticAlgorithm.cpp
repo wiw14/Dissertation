@@ -1,4 +1,5 @@
 #include "GeneticAlgorithm.h"
+#include "../Framework/stats.hpp"
 
 /*
  * ================================================================================ *
@@ -160,6 +161,7 @@ void GeneticAlgorithm::runGenerations() {
 //        randomMutateChildren();
 //        printf("Before Selection\n");
         selectChildrenForParents();
+        addRunDataToFile(x,GenerateTour::getRouteLength(parentPopulation[0]));
 //        printf("END GENERATION\n");
         //repairParents();
     }

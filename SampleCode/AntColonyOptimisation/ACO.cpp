@@ -2,6 +2,7 @@
 #include <functional>
 #include "ACO.h"
 #include<string>
+#include "../Framework/stats.hpp"
 #include "../GreedyEuclidean/greedyEuclideanHeuristic.h"
 
 /*
@@ -202,6 +203,7 @@ double ACO::amountOfPheromone(double routeLength) const {
  * Iterates over all the ants, updating the pheromones for the customers used in the route.
  */
 void ACO::updatePheromones(int iterations,int maxIterations) {
+    double total = 0.0;
     for (int ant = 0; ant < numOfAnts; ant++) {
         double routeLength = length(ant);
 
@@ -218,6 +220,7 @@ void ACO::updatePheromones(int iterations,int maxIterations) {
 //            LS->randomLocalSearch(routes[ant]);
 //        LS->randomPheromoneLocalSearch(routes[ant]);
 //        LS->twoOptLocalSearch(routes[ant]);
+        total += GenerateTour::getRouteLength(routes[ant]);
 
         //For visualisation
 //        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
@@ -228,7 +231,8 @@ void ACO::updatePheromones(int iterations,int maxIterations) {
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
     }
-
+    total = total/numOfAnts;
+    addRunDataToFile(iterations,total);
 }
 
 /*

@@ -16,6 +16,10 @@
 CLKSearch.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ChainedLKSearch/CLKSearch.h
 
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
+KMeansClustering.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.h
+
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h
@@ -80,6 +84,8 @@ chrono
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
 
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
+
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
 list
 -
@@ -95,6 +101,14 @@ GAHeuristic.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.h
 GeneticAlgorithm.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.cpp
+GeneticAlgorithm.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h
+../Framework/stats.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
+../ClusterBasedACO/CACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h
 ../GeneticAlgorithm/CrossoverOperators.h
