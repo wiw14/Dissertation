@@ -71,8 +71,10 @@ int *generateCostTable(int sizeOfAlphabet, std::vector<int *> clusters, int *siz
 }
 
 void ACOOnClusters() {
-    int numAnts = 4, iterations = 15, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
-    double pheromoneDecrease = 0.9, Q = 1, alpha = 0.9, beta = 0.9;
+    int numAnts = 3, iterations = 18, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
+    double pheromoneDecrease = 0.9, Q = 1, alpha = 0.9, beta = 0.7;
+//    int numAnts = 4, iterations = 15, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
+//    double pheromoneDecrease = 0.9, Q = 1, alpha = 0.9, beta = 0.9;
 
     auto cluster = new Cluster();
 
@@ -113,9 +115,22 @@ void ACOOnClusters() {
 //        printf("%d, ",r[i]);
 //    }printf("\n");
     auto* LS = new localSearch(3,3);
-    LS->randomPheromoneLocalSearchWithTwoOpt(r);
-    LS->randomPheromoneLocalSearchWithTwoOpt(r);
-    GenerateTour::getRouteLength(r);
+    for (int i = 0; i < 3; ++i) {
+//        int* temp = new int[NUM_OF_CUSTOMERS+1];
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            temp[j] = r[j];
+//        }
+        LS->randomPheromoneLocalSearchWithTwoOpt(r);
+//        bool change = false;
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            if(r[j] != temp[j])
+//                change = true;
+//        }
+//        delete[]temp;
+//        if(change)
+//            break;
+    }
+//    GenerateTour::getRouteLength(r);
 
     delete LS;
     delete cluster;

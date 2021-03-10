@@ -58,7 +58,7 @@ void run_heuristic() {
     //KNNHeuristic();
     //CLKSearchHeuristic();
 
-    ACOOnClustersHeuristic();
+//    ACOOnClustersHeuristic();
 
     /*
      * Evolutionary Algorithms
@@ -66,7 +66,7 @@ void run_heuristic() {
 //    GAHeuristic();
 //    ACOHeuristic();
     //ACOCSHeuristic();
-//    MMACOHeuristic();
+    MMACOHeuristic();
 
     //Cluster ACO for Large Data Sets.
 //    CACOHeuristic();
