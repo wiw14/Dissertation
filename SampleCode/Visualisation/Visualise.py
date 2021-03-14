@@ -182,5 +182,5 @@ def displayList():
 
 
 readFile()
-# displayList()
-displayTemp()
+displayList()
+# displayTemp()

@@ -187,7 +187,7 @@ void GeneticAlgorithm::crossoverOperator() {
         childPopulation[childPopulationCounter++] = getCACO();
 //        printf("CONTINGENCY\n");
     }
-    printf("\n");
+//    printf("\n");
 }
 
 /*

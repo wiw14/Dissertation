@@ -15,12 +15,21 @@ def readFile(runNum):
     file.close()
 
 def plotRunData(runNum):
+    minVal = min(scores)
+    minIter =[]
+    minScores = []
+    for s in range(0,len(scores)):
+        if(scores[s] == minVal):
+            minIter.append(iterations[s])
+            minScores.append(scores[s])
     fig,ax = plt.subplots()
     plt.title("Run "+str(runNum))
     ax.scatter(iterations,scores)
+    ax.scatter(minIter,minScores)
+    print("MIN SCORE: "+str(minVal))
     m, b = np.polyfit(iterations,scores,1)
     x = np.array(iterations)
-    plt.plot(x, m*x+b)
+    plt.plot(x, m*x+b,'k')
     plt.draw()
     plt.show()
 

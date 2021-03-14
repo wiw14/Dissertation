@@ -3,6 +3,7 @@
 #include <climits>
 #include <functional>
 #include<string>
+#include "../Framework/stats.hpp"
 
 /*
  * ================================================================================ *
@@ -155,7 +156,9 @@ void ClusterACO::resetProbability() {
  */
 void ClusterACO::optimize(int iterations) {
     int improve = 0;
+    int count = 0;
     while(improve < iterations){
+        count++;
 //    for (int iter = 1; iter <= iterations; iter++) {
         for (int ant = 0; ant < numOfAnts; ant++) {
             //While the route for the ant isn't valid.
@@ -181,8 +184,7 @@ void ClusterACO::optimize(int iterations) {
         }
         improve++;
         //Pheromones are updated with the new found routes.
-        updatePheromones(0,iterations);
-
+        updatePheromones(count,iterations);
 
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
@@ -240,7 +242,6 @@ void ClusterACO::updatePheromones(int iterations,int maxIterations) {
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
     }
-
 }
 
 /*
