@@ -13,44 +13,150 @@ bool sortCriteria(std::pair<int *, double> A, std::pair<int *, double> B) {
 int** Selection::greedySelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation) {
     auto children = new std::vector<std::pair<int *, double>>;
     int** parentPopulation = new int*[sizeOfPopulation];
-    //DEBUGGING
-//    printf("Number Children = %d\n", childPopulationCounter);
-//    for (int i = 0; i < childPopulationCounter; ++i) {
-//        printf("childs %d\n", i);
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("%d, ", childPopulation[i][j]);
-//        }
-//        printf("\n");
-//    }
-
 
     for (int popCounter = 0; popCounter < childPopulationCounter; ++popCounter)
         children->push_back({childPopulation[popCounter], GenerateTour::getBasicLength(childPopulation[popCounter])});
 
     std::sort(children->begin(), children->end(), sortCriteria);
 
-    //DEBUGGING
-//    for (auto & i : *children) {
-//        printf("%f, ",i.second);
-//    }printf("\n");
+    for (int popCounter = 0; popCounter < sizeOfPopulation; ++popCounter) {
+        parentPopulation[popCounter] = children->back().first;
+        children->pop_back();
+    }
 
+    for (auto &i : *children) {
+        delete[] children->back().first;
+        children->pop_back();
+    }
+
+    return parentPopulation;
+}
+
+int** Selection::firstHalf(int** childPopulation, int childPopulationCounter,int sizeOfPopulation){
+    auto children = new std::vector<std::pair<int *, double>>;
+    int** parentPopulation = new int*[sizeOfPopulation];
+
+    for (int popCounter = 0; popCounter < childPopulationCounter; ++popCounter)
+        children->push_back({childPopulation[popCounter], GenerateTour::getBasicLength(childPopulation[popCounter])});
+
+    std::sort(children->begin(), children->end(), sortCriteria);
 
     for (int popCounter = 0; popCounter < sizeOfPopulation; ++popCounter) {
         parentPopulation[popCounter] = children->back().first;
         children->pop_back();
     }
 
-    //DEBUGGING
-//    for (auto & i : *children) {
-//        printf("%f, ",i.second);
-//    }printf("\n");
+    return parentPopulation;
+}
 
-
-    for (auto &i : *children) {
-        delete[] children->back().first;
-        children->pop_back();
+int Selection::calculateHammingDistance(const int * parent, const int * child) {
+    int hamming = 0;
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index) {
+//        printf("%d:%d, ",parent[index],child[index]);
+        if(parent[index] != child[index])
+            hamming++;
     }
-//    *childPopulationCounter = 0;
+//    printf("\n");
+    return hamming;
+}
+
+int** Selection::generateHammingDistanceArray(int** childPopulation,int childPopulationCounter, int** firstHalf,int sizeOfPopulation){
+    int** hammingTable = new int*[childPopulationCounter];
+    for (int i = 0; i < childPopulationCounter; ++i) {
+        hammingTable[i] = new int[sizeOfPopulation];
+        for (int j = 0; j < sizeOfPopulation; ++j) {
+            hammingTable[i][j] = 0;
+        }
+    }
+//    printf("child = %d, pop = %d\n",childPopulationCounter,sizeOfPopulation);
+
+    for (int childPopIndex = 0; childPopIndex < childPopulationCounter; ++childPopIndex) {
+        for (int parentPopIndex = 0; parentPopIndex < sizeOfPopulation; ++parentPopIndex) {
+            int HD = calculateHammingDistance(firstHalf[parentPopIndex],childPopulation[childPopIndex]);
+            if (HD > 0) {
+                hammingTable[childPopIndex][parentPopIndex] = HD;
+            }
+            else{
+                for (int parentPopIndexTwo = 0; parentPopIndexTwo < sizeOfPopulation; ++parentPopIndexTwo) {
+                    hammingTable[childPopIndex][parentPopIndexTwo] = 0;
+                }
+                break;
+            }
+        }
+    }
+//    printf("DONE\n");
+
+    return hammingTable;
+}
+
+int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation){
+//    for (int i = 0; i < sizeOfPopulation; ++i) {
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            printf("%d, ",childPopulation[i][j]);
+//        }printf("\n");
+//    }
+
+    int** firstHalf = Selection::firstHalf(childPopulation,childPopulationCounter,(sizeOfPopulation+1)/2);
+    int** parentPopulation = new int*[sizeOfPopulation];
+    for (int i = 0; i < (sizeOfPopulation+1)/2; ++i) {
+        parentPopulation[i] = firstHalf[i];
+    }
+    int** hammingDistance = generateHammingDistanceArray(childPopulation,childPopulationCounter,firstHalf,sizeOfPopulation/2);
+//    printf("Pop:%d\n",sizeOfPopulation);
+
+//    for (int i = 0; i < childPopulationCounter; ++i) {
+//        for (int j = 0; j < sizeOfPopulation/2; ++j) {
+//            printf("%d,%d = %d\n",i,j,hammingDistance[i][j]);
+//        }
+//    }
+
+//    for (int i = 0; i < sizeOfPopulation; ++i) {
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            printf("%d, ",parentPopulation[i][j]);
+//        }printf("\n");
+//    }
+
+    int popCounter = (sizeOfPopulation+1)/2;
+    for (int popIndex = 0; popIndex < sizeOfPopulation/2; ++popIndex) {
+        int mostDiverseIndex = -1;
+        int mostDiverse = 0;
+        for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
+            if(hammingDistance[childIndex][popIndex] == 0){
+                continue;
+            }
+            else{
+                if(mostDiverse < hammingDistance[childIndex][popIndex]){
+                    mostDiverseIndex = childIndex;
+                    mostDiverse = hammingDistance[childIndex][popIndex];
+                }
+            }
+        }
+        for (int i = 0; i < sizeOfPopulation/2; ++i) {
+            hammingDistance[mostDiverseIndex][i] = 0;
+        }
+        parentPopulation[popCounter++] = childPopulation[mostDiverseIndex];
+    }
+    for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
+        bool childUsed = false;
+        for (int popIndex = 0; popIndex < sizeOfPopulation; ++popIndex) {
+            if (childPopulation[childIndex] == parentPopulation[popIndex]) {
+                childUsed = true;
+                break;
+            }
+        }
+        if (!childUsed) {
+            delete[] childPopulation[childIndex];
+        }
+    }
+
+        for (int i = 0; i < sizeOfPopulation; ++i) {
+        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+            printf("%d, ",parentPopulation[i][j]);
+        }printf("\n");
+    }
+
+    delete[] firstHalf;
+    delete[] hammingDistance;
 
     return parentPopulation;
 }

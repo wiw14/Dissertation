@@ -98,16 +98,17 @@ int* GeneticAlgorithm::getCACO(){
  * Creates a random population of children which are then selected to be parents.
  */
 void GeneticAlgorithm::generateStartingPopulation() {
-//    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
-//        randomRoute(childPopulation[populationIndex]);
-//        childPopulationCounter++;
-//    }
-//    selectChildrenForParents();
-
-    for (int i = 0; i < sizeOfPopulation; ++i) {
-        parentPopulation[i] = getCACO();
+    //Random Starting Population
+    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
+        randomRoute(childPopulation[populationIndex]);
+        childPopulationCounter++;
     }
-//    printf("Finished Start POP\n");
+    selectChildrenForParents();
+
+    //Clustered ACO starting population.
+//    for (int i = 0; i < sizeOfPopulation; ++i) {
+//        parentPopulation[i] = getCACO();
+//    }
 }
 
 /*
@@ -154,15 +155,11 @@ std::pair<int *, int> GeneticAlgorithm::getBestRoute() {
  */
 void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
-//        printf("GENERATION %d\n",x);
         childPopulationCounter = 0;
-//        printf("Before Crossover\n");
         crossoverOperator();
-//        randomMutateChildren();
-//        printf("Before Selection\n");
+        randomMutateChildren();
         selectChildrenForParents();
         addRunDataToFile(x,best_sol->tour_length);
-//        printf("END GENERATION\n");
         //repairParents();
     }
 }
@@ -172,9 +169,9 @@ void GeneticAlgorithm::runGenerations() {
  */
 void GeneticAlgorithm::crossoverOperator() {
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+//        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-//        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter++] = tempChildren[0];
@@ -201,7 +198,10 @@ void GeneticAlgorithm::selectChildrenForParents() {
 //            printf("%d, ",childPopulation[i][j]);
 //        }printf("\n");
 //    }
-    parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+
+//    parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    parentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+
     childPopulationCounter = 0;
 //    printf("END SELECTION\n");
 }

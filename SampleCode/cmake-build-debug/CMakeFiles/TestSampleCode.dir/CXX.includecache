@@ -16,39 +16,15 @@ string
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
-list
--
-deque
--
-../GeneticAlgorithm/Mutation.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.cpp
-GAHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.h
-GeneticAlgorithm.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h
-../GeneticAlgorithm/CrossoverOperators.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h
-deque
--
-list
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.h
-../GeneticAlgorithm/Selection.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.h
-
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.h
 ../LocalSearchAndGenerateTour/LocalSearches.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 list
 -
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.cpp
+Selection.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.h
 RepairOperators.h
