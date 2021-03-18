@@ -161,7 +161,7 @@ void GeneticAlgorithm::runGenerations() {
 //        randomMutateChildren();
 //        printf("Before Selection\n");
         selectChildrenForParents();
-        addRunDataToFile(x,GenerateTour::getRouteLength(parentPopulation[0]));
+        addRunDataToFile(x,best_sol->tour_length);
 //        printf("END GENERATION\n");
         //repairParents();
     }
