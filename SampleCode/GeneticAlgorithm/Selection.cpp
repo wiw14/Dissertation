@@ -96,13 +96,12 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
 //        }printf("\n");
 //    }
 
-    int** firstHalf = Selection::firstHalf(childPopulation,childPopulationCounter,(sizeOfPopulation+1)/2);
+    int** firstHalf = Selection::firstHalf(childPopulation,childPopulationCounter,(sizeOfPopulation)/2);
     int** parentPopulation = new int*[sizeOfPopulation];
     for (int i = 0; i < (sizeOfPopulation+1)/2; ++i) {
         parentPopulation[i] = firstHalf[i];
     }
-    int** hammingDistance = generateHammingDistanceArray(childPopulation,childPopulationCounter,firstHalf,sizeOfPopulation/2);
-//    printf("Pop:%d\n",sizeOfPopulation);
+    int** hammingDistance = generateHammingDistanceArray(childPopulation,childPopulationCounter,firstHalf,(sizeOfPopulation)/2);
 
 //    for (int i = 0; i < childPopulationCounter; ++i) {
 //        for (int j = 0; j < sizeOfPopulation/2; ++j) {
@@ -110,14 +109,10 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
 //        }
 //    }
 
-//    for (int i = 0; i < sizeOfPopulation; ++i) {
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("%d, ",parentPopulation[i][j]);
-//        }printf("\n");
-//    }
 
-    int popCounter = (sizeOfPopulation+1)/2;
+    int popCounter = (sizeOfPopulation)/2;
     for (int popIndex = 0; popIndex < sizeOfPopulation/2; ++popIndex) {
+//        printf("Pop:%d\n",popIndex);
         int mostDiverseIndex = -1;
         int mostDiverse = 0;
         for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
@@ -136,6 +131,27 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
         }
         parentPopulation[popCounter++] = childPopulation[mostDiverseIndex];
     }
+
+    if(sizeOfPopulation%2 != 0){
+        int mostDiverseIndex = -1;
+        int mostDiverse = 0;
+        for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
+            if(hammingDistance[childIndex][0] == 0){
+                continue;
+            }
+            else{
+                if(mostDiverse < hammingDistance[childIndex][0]){
+                    mostDiverseIndex = childIndex;
+                    mostDiverse = hammingDistance[childIndex][0];
+                }
+            }
+        }
+        for (int i = 0; i < sizeOfPopulation/2; ++i) {
+            hammingDistance[mostDiverseIndex][i] = 0;
+        }
+        parentPopulation[popCounter++] = childPopulation[mostDiverseIndex];
+    }
+
     for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
         bool childUsed = false;
         for (int popIndex = 0; popIndex < sizeOfPopulation; ++popIndex) {
@@ -149,11 +165,11 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
         }
     }
 
-        for (int i = 0; i < sizeOfPopulation; ++i) {
-        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-            printf("%d, ",parentPopulation[i][j]);
-        }printf("\n");
-    }
+//        for (int i = 0; i < sizeOfPopulation; ++i) {
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            printf("%d, ",parentPopulation[i][j]);
+//        }printf("\n");
+//    }
 
     delete[] firstHalf;
     delete[] hammingDistance;

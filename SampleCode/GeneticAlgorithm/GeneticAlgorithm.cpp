@@ -98,17 +98,17 @@ int* GeneticAlgorithm::getCACO(){
  * Creates a random population of children which are then selected to be parents.
  */
 void GeneticAlgorithm::generateStartingPopulation() {
+//    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
+//        randomRoute(childPopulation[populationIndex]);
+//        childPopulationCounter++;
+//    }
     //Random Starting Population
-    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
-        randomRoute(childPopulation[populationIndex]);
-        childPopulationCounter++;
-    }
-    selectChildrenForParents();
+//    selectChildrenForParents();
 
     //Clustered ACO starting population.
-//    for (int i = 0; i < sizeOfPopulation; ++i) {
-//        parentPopulation[i] = getCACO();
-//    }
+    for (int i = 0; i < sizeOfPopulation; ++i) {
+        parentPopulation[i] = getCACO();
+    }
 }
 
 /*
@@ -129,8 +129,9 @@ void GeneticAlgorithm::displayPopulation() {
  * Frees routes from a population.
  */
 void GeneticAlgorithm::deleteSegmentOfArray(int **population, int begin, int end) {
-    for (int popCounter = begin; popCounter < end; ++popCounter)
+    for (int popCounter = end-1; popCounter >= begin; --popCounter) {
         delete[] population[popCounter];
+    }
 }
 
 /*
@@ -157,7 +158,7 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
-        randomMutateChildren();
+//        randomMutateChildren();
         selectChildrenForParents();
         addRunDataToFile(x,best_sol->tour_length);
         //repairParents();
@@ -169,9 +170,9 @@ void GeneticAlgorithm::runGenerations() {
  */
 void GeneticAlgorithm::crossoverOperator() {
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-//        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+//        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter++] = tempChildren[0];
@@ -191,16 +192,27 @@ void GeneticAlgorithm::crossoverOperator() {
  * Uses a selection operator to select viable children to be parents.
  */
 void GeneticAlgorithm::selectChildrenForParents() {
-    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
 //    printf("BEFORE SELECTION\n");
+//        for (int i = 0; i < sizeOfPopulation; ++i) {
+//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//            printf("%d, ",parentPopulation[i][j]);
+//        }printf("\n");
+//    }
+    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
 //    for (int i = 0; i < childPopulationCounter; ++i) {
 //        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
 //            printf("%d, ",childPopulation[i][j]);
 //        }printf("\n");
 //    }
 
-//    parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-    parentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+//    parentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+//        for (int i = 0; i < sizeOfPopulation; ++i) {
+//            for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+//                printf("%d, ", parentPopulation[i][j]);
+//            }
+//            printf("\n");
+//        }
 
     childPopulationCounter = 0;
 //    printf("END SELECTION\n");
