@@ -33,10 +33,34 @@ def plotRunData(runNum):
     plt.draw()
     plt.show()
 
-for x in range(1,21):
-    readFile(x)
-    plotRunData(x)
-    scores = []
-    iterations = []
+def plotAllRunData():
+    global scores, iterations
+    fig = plt.figure()
+    for x in range(1,21):
+        readFile(x)
+        ax = fig.add_subplot(4, 5, x)
+        minVal = min(scores)
+        minIter =[]
+        minScores = []
+        for s in range(0,len(scores)):
+            if(scores[s] == minVal):
+                minIter.append(iterations[s])
+                minScores.append(scores[s])
 
+        ax.scatter(iterations,scores)
+        ax.scatter(minIter,minScores)
+        m, b = np.polyfit(iterations,scores,1)
+        x = np.array(iterations)
+        plt.plot(x, m*x+b,'k')
+        plt.draw()
+        scores = []
+        iterations = []
+    plt.show()
+
+# for x in range(1,21):
+#     readFile(x)
+#     plotRunData(x)
+#     scores = []
+#     iterations = []
+plotAllRunData()
 

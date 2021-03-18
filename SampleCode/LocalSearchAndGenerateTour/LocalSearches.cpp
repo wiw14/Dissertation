@@ -345,6 +345,7 @@ void localSearch::randomLocalSearch(int *bestRoute) {
     double route_length = GenerateTour::getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
+
     while (new_route_length >= route_length && iters < randomSearchIteration) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
