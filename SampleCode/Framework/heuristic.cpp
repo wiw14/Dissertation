@@ -63,8 +63,8 @@ void run_heuristic() {
     /*
      * Evolutionary Algorithms
      */
-    GAHeuristic();
-//    ACOHeuristic();
+//    GAHeuristic();
+    ACOHeuristic();
     //ACOCSHeuristic();
 //    MMACOHeuristic();
 
