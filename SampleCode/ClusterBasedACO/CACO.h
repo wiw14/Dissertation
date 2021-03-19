@@ -4,7 +4,8 @@
 
 #ifndef TESTSAMPLECODE_CACO_H
 #define TESTSAMPLECODE_CACO_H
-#include "Clusterer.h"
+//#include "Clusterer.h"
+#include "KMeansClustering.h"
 
 class CACO {
 private:

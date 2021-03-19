@@ -9,10 +9,10 @@
  */
 void GAHeuristic() {
 
-    int sizeOfPopulation = 10, generations = 20, numMutations = 150;
+    int sizeOfPopulation = 15, generations = 10, numMutations = 10;
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
     GA->generateStartingPopulation();
-
+//    printf("Before Generations\n");
     GA->runGenerations();
 //    ////FORCE STOP THE PROGRAM AFTER ONE ITERATION.
 //    int a[10] = {5, 4, 2, 3, 6, 7, 4, 4, 7, 6};

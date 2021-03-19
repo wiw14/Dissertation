@@ -25,6 +25,7 @@ private:
     void repairParents();
     void crossoverOperator();
     void randomMutateChildren();
+    int* getCACO();
 
 public:
     GeneticAlgorithm(int,int,int);

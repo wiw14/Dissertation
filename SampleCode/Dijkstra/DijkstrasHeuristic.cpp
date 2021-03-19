@@ -24,7 +24,7 @@ using namespace std;
 bool *visited;
 
 /*
- * Finds K nearest neighbours to the inputted customer.
+ * Finds numOfClusters nearest neighbours to the inputted customer.
  */
 int **findAdjacentNodes(int center) {
     int **closestNodes;
@@ -38,7 +38,7 @@ int **findAdjacentNodes(int center) {
         closestNodes[index][1] = INT_MAX;
     }
 
-    //Loop through all customers and find K closest neighbours.
+    //Loop through all customers and find numOfClusters closest neighbours.
     for (int index = 0; index <= NUM_OF_CUSTOMERS; index++) {
         if (index != center && !visited[index]) {
             dist = get_distance(center, index);

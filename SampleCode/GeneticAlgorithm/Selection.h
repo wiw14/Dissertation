@@ -11,5 +11,9 @@
 class Selection {
 public:
     static int** greedySelection(int **, int, int);
+    static int** correlativeFamilyBasedSelection(int **, int, int);
+    static int** firstHalf(int **, int, int);
+    static int** generateHammingDistanceArray(int**,int, int**,int);
+    static int calculateHammingDistance(const int*,const int*);
 };
 #endif //TESTSAMPLECODE_SELECTION_H

@@ -64,8 +64,10 @@ int main(int argc, char *argv[]) {
         int count = 1;
         while(!termination_condition()){
             //Execute your heuristic
+            openRunDataFile(run);
             run_heuristic();  //heuristic.h
             //printf("iter %d - eval %f, termination %d\n",count++,get_evals(),TERMINATION);
+            closeRunDataFile(run);
         }
 
 

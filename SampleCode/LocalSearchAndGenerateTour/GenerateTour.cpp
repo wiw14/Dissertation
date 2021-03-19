@@ -556,6 +556,7 @@ double GenerateTour::getRouteLength(const int *routeA) {
 
     double route_length = fitness_evaluation(tour, step);
     if (route_length < best_sol->tour_length && checkSolution(tour, step)) {
+//        printf("%f :: %f\n",best_sol->tour_length,route_length);
         check_solution(tour, step);
 
         //clean Route

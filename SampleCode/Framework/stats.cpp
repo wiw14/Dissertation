@@ -18,6 +18,7 @@ using namespace std;
 //Used to output offline performance and population diversity
 
 FILE *log_performance;
+FILE *runDataFile;
 //output files
 char *perf_filename;
 
@@ -31,6 +32,18 @@ double* perf_of_trials;
  */
 void openTourFile(void){
     if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\Data\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
+}
+
+void openRunDataFile(int run){
+    if ((runDataFile = fopen((R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\Data\RunData)" + std::to_string(run) + ".txt").c_str(),"w")) == NULL) { printf("ERROR\n");}
+}
+
+void addRunDataToFile(int iteration, double score){
+    fprintf(runDataFile,"%d %f\n",iteration,score);
+}
+
+void closeRunDataFile(int run){
+    fclose(runDataFile);
 }
 
 /*

@@ -6,9 +6,9 @@
 #include "KNN.h"
 
 /*
- * Creates KNN object which calculates an optimal route based on K nearest neighbours.
+ * Creates KNN object which calculates an optimal route based on numOfClusters nearest neighbours.
  */
 void KNNHeuristic(){
-    //K is passed into the constructor.
+    //numOfClusters is passed into the constructor.
     KNN* knn = new KNN(4);
 }

@@ -15,8 +15,8 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
             localSearchPheromone[GenerateTour::getArcCode(i, j)] = 1;
         }
     }
-    for (int i = 0; i < Clusterer::numOfClusters; i++) {
-        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+        for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] = 1;
         }
     }
@@ -27,38 +27,46 @@ localSearch::~localSearch() {
 }
 
 /*
- * Lin-Kernighan Heuristic.
- * Version 2.
+ * Lin-Kernighan Heuristic
+ * Version 3.
  */
 void localSearch::LKSearch(int *bestRoute) {
-    double bestLength = GenerateTour::getRouteLength(bestRoute);
-    for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
-        if (get_distance(bestRoute[customer], bestRoute[customer + 1]) >
-            get_distance(bestRoute[customer], bestRoute[NUM_OF_CUSTOMERS])) {
-            int tempRoute[NUM_OF_CUSTOMERS + 1], tempRouteIndex = 0;
 
-            for (int forwardCustomer = 0; forwardCustomer <= customer; ++forwardCustomer)
-                tempRoute[tempRouteIndex++] = bestRoute[forwardCustomer];
-
-
-            for (int reverseCustomer = NUM_OF_CUSTOMERS; reverseCustomer > customer; --reverseCustomer) {
-                tempRoute[tempRouteIndex++] = bestRoute[reverseCustomer];
-            }
-            randomPheromoneLocalSearchWithTwoOpt(tempRoute);
-            double currentLength = GenerateTour::getRouteLength(tempRoute);
-            if (currentLength < bestLength) {
-                for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
-                    bestRoute[copyCustomer] = tempRoute[copyCustomer];
-                bestLength = currentLength;
-                customer = 0;
-            }
-        }
-    }
 }
 
 /*
  * Lin-Kernighan Heuristic.
- * Version 1.
+ * Version 2. (Doesn't Work).
+ */
+//void localSearch::LKSearch(int *bestRoute) {
+//    double bestLength = GenerateTour::getRouteLength(bestRoute);
+//    for (int customer = 0; customer < NUM_OF_CUSTOMERS; customer++) {
+//        if (get_distance(bestRoute[customer], bestRoute[customer + 1]) >
+//            get_distance(bestRoute[customer], bestRoute[NUM_OF_CUSTOMERS])) {
+//            int tempRoute[NUM_OF_CUSTOMERS + 1], tempRouteIndex = 0;
+//
+//            for (int forwardCustomer = 0; forwardCustomer <= customer; ++forwardCustomer)
+//                tempRoute[tempRouteIndex++] = bestRoute[forwardCustomer];
+//
+//
+//            for (int reverseCustomer = NUM_OF_CUSTOMERS; reverseCustomer > customer; --reverseCustomer) {
+//                tempRoute[tempRouteIndex++] = bestRoute[reverseCustomer];
+//            }
+//            randomPheromoneLocalSearchWithTwoOpt(tempRoute);
+//            double currentLength = GenerateTour::getRouteLength(tempRoute);
+//            if (currentLength < bestLength) {
+//                for (int copyCustomer = 0; copyCustomer <= NUM_OF_CUSTOMERS; ++copyCustomer)
+//                    bestRoute[copyCustomer] = tempRoute[copyCustomer];
+//                bestLength = currentLength;
+//                customer = 0;
+//            }
+//        }
+//    }
+//}
+
+/*
+ * Lin-Kernighan Heuristic.
+ * Version 1. (Doesn't Work).
  */
 //void localSearch::LKSearch(int *bestRoute) {
 //    double bestLength = getRouteLength(bestRoute);
@@ -241,8 +249,8 @@ void localSearch::decreaseLocalSearchPheromone() {
  * Used for clustered processing.
  */
 void localSearch::decreaseLocalSearchPheromoneCluster() {
-    for (int i = 0; i < Clusterer::numOfClusters; i++) {
-        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+        for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             if (localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] > 1)
                 localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)] =
                         localSearchPheromone[GenerateTour::getArcCode(i, j)] * 0.8;
@@ -269,8 +277,8 @@ int localSearch::getTotalWeight() {
  */
 int localSearch::getTotalWeightCluster() {
     int totalWeight = 0;
-    for (int i = 0; i < Clusterer::numOfClusters; i++) {
-        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+        for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             totalWeight += localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)];
         }
     }
@@ -314,8 +322,8 @@ std::vector<int> localSearch::getRandomNumberCluster() { //type either x (0) or 
     //printf("type: %d tw: %d\n",type ,totalWeight); //DEBUGGING
     int val = rand() % (totalWeight - 1);
     totalWeight = 0;
-    for (int i = 0; i < Clusterer::numOfClusters; i++) {
-        for (int j = i + 1; j < Clusterer::numOfClusters; j++) {
+    for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
+        for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             totalWeight += localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)];
             if (val <= (totalWeight)) {
                 //printf("%d\n",index); //DEBUGGING
@@ -337,6 +345,7 @@ void localSearch::randomLocalSearch(int *bestRoute) {
     double route_length = GenerateTour::getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
+
     while (new_route_length >= route_length && iters < randomSearchIteration) {
         for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
             tempRoute[index] = bestRoute[index];
@@ -364,7 +373,7 @@ void localSearch::randomLocalSearch(int *bestRoute) {
         }
         delete[] routeTemp;
         //2-opt local search.
-        twoOptLocalPheromoneAddonSearch(tempRoute);
+//        twoOptLocalPheromoneAddonSearch(tempRoute);
         new_route_length = GenerateTour::getRouteLength(tempRoute);
     }
     if (new_route_length < route_length) {
@@ -506,13 +515,13 @@ void localSearch::randomPheromoneLocalSearch(int *bestRoute) {
  * Used for clustered processing.
  */
 void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
-    int *tempRoute = new int[Clusterer::numOfClusters];
-    double route_length = Clusterer::getRouteLength(bestRoute);
+    int *tempRoute = new int[KMeansClustering::numOfClusters];
+    double route_length = KMeansClustering::getRouteLength(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
     std::vector<int> xy(2);
     while (new_route_length >= route_length && iters < randomSearchIteration) { //(rand()%5)+10)
-        for (int index = 0; index < Clusterer::numOfClusters; index++)
+        for (int index = 0; index < KMeansClustering::numOfClusters; index++)
             tempRoute[index] = bestRoute[index];
         iters++;
 
@@ -545,11 +554,11 @@ void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
         //2-Opt As well
         //twoOptLocalPheromoneAddonSearch(tempRoute);
 
-        new_route_length = Clusterer::getRouteLength(tempRoute);
+        new_route_length = KMeansClustering::getRouteLength(tempRoute);
     }
     decreaseLocalSearchPheromoneCluster();
     if (new_route_length < route_length) {
-        for (int index = 0; index < Clusterer::numOfClusters; index++)
+        for (int index = 0; index < KMeansClustering::numOfClusters; index++)
             bestRoute[index] = tempRoute[index];
 
         localSearchPheromoneCluster[GenerateTour::getArcCode(x, y)] =
