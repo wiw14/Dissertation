@@ -13,8 +13,10 @@ private:
         int* customers;
         double distance;
         int sizeOfCluster;
+        double demand;
         std::string displayNode();
         void getTotalDistance();
+        void getTotalDemand();
     };
     std::vector<std::pair<double,double>*>* centroids;
     bool * visited;

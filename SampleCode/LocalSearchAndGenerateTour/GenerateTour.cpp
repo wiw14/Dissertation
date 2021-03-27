@@ -553,25 +553,26 @@ double GenerateTour::getRouteLength(const int *routeA) {
 //   for (int i = 0; i <step ; ++i)
 //        printf("%d, ",tour[i]);
 //    printf("\n");
+    if(checkSolution(tour,step)) {
+        double route_length = fitness_evaluation(tour, step);
+        if (route_length < best_sol->tour_length) {
+//            printf("%f :: %f\n", best_sol->tour_length, route_length);
+            check_solution(tour, step);
 
-    double route_length = fitness_evaluation(tour, step);
-    if (route_length < best_sol->tour_length && checkSolution(tour, step)) {
-//        printf("%f :: %f\n",best_sol->tour_length,route_length);
-        check_solution(tour, step);
-
-        //clean Route
-        int counter = 0;
-        for (int index = 0; index < step-1; ++index) {
-            int temp = tour[index];
-            if(temp != tour[index+1])
-                best_sol->tour[counter++] = temp;
+            //clean Route
+            int counter = 0;
+            for (int index = 0; index < step - 1; ++index) {
+                int temp = tour[index];
+                if (temp != tour[index + 1])
+                    best_sol->tour[counter++] = temp;
+            }
+            best_sol->tour[counter++] = tour[step - 1];
+            best_sol->steps = counter;
+            best_sol->tour_length = route_length;
         }
-        best_sol->tour[counter++] = tour[step-1];
-        best_sol->steps = counter;
-        best_sol->tour_length = route_length;
+        return route_length;
     }
-    return route_length;
-
+    return INT_MAX;
 }
 
 /*

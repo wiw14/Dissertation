@@ -270,7 +270,6 @@ double fitness_evaluation(int *routes, int size) {
     //Route 3: 0 - 7 - 0
     for (i = 0; i < size-1; i++)
         tour_length += distances[routes[i]][routes[i+1]];
-
     if(tour_length < current_best)
         current_best = tour_length;
 

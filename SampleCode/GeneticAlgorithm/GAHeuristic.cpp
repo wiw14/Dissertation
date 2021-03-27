@@ -9,11 +9,9 @@
  */
 void GAHeuristic() {
 
-<<<<<<< Updated upstream
+
     int sizeOfPopulation = 15, generations = 10, numMutations = 10;
-=======
-    int sizeOfPopulation = 20, generations = 500, numMutations = 1;
->>>>>>> Stashed changes
+
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
     GA->generateStartingPopulation();
 //    printf("Before Generations\n");

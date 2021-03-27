@@ -207,15 +207,15 @@ void GeneticAlgorithm::selectChildrenForParents() {
 
     parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
 //    parentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-<<<<<<< Updated upstream
+
+
 //        for (int i = 0; i < sizeOfPopulation; ++i) {
 //            for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
 //                printf("%d, ", parentPopulation[i][j]);
 //            }
 //            printf("\n");
 //        }
-=======
->>>>>>> Stashed changes
+
 
     childPopulationCounter = 0;
 //    printf("END SELECTION\n");

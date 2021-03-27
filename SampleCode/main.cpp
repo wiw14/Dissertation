@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     open_stats();//open text files to store the best values from the 20 runs stats.h
     openTourFile();
 
-    for(run = 1; run <= MAX_TRIALS; run++){
+    for(run = 1; run <= 20; run++){ //MAX_TRIALS NOT WORKING?
         /*Step 3*/
         start_run(run);
         //Initialize your heuristic here
