@@ -6,35 +6,47 @@
 
 #IncludeRegexTransform: 
 
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.cpp
+climits
+-
+functional
+-
+ACO.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.h
+string
+-
+../Framework/stats.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
+../GreedyEuclidean/greedyEuclideanHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.h
+../LocalSearchAndGenerateTour/LocalSearches.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
+map
+-
+iostream
+-
+string
+-
+stdio.h
+-
+random
+-
+
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.h
 string
 -
 ../LocalSearchAndGenerateTour/LocalSearches.h
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClusters.cpp
-ACOOnClusters.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClusters.h
-../Framework/stats.hpp
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClusters.h
-ClusterACO.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ClusterACO.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Cluster.h
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ClusterACO.h
-Cluster.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Cluster.h
-
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp
+
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h
 
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h
 ../Framework/EVRP.hpp

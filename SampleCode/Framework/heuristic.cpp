@@ -62,22 +62,13 @@ void run_heuristic() {
     //KNNHeuristic();
     //CLKSearchHeuristic();
 
-    ACOOnClustersHeuristic();
-//    printf("Test\n");
-//    int r[30] = {0, 11, 4, 3, 25, 1, 2, 6, 8, 0, 19, 16, 23, 13, 0, 12, 9, 5, 7, 28, 10, 0, 15, 18, 26, 20, 21, 17, 14, 0};
-//    checkRouteIsValid(r,30);
-//    double totalDist = 0;
-//    for (int i = 0; i < 29; ++i) {
-////        printf("%d, ",r[i]);
-//        totalDist += get_distance(r[i],r[i+1]);
-//    }printf("\n");
-//    printf("dist: %f\n",totalDist);
+//    ACOOnClustersHeuristic();
 
     /*
      * Evolutionary Algorithms
      */
 //    GAHeuristic();
-//    ACOHeuristic();
+    ACOHeuristic();
     //ACOCSHeuristic();
 //    MMACOHeuristic();
 

@@ -186,7 +186,9 @@ void ACO::optimize(int iterations) {
     /*
      * LOCAL SEARCH AFTER THE ITERATIONS.
      */
-    //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+//    for (int i = 0; i < 50; ++i) {
+//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
+//    }
 //    LS->randomLocalSearch();
     //LS->twoOptLocalSearch(bestRoute);
 }
