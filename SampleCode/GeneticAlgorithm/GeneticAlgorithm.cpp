@@ -235,8 +235,8 @@ void GeneticAlgorithm::randomMutateChildren(){
         int toMutate = rand()%probabiltyOfMutation;
         if(toMutate == 0) {
             //printf("Mutate\n");
-            //Mutation::randomSwapMutation(childPopulation[i]);
-            Mutation::LKMutation(childPopulation[i],LS);
+            Mutation::randomSwapMutation(childPopulation[i]);
+//            Mutation::LKMutation(childPopulation[i],LS);
         }
     }
 }
