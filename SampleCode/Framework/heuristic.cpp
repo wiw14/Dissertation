@@ -62,12 +62,12 @@ void run_heuristic() {
     //KNNHeuristic();
     //CLKSearchHeuristic();
 
-    ACOOnClustersHeuristic();
+//    ACOOnClustersHeuristic();
 
     /*
      * Evolutionary Algorithms
      */
-//    GAHeuristic();
+    GAHeuristic();
 //    ACOHeuristic();
     //ACOCSHeuristic();
 //    MMACOHeuristic();
