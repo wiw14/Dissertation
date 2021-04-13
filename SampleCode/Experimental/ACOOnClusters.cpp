@@ -80,21 +80,29 @@ int *generateRouteFromClusters(int numClusters, std::vector<int *> clusters, int
     int routeIndex = 0;
 //    route[routeIndex++] = 0;
     for (int clusterCounter = 0; clusterCounter < numClusters; ++clusterCounter) {
-        for (int customerCounter = 0; customerCounter < sizes[clusterCounter]; ++customerCounter)
+        for (int customerCounter = 0; customerCounter < sizes[clusterCounter]; ++customerCounter) {
+//            printf("customer : %d\n",clusters.at(clusterCounter)[customerCounter]);
             route[routeIndex++] = clusters.at(clusterCounter)[customerCounter];
+        }
 //        route[routeIndex++] = 0;
     }
+    route[NUM_OF_CUSTOMERS] = 0;
+//    for (int i = 0; i <=  NUM_OF_CUSTOMERS; ++i) {
+//        printf("=%d, ",route[i]);
+//    }printf("\n");
     return route;
 }
 
-void ACOOnClusters() {
-    int numAnts = 3, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
-    double pheromoneDecrease = 0.7, Q = 1, alpha = 0.9, beta = 0.7;
+void ACOOnClusters(int run) {
+    int numAnts = 8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 10;
+    double pheromoneDecrease = 0.98, Q = 1, alpha = 0.6, beta = 0.6;
+    if(run == 1)
+        printf("ClUSTERED ANT COLONY OPTIMISATION\nNum Ants: %d\nIterations: %d\n2-Opt Iterations: %d\nExchange Search Iterations: %d\nPheromone Decrease: %f\nQ: %f\nAlpha: %f\nBeta: %f\n\n",numAnts,iterations,twoOptIteration,randomSearchIteration,pheromoneDecrease,Q,alpha,beta);
+
 //    int numAnts = 4, iterations = 15, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
 //    double pheromoneDecrease = 0.9, Q = 1, alpha = 0.9, beta = 0.9;
 
     auto cluster = new Cluster();
-
     auto clusters = std::vector<int *>();
     int *clusterSizes = new int[cluster->numOfClusters];
     for (int clusterIndex = 0; clusterIndex < cluster->numOfClusters; ++clusterIndex) {
@@ -126,16 +134,18 @@ void ACOOnClusters() {
             clusters.push_back(cluster->clusters->at(clusterIndex)->customers);
         }
     }
+//    printf("Cluster Gen Complete\n");
 
 //    int* r = generateCostTable(cluster->numOfClusters, clusters, clusterSizes);
     int* r = generateRouteFromClusters(cluster->numOfClusters,clusters,clusterSizes);
 //    for (int i = 0; i <=  NUM_OF_CUSTOMERS; ++i) {
 //        printf("%d, ",r[i]);
 //    }printf("\n");
+
 int improve = 0;
     auto* LS = new localSearch(3,3);
         GenerateTour::getRouteLength(r);
-    for (int i = 0; i < 50; ++i) {
+    for (int i = 0; i < 500; ++i) {
 //        int* temp = new int[NUM_OF_CUSTOMERS+1];
 //        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
 //            temp[j] = r[j];
@@ -148,7 +158,7 @@ int improve = 0;
             improve = 0;
         }
         improve++;
-        if(improve > 10){
+        if(improve > randomSearchIteration){
             break;
         }
 //        bool change = false;

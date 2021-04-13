@@ -19,6 +19,7 @@ private:
     int twoOptIterations;
     std::map<std::string, int> localSearchPheromone;
     std::map<std::string, int> localSearchPheromoneCluster;
+    int findNearestCustomer(int customer);
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
     virtual ~localSearch();

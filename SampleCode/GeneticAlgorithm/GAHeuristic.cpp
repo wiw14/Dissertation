@@ -7,11 +7,10 @@
 /*
  * Creates and runs a Genetic Algorithm.
  */
-void GAHeuristic() {
-
-
-    int sizeOfPopulation = 15, generations = 500, numMutations = 10;
-
+void GAHeuristic(int run) {
+    int sizeOfPopulation = 15, generations = 20, numMutations = 10;
+    if(run == 1)
+        printf("GENETIC ALGORITHM\nSize of Population: %d\nGenerations: %d\nProbability of Mutation: 1/%d\n\n",sizeOfPopulation,generations,numMutations);
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
     GA->generateStartingPopulation();
 //    printf("Before Generations\n");

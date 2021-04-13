@@ -6,8 +6,8 @@
 #define TESTSAMPLECODE_ACOHEURISTIC_H
 
 
-void ACOHeuristic();
-void ACOCSHeuristic();
-void MMACOHeuristic();
+void ACOHeuristic(int);
+void ACOCSHeuristic(int);
+void MMACOHeuristic(int);
 
 #endif //TESTSAMPLECODE_ACOHEURISTIC_H

@@ -3,8 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o"
   "CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o"
-  "CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearch.cpp.o"
-  "CMakeFiles/TestSampleCode.dir/ChainedLKSearch/CLKSearchHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o"
   "CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o"
   "CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o"

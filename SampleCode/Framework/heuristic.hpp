@@ -19,12 +19,11 @@ extern long int ms;
 
 extern solution *best_sol;
 
-
 void initialize_heuristic();
-void run_heuristic();
+void run_heuristic(int,int);
 void openTourFile(void);
 void closeTourFile(void);
-void end_heuristic(void);
+double end_heuristic(void);
 
 
 void free_heuristic();

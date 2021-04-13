@@ -163,7 +163,7 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
-        randomMutateChildren();
+//        randomMutateChildren();
         selectChildrenForParents();
         addRunDataToFile(x,best_sol->tour_length);
         //repairParents();
@@ -176,9 +176,9 @@ void GeneticAlgorithm::runGenerations() {
 void GeneticAlgorithm::crossoverOperator() {
     childPopulationCounter = 0;
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-//      int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+      int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+//        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter] = new int[NUM_OF_CUSTOMERS+1];

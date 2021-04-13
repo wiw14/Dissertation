@@ -12,7 +12,6 @@
 #include "../ClusterBasedACO//CACOHeuristic.h"
 #include "../ClusterBasedACO//Clusterer.h"
 #include "../ClusterBasedACO//KMeansClustering.h"
-#include "../ChainedLKSearch/CLKSearchHeuristic.h"
 #include "../Experimental/ACOOnClustersHeuristic.h"
 //#include "heuristic.hpp"
 #include <chrono>
@@ -52,34 +51,34 @@ void checkRouteIsValid(int* route, int routeSize){
  * List of all the currently implemented heuristics.
  * Activate heuristics by uncommenting.
  */
-void run_heuristic() {
-    /*
-    * Shortest Path Algorithms.
-    */
-//    greedyHeuristic();
-    //randomHeuristic();
-//    DijkstrasHeuristic();
-    //KNNHeuristic();
-    //CLKSearchHeuristic();
+void run_heuristic(int input,int run) {
+    if(input == 1)
+        greedyHeuristic();
+    else if(input == 2)
+        randomHeuristic();
+    else if(input == 3)
+        DijkstrasHeuristic();
+    else if(input == 4)
+        KNNHeuristic();
+    else if(input == 5)
+        ACOOnClustersHeuristic(run);
+    else if(input == 6)
+        GAHeuristic(run);
+    else if(input == 7)
+        ACOHeuristic(run);
+    else if(input == 8)
+        ACOCSHeuristic(run);
+    else if(input == 9)
+        MMACOHeuristic(run);
+    else if(input == 10)
+        CACOHeuristic();
 
-//    ACOOnClustersHeuristic();
-
-    /*
-     * Evolutionary Algorithms
-     */
-    GAHeuristic();
-//    ACOHeuristic();
-    //ACOCSHeuristic();
-//    MMACOHeuristic();
-
-    //Cluster ACO for Large Data Sets.
-//    CACOHeuristic();
 }
 
 /*
  * Calculates the time the heuristic executed for.
  */
-void end_heuristic(){
+double end_heuristic(){
     ms = std::chrono::duration_cast< std::chrono::milliseconds >(
             std::chrono::system_clock::now().time_since_epoch()
     ).count() - ms;
@@ -88,9 +87,10 @@ void end_heuristic(){
         printf("%d, ",best_sol->tour[i]);
     printf("\n");
 
-    printf("time %ld milliseconds\n",ms);
+//    printf("time %ld milliseconds\n",ms);
     printf("time %f seconds\n",((double)ms/(double)1000));
     printf("\n");
+    return ((double)ms/(double)1000);
 
     //Clustering.
     //Clusterer::freeClusters();

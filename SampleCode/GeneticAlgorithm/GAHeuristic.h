@@ -7,6 +7,6 @@
 
 #include "GeneticAlgorithm.h"
 
-void GAHeuristic();
+void GAHeuristic(int);
 
 #endif //TESTSAMPLECODE_GAHEURISTIC_H
