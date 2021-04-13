@@ -43,6 +43,10 @@ void initialize_heuristic() {
 //    KMeansClustering::createClusters(4);
 }
 
+void checkRouteIsValid(int* route, int routeSize){
+    check_solution(route,routeSize);
+}
+
 
 /*
  * List of all the currently implemented heuristics.

@@ -22,15 +22,13 @@ GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int Nu
     parentPopulation = new int *[sizeOfPopulation];
     childPopulation = new int *[sizeOfPopulation + sizeOfPopulation];
     for (int populationIndex = 0; populationIndex < sizeOfPopulation; ++populationIndex) {
-        parentPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS + 1];
-        for (int customers = 0; customers <= NUM_OF_CUSTOMERS; ++customers)
-            parentPopulation[populationIndex][customers] = -1;
+        parentPopulation[populationIndex] = nullptr;// new int[NUM_OF_CUSTOMERS + 1];
+//        for (int customers = 0; customers <= NUM_OF_CUSTOMERS; ++customers)
+//            parentPopulation[populationIndex][customers] = -1;
     }
 
     for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
-        childPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS + 1];
-        for (int customers = 0; customers <= NUM_OF_CUSTOMERS; ++customers)
-            childPopulation[populationIndex][customers] = -1;
+        childPopulation[populationIndex] = nullptr;
     }
 }
 
@@ -38,8 +36,14 @@ GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int Nu
  * Genetic Algorithm Destructor.
  */
 GeneticAlgorithm::~GeneticAlgorithm() {
-    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
+//    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
+    for (int i = 0; i < sizeOfPopulation; ++i) {
+        delete[] parentPopulation[i];
+    }
     delete[] parentPopulation;
+    for (int i = 0; i < sizeOfPopulation+sizeOfPopulation; ++i) {
+        delete[] childPopulation[i];
+    }
     delete[] childPopulation;
     delete LS;
 }
@@ -99,10 +103,11 @@ int* GeneticAlgorithm::getCACO(){
  */
 void GeneticAlgorithm::generateStartingPopulation() {
 //    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
+//        childPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS+1];
 //        randomRoute(childPopulation[populationIndex]);
 //        childPopulationCounter++;
 //    }
-    //Random Starting Population
+////    //Random Starting Population
 //    selectChildrenForParents();
 
     //Clustered ACO starting population.
@@ -158,7 +163,7 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
-//        randomMutateChildren();
+        randomMutateChildren();
         selectChildrenForParents();
         addRunDataToFile(x,best_sol->tour_length);
         //repairParents();
@@ -169,53 +174,58 @@ void GeneticAlgorithm::runGenerations() {
  * Calls the different crossover operators to generate children from the parents.
  */
 void GeneticAlgorithm::crossoverOperator() {
+    childPopulationCounter = 0;
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-        int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+//      int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-//        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
-        childPopulation[childPopulationCounter++] = tempChildren[0];
-        if(tempChildren[1][0] != INT_MAX)
-            childPopulation[childPopulationCounter++] = tempChildren[1];
+        childPopulation[childPopulationCounter] = new int[NUM_OF_CUSTOMERS+1];
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+            childPopulation[childPopulationCounter][i] = tempChildren[0][i];
+        }
+        childPopulationCounter++;
+
+        if(tempChildren[1][0] != INT_MAX) {
+            childPopulation[childPopulationCounter] = new int[NUM_OF_CUSTOMERS+1];
+            for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+                childPopulation[childPopulationCounter][i] = tempChildren[1][i];
+            }
+            childPopulationCounter++;
+        }
+
+
+        delete[] tempChildren[0]; delete[] tempChildren[1]; delete[] tempChildren;
     }
     if(childPopulationCounter < sizeOfPopulation) {
-//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//            childPopulation[childPopulationCounter][i] = parentPopulation[0][i];
         childPopulation[childPopulationCounter++] = getCACO();
-//        printf("CONTINGENCY\n");
     }
-//    printf("\n");
 }
 
 /*
  * Uses a selection operator to select viable children to be parents.
  */
 void GeneticAlgorithm::selectChildrenForParents() {
-//    printf("BEFORE SELECTION\n");
-//        for (int i = 0; i < sizeOfPopulation; ++i) {
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("%d, ",parentPopulation[i][j]);
-//        }printf("\n");
-//    }
-    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
-//    for (int i = 0; i < childPopulationCounter; ++i) {
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("%d, ",childPopulation[i][j]);
-//        }printf("\n");
-//    }
+    for (int i = 0; i < sizeOfPopulation; ++i) {
+        delete[] parentPopulation[i];
+        parentPopulation[i] = nullptr;
+    }
 
-    parentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-//    parentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-//        for (int i = 0; i < sizeOfPopulation; ++i) {
-//            for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//                printf("%d, ", parentPopulation[i][j]);
-//            }
-//            printf("\n");
-//        }
+    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    //    int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+
+
+    for (int i = 0; i < sizeOfPopulation; ++i) {
+        parentPopulation[i] = new int[NUM_OF_CUSTOMERS+1];
+        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+            parentPopulation[i][j] = tempParentPopulation[i][j];
+        }
+        delete[] tempParentPopulation[i];
+    }
+    delete[] tempParentPopulation;
 
     childPopulationCounter = 0;
-//    printf("END SELECTION\n");
 }
 
 /*
@@ -235,8 +245,9 @@ void GeneticAlgorithm::randomMutateChildren(){
         int toMutate = rand()%probabiltyOfMutation;
         if(toMutate == 0) {
             //printf("Mutate\n");
-            //Mutation::randomSwapMutation(childPopulation[i]);
-            Mutation::LKMutation(childPopulation[i],LS);
+            LS->randomPheromoneLocalSearchWithTwoOpt(childPopulation[i]);
+//            Mutation::randomSwapMutation(childPopulation[i]);
+//            Mutation::LKMutation(childPopulation[i],LS);
         }
     }
 }

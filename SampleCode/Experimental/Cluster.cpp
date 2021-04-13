@@ -4,6 +4,13 @@
 
 #include "Cluster.h"
 
+void Cluster::Node::getTotalDemand() {
+    double total = 0.0;
+    for (int i = 0; i < sizeOfCluster; ++i)
+        total += get_customer_demand(customers[i]);
+    demand = total;
+}
+
 std::string Cluster::Node::displayNode() {
     auto getCustomerString = [&]() {
         std::string output;
@@ -91,14 +98,17 @@ void Cluster::clusterAroundCentroids() {
         int bestCentoidIndex = -1;
         node n = getNodeInfo(customerIndex);
         for (int centroidIndex = 0; centroidIndex < numOfClusters; ++centroidIndex) {
-            double tempDis = getXYDistance(n.x,n.y,centroidIndex);
+            if(clusters->at(centroidIndex)->demand < MAX_CAPACITY) {
+                double tempDis = getXYDistance(n.x, n.y, centroidIndex);
 //            printf("%d,%d,%f:%f\n",customerIndex,centroidIndex,tempDis,minDis);
-            if(tempDis < minDis){
-                minDis = tempDis;
-                bestCentoidIndex = centroidIndex;
+                if (tempDis < minDis) {
+                    minDis = tempDis;
+                    bestCentoidIndex = centroidIndex;
+                }
             }
         }
         clusters->at(bestCentoidIndex)->customers[clusters->at(bestCentoidIndex)->sizeOfCluster++] = customerIndex;
+        clusters->at(bestCentoidIndex)->getTotalDemand();
     }
 }
 
@@ -128,6 +138,7 @@ bool Cluster::generateCentroidsBasedOnClusters(){
         centroids->at(clusterIndex)->first = valx;
         centroids->at(clusterIndex)->second = valy;
         clusters->at(clusterIndex)->sizeOfCluster = 0;
+        clusters->at(clusterIndex)->demand = 0;
     }
     return change;
 }
@@ -146,6 +157,7 @@ void Cluster::createClusters() {
         clusters->at(clusterIndex)->customers = new int[NUM_OF_CUSTOMERS];
         clusters->at(clusterIndex)->sizeOfCluster = 0;
         clusters->at(clusterIndex)->distance = 0;
+        clusters->at(clusterIndex)->demand = 0;
         for (int customerIndex = 0; customerIndex < NUM_OF_CUSTOMERS; ++customerIndex)
             clusters->at(clusterIndex)->customers[customerIndex] = -1;
     }

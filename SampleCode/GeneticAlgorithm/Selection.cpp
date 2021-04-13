@@ -13,6 +13,9 @@ bool sortCriteria(std::pair<int *, double> A, std::pair<int *, double> B) {
 int** Selection::greedySelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation) {
     auto children = new std::vector<std::pair<int *, double>>;
     int** parentPopulation = new int*[sizeOfPopulation];
+     for (int i = 0; i < sizeOfPopulation; ++i) {
+         parentPopulation[i] = new int[NUM_OF_CUSTOMERS+1];
+     }
 
     for (int popCounter = 0; popCounter < childPopulationCounter; ++popCounter)
         children->push_back({childPopulation[popCounter], GenerateTour::getBasicLength(childPopulation[popCounter])});
@@ -20,14 +23,21 @@ int** Selection::greedySelection(int** childPopulation, int childPopulationCount
     std::sort(children->begin(), children->end(), sortCriteria);
 
     for (int popCounter = 0; popCounter < sizeOfPopulation; ++popCounter) {
-        parentPopulation[popCounter] = children->back().first;
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+            parentPopulation[popCounter][i] = children->back().first[i];
+        }
+//        delete[] children->back().first;
         children->pop_back();
     }
 
-    for (auto &i : *children) {
-        delete[] children->back().first;
-        children->pop_back();
-    }
+//    for (auto &i : *children) {
+//        delete[] children->back().first;
+//        children->pop_back();
+//    }
+     for (int i = 0; i < childPopulationCounter; ++i) {
+         delete[] childPopulation[i];
+         childPopulation[i] = nullptr;
+     }
 
     return parentPopulation;
 }

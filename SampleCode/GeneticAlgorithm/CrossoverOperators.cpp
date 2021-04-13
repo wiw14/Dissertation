@@ -117,6 +117,10 @@ int** CrossoverOperators::partiallyMappedCrossover(int* currentBest, int* toComb
             childTwo[i] = toCombine[i];
         }
     }
+    delete[] partitionCheckCurrentBest;
+    delete[] partitionChecktoCombine;
+    delete subRoutes;
+
     int** childPopulation = new int*[2];
     childPopulation[0] = childOne; childPopulation[1] = childTwo;
     return childPopulation;
@@ -357,10 +361,12 @@ std::vector<std::list<int>*>* CrossoverOperators::createPartitions(std::map<int,
 //                    displayList(degreeList);
                 }
             }
+            delete[] tempArray;
         }
         partitions->push_back(partition);
     }
 
+    delete queue;
     return partitions;
 }
 
@@ -533,6 +539,13 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
             fakeChild[i] = INT_MAX;
         tempChildren[1] = fakeChild;
     }
+    delete LS;
+    delete edgeTable;
+    delete degreeList;
+    for (auto p : *partitionList) {
+        delete p;
+    }
+    delete partitionList;
     return tempChildren;
 
     delete LS;
