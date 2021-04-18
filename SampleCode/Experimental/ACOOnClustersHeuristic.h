@@ -2,7 +2,7 @@
 #define TESTSAMPLECODE_ACOONCLUSTERSHEURISTIC_H
 #include "ACOOnClusters.h"
 
-void ACOOnClustersHeuristic(int);
+void ACOOnClustersHeuristic();
 
 
 #endif //TESTSAMPLECODE_ACOONCLUSTERSHEURISTIC_H

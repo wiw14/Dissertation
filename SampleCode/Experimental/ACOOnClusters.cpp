@@ -93,11 +93,9 @@ int *generateRouteFromClusters(int numClusters, std::vector<int *> clusters, int
     return route;
 }
 
-void ACOOnClusters(int run) {
-    int numAnts = 8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 10;
+void ACOOnClusters() {
+    int numAnts = 8, iterations = 50, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 10;
     double pheromoneDecrease = 0.98, Q = 1, alpha = 0.6, beta = 0.6;
-    if(run == 1)
-        printf("ClUSTERED ANT COLONY OPTIMISATION\nNum Ants: %d\nIterations: %d\n2-Opt Iterations: %d\nExchange Search Iterations: %d\nPheromone Decrease: %f\nQ: %f\nAlpha: %f\nBeta: %f\n\n",numAnts,iterations,twoOptIteration,randomSearchIteration,pheromoneDecrease,Q,alpha,beta);
 
 //    int numAnts = 4, iterations = 15, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 3;
 //    double pheromoneDecrease = 0.9, Q = 1, alpha = 0.9, beta = 0.9;
@@ -145,31 +143,31 @@ void ACOOnClusters(int run) {
 int improve = 0;
     auto* LS = new localSearch(3,3);
         GenerateTour::getRouteLength(r);
-    for (int i = 0; i < 500; ++i) {
-//        int* temp = new int[NUM_OF_CUSTOMERS+1];
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            temp[j] = r[j];
+//    for (int i = 0; i < 500; ++i) {
+////        int* temp = new int[NUM_OF_CUSTOMERS+1];
+////        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+////            temp[j] = r[j];
+////        }
+//        double currentBest = best_sol->tour_length;
+//        LS->randomPheromoneLocalSearchWithTwoOpt(r);
+//        addRunDataToFile(i,best_sol->tour_length);
+////        printf("%f\n",best_sol->tour_length);
+//        if(best_sol->tour_length < currentBest){
+//            improve = 0;
 //        }
-        double currentBest = best_sol->tour_length;
-        LS->randomPheromoneLocalSearchWithTwoOpt(r);
-        addRunDataToFile(i,best_sol->tour_length);
-//        printf("%f\n",best_sol->tour_length);
-        if(best_sol->tour_length < currentBest){
-            improve = 0;
-        }
-        improve++;
-        if(improve > randomSearchIteration){
-            break;
-        }
-//        bool change = false;
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            if(r[j] != temp[j])
-//                change = true;
-//        }
-//        delete[]temp;
-//        if(change)
+//        improve++;
+//        if(improve > randomSearchIteration){
 //            break;
-    }
+//        }
+////        bool change = false;
+////        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
+////            if(r[j] != temp[j])
+////                change = true;
+////        }
+////        delete[]temp;
+////        if(change)
+////            break;
+//    }
 //    GenerateTour::getRouteLength(r);
 //    printf("Final: %f\n",best_sol->tour_length);
     delete LS;

@@ -7,10 +7,8 @@
 /*
  * Creates and runs a Genetic Algorithm.
  */
-void GAHeuristic(int run) {
-    int sizeOfPopulation = 15, generations = 20, numMutations = 10;
-    if(run == 1)
-        printf("GENETIC ALGORITHM\nSize of Population: %d\nGenerations: %d\nProbability of Mutation: 1/%d\n\n",sizeOfPopulation,generations,numMutations);
+void GAHeuristic() {
+    int sizeOfPopulation = 20, generations = 50, numMutations = 10;
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
     GA->generateStartingPopulation();
 //    printf("Before Generations\n");
@@ -24,6 +22,6 @@ void GAHeuristic(int run) {
 //    GA->displayPopulation();
 
     GA->checkSolution();
-
+//    printf("END END\n");
     delete GA;
 }

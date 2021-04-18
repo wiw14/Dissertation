@@ -107,7 +107,7 @@ void GeneticAlgorithm::generateStartingPopulation() {
 //        randomRoute(childPopulation[populationIndex]);
 //        childPopulationCounter++;
 //    }
-////    //Random Starting Population
+    //Random Starting Population
 //    selectChildrenForParents();
 
     //Clustered ACO starting population.
@@ -211,10 +211,8 @@ void GeneticAlgorithm::selectChildrenForParents() {
         delete[] parentPopulation[i];
         parentPopulation[i] = nullptr;
     }
-
-    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-    //    int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-
+//    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+        int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
 
     for (int i = 0; i < sizeOfPopulation; ++i) {
         parentPopulation[i] = new int[NUM_OF_CUSTOMERS+1];

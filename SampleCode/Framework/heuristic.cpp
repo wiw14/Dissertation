@@ -61,15 +61,15 @@ void run_heuristic(int input,int run) {
     else if(input == 4)
         KNNHeuristic();
     else if(input == 5)
-        ACOOnClustersHeuristic(run);
+        ACOOnClustersHeuristic();
     else if(input == 6)
-        GAHeuristic(run);
+        GAHeuristic();
     else if(input == 7)
-        ACOHeuristic(run);
+        ACOHeuristic();
     else if(input == 8)
-        ACOCSHeuristic(run);
+        ACOCSHeuristic();
     else if(input == 9)
-        MMACOHeuristic(run);
+        MMACOHeuristic();
     else if(input == 10)
         CACOHeuristic();
 
