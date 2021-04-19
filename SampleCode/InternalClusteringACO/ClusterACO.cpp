@@ -7,27 +7,6 @@
 
 /*
  * ================================================================================ *
- * AntColonyOptimisation FILE METHODS
- * ================================================================================ *
- */
-
-//FILE* ACOFile;
-//
-//void openACOFile(){
-//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-//    fprintf(ACOFile," , , \n");
-//}
-//
-//void closeACOFile(){
-//    fclose(ACOFile);
-//}
-//
-//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-//}
-
-/*
- * ================================================================================ *
  * ANT COLONY OPTIMISATION
  * ================================================================================ *
  */
@@ -37,9 +16,6 @@
  */
 ClusterACO::ClusterACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,
          double Beta, int TwoOptIteration, int RandomSearchIteration, int* Alphabet, int AlphabetSize) {
-    //Creates a local search object to allow local searches to be used after a path has been found.
-    //LS = new localSearch(RandomSearchIteration, TwoOptIteration);
-
     //Sets the current best path length to infinity (Max number int can store).
     bestRouteLength = (double) INT_MAX;
 
@@ -85,8 +61,6 @@ ClusterACO::ClusterACO(int numberOfAnts, double pheromoneDecreaseFactor, double 
             bestRoute[customer] = -1;
         }
     }
-    //Opens AntColonyOptimisation file to store optimas.
-//    openACOFile();
 }
 
 /*
@@ -116,9 +90,6 @@ std::string ClusterACO::getArcCode(int customerA, int customerB) {
  * AntColonyOptimisation destructor, frees all used arrays, as well as freeing the local search object.
  */
 ClusterACO::~ClusterACO() {
-    //Deletes local search object.
-    //delete LS;
-
     //Frees multi-dimensional arrays.
     for (int ant = 0; ant < numOfAnts; ant++)
         delete[] routes[ant];
@@ -127,9 +98,6 @@ ClusterACO::~ClusterACO() {
     delete[] routes;
     delete[] probability;
     delete[] bestRoute;
-
-    //Closes AntColonyOptimisation file after it has been used.
-//    closeACOFile();
 }
 
 /*
@@ -159,7 +127,6 @@ void ClusterACO::optimize(int iterations) {
     int count = 0;
     while(improve < iterations){
         count++;
-//    for (int iter = 1; iter <= iterations; iter++) {
         for (int ant = 0; ant < numOfAnts; ant++) {
             //While the route for the ant isn't valid.
             //The route is reset and re-calculated.
@@ -189,19 +156,7 @@ void ClusterACO::optimize(int iterations) {
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
             resetRoute(ant);
-        /*
-         * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
-         */
-//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-        //LS->randomLocalSearch();
-        //LS->twoOptLocalSearch(bestRoute);
     }
-    /*
-     * LOCAL SEARCH AFTER THE ITERATIONS.
-     */
-    //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-//    LS->randomLocalSearch();
-    //LS->twoOptLocalSearch(bestRoute);
 }
 
 /*
@@ -225,16 +180,6 @@ void ClusterACO::updatePheromones(int iterations,int maxIterations) {
                 pheromones[getArcCode(i, j)] = pheromones[getArcCode(i, j)] * pheromoneDecrease;
             }
         }
-
-        //Run local search to improve the route before updating the pheromones.
-//        LS->LKSearch(routes[ant]);
-//            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
-//            LS->randomLocalSearch(routes[ant]);
-//        LS->randomPheromoneLocalSearch(routes[ant]);
-//        LS->twoOptLocalSearch(routes[ant]);
-
-        //For visualisation
-//        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < sizeOfAlphabet-1; index++) {
@@ -408,11 +353,4 @@ int *ClusterACO::returnResults() {
     return configBestRoute;
 }
 
-/*
- * Uses the generate tour function within LocalSearch to calculate the total distance
- * including charging stations and depots.
- */
-//double ClusterACO::getRL(int *route) {
-//    return GenerateTour::getRouteLength(route);
-//}
 

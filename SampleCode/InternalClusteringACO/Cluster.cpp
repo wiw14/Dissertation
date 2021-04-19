@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 09/03/2021.
-//
-
 #include "Cluster.h"
 
 void Cluster::Node::getTotalDemand() {
@@ -70,6 +66,9 @@ Cluster::~Cluster(){
 //    }
 //}
 
+/*
+ * Equally distributed centroids.
+ */
 void Cluster::initialCentroids(){
     int spaces = NUM_OF_CUSTOMERS/numOfClusters;
     for (int i = spaces-1; i < NUM_OF_CUSTOMERS; i+= spaces) {
@@ -100,7 +99,6 @@ void Cluster::clusterAroundCentroids() {
         for (int centroidIndex = 0; centroidIndex < numOfClusters; ++centroidIndex) {
             if(clusters->at(centroidIndex)->demand < MAX_CAPACITY) {
                 double tempDis = getXYDistance(n.x, n.y, centroidIndex);
-//            printf("%d,%d,%f:%f\n",customerIndex,centroidIndex,tempDis,minDis);
                 if (tempDis < minDis) {
                     minDis = tempDis;
                     bestCentoidIndex = centroidIndex;
@@ -167,18 +165,14 @@ void Cluster::createClusters() {
         visited[customerIndex] = false;
 
     initialCentroids();
-//    displayCentroids();
-    //LOOP
+
     int changeUB = 2;
     int changeCounter = 0;
     while (changeCounter < changeUB){
-//    for (int generations = 1; generations <= 4; ++generations) {
-//        displayCentroids();
         clusterAroundCentroids();
         if(generateCentroidsBasedOnClusters())
             changeCounter = 0;
         changeCounter++;
     }
     clusterAroundCentroids();
-//    displayClusters();
 }

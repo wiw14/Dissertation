@@ -4,7 +4,6 @@
 
 class ClusterACO {
 private:
-    std::map<std::string,double>::iterator iterator;
     std::map<std::string, double> pheromones;
     int ** routes;
     int *bestRoute;
@@ -13,7 +12,6 @@ private:
     double pheromoneDecrease, Q, bestRouteLength,alpha,beta;
     double ** probability;
     int numOfAnts, probabilitySize;
-//    localSearch* LS;
 
     std::default_random_engine seed;
     std::uniform_real_distribution<double> distribution;

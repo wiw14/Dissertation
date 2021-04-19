@@ -8,7 +8,7 @@ bool sortCriteria(std::pair<int *, double> A, std::pair<int *, double> B) {
 }
 
 /*
- * Selects the best x number of children based upon route length.
+ * Selects the best n number of children based upon route length, where n is the size of the parent population.
  */
 int** Selection::greedySelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation) {
     auto children = new std::vector<std::pair<int *, double>>;
@@ -26,14 +26,9 @@ int** Selection::greedySelection(int** childPopulation, int childPopulationCount
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
             parentPopulation[popCounter][i] = children->back().first[i];
         }
-//        delete[] children->back().first;
         children->pop_back();
     }
 
-//    for (auto &i : *children) {
-//        delete[] children->back().first;
-//        children->pop_back();
-//    }
      for (int i = 0; i < childPopulationCounter; ++i) {
          delete[] childPopulation[i];
          childPopulation[i] = nullptr;
@@ -42,6 +37,9 @@ int** Selection::greedySelection(int** childPopulation, int childPopulationCount
     return parentPopulation;
 }
 
+/*
+ * Takes the n/2 best children from the child population, where n is the size of the parent population.
+ */
 int** Selection::firstHalf(int** childPopulation, int childPopulationCounter,int sizeOfPopulation){
     auto children = new std::vector<std::pair<int *, double>>;
     int** parentPopulation = new int*[sizeOfPopulation];
@@ -59,17 +57,21 @@ int** Selection::firstHalf(int** childPopulation, int childPopulationCounter,int
     return parentPopulation;
 }
 
+/*
+ * Calculates hamming distance between two routes.
+ */
 int Selection::calculateHammingDistance(const int * parent, const int * child) {
     int hamming = 0;
     for (int index = 0; index <= NUM_OF_CUSTOMERS; ++index) {
-//        printf("%d:%d, ",parent[index],child[index]);
         if(parent[index] != child[index])
             hamming++;
     }
-//    printf("\n");
     return hamming;
 }
 
+/*
+ * Generates a table of Hamming distances for all the children with the currently selected parents.
+ */
 int** Selection::generateHammingDistanceArray(int** childPopulation,int childPopulationCounter, int** firstHalf,int sizeOfPopulation){
     int** hammingTable = new int*[childPopulationCounter];
     for (int i = 0; i < childPopulationCounter; ++i) {
@@ -78,7 +80,6 @@ int** Selection::generateHammingDistanceArray(int** childPopulation,int childPop
             hammingTable[i][j] = 0;
         }
     }
-//    printf("child = %d, pop = %d\n",childPopulationCounter,sizeOfPopulation);
 
     for (int childPopIndex = 0; childPopIndex < childPopulationCounter; ++childPopIndex) {
         for (int parentPopIndex = 0; parentPopIndex < sizeOfPopulation; ++parentPopIndex) {
@@ -94,17 +95,14 @@ int** Selection::generateHammingDistanceArray(int** childPopulation,int childPop
             }
         }
     }
-//    printf("DONE\n");
 
     return hammingTable;
 }
 
+/*
+ * Utilises Hamming distance to select diverse offspring to replace the parents.
+ */
 int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation){
-//    for (int i = 0; i < sizeOfPopulation; ++i) {
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("-%d, ",childPopulation[i][j]);
-//        }printf("\n");
-//    }
 
     int** firstHalf = Selection::firstHalf(childPopulation,childPopulationCounter,(sizeOfPopulation)/2);
     int** parentPopulation = new int*[sizeOfPopulation];
@@ -118,15 +116,8 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
     }
     int** hammingDistance = generateHammingDistanceArray(childPopulation,childPopulationCounter,firstHalf,(sizeOfPopulation)/2);
 
-//    for (int i = 0; i < childPopulationCounter; ++i) {
-//        for (int j = 0; j < sizeOfPopulation/2; ++j) {
-//            printf("%d,%d = %d\n",i,j,hammingDistance[i][j]);
-//        }
-//    }
-
     int popCounter = (sizeOfPopulation)/2;
     for (int popIndex = 0; popIndex < sizeOfPopulation/2; ++popIndex) {
-//        printf("Pop:%d\n",popIndex);
         int mostDiverseIndex = -1;
         int mostDiverse = -1;
         for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
@@ -140,13 +131,7 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
                 }
             }
         }
-//        for (int i = 0; i < childPopulationCounter; ++i) {
-//            for (int j = 0; j < sizeOfPopulation/2; ++j) {
-//                printf("%d,%d = %d\n",i,j,hammingDistance[i][j]);
-//            }
-//        }
-//        printf("end find Diverse\n");
-//        printf("%d %d\n",mostDiverseIndex,mostDiverse);
+
         if(mostDiverseIndex == -1){
             mostDiverseIndex = 0;
         }
@@ -181,30 +166,10 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
         popCounter++;
     }
 
-    for (int childIndex = 0; childIndex < childPopulationCounter; ++childIndex) {
-        bool childUsed = false;
-        for (int popIndex = 0; popIndex < sizeOfPopulation; ++popIndex) {
-            if (childPopulation[childIndex] == parentPopulation[popIndex]) {
-                childUsed = true;
-                break;
-            }
-        }
-        if (!childUsed) {
-//            delete[] childPopulation[childIndex];
-//            childPopulation[childIndex] = nullptr;
-        }
-    }
-
     for (int i = 0; i < childPopulationCounter; ++i) {
         delete[] childPopulation[i];
         childPopulation[i] = nullptr;
     }
-
-//        for (int i = 0; i < sizeOfPopulation; ++i) {
-//        for (int j = 0; j <= NUM_OF_CUSTOMERS; ++j) {
-//            printf("%d, ",parentPopulation[i][j]);
-//        }printf("\n");
-//    }
 
     delete[] firstHalf;
     delete[] hammingDistance;

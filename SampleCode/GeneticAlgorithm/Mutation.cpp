@@ -14,5 +14,5 @@ void Mutation::randomSwapMutation(int* route){
  * Uses the Lin-Kernighan local search to Mutation the route.
  */
 void Mutation::LKMutation(int * route, localSearch* LS) {
-    LS->randomPheromoneLocalSearch(route);
+    LS->LKSearch(route);
 }

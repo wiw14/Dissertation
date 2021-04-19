@@ -6,7 +6,7 @@
  * GENETIC ALGORITHM.
  * ================================================================================ *
  */
-#include "../ClusterBasedACO/CACO.h"
+#include "../ExternalClusteringACO/CACO.h"
 
 /*
  * Genetic Algorithm Constructor.
@@ -22,9 +22,7 @@ GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int Nu
     parentPopulation = new int *[sizeOfPopulation];
     childPopulation = new int *[sizeOfPopulation + sizeOfPopulation];
     for (int populationIndex = 0; populationIndex < sizeOfPopulation; ++populationIndex) {
-        parentPopulation[populationIndex] = nullptr;// new int[NUM_OF_CUSTOMERS + 1];
-//        for (int customers = 0; customers <= NUM_OF_CUSTOMERS; ++customers)
-//            parentPopulation[populationIndex][customers] = -1;
+        parentPopulation[populationIndex] = nullptr;
     }
 
     for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
@@ -36,7 +34,6 @@ GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int Nu
  * Genetic Algorithm Destructor.
  */
 GeneticAlgorithm::~GeneticAlgorithm() {
-//    deleteSegmentOfArray(parentPopulation, 0, sizeOfPopulation);
     for (int i = 0; i < sizeOfPopulation; ++i) {
         delete[] parentPopulation[i];
     }
@@ -52,7 +49,6 @@ GeneticAlgorithm::~GeneticAlgorithm() {
  *
  */
 void GeneticAlgorithm::checkSolution() {
-//    LS->randomPheromoneLocalSearchWithTwoOpt(parentPopulation[0]);
     GenerateTour::getRouteLength(parentPopulation[0]);
 }
 
@@ -74,11 +70,9 @@ void GeneticAlgorithm::randomRoute(int *route) {
 
     //Local Search to create local optimums.
     LS->randomPheromoneLocalSearchWithTwoOpt(route);
-//     LS->LKSearch(route);
 }
 
 int* GeneticAlgorithm::getCACO(){
-    //printf("Generating Parent %d\n",i);
     srand (rand());
     KMeansClustering::createClusters(4);
     int numAnts= 3, iterations = 5, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
@@ -86,7 +80,6 @@ int* GeneticAlgorithm::getCACO(){
     auto* a = new CACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
 
     a->optimize(iterations);
-//        printf("End Generating Parent %d\n",i);
 
     int* temp = a->returnResults();
 
@@ -242,7 +235,6 @@ void GeneticAlgorithm::randomMutateChildren(){
     for (int i = 0; i < childPopulationCounter; ++i) {
         int toMutate = rand()%probabiltyOfMutation;
         if(toMutate == 0) {
-            //printf("Mutate\n");
             LS->randomPheromoneLocalSearchWithTwoOpt(childPopulation[i]);
 //            Mutation::randomSwapMutation(childPopulation[i]);
 //            Mutation::LKMutation(childPopulation[i],LS);

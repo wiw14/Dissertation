@@ -40,7 +40,6 @@ int KMeansClustering::numOfClusters;
 int *KMeansClustering::centroids;
 bool *KMeansClustering::visited;
 struct KMeansClustering::Node **KMeansClustering::clusters;
-int KMeansClustering::twoOptIterations = 3;
 
 /*
  * Randomly selects  k number of initial centroids to generate clusters from.

@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 16/02/2021.
-//
-
 #ifndef TESTSAMPLECODE_LOCALSEARCHES_H
 #define TESTSAMPLECODE_LOCALSEARCHES_H
 

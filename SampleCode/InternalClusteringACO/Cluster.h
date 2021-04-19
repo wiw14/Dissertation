@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 09/03/2021.
-//
-
 #ifndef TESTSAMPLECODE_CLUSTER_H
 #define TESTSAMPLECODE_CLUSTER_H
 

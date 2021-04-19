@@ -1,13 +1,9 @@
-//
-// Created by wmw13 on 05/03/2021.
-//
-
 #ifndef TESTSAMPLECODE_GENERATETOUR_H
 #define TESTSAMPLECODE_GENERATETOUR_H
 
 #include "../Framework/EVRP.hpp"
 #include "../Framework/heuristic.hpp"
-#include "../ClusterBasedACO//KMeansClustering.h"
+#include "../ExternalClusteringACO/KMeansClustering.h"
 #include <map>
 #include <iostream>
 #include <string>

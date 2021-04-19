@@ -1,94 +1,9 @@
-//
-// Created by wmw13 on 05/03/2021.
-//
-
 #include "GenerateTour.h"
-
 /*
  * ================================================================================ *
- * GENERATE ROUTE
+ * GENERATE TOUR
  * ================================================================================ *
  */
-/*
- * Generates a route between charging stations and depot using the route of customers.
- * Returns a value determining the fitness of the inputted route.
- */
-//double localSearch::getRouteLength(const int *route) {
-//    /*
-//    * GENERATE TOUR VERSION 1.
-//    * Generates tour using a greedy approach.
-//    * Provided with the competition framework.
-//    */
-//    int steps;
-//    int *tour = new int[NUM_OF_CUSTOMERS + 1];
-//    steps = 0;
-//    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
-//        tour[index] = -1;
-//    /*
-//     * Sets the first item in the tour to DEPOT because all routes start at the depot.
-//     * Increment steps to 1 due to first step was DEPOT.
-//     */
-//    tour[0] = DEPOT;
-//    steps++;
-//
-//    int prev, next, chargingStation;
-//    double activeCapacity = 0.0, activeBatteryLevel = 0.0;
-//    int i = 0;
-//    while (i <= NUM_OF_CUSTOMERS) {
-//        prev = tour[steps - 1];
-//        if (route[i] == 0) {
-//            i++;
-//            continue;
-//        }
-//        next = route[i];
-//        if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
-//            activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
-//            activeCapacity += get_customer_demand(next);
-//            activeBatteryLevel += get_energy_consumption(prev, next);
-//            tour[steps] = next;
-//            steps++;
-//            i++;
-//        } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY) {
-//            activeCapacity = 0.0;
-//            activeBatteryLevel = 0.0;
-//            tour[steps] = DEPOT;
-//            steps++;
-//        } else if (activeBatteryLevel + get_energy_consumption(prev, next) > BATTERY_CAPACITY) {
-////            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE - NUM_OF_CUSTOMERS - 1) + NUM_OF_CUSTOMERS + 1;
-//            chargingStation = NUM_OF_CUSTOMERS + NUM_OF_STATIONS;
-//            for (int index = NUM_OF_CUSTOMERS + 1; index <= (NUM_OF_CUSTOMERS + NUM_OF_STATIONS); index++) {
-//                if (get_distance(next, index) < get_distance(next, chargingStation) && is_charging_station(index))
-//                    chargingStation = index;
-//            }
-//            if (is_charging_station(chargingStation)) {
-//                activeBatteryLevel = 0.0;
-//                tour[steps] = chargingStation;
-//                steps++;
-//            }
-//        } else {
-//            activeCapacity = 0.0;
-//            activeBatteryLevel = 0.0;
-//            tour[steps] = DEPOT;
-//            steps++;
-//        }
-//    }
-//
-//    //close EVRP tour to return back to the depot
-//    if (tour[steps - 1] != DEPOT) {
-//        tour[steps] = DEPOT;
-//        steps++;
-//    }
-//    //check_solution(tour,steps);
-//    double route_length = fitness_evaluation(tour, steps);
-//    if (route_length < best_sol->tour_length) {
-//        for (int index = 0; index < steps; ++index)
-//            best_sol->tour[index] = tour[index];
-//        best_sol->steps = steps;
-//        best_sol->tour_length = route_length;
-//    }
-//    return route_length;
-//}
-
 /*
  * Generates a string which references the arc between A and B.
  */
@@ -167,6 +82,280 @@ bool GenerateTour::getIsValidCapacity(int *route, int size) {
     }
     return isValid;
 }
+
+
+/*
+ * Gets the total amount of load to the next depot.
+ */
+double GenerateTour::getTotalLoadWithAddedDepot(int *route, int depotPos) {
+    double total = 0.0;
+    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
+        if (i == depotPos) {
+            total += get_distance(route[i], DEPOT);
+            if (i + 1 < NUM_OF_CUSTOMERS - 1)
+                total += get_distance(DEPOT, route[i + 1]);
+        } else {
+            if (i + 1 < NUM_OF_CUSTOMERS - 1)
+                total += get_distance(route[i], route[i + 1]);
+        }
+    }
+    return total;
+}
+
+/*
+ * Generates a route length quickly using a heuristic.
+ */
+double GenerateTour::getRouteLengthQuick(const int* route){
+    double length = 0.0;
+    double capacity = 0.0;
+    double energy = 0.0;
+    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
+        length += get_distance(route[i], route[i + 1]);
+        capacity += get_customer_demand(route[i]);
+        energy += get_energy_consumption(route[i],route[i+1]);
+        if(capacity > MAX_CAPACITY){
+            capacity = 0.0;
+            energy = 0.0;
+            length+= get_distance(route[i],DEPOT);
+        }
+    }
+
+    return length;
+}
+
+/*
+ * Generates a route between charging stations and depot using the route of customers.
+ * Returns a value determining the fitness of the inputted route.
+ */
+double GenerateTour::getRouteLength(const int *routeA) {
+/*
+ * GENERATE TOUR VERSION 3
+ * Uses a greedy approach to determine when to visit the depot.
+ * Locates an optimal charging station location within the route.
+ */
+
+    int route[NUM_OF_CUSTOMERS];
+    int ind = 0;
+    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
+        if (routeA[i] != DEPOT)
+            route[ind++] = routeA[i];
+    }
+
+
+    //Initialise variables.
+    int step = 0, tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
+    for (int i = 0; i < NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS; ++i)
+        tour[i] = -1;
+
+    //Find Depot optimal placement.
+    int lastDepot = 0;
+    while (lastDepot < NUM_OF_CUSTOMERS) {
+        int maxDepotPos = -1;
+        double total = 0.0;
+        for (int i = lastDepot; i < NUM_OF_CUSTOMERS; ++i) {
+            total += get_customer_demand(route[i]);
+            if (total > MAX_CAPACITY) {
+                maxDepotPos = i - 1;
+                break;
+            }
+        }
+
+        //Exit while loop when depot can't be found.
+        if (maxDepotPos == -1)
+            maxDepotPos = NUM_OF_CUSTOMERS - 1;
+
+        //Depot goes after maxDepotPos.
+        //Search starts at lastDepot (including lastDepot).
+
+        double currentBestLength = INT_MAX, currentLength;
+        int currentBestDepot = -1;
+        int lowerBound = lastDepot;
+        //Finds the optimal placement of the depot.
+        for (int i = maxDepotPos; i >= lowerBound; --i) {
+            //Gets the route length with the Depot at i.
+            currentLength = getTotalLoadWithAddedDepot(route, i);
+            if (currentLength < currentBestLength) {
+                currentBestLength = currentLength;
+                currentBestDepot = i;
+            }
+        }
+
+        //lastDepot to currentBestDepot is the sub-route for cs search (including currentBestDepot).
+        int size = (currentBestDepot - lastDepot) + 1;
+        int subRoute[size + size];
+        int subRouteINDEX = 0;
+        subRoute[subRouteINDEX++] = DEPOT;
+
+        for (int i = lastDepot; i <= currentBestDepot; ++i) {
+            subRoute[subRouteINDEX++] = route[i];
+        }
+
+        subRoute[subRouteINDEX++] = DEPOT;
+
+        //Takes sub-route from depot to depot.
+        //Find optimal place for CS.
+        double minLength = INT_MAX;
+        int pos = -1, additions = 1;
+        bool isValidRoute = false, isValid;
+
+        size += 2;
+
+        if (!getIsValidEnergy(subRoute, subRouteINDEX)) {
+            while (!isValidRoute && additions > 0) {
+                additions = 0;
+                for (int index = 0; index < size - 1; ++index) {
+                    if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
+                        continue;
+                    int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
+                    for (int i = 0; i < size + size; ++i)
+                        subRouteWithCS[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
+                        ++subRouteWithCSIndex;
+
+                        if (i == index) {
+                            subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
+                            ++subRouteWithCSIndex;
+                            ++additions;
+                        }
+
+                    }
+
+                    double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
+                    isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
+                    if (!isValidRoute && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
+                        if (isValid)
+                            isValidRoute = isValid;
+                    } else if (isValidRoute && isValid && tempDis < minLength) {
+                        minLength = tempDis;
+                        pos = index;
+                    }
+                }
+                if (!isValidRoute) {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex] = tempRoute[i];
+                        ++subRouteIndex;
+                        if (i == pos) {
+                            subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
+                            ++subRouteIndex;
+                        }
+
+                    }
+                    size = subRouteIndex;
+                    minLength = INT_MAX;
+                    pos = -1;
+                } else {
+                    int tempRoute[size + size];
+                    for (int i = 0; i < size + size; ++i)
+                        tempRoute[i] = -1;
+
+                    for (int i = 0; i < size; ++i) {
+                        tempRoute[i] = subRoute[i];
+                    }
+                    int subRouteIndex = 0;
+                    for (int i = 0; i < size; ++i) {
+                        subRoute[subRouteIndex++] = tempRoute[i];
+                        if (i == pos)
+                            subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
+
+                    }
+                }
+
+            }
+        }
+
+        for (int i = 0; i < size; ++i) {
+            tour[step] = subRoute[i];
+            ++step;
+        }
+
+        //CurrentBestDepot is the optimal depot placement.
+        //Start searching for next depot from currentBestDepot+1;
+        lastDepot = currentBestDepot + 1;
+    }
+
+    tour[step++] = DEPOT;
+
+    if(checkSolution(tour,step)) {
+        double route_length = fitness_evaluation(tour, step);
+        if (route_length < best_sol->tour_length) {
+            check_solution(tour, step);
+
+            //clean Route
+            int counter = 0;
+            for (int index = 0; index < step - 1; ++index) {
+                int temp = tour[index];
+                if (temp != tour[index + 1])
+                    best_sol->tour[counter++] = temp;
+            }
+            best_sol->tour[counter++] = tour[step - 1];
+            best_sol->steps = counter;
+            best_sol->tour_length = route_length;
+        }
+        return route_length;
+    }
+    return INT_MAX;
+}
+
+/*
+ * Checks that all the nodes are present within the tour.
+ */
+bool GenerateTour::checkAllCustomersVisited(int *tour, int size) {
+    bool visited[NUM_OF_CUSTOMERS];
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        visited[customer] = false;
+    }
+    for (int customer = 0; customer < size; ++customer) {
+        if (!is_charging_station(tour[customer])) {
+            visited[tour[customer] - 1] = true;
+        }
+    }
+    bool isValid = true;
+    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
+        if (!visited[customer])
+            isValid = false;
+    }
+    return isValid;
+}
+
+/*
+ * Checks that the solution is a valid solution.
+ */
+bool GenerateTour::checkSolution(int *tour, int size) {
+    bool energyValid = getIsValidEnergy(tour, size);
+    bool capacityValid = getIsValidCapacity(tour, size);
+    bool allCustomersVisited = checkAllCustomersVisited(tour, size);
+
+    return energyValid && capacityValid && allCustomersVisited;
+}
+
+/*
+ * Gets a route length quickly without generating a route with charging stations and depots.
+ */
+double GenerateTour::getBasicLength(int *bestRoute) {
+    double routeLength = 0.0;
+    for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i)
+        routeLength += get_distance(bestRoute[i - 1], bestRoute[i]);
+    return routeLength;
+}
+
+/*
+ * ================================================================================ *
+ * OLD CODE
+ * ================================================================================ *
+ */
+
 
 /*
  * Generates a route between charging stations and depot using the route of customers.
@@ -326,303 +515,6 @@ bool GenerateTour::getIsValidCapacity(int *route, int size) {
 //    return route_length;
 //
 //}
-
-/*
- * Gets the total amount of load to the next depot.
- */
-double GenerateTour::getTotalLoadWithAddedDepot(int *route, int depotPos) {
-    double total = 0.0;
-    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
-        if (i == depotPos) {
-            total += get_distance(route[i], DEPOT);
-            if (i + 1 < NUM_OF_CUSTOMERS - 1)
-                total += get_distance(DEPOT, route[i + 1]);
-        } else {
-            if (i + 1 < NUM_OF_CUSTOMERS - 1)
-                total += get_distance(route[i], route[i + 1]);
-        }
-    }
-    return total;
-}
-
-/*
- * Generates a route length quickly using a heuristic.
- */
-double GenerateTour::getRouteLengthQuick(const int* route){
-    double length = 0.0;
-    double capacity = 0.0;
-    double energy = 0.0;
-    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
-        length += get_distance(route[i], route[i + 1]);
-        capacity += get_customer_demand(route[i]);
-        energy += get_energy_consumption(route[i],route[i+1]);
-        if(capacity > MAX_CAPACITY){
-            capacity = 0.0;
-            energy = 0.0;
-            length+= get_distance(route[i],DEPOT);
-        }
-    }
-
-    return length;
-}
-
-/*
- * Generates a route between charging stations and depot using the route of customers.
- * Returns a value determining the fitness of the inputted route.
- */
-double GenerateTour::getRouteLength(const int *routeA) {
-/*
- * GENERATE TOUR VERSION 3
- * Uses a greedy approach to determine when to visit the depot.
- * Locates an optimal charging station location within the route.
- */
-
-    int route[NUM_OF_CUSTOMERS];
-    int ind = 0;
-    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
-        if (routeA[i] != DEPOT)
-            route[ind++] = routeA[i];
-    }
-
-
-    //Initialise variables.
-    int step = 0, front = 0, end = 0, tour[NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS];
-    for (int i = 0; i < NUM_OF_CUSTOMERS + NUM_OF_CUSTOMERS; ++i)
-        tour[i] = -1;
-
-    //Find Depot optimal placement.
-//    int calcDepot[NUM_OF_CUSTOMERS + (int)(NUM_OF_CUSTOMERS*0.5)];
-//    int calcDepotIndex;
-//    //Set values to the current route.
-//    for (int i = 0; i < NUM_OF_CUSTOMERS; ++i)
-//        calcDepot[calcDepotIndex++] = route[i];
-
-    bool loadValid = false;
-    int lastDepot = 0;
-    while (lastDepot < NUM_OF_CUSTOMERS) {
-        int maxDepotPos = -1;
-        double total = 0.0;
-        for (int i = lastDepot; i < NUM_OF_CUSTOMERS; ++i) {
-            total += get_customer_demand(route[i]);
-            if (total > MAX_CAPACITY) {
-                maxDepotPos = i - 1;
-                break;
-            }
-        }
-        //printf("MaxDepotPos : %d, LastDepot : %d\n",maxDepotPos,lastDepot);
-
-        //Exit while loop when depot can't be found.
-        if (maxDepotPos == -1)
-            maxDepotPos = NUM_OF_CUSTOMERS - 1;
-
-        //Depot goes after maxDepotPos.
-        //Search starts at lastDepot (including lastDepot).
-
-        double currentBestLength = INT_MAX, currentLength;
-        int currentBestDepot = -1;
-        int lowerBound = lastDepot;//maxDepotPos - (int)(((maxDepotPos-lastDepot)+1)*0.25);
-        //Finds the optimal placement of the depot.
-        for (int i = maxDepotPos; i >= lowerBound; --i) {
-            //Gets the route length with the Depot at i.
-            currentLength = getTotalLoadWithAddedDepot(route, i);
-//            printf("bestLength = %f, currentLength = %f\n",currentBestLength,currentLength);
-            if (currentLength < currentBestLength) {
-                currentBestLength = currentLength;
-                currentBestDepot = i;
-            }
-        }
-
-//        printf("CurrentBest : %d, LastDepot : %d\n",currentBestDepot,lastDepot);
-        //lastDepot to currentBestDepot is the sub-route for cs search (including currentBestDepot).
-        int size = (currentBestDepot - lastDepot) + 1;
-        int subRoute[size + size];
-        int subRouteINDEX = 0;
-        subRoute[subRouteINDEX++] = DEPOT;
-
-        for (int i = lastDepot; i <= currentBestDepot; ++i) {
-            subRoute[subRouteINDEX++] = route[i];
-        }
-
-        subRoute[subRouteINDEX++] = DEPOT;
-
-//        for (int i = 0; i <subRouteINDEX ; ++i)
-//            printf("*%d, ",subRoute[i]);
-//        printf("\n");
-        //Takes sub-route from depot to depot.
-        //Find optimal place for CS.
-        double minLength = INT_MAX;
-        int pos = -1, additions = 1;
-        bool isValidRoute = false, isValid;
-
-        size += 2;
-
-        if (!getIsValidEnergy(subRoute, subRouteINDEX)) {
-            while (!isValidRoute && additions > 0) {
-                additions = 0;
-                for (int index = 0; index < size - 1; ++index) {
-                    if ((is_charging_station(subRoute[index]) || is_charging_station(subRoute[index + 1])))
-                        continue;
-                    int subRouteWithCS[size + size], subRouteWithCSIndex = 0;
-                    for (int i = 0; i < size + size; ++i)
-                        subRouteWithCS[i] = -1;
-
-                    for (int i = 0; i < size; ++i) { //CHANGE
-                        subRouteWithCS[subRouteWithCSIndex] = subRoute[i];
-                        ++subRouteWithCSIndex;
-
-                        if (i == index) {
-                            subRouteWithCS[subRouteWithCSIndex] = findClosestChargingStation(subRoute[i]);
-                            ++subRouteWithCSIndex;
-                            ++additions;
-                        }
-
-                    }
-
-                    double tempDis = getTotalDistance(subRouteWithCS, subRouteWithCSIndex);
-                    isValid = getIsValidEnergy(subRouteWithCS, subRouteWithCSIndex);
-                    if (!isValidRoute && tempDis < minLength) {
-                        minLength = tempDis;
-                        pos = index;
-                        if (isValid)
-                            isValidRoute = isValid;
-                    } else if (isValidRoute && isValid && tempDis < minLength) {
-                        minLength = tempDis;
-                        pos = index;
-                    }
-                }
-                if (!isValidRoute) {
-                    int tempRoute[size + size];
-                    for (int i = 0; i < size + size; ++i)
-                        tempRoute[i] = -1;
-
-                    for (int i = 0; i < size; ++i) {
-                        tempRoute[i] = subRoute[i];
-                    }
-                    int subRouteIndex = 0;
-                    for (int i = 0; i < size; ++i) {
-                        subRoute[subRouteIndex] = tempRoute[i];
-                        ++subRouteIndex;
-                        if (i == pos) {
-                            subRoute[subRouteIndex] = findClosestChargingStation(tempRoute[i]);
-                            ++subRouteIndex;
-                        }
-
-                    }
-                    size = subRouteIndex;
-                    minLength = INT_MAX;
-                    pos = -1;
-                } else {
-                    int tempRoute[size + size];
-                    for (int i = 0; i < size + size; ++i)
-                        tempRoute[i] = -1;
-
-                    for (int i = 0; i < size; ++i) {
-                        tempRoute[i] = subRoute[i];
-                    }
-                    int subRouteIndex = 0;
-                    for (int i = 0; i < size; ++i) {
-                        subRoute[subRouteIndex++] = tempRoute[i];
-                        if (i == pos)
-                            subRoute[subRouteIndex++] = findClosestChargingStation(tempRoute[i]);
-
-                    }
-                }
-
-            }
-        }
-
-//        for (int i = 0; i <size ; ++i)
-//            printf("=%d, ",subRoute[i]);
-//        printf("\n");
-        for (int i = 0; i < size; ++i) {
-//            if (subRoute[i] != DEPOT) {
-            tour[step] = subRoute[i];
-            ++step;
-            //}
-        }
-
-        //CurrentBestDepot is the optimal depot placement.
-        //Start searching for next depot from currentBestDepot+1;
-        lastDepot = currentBestDepot + 1;
-    }
-
-    //MAY NEED CHANGING
-    tour[step++] = DEPOT;
-    //front += (end - front);
-
-//   for (int i = 0; i <step ; ++i)
-//        printf("%d, ",tour[i]);
-//    printf("\n");
-    if(checkSolution(tour,step)) {
-        double route_length = fitness_evaluation(tour, step);
-        if (route_length < best_sol->tour_length) {
-//            printf("%f :: %f\n", best_sol->tour_length, route_length);
-            check_solution(tour, step);
-
-            //clean Route
-            int counter = 0;
-            for (int index = 0; index < step - 1; ++index) {
-                int temp = tour[index];
-                if (temp != tour[index + 1])
-                    best_sol->tour[counter++] = temp;
-            }
-            best_sol->tour[counter++] = tour[step - 1];
-            best_sol->steps = counter;
-            best_sol->tour_length = route_length;
-        }
-        return route_length;
-    }
-    return INT_MAX;
-}
-
-/*
- * Checks that all the nodes are present within the tour.
- */
-bool GenerateTour::checkAllCustomersVisited(int *tour, int size) {
-    bool visited[NUM_OF_CUSTOMERS];
-    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
-        visited[customer] = false;
-    }
-    for (int customer = 0; customer < size; ++customer) {
-        if (!is_charging_station(tour[customer])) {
-            visited[tour[customer] - 1] = true;
-        }
-    }
-    bool isValid = true;
-    for (int customer = 0; customer < NUM_OF_CUSTOMERS; ++customer) {
-        if (!visited[customer])
-            isValid = false;
-    }
-    return isValid;
-}
-
-/*
- * Checks that the solution is a valid solution.
- */
-bool GenerateTour::checkSolution(int *tour, int size) {
-    bool energyValid = getIsValidEnergy(tour, size);
-    bool capacityValid = getIsValidCapacity(tour, size);
-    bool allCustomersVisited = checkAllCustomersVisited(tour, size);
-
-    return energyValid && capacityValid && allCustomersVisited;
-}
-
-/*
- * Gets a route length quickly without generating a route with charging stations and depots.
- */
-double GenerateTour::getBasicLength(int *bestRoute) {
-    double routeLength = 0.0;
-    for (int i = 1; i <= NUM_OF_CUSTOMERS; ++i)
-        routeLength += get_distance(bestRoute[i - 1], bestRoute[i]);
-    return routeLength;
-}
-
-
-/*
- * ================================================================================ *
- * OLD CODE
- * ================================================================================ *
- */
 
 //double localSearch::getRouteLength(const int *route) {
 ///*
@@ -1315,6 +1207,86 @@ double GenerateTour::getBasicLength(int *bestRoute) {
 //            best_sol->tour[index] = temp;
 //        }
 //        best_sol->steps = size;
+//        best_sol->tour_length = route_length;
+//    }
+//    return route_length;
+//}
+
+/*
+ * Generates a route between charging stations and depot using the route of customers.
+ * Returns a value determining the fitness of the inputted route.
+ */
+//double localSearch::getRouteLength(const int *route) {
+//    /*
+//    * GENERATE TOUR VERSION 1.
+//    * Generates tour using a greedy approach.
+//    * Provided with the competition framework.
+//    */
+//    int steps;
+//    int *tour = new int[NUM_OF_CUSTOMERS + 1];
+//    steps = 0;
+//    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++)
+//        tour[index] = -1;
+//    /*
+//     * Sets the first item in the tour to DEPOT because all routes start at the depot.
+//     * Increment steps to 1 due to first step was DEPOT.
+//     */
+//    tour[0] = DEPOT;
+//    steps++;
+//
+//    int prev, next, chargingStation;
+//    double activeCapacity = 0.0, activeBatteryLevel = 0.0;
+//    int i = 0;
+//    while (i <= NUM_OF_CUSTOMERS) {
+//        prev = tour[steps - 1];
+//        if (route[i] == 0) {
+//            i++;
+//            continue;
+//        }
+//        next = route[i];
+//        if ((activeCapacity + get_customer_demand(next)) <= MAX_CAPACITY &&
+//            activeBatteryLevel + get_energy_consumption(prev, next) <= BATTERY_CAPACITY) {
+//            activeCapacity += get_customer_demand(next);
+//            activeBatteryLevel += get_energy_consumption(prev, next);
+//            tour[steps] = next;
+//            steps++;
+//            i++;
+//        } else if ((activeCapacity + get_customer_demand(next)) > MAX_CAPACITY) {
+//            activeCapacity = 0.0;
+//            activeBatteryLevel = 0.0;
+//            tour[steps] = DEPOT;
+//            steps++;
+//        } else if (activeBatteryLevel + get_energy_consumption(prev, next) > BATTERY_CAPACITY) {
+////            chargingStation = rand() % (ACTUAL_PROBLEM_SIZE - NUM_OF_CUSTOMERS - 1) + NUM_OF_CUSTOMERS + 1;
+//            chargingStation = NUM_OF_CUSTOMERS + NUM_OF_STATIONS;
+//            for (int index = NUM_OF_CUSTOMERS + 1; index <= (NUM_OF_CUSTOMERS + NUM_OF_STATIONS); index++) {
+//                if (get_distance(next, index) < get_distance(next, chargingStation) && is_charging_station(index))
+//                    chargingStation = index;
+//            }
+//            if (is_charging_station(chargingStation)) {
+//                activeBatteryLevel = 0.0;
+//                tour[steps] = chargingStation;
+//                steps++;
+//            }
+//        } else {
+//            activeCapacity = 0.0;
+//            activeBatteryLevel = 0.0;
+//            tour[steps] = DEPOT;
+//            steps++;
+//        }
+//    }
+//
+//    //close EVRP tour to return back to the depot
+//    if (tour[steps - 1] != DEPOT) {
+//        tour[steps] = DEPOT;
+//        steps++;
+//    }
+//    //check_solution(tour,steps);
+//    double route_length = fitness_evaluation(tour, steps);
+//    if (route_length < best_sol->tour_length) {
+//        for (int index = 0; index < steps; ++index)
+//            best_sol->tour[index] = tour[index];
+//        best_sol->steps = steps;
 //        best_sol->tour_length = route_length;
 //    }
 //    return route_length;

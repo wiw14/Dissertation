@@ -104,58 +104,34 @@
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACO.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/CACOHeuristic.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/Clusterer.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.cpp">
-			<Option target="TestSampleCode"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ClusterBasedACO/KMeansClustering.h">
-			<Option target="TestSampleCode"/>
-		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClusters.cpp">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACO.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClusters.h">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACO.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClustersHeuristic.cpp">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACOHeuristic.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ACOOnClustersHeuristic.h">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACOHeuristic.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Cluster.cpp">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/Clusterer.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/Cluster.h">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/Clusterer.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ClusterACO.cpp">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/KMeansClustering.cpp">
 			<Option target="TestSampleCode"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Experimental/ClusterACO.h">
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/KMeansClustering.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.cpp">
@@ -216,6 +192,30 @@
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClusters.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClusters.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClustersHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClustersHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/Cluster.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/Cluster.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ClusterACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ClusterACO.h">
 			<Option target="TestSampleCode"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNN.cpp">

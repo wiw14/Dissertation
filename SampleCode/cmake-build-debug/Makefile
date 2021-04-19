@@ -250,114 +250,6 @@ AntColonyOptimisation/MaxMinACO.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.s
 .PHONY : AntColonyOptimisation/MaxMinACO.cpp.s
 
-ClusterBasedACO/CACO.o: ClusterBasedACO/CACO.cpp.o
-
-.PHONY : ClusterBasedACO/CACO.o
-
-# target to build an object file
-ClusterBasedACO/CACO.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.o
-.PHONY : ClusterBasedACO/CACO.cpp.o
-
-ClusterBasedACO/CACO.i: ClusterBasedACO/CACO.cpp.i
-
-.PHONY : ClusterBasedACO/CACO.i
-
-# target to preprocess a source file
-ClusterBasedACO/CACO.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.i
-.PHONY : ClusterBasedACO/CACO.cpp.i
-
-ClusterBasedACO/CACO.s: ClusterBasedACO/CACO.cpp.s
-
-.PHONY : ClusterBasedACO/CACO.s
-
-# target to generate assembly for a file
-ClusterBasedACO/CACO.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACO.cpp.s
-.PHONY : ClusterBasedACO/CACO.cpp.s
-
-ClusterBasedACO/CACOHeuristic.o: ClusterBasedACO/CACOHeuristic.cpp.o
-
-.PHONY : ClusterBasedACO/CACOHeuristic.o
-
-# target to build an object file
-ClusterBasedACO/CACOHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.o
-.PHONY : ClusterBasedACO/CACOHeuristic.cpp.o
-
-ClusterBasedACO/CACOHeuristic.i: ClusterBasedACO/CACOHeuristic.cpp.i
-
-.PHONY : ClusterBasedACO/CACOHeuristic.i
-
-# target to preprocess a source file
-ClusterBasedACO/CACOHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.i
-.PHONY : ClusterBasedACO/CACOHeuristic.cpp.i
-
-ClusterBasedACO/CACOHeuristic.s: ClusterBasedACO/CACOHeuristic.cpp.s
-
-.PHONY : ClusterBasedACO/CACOHeuristic.s
-
-# target to generate assembly for a file
-ClusterBasedACO/CACOHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/CACOHeuristic.cpp.s
-.PHONY : ClusterBasedACO/CACOHeuristic.cpp.s
-
-ClusterBasedACO/Clusterer.o: ClusterBasedACO/Clusterer.cpp.o
-
-.PHONY : ClusterBasedACO/Clusterer.o
-
-# target to build an object file
-ClusterBasedACO/Clusterer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.o
-.PHONY : ClusterBasedACO/Clusterer.cpp.o
-
-ClusterBasedACO/Clusterer.i: ClusterBasedACO/Clusterer.cpp.i
-
-.PHONY : ClusterBasedACO/Clusterer.i
-
-# target to preprocess a source file
-ClusterBasedACO/Clusterer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.i
-.PHONY : ClusterBasedACO/Clusterer.cpp.i
-
-ClusterBasedACO/Clusterer.s: ClusterBasedACO/Clusterer.cpp.s
-
-.PHONY : ClusterBasedACO/Clusterer.s
-
-# target to generate assembly for a file
-ClusterBasedACO/Clusterer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/Clusterer.cpp.s
-.PHONY : ClusterBasedACO/Clusterer.cpp.s
-
-ClusterBasedACO/KMeansClustering.o: ClusterBasedACO/KMeansClustering.cpp.o
-
-.PHONY : ClusterBasedACO/KMeansClustering.o
-
-# target to build an object file
-ClusterBasedACO/KMeansClustering.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.o
-.PHONY : ClusterBasedACO/KMeansClustering.cpp.o
-
-ClusterBasedACO/KMeansClustering.i: ClusterBasedACO/KMeansClustering.cpp.i
-
-.PHONY : ClusterBasedACO/KMeansClustering.i
-
-# target to preprocess a source file
-ClusterBasedACO/KMeansClustering.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.i
-.PHONY : ClusterBasedACO/KMeansClustering.cpp.i
-
-ClusterBasedACO/KMeansClustering.s: ClusterBasedACO/KMeansClustering.cpp.s
-
-.PHONY : ClusterBasedACO/KMeansClustering.s
-
-# target to generate assembly for a file
-ClusterBasedACO/KMeansClustering.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ClusterBasedACO/KMeansClustering.cpp.s
-.PHONY : ClusterBasedACO/KMeansClustering.cpp.s
-
 Dijkstra/DijkstrasHeuristic.o: Dijkstra/DijkstrasHeuristic.cpp.o
 
 .PHONY : Dijkstra/DijkstrasHeuristic.o
@@ -385,113 +277,113 @@ Dijkstra/DijkstrasHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.s
 .PHONY : Dijkstra/DijkstrasHeuristic.cpp.s
 
-Experimental/ACOOnClusters.o: Experimental/ACOOnClusters.cpp.o
+ExternalClusteringACO/CACO.o: ExternalClusteringACO/CACO.cpp.o
 
-.PHONY : Experimental/ACOOnClusters.o
-
-# target to build an object file
-Experimental/ACOOnClusters.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClusters.cpp.o
-.PHONY : Experimental/ACOOnClusters.cpp.o
-
-Experimental/ACOOnClusters.i: Experimental/ACOOnClusters.cpp.i
-
-.PHONY : Experimental/ACOOnClusters.i
-
-# target to preprocess a source file
-Experimental/ACOOnClusters.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClusters.cpp.i
-.PHONY : Experimental/ACOOnClusters.cpp.i
-
-Experimental/ACOOnClusters.s: Experimental/ACOOnClusters.cpp.s
-
-.PHONY : Experimental/ACOOnClusters.s
-
-# target to generate assembly for a file
-Experimental/ACOOnClusters.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClusters.cpp.s
-.PHONY : Experimental/ACOOnClusters.cpp.s
-
-Experimental/ACOOnClustersHeuristic.o: Experimental/ACOOnClustersHeuristic.cpp.o
-
-.PHONY : Experimental/ACOOnClustersHeuristic.o
+.PHONY : ExternalClusteringACO/CACO.o
 
 # target to build an object file
-Experimental/ACOOnClustersHeuristic.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClustersHeuristic.cpp.o
-.PHONY : Experimental/ACOOnClustersHeuristic.cpp.o
+ExternalClusteringACO/CACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.o
+.PHONY : ExternalClusteringACO/CACO.cpp.o
 
-Experimental/ACOOnClustersHeuristic.i: Experimental/ACOOnClustersHeuristic.cpp.i
+ExternalClusteringACO/CACO.i: ExternalClusteringACO/CACO.cpp.i
 
-.PHONY : Experimental/ACOOnClustersHeuristic.i
+.PHONY : ExternalClusteringACO/CACO.i
 
 # target to preprocess a source file
-Experimental/ACOOnClustersHeuristic.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClustersHeuristic.cpp.i
-.PHONY : Experimental/ACOOnClustersHeuristic.cpp.i
+ExternalClusteringACO/CACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.i
+.PHONY : ExternalClusteringACO/CACO.cpp.i
 
-Experimental/ACOOnClustersHeuristic.s: Experimental/ACOOnClustersHeuristic.cpp.s
+ExternalClusteringACO/CACO.s: ExternalClusteringACO/CACO.cpp.s
 
-.PHONY : Experimental/ACOOnClustersHeuristic.s
+.PHONY : ExternalClusteringACO/CACO.s
 
 # target to generate assembly for a file
-Experimental/ACOOnClustersHeuristic.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ACOOnClustersHeuristic.cpp.s
-.PHONY : Experimental/ACOOnClustersHeuristic.cpp.s
+ExternalClusteringACO/CACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.s
+.PHONY : ExternalClusteringACO/CACO.cpp.s
 
-Experimental/Cluster.o: Experimental/Cluster.cpp.o
+ExternalClusteringACO/CACOHeuristic.o: ExternalClusteringACO/CACOHeuristic.cpp.o
 
-.PHONY : Experimental/Cluster.o
+.PHONY : ExternalClusteringACO/CACOHeuristic.o
 
 # target to build an object file
-Experimental/Cluster.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Cluster.cpp.o
-.PHONY : Experimental/Cluster.cpp.o
+ExternalClusteringACO/CACOHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACOHeuristic.cpp.o
+.PHONY : ExternalClusteringACO/CACOHeuristic.cpp.o
 
-Experimental/Cluster.i: Experimental/Cluster.cpp.i
+ExternalClusteringACO/CACOHeuristic.i: ExternalClusteringACO/CACOHeuristic.cpp.i
 
-.PHONY : Experimental/Cluster.i
+.PHONY : ExternalClusteringACO/CACOHeuristic.i
 
 # target to preprocess a source file
-Experimental/Cluster.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Cluster.cpp.i
-.PHONY : Experimental/Cluster.cpp.i
+ExternalClusteringACO/CACOHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACOHeuristic.cpp.i
+.PHONY : ExternalClusteringACO/CACOHeuristic.cpp.i
 
-Experimental/Cluster.s: Experimental/Cluster.cpp.s
+ExternalClusteringACO/CACOHeuristic.s: ExternalClusteringACO/CACOHeuristic.cpp.s
 
-.PHONY : Experimental/Cluster.s
+.PHONY : ExternalClusteringACO/CACOHeuristic.s
 
 # target to generate assembly for a file
-Experimental/Cluster.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/Cluster.cpp.s
-.PHONY : Experimental/Cluster.cpp.s
+ExternalClusteringACO/CACOHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACOHeuristic.cpp.s
+.PHONY : ExternalClusteringACO/CACOHeuristic.cpp.s
 
-Experimental/ClusterACO.o: Experimental/ClusterACO.cpp.o
+ExternalClusteringACO/Clusterer.o: ExternalClusteringACO/Clusterer.cpp.o
 
-.PHONY : Experimental/ClusterACO.o
+.PHONY : ExternalClusteringACO/Clusterer.o
 
 # target to build an object file
-Experimental/ClusterACO.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ClusterACO.cpp.o
-.PHONY : Experimental/ClusterACO.cpp.o
+ExternalClusteringACO/Clusterer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/Clusterer.cpp.o
+.PHONY : ExternalClusteringACO/Clusterer.cpp.o
 
-Experimental/ClusterACO.i: Experimental/ClusterACO.cpp.i
+ExternalClusteringACO/Clusterer.i: ExternalClusteringACO/Clusterer.cpp.i
 
-.PHONY : Experimental/ClusterACO.i
+.PHONY : ExternalClusteringACO/Clusterer.i
 
 # target to preprocess a source file
-Experimental/ClusterACO.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ClusterACO.cpp.i
-.PHONY : Experimental/ClusterACO.cpp.i
+ExternalClusteringACO/Clusterer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/Clusterer.cpp.i
+.PHONY : ExternalClusteringACO/Clusterer.cpp.i
 
-Experimental/ClusterACO.s: Experimental/ClusterACO.cpp.s
+ExternalClusteringACO/Clusterer.s: ExternalClusteringACO/Clusterer.cpp.s
 
-.PHONY : Experimental/ClusterACO.s
+.PHONY : ExternalClusteringACO/Clusterer.s
 
 # target to generate assembly for a file
-Experimental/ClusterACO.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/Experimental/ClusterACO.cpp.s
-.PHONY : Experimental/ClusterACO.cpp.s
+ExternalClusteringACO/Clusterer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/Clusterer.cpp.s
+.PHONY : ExternalClusteringACO/Clusterer.cpp.s
+
+ExternalClusteringACO/KMeansClustering.o: ExternalClusteringACO/KMeansClustering.cpp.o
+
+.PHONY : ExternalClusteringACO/KMeansClustering.o
+
+# target to build an object file
+ExternalClusteringACO/KMeansClustering.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.o
+.PHONY : ExternalClusteringACO/KMeansClustering.cpp.o
+
+ExternalClusteringACO/KMeansClustering.i: ExternalClusteringACO/KMeansClustering.cpp.i
+
+.PHONY : ExternalClusteringACO/KMeansClustering.i
+
+# target to preprocess a source file
+ExternalClusteringACO/KMeansClustering.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.i
+.PHONY : ExternalClusteringACO/KMeansClustering.cpp.i
+
+ExternalClusteringACO/KMeansClustering.s: ExternalClusteringACO/KMeansClustering.cpp.s
+
+.PHONY : ExternalClusteringACO/KMeansClustering.s
+
+# target to generate assembly for a file
+ExternalClusteringACO/KMeansClustering.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.s
+.PHONY : ExternalClusteringACO/KMeansClustering.cpp.s
 
 Framework/EVRP.o: Framework/EVRP.cpp.o
 
@@ -763,6 +655,114 @@ GreedyEuclidean/greedyEuclideanHeuristic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.s
 .PHONY : GreedyEuclidean/greedyEuclideanHeuristic.cpp.s
 
+InternalClusteringACO/ACOOnClusters.o: InternalClusteringACO/ACOOnClusters.cpp.o
+
+.PHONY : InternalClusteringACO/ACOOnClusters.o
+
+# target to build an object file
+InternalClusteringACO/ACOOnClusters.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClusters.cpp.o
+.PHONY : InternalClusteringACO/ACOOnClusters.cpp.o
+
+InternalClusteringACO/ACOOnClusters.i: InternalClusteringACO/ACOOnClusters.cpp.i
+
+.PHONY : InternalClusteringACO/ACOOnClusters.i
+
+# target to preprocess a source file
+InternalClusteringACO/ACOOnClusters.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClusters.cpp.i
+.PHONY : InternalClusteringACO/ACOOnClusters.cpp.i
+
+InternalClusteringACO/ACOOnClusters.s: InternalClusteringACO/ACOOnClusters.cpp.s
+
+.PHONY : InternalClusteringACO/ACOOnClusters.s
+
+# target to generate assembly for a file
+InternalClusteringACO/ACOOnClusters.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClusters.cpp.s
+.PHONY : InternalClusteringACO/ACOOnClusters.cpp.s
+
+InternalClusteringACO/ACOOnClustersHeuristic.o: InternalClusteringACO/ACOOnClustersHeuristic.cpp.o
+
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.o
+
+# target to build an object file
+InternalClusteringACO/ACOOnClustersHeuristic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClustersHeuristic.cpp.o
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.cpp.o
+
+InternalClusteringACO/ACOOnClustersHeuristic.i: InternalClusteringACO/ACOOnClustersHeuristic.cpp.i
+
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.i
+
+# target to preprocess a source file
+InternalClusteringACO/ACOOnClustersHeuristic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClustersHeuristic.cpp.i
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.cpp.i
+
+InternalClusteringACO/ACOOnClustersHeuristic.s: InternalClusteringACO/ACOOnClustersHeuristic.cpp.s
+
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.s
+
+# target to generate assembly for a file
+InternalClusteringACO/ACOOnClustersHeuristic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClustersHeuristic.cpp.s
+.PHONY : InternalClusteringACO/ACOOnClustersHeuristic.cpp.s
+
+InternalClusteringACO/Cluster.o: InternalClusteringACO/Cluster.cpp.o
+
+.PHONY : InternalClusteringACO/Cluster.o
+
+# target to build an object file
+InternalClusteringACO/Cluster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/Cluster.cpp.o
+.PHONY : InternalClusteringACO/Cluster.cpp.o
+
+InternalClusteringACO/Cluster.i: InternalClusteringACO/Cluster.cpp.i
+
+.PHONY : InternalClusteringACO/Cluster.i
+
+# target to preprocess a source file
+InternalClusteringACO/Cluster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/Cluster.cpp.i
+.PHONY : InternalClusteringACO/Cluster.cpp.i
+
+InternalClusteringACO/Cluster.s: InternalClusteringACO/Cluster.cpp.s
+
+.PHONY : InternalClusteringACO/Cluster.s
+
+# target to generate assembly for a file
+InternalClusteringACO/Cluster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/Cluster.cpp.s
+.PHONY : InternalClusteringACO/Cluster.cpp.s
+
+InternalClusteringACO/ClusterACO.o: InternalClusteringACO/ClusterACO.cpp.o
+
+.PHONY : InternalClusteringACO/ClusterACO.o
+
+# target to build an object file
+InternalClusteringACO/ClusterACO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ClusterACO.cpp.o
+.PHONY : InternalClusteringACO/ClusterACO.cpp.o
+
+InternalClusteringACO/ClusterACO.i: InternalClusteringACO/ClusterACO.cpp.i
+
+.PHONY : InternalClusteringACO/ClusterACO.i
+
+# target to preprocess a source file
+InternalClusteringACO/ClusterACO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ClusterACO.cpp.i
+.PHONY : InternalClusteringACO/ClusterACO.cpp.i
+
+InternalClusteringACO/ClusterACO.s: InternalClusteringACO/ClusterACO.cpp.s
+
+.PHONY : InternalClusteringACO/ClusterACO.s
+
+# target to generate assembly for a file
+InternalClusteringACO/ClusterACO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestSampleCode.dir/build.make CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ClusterACO.cpp.s
+.PHONY : InternalClusteringACO/ClusterACO.cpp.s
+
 KNN/KNN.o: KNN/KNN.cpp.o
 
 .PHONY : KNN/KNN.o
@@ -946,33 +946,21 @@ help:
 	@echo "... AntColonyOptimisation/MaxMinACO.o"
 	@echo "... AntColonyOptimisation/MaxMinACO.i"
 	@echo "... AntColonyOptimisation/MaxMinACO.s"
-	@echo "... ClusterBasedACO/CACO.o"
-	@echo "... ClusterBasedACO/CACO.i"
-	@echo "... ClusterBasedACO/CACO.s"
-	@echo "... ClusterBasedACO/CACOHeuristic.o"
-	@echo "... ClusterBasedACO/CACOHeuristic.i"
-	@echo "... ClusterBasedACO/CACOHeuristic.s"
-	@echo "... ClusterBasedACO/Clusterer.o"
-	@echo "... ClusterBasedACO/Clusterer.i"
-	@echo "... ClusterBasedACO/Clusterer.s"
-	@echo "... ClusterBasedACO/KMeansClustering.o"
-	@echo "... ClusterBasedACO/KMeansClustering.i"
-	@echo "... ClusterBasedACO/KMeansClustering.s"
 	@echo "... Dijkstra/DijkstrasHeuristic.o"
 	@echo "... Dijkstra/DijkstrasHeuristic.i"
 	@echo "... Dijkstra/DijkstrasHeuristic.s"
-	@echo "... Experimental/ACOOnClusters.o"
-	@echo "... Experimental/ACOOnClusters.i"
-	@echo "... Experimental/ACOOnClusters.s"
-	@echo "... Experimental/ACOOnClustersHeuristic.o"
-	@echo "... Experimental/ACOOnClustersHeuristic.i"
-	@echo "... Experimental/ACOOnClustersHeuristic.s"
-	@echo "... Experimental/Cluster.o"
-	@echo "... Experimental/Cluster.i"
-	@echo "... Experimental/Cluster.s"
-	@echo "... Experimental/ClusterACO.o"
-	@echo "... Experimental/ClusterACO.i"
-	@echo "... Experimental/ClusterACO.s"
+	@echo "... ExternalClusteringACO/CACO.o"
+	@echo "... ExternalClusteringACO/CACO.i"
+	@echo "... ExternalClusteringACO/CACO.s"
+	@echo "... ExternalClusteringACO/CACOHeuristic.o"
+	@echo "... ExternalClusteringACO/CACOHeuristic.i"
+	@echo "... ExternalClusteringACO/CACOHeuristic.s"
+	@echo "... ExternalClusteringACO/Clusterer.o"
+	@echo "... ExternalClusteringACO/Clusterer.i"
+	@echo "... ExternalClusteringACO/Clusterer.s"
+	@echo "... ExternalClusteringACO/KMeansClustering.o"
+	@echo "... ExternalClusteringACO/KMeansClustering.i"
+	@echo "... ExternalClusteringACO/KMeansClustering.s"
 	@echo "... Framework/EVRP.o"
 	@echo "... Framework/EVRP.i"
 	@echo "... Framework/EVRP.s"
@@ -1003,6 +991,18 @@ help:
 	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.o"
 	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.i"
 	@echo "... GreedyEuclidean/greedyEuclideanHeuristic.s"
+	@echo "... InternalClusteringACO/ACOOnClusters.o"
+	@echo "... InternalClusteringACO/ACOOnClusters.i"
+	@echo "... InternalClusteringACO/ACOOnClusters.s"
+	@echo "... InternalClusteringACO/ACOOnClustersHeuristic.o"
+	@echo "... InternalClusteringACO/ACOOnClustersHeuristic.i"
+	@echo "... InternalClusteringACO/ACOOnClustersHeuristic.s"
+	@echo "... InternalClusteringACO/Cluster.o"
+	@echo "... InternalClusteringACO/Cluster.i"
+	@echo "... InternalClusteringACO/Cluster.s"
+	@echo "... InternalClusteringACO/ClusterACO.o"
+	@echo "... InternalClusteringACO/ClusterACO.i"
+	@echo "... InternalClusteringACO/ClusterACO.s"
 	@echo "... KNN/KNN.o"
 	@echo "... KNN/KNN.i"
 	@echo "... KNN/KNN.s"

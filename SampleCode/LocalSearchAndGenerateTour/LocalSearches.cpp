@@ -77,68 +77,6 @@ int checkClosure(int *bestRoute, int p1, int p2, int p3, int p4) {
         return 1;
 }
 
-//int* checkClosure(int* bestRoute, int p1, int p2, int p3, int p4){
-//    // return -1 if failure to close.
-//    int cust = 0;
-//    bool reverse = false;
-//    int* newRoute = new int[NUM_OF_CUSTOMERS], newCounter = 0;
-//
-//    for (int instantiateCustomer = 0; instantiateCustomer <= NUM_OF_CUSTOMERS; ++instantiateCustomer)
-//        newRoute[instantiateCustomer] = -1;
-//
-////    printf("P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
-//    bool*visited = new bool[2];
-//    for (int instantiateVisited = 0; instantiateVisited < 2; ++instantiateVisited)
-//        visited[instantiateVisited] = false;
-//    cust = p1;
-//    if(p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
-//        return newRoute;
-//    while (true){
-//        if (cust > NUM_OF_CUSTOMERS){
-//            cust = 0;
-//        }
-////        printf("%d -- %d\n",newCounter,cust);
-//        if(cust == p1 && visited[0])
-//            break;
-//        else if(cust == p2 && visited[1])
-//            break;
-//        if(cust < 0)
-//            break;
-//
-//        newRoute[newCounter++] = bestRoute[cust];
-//        if(cust == p1 && !visited[0]) {
-//            visited[0] = true;
-//            cust = p4;
-//            if(cust+1 == p3 || (cust == NUM_OF_CUSTOMERS && p3 == 0)) {//if the next node is v3 reverse direction
-//                reverse = true;
-//                cust+=1;
-//            }
-//            else{
-//                cust-=1;
-//                reverse = false;
-//            }
-//        }
-//        else if (cust == p2 && !visited[1]){
-//            visited[1] = true;
-//            cust = p3;
-//            if(cust+1 == p4 || (cust == NUM_OF_CUSTOMERS && p4 == 0)) {
-//                reverse = true;
-//                cust += 1;
-//            }
-//            else {
-//                cust -= 1;
-//                reverse = false;
-//            }
-//        }
-//        if(!reverse)
-//            cust++;
-//        else
-//            cust--;
-//    }
-//
-//    return newRoute;
-//}
-
 double getGain(int *bestRoute, int p1, int p2, int p3, int p4) {
     double originalDist = get_distance(bestRoute[p1], bestRoute[p2]) + get_distance(bestRoute[p3], bestRoute[p4]);
     double newDist = get_distance(bestRoute[p1], bestRoute[p4]) + get_distance(bestRoute[p2], bestRoute[p3]);
@@ -146,12 +84,6 @@ double getGain(int *bestRoute, int p1, int p2, int p3, int p4) {
 }
 
 std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, int p4) {
-//    int* subRouteOne = new int[NUM_OF_CUSTOMERS + 1];
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        subRouteOne[i] = -1;
-//    int* subRouteTwo = new int[NUM_OF_CUSTOMERS + 1];
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        subRouteTwo[i] = -1;
     auto subRouteOne = std::vector<int>();
     auto subRouteTwo = std::vector<int>();
 
@@ -160,7 +92,6 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
         //forwards to find p2 to p4
         int marker = p1, index = 0;
         int stop = addToPos(p3);
-//int stop = p3;
         while (marker != stop) {
 
             subRouteOne.push_back(bestRoute[marker]);
@@ -174,7 +105,6 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
 
         marker = p2, index = 0;
         stop = subtractFromPos(p4);
-//stop = p4;
         while (marker != stop) {
 
             subRouteTwo.push_back(bestRoute[marker]);
@@ -192,7 +122,6 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
 
         int marker = p1, index = 0;
         int stop = subtractFromPos(p3);
-//int stop = p3;
         while (marker != stop) {
 
             subRouteOne.push_back(bestRoute[marker]);
@@ -205,7 +134,6 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
 
         marker = p2, index = 0;
         stop = addToPos(p4);
-//stop = p4;
         while (marker != stop) {
 
             subRouteTwo.push_back(bestRoute[marker]);
@@ -225,9 +153,6 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
         newRoute.push_back(s);
     }
 
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        printf("%d ", newRoute[i]);
-//    printf("\n");
     return newRoute;
 }
 
@@ -236,12 +161,7 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
  * Version 3.
  */
 void localSearch::LKSearch(int *bestRoute) {
-//    double currRouteLen = GenerateTour::getRouteLength(bestRoute);
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        printf("%d ",bestRoute[i]);
-//    printf("\n");
     for (int p1 = 0; p1 <= NUM_OF_CUSTOMERS; p1++) {
-//        printf("Start %d\n", p1);
         int p2 = addToPos(p1);
         int v3 = findNearestCustomer(bestRoute[p2]);
         if (v3 == bestRoute[p1] || get_distance(bestRoute[p1], bestRoute[p2]) <
@@ -255,17 +175,12 @@ void localSearch::LKSearch(int *bestRoute) {
         if (p3 == -1)
             continue;
         int p4 = addToPos(p3);
-//        printf("=P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
         if (checkClosure(bestRoute, p1, p2, p3, p4) == 0) {
             p4 = subtractFromPos(p3);
         }
-//        printf("=P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
-//        printf("Found Pos\n");
         if (p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
             continue;
-//        printf("Find Gain\n");
         double gain = getGain(bestRoute, p1, p2, p3, p4);
-//        printf("G: %f\n",gain);
         int p5,p6;
         if (gain < 0) {
             continue;
@@ -292,17 +207,13 @@ void localSearch::LKSearch(int *bestRoute) {
                     G = false;
             }
             if (!G) {
-//                printf("r %d %d %d %d\n", p1, p2, p3, p4);
                 auto newR = constructRoute(bestRoute, p1, p2, p3, p4);
-//            double newLen = GenerateTour::getRouteLength(newR);
                 //Checks the route is the correct size.
                 if (newR.size() == NUM_OF_CUSTOMERS - 1) {
                     int index = 0;
                     for (auto node: newR) {
-//                    printf("+%d ",node);
                         bestRoute[index++] = node;
                     }
-//                printf("\n");
                 }
             } else {
                 auto subRouteOne = std::vector<int>();
@@ -322,8 +233,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == -1)
                             marker = NUM_OF_CUSTOMERS;
                     }
-//                    subRouteOne.push_back(bestRoute[p3]);
-
 
                     marker = p2, index = 0;
                     stop = subtractFromPos(p5);
@@ -335,7 +244,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == NUM_OF_CUSTOMERS + 1)
                             marker = 0;
                     }
-//                    subRouteTwo.push_back(bestRoute[p5]);
 
                     marker = p4, index =0;
                     stop = addToPos(p6);
@@ -346,7 +254,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == -1)
                             marker = NUM_OF_CUSTOMERS;
                     }
-//                    subRouteThree.push_back(bestRoute[p6]);
 
                 } else {
                     //forwards to find p1 to p3
@@ -362,7 +269,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == NUM_OF_CUSTOMERS + 1)
                             marker = 0;
                     }
-//                    subRouteOne.push_back(bestRoute[p3]);
 
                     marker = p2, index = 0;
                     stop = addToPos(p5);
@@ -374,7 +280,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == -1)
                             marker = NUM_OF_CUSTOMERS;
                     }
-//                    subRouteTwo.push_back(bestRoute[p5]);
 
                     marker = p4, index =0;
                     stop = subtractFromPos(p6);
@@ -385,7 +290,6 @@ void localSearch::LKSearch(int *bestRoute) {
                         if (marker == NUM_OF_CUSTOMERS+1)
                             marker = 0;
                     }
-//                    subRouteThree.push_back(bestRoute[p6]);
                 }
                 auto newRoute = std::vector<int>();
                 int index = 0;
@@ -396,24 +300,16 @@ void localSearch::LKSearch(int *bestRoute) {
                 for (auto s:subRouteThree)
                     newRoute.push_back(s);
 
-//
                 if (newRoute.size() == NUM_OF_CUSTOMERS - 1) {
                     index = 0;
                     for (auto node: newRoute) {
-//                    printf("=%d ",node);
                         bestRoute[index++] = node;
                     }
-//                printf("\n");
                 }
             }
         }
 
     }
-//    printf("End Function\n");
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i) {
-//        printf("%d ",bestRoute[i]);
-//    }
-//    printf("\n");
 }
 
 /*
@@ -670,19 +566,17 @@ int localSearch::getTotalWeightCluster() {
 /*
  * Generates a random number pair (x and y) based on the local search pheromones.
  */
-std::vector<int> localSearch::getRandomNumber() { //type either x (0) or y (1).
+std::vector<int> localSearch::getRandomNumber() {
     std::vector<int> xy(2);
     int totalWeight = getTotalWeight();
     xy.operator[](0) = -1;
     xy.operator[](1) = -1;
-    //printf("type: %d tw: %d\n",type ,totalWeight); //DEBUGGING
     int val = rand() % (totalWeight - 1);
     totalWeight = 0;
     for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
         for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
             totalWeight += localSearchPheromone[GenerateTour::getArcCode(i, j)];
             if (val <= (totalWeight)) {
-                //printf("%d\n",index); //DEBUGGING
                 xy.operator[](0) = i;
                 xy.operator[](1) = j;
                 return xy;
@@ -701,14 +595,12 @@ std::vector<int> localSearch::getRandomNumberCluster() { //type either x (0) or 
     int totalWeight = getTotalWeightCluster();
     xy.operator[](0) = -1;
     xy.operator[](1) = -1;
-    //printf("type: %d tw: %d\n",type ,totalWeight); //DEBUGGING
     int val = rand() % (totalWeight - 1);
     totalWeight = 0;
     for (int i = 0; i < KMeansClustering::numOfClusters; i++) {
         for (int j = i + 1; j < KMeansClustering::numOfClusters; j++) {
             totalWeight += localSearchPheromoneCluster[GenerateTour::getArcCode(i, j)];
             if (val <= (totalWeight)) {
-                //printf("%d\n",index); //DEBUGGING
                 xy.operator[](0) = i;
                 xy.operator[](1) = j;
                 return xy;
@@ -958,7 +850,6 @@ void localSearch::randomPheromoneLocalSearchWithTwoOptCluster(int *bestRoute) {
 void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
     int *tempRoute = new int[NUM_OF_CUSTOMERS + 1];
     double route_length = GenerateTour::getRouteLength(bestRoute);
-//    double route_length = GenerateTour::getRouteLengthQuick(bestRoute);
     double new_route_length = route_length;
     int iters = 0, x, y;
     std::vector<int> xy(2);
@@ -996,7 +887,6 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
         //2-Opt As well
         twoOptLocalPheromoneAddonSearch(tempRoute);
 
-//        new_route_length = GenerateTour::getRouteLengthQuick(tempRoute);
         new_route_length = GenerateTour::getRouteLength(tempRoute);
     }
     decreaseLocalSearchPheromone();

@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.path import Path
-import matplotlib.patches as patches
 
 iterations = []
 scores = []

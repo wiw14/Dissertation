@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 15/02/2021.
-//
-
 #ifndef TESTSAMPLECODE_KNN_H
 #define TESTSAMPLECODE_KNN_H
 #include "../LocalSearchAndGenerateTour/LocalSearches.h"
