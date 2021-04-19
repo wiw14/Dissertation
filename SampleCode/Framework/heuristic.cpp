@@ -51,7 +51,7 @@ void checkRouteIsValid(int* route, int routeSize){
  * List of all the currently implemented heuristics.
  * Activate heuristics by uncommenting.
  */
-void run_heuristic(int input,int run) {
+void run_heuristic(int input) {
     if(input == 1)
         greedyHeuristic();
     else if(input == 2)

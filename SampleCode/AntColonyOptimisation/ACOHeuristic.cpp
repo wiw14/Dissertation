@@ -19,10 +19,11 @@ void ACOHeuristic(){
     auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
 
     a->optimize(iterations);
+//    printf("End Optimize\n");
     int * route = a->returnResults();
     a->getRL(route);
-
     delete a;
+//    printf("End\n");
 }
 
 /*

@@ -170,7 +170,9 @@ void ACO::optimize(int iterations) {
 
         }
         //Pheromones are updated with the new found routes.
+//        printf("Iter %d\n",iter);
         updatePheromones(iter,iterations);
+//        printf("End Update\n");
 
 
         //Resets the all the routes.
@@ -217,9 +219,11 @@ void ACO::updatePheromones(int iterations,int maxIterations) {
         }
 
         //Run local search to improve the route before updating the pheromones.
-//        LS->LKSearch(routes[ant]);
-            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
-//        LS->LKSearch(routes[ant]);
+//            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+//        printf("LS %d\n",ant);
+        LS->LKSearch(routes[ant]);
+        GenerateTour::getRouteLength(routes[ant]);
+//        printf("End LS\n");
 //            LS->randomLocalSearch(routes[ant]);
 //        LS->randomPheromoneLocalSearch(routes[ant]);
 //        LS->twoOptLocalSearch(routes[ant]);
@@ -233,8 +237,11 @@ void ACO::updatePheromones(int iterations,int maxIterations) {
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
+//            printf("%d-%d ",customerA,customerB);
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
+//        printf("\n");
+//        printf("End %d\n",ant);
     }
     addRunDataToFile(iterations,best_sol->tour_length);
 }

@@ -26,13 +26,13 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
 localSearch::~localSearch() {
 }
 
-int localSearch::findNearestCustomer(int customer){
+int localSearch::findNearestCustomer(int customer) {
     double shortestDist = INT_MAX;
     int nearestNeighbour = -1;
     for (int nearestCustomer = 0; nearestCustomer <= NUM_OF_CUSTOMERS; ++nearestCustomer) {
-        if( nearestCustomer != customer){
-            double dist = get_distance(customer,nearestCustomer);
-            if (dist < shortestDist){
+        if (nearestCustomer != customer) {
+            double dist = get_distance(customer, nearestCustomer);
+            if (dist < shortestDist) {
                 shortestDist = dist;
                 nearestNeighbour = nearestCustomer;
             }
@@ -41,91 +41,189 @@ int localSearch::findNearestCustomer(int customer){
     return nearestNeighbour;
 }
 
-int locatePosInRoute(int* bestRoute, int customer){
+int locatePosInRoute(int *bestRoute, int customer) {
     for (int findCustomer = 0; findCustomer <= NUM_OF_CUSTOMERS; ++findCustomer) {
-        if(bestRoute[findCustomer] == customer)
+        if (bestRoute[findCustomer] == customer)
             return findCustomer;
     }
     return -1;
 }
 
-int addToPos(int p){
+int addToPos(int p) {
     int P;
-    if(p + 1 <= NUM_OF_CUSTOMERS)
+    if (p + 1 <= NUM_OF_CUSTOMERS)
         P = p + 1;
     else
         P = 0;
     return P;
 }
 
-int subtractFromPos(int p){
+int subtractFromPos(int p) {
     int P;
-    if(p - 1 >= 0)
+    if (p - 1 >= 0)
         P = p - 1;
     else
         P = NUM_OF_CUSTOMERS;
     return P;
 }
 
-int* checkClosure(int* bestRoute, int p1, int p2, int p3, int p4){
-    // return -1 if failure to close.
-    int cust = 0;
-    bool reverse = false;
-    int* newRoute = new int[NUM_OF_CUSTOMERS], newCounter = 0;
+int checkClosure(int *bestRoute, int p1, int p2, int p3, int p4) {
+    if (p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
+        return 0;
 
-    for (int instantiateCustomer = 0; instantiateCustomer <= NUM_OF_CUSTOMERS; ++instantiateCustomer)
-        newRoute[instantiateCustomer] = -1;
+    if ((p1 < p2 && p3 < p4) || (p1 > p2 && p3 > p4))
+        return 0;
+    else
+        return 1;
+}
 
-//    printf("P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
-    bool*visited = new bool[2];
-    for (int instantiateVisited = 0; instantiateVisited < 2; ++instantiateVisited)
-        visited[instantiateVisited] = false;
-    cust = p1;
-    if(p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
-        return newRoute;
-    while (true){
-        if (cust > NUM_OF_CUSTOMERS){
-            cust = 0;
-        }
-//        printf("%d -- %d\n",newCounter,cust);
-        if(cust == p1 && visited[0])
-            break;
-        else if(cust == p2 && visited[1])
-            break;
-        if(cust < 0)
-            break;
+//int* checkClosure(int* bestRoute, int p1, int p2, int p3, int p4){
+//    // return -1 if failure to close.
+//    int cust = 0;
+//    bool reverse = false;
+//    int* newRoute = new int[NUM_OF_CUSTOMERS], newCounter = 0;
+//
+//    for (int instantiateCustomer = 0; instantiateCustomer <= NUM_OF_CUSTOMERS; ++instantiateCustomer)
+//        newRoute[instantiateCustomer] = -1;
+//
+////    printf("P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
+//    bool*visited = new bool[2];
+//    for (int instantiateVisited = 0; instantiateVisited < 2; ++instantiateVisited)
+//        visited[instantiateVisited] = false;
+//    cust = p1;
+//    if(p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
+//        return newRoute;
+//    while (true){
+//        if (cust > NUM_OF_CUSTOMERS){
+//            cust = 0;
+//        }
+////        printf("%d -- %d\n",newCounter,cust);
+//        if(cust == p1 && visited[0])
+//            break;
+//        else if(cust == p2 && visited[1])
+//            break;
+//        if(cust < 0)
+//            break;
+//
+//        newRoute[newCounter++] = bestRoute[cust];
+//        if(cust == p1 && !visited[0]) {
+//            visited[0] = true;
+//            cust = p4;
+//            if(cust+1 == p3 || (cust == NUM_OF_CUSTOMERS && p3 == 0)) {//if the next node is v3 reverse direction
+//                reverse = true;
+//                cust+=1;
+//            }
+//            else{
+//                cust-=1;
+//                reverse = false;
+//            }
+//        }
+//        else if (cust == p2 && !visited[1]){
+//            visited[1] = true;
+//            cust = p3;
+//            if(cust+1 == p4 || (cust == NUM_OF_CUSTOMERS && p4 == 0)) {
+//                reverse = true;
+//                cust += 1;
+//            }
+//            else {
+//                cust -= 1;
+//                reverse = false;
+//            }
+//        }
+//        if(!reverse)
+//            cust++;
+//        else
+//            cust--;
+//    }
+//
+//    return newRoute;
+//}
 
-        newRoute[newCounter++] = bestRoute[cust];
-        if(cust == p1 && !visited[0]) {
-            visited[0] = true;
-            cust = p4;
-            if(cust+1 == p3 || (cust == NUM_OF_CUSTOMERS && p3 == 0)) {//if the next node is v3 reverse direction
-                reverse = true;
-                cust+=1;
-            }
-            else{
-                cust-=1;
-                reverse = false;
-            }
+double getGain(int *bestRoute, int p1, int p2, int p3, int p4) {
+    double originalDist = get_distance(bestRoute[p1], bestRoute[p2]) + get_distance(bestRoute[p3], bestRoute[p4]);
+    double newDist = get_distance(bestRoute[p1], bestRoute[p4]) + get_distance(bestRoute[p2], bestRoute[p3]);
+    return originalDist - newDist;
+}
+
+std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, int p4) {
+//    int* subRouteOne = new int[NUM_OF_CUSTOMERS + 1];
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//        subRouteOne[i] = -1;
+//    int* subRouteTwo = new int[NUM_OF_CUSTOMERS + 1];
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//        subRouteTwo[i] = -1;
+    auto subRouteOne = std::vector<int>();
+    auto subRouteTwo = std::vector<int>();
+
+    if (p1 < p2) {
+        //backwards to find p3 from p1
+        //forwards to find p2 to p4
+        int marker = p1, index = 0;
+        int stop = addToPos(p3);
+        while (marker != stop) {
+
+            subRouteOne.push_back(bestRoute[marker]);
+
+            marker--;
+            if (marker == -1)
+                marker = NUM_OF_CUSTOMERS;
         }
-        else if (cust == p2 && !visited[1]){
-            visited[1] = true;
-            cust = p3;
-            if(cust+1 == p4 || (cust == NUM_OF_CUSTOMERS && p4 == 0)) {
-                reverse = true;
-                cust += 1;
-            }
-            else {
-                cust -= 1;
-                reverse = false;
-            }
+        subRouteOne.push_back(bestRoute[p3]);
+
+
+        marker = p2, index = 0;
+        stop = subtractFromPos(p4);
+        while (marker != stop) {
+
+            subRouteTwo.push_back(bestRoute[marker]);
+
+            marker++;
+            if (marker == NUM_OF_CUSTOMERS + 1)
+                marker = 0;
         }
-        if(!reverse)
-            cust++;
-        else
-            cust--;
+        subRouteTwo.push_back(bestRoute[p4]);
+
+
+    } else {
+        //forwards to find p1 to p3
+        //backwards to find p2 to p4
+
+        int marker = p1, index = 0;
+        int stop = subtractFromPos(p3);
+        while (marker != stop) {
+
+            subRouteOne.push_back(bestRoute[marker]);
+
+            marker++;
+            if (marker == NUM_OF_CUSTOMERS + 1)
+                marker = 0;
+        }
+        subRouteOne.push_back(bestRoute[p3]);
+
+        marker = p2, index = 0;
+        stop = addToPos(p4);
+        while (marker != stop) {
+
+            subRouteTwo.push_back(bestRoute[marker]);
+
+            marker--;
+            if (marker == -1)
+                marker = NUM_OF_CUSTOMERS;
+        }
+        subRouteTwo.push_back(bestRoute[p4]);
+    }
+    auto newRoute = std::vector<int>();
+    int index = 0;
+    for (auto s:subRouteOne) {
+        newRoute.push_back(s);
+    }
+    for(auto s:subRouteTwo) {
+        newRoute.push_back(s);
     }
 
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+//        printf("%d ", newRoute[i]);
+//    printf("\n");
     return newRoute;
 }
 
@@ -134,8 +232,9 @@ int* checkClosure(int* bestRoute, int p1, int p2, int p3, int p4){
  * Version 3.
  */
 void localSearch::LKSearch(int *bestRoute) {
-    double currRouteLen = GenerateTour::getRouteLength(bestRoute);
+//    double currRouteLen = GenerateTour::getRouteLength(bestRoute);
     for (int p1 = 0; p1 <= NUM_OF_CUSTOMERS; p1++) {
+//        printf("Start %d\n", p1);
         int p2 = addToPos(p1);
         int v3 = findNearestCustomer(bestRoute[p2]);
         if (v3 == bestRoute[p1] || get_distance(bestRoute[p1], bestRoute[p2]) <
@@ -146,26 +245,43 @@ void localSearch::LKSearch(int *bestRoute) {
         if (v3 == -1 || v3 == bestRoute[p1])//Skip Iteration if no nearest neighbour can be found
             continue;
         int p3 = locatePosInRoute(bestRoute, v3);
+        if (p3 == -1)
+            continue;
         int p4 = addToPos(p3);
 //        printf("=P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
-
-        int *newR = checkClosure(bestRoute, p1, p2, p3, p4);
-//        printf("Test\n");
-        if (newR[NUM_OF_CUSTOMERS] == -1) {
+        if (checkClosure(bestRoute, p1, p2, p3, p4)) {
             p4 = subtractFromPos(p3);
-            delete[] newR;
-            newR = checkClosure(bestRoute, p1, p2, p3, p4);
         }
-        if (newR[NUM_OF_CUSTOMERS] != -1) {
-            double newRL = GenerateTour::getRouteLength(newR);
-            if (newRL < currRouteLen) {
-                for (int customer = 0; customer <= NUM_OF_CUSTOMERS; ++customer) {
-                    bestRoute[customer] = newR[customer];
+//        printf("=P1:%d P2:%d P3:%d P4:%d\n",p1,p2,p3,p4);
+//        printf("Found Pos\n");
+        if (p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
+            continue;
+//        printf("Find Gain\n");
+        double gain = getGain(bestRoute, p1, p2, p3, p4);
+//        printf("G: %f\n",gain);
+        if (gain < 0) {
+            continue;
+        } else {
+//            printf("r %d %d %d %d\n", p1, p2, p3, p4);
+            auto newR = constructRoute(bestRoute, p1, p2, p3, p4);
+//            double newLen = GenerateTour::getRouteLength(newR);
+            //Checks the route is the correct size.
+            if(newR.size() == NUM_OF_CUSTOMERS-1) {
+                int index=0;
+                for (auto node: newR) {
+//                    printf("%d ",node);
+                    bestRoute[index++] = node;
                 }
+//                printf("\n");
             }
         }
-        delete[] newR;
+
     }
+//    printf("End Function\n");
+//    for (int i = 0; i <= NUM_OF_CUSTOMERS ; ++i) {
+//        printf("%d ",bestRoute[i]);
+//    }
+//    printf("\n");
 }
 
 /*
@@ -348,7 +464,7 @@ void localSearch::twoOptLocalPheromoneAddonSearch(int *currentRoute) {
         for (int i = 0; i < NUM_OF_CUSTOMERS; ++i) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; ++j) {
                 twoOptSwap(i, j, tempRoute, currentRoute);
-              double new_route_length = GenerateTour::getRouteLength(tempRoute);
+                double new_route_length = GenerateTour::getRouteLength(tempRoute);
 //                double new_route_length = GenerateTour::getRouteLengthQuick(tempRoute);
 
                 if (new_route_length < route_length) {

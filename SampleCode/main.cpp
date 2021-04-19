@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
         while(!termination_condition()){
             //Execute your heuristic
             openRunDataFile(run);
-            run_heuristic(input,run);  //heuristic.h
+            run_heuristic(input);  //heuristic.h
             //printf("iter %d - eval %f, termination %d\n",count++,get_evals(),TERMINATION);
             closeRunDataFile(run);
         }
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
         runData[run-1][0] = get_current_best();
         runData[run-1][1] = get_evals();
 
-        printf("End Run %d\n",run);
+//        printf("End Run %d\n",run);
 
         storeTour(run);
         //check_solution(best_sol->tour,best_sol->steps);
