@@ -134,21 +134,7 @@ void ACOCS::optimize(int iterations) {
         //Resets the all the routes;
         for (int ant = 0; ant < numOfAnts; ant++)
             resetRoute(ant);
-        /*
-         * LOCAL SEARCH EVERY ITERATION OF THE ANTS
-         */
-        //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-        //LS->randomPheromoneLocalSearch(bestRoute);
-        //LS->randomLocalSearch();
-        //LS->twoOptLocalSearch();
     }
-    /*
-     * LOCAL SEARCH AFTER THE ITERATIONS
-     */
-    //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-    //LS->randomPheromoneLocalSearch(bestRoute);
-    //LS->randomLocalSearch();
-    //LS->twoOptLocalSearch();
 }
 
 /*
@@ -171,8 +157,13 @@ void ACOCS::updatePheromones() {
             }
         }
 
-        //Run local search to improve the route before updating the pheromones.
+        //Run local search to improve the route before updating the pheromones
         LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+//        LS->LKSearch(routes[ant]);
+//        GenerateTour::getRouteLength(routes[ant]);
+//        LS->randomLocalSearch(routes[ant]);
+//        LS->randomPheromoneLocalSearch(routes[ant]);
+//        LS->twoOptLocalSearch(routes[ant]);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

@@ -7,27 +7,6 @@
 
 /*
  * ================================================================================ *
- * AntColonyOptimisation FILE METHODS
- * ================================================================================ *
- */
-
-//FILE* ACOFile;
-//
-//void openACOFile(){
-//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-//    fprintf(ACOFile," , , \n");
-//}
-//
-//void closeACOFile(){
-//    fclose(ACOFile);
-//}
-//
-//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-//}
-
-/*
- * ================================================================================ *
  * ANT COLONY OPTIMISATION
  * ================================================================================ *
  */
@@ -77,8 +56,6 @@ ACO::ACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Probabi
             bestRoute[customer] = -1;
         }
     }
-    //Opens AntColonyOptimisation file to store optimas.
-//    openACOFile();
 }
 
 /*
@@ -119,9 +96,6 @@ ACO::~ACO() {
     delete[] routes;
     delete[] probability;
     delete[] bestRoute;
-
-    //Closes AntColonyOptimisation file after it has been used.
-//    closeACOFile();
 }
 
 /*
@@ -170,29 +144,13 @@ void ACO::optimize(int iterations) {
 
         }
         //Pheromones are updated with the new found routes.
-//        printf("Iter %d\n",iter);
-        updatePheromones(iter,iterations);
-//        printf("End Update\n");
+        updatePheromones(iter);
 
 
         //Resets the all the routes.
         for (int ant = 0; ant < numOfAnts; ant++)
             resetRoute(ant);
-        /*
-         * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
-         */
-//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-        //LS->randomLocalSearch();
-        //LS->twoOptLocalSearch(bestRoute);
     }
-    /*
-     * LOCAL SEARCH AFTER THE ITERATIONS.
-     */
-//    for (int i = 0; i < 50; ++i) {
-//        LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-//    }
-//    LS->randomLocalSearch();
-    //LS->twoOptLocalSearch(bestRoute);
 }
 
 /*
@@ -206,8 +164,7 @@ double ACO::amountOfPheromone(double routeLength) const {
 /*
  * Iterates over all the ants, updating the pheromones for the customers used in the route.
  */
-void ACO::updatePheromones(int iterations,int maxIterations) {
-    double total = INT_MAX;
+void ACO::updatePheromones(int iterations) {
     for (int ant = 0; ant < numOfAnts; ant++) {
         double routeLength = length(ant);
 
@@ -218,32 +175,24 @@ void ACO::updatePheromones(int iterations,int maxIterations) {
             }
         }
 
-        //Run local search to improve the route before updating the pheromones.
+        /*
+         * Run local search to improve the route before updating the pheromones.
+         * Select different local searches by uncommenting.
+         */
 //            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
-//        printf("LS %d\n",ant);
         LS->LKSearch(routes[ant]);
         GenerateTour::getRouteLength(routes[ant]);
-//        printf("End LS\n");
-//            LS->randomLocalSearch(routes[ant]);
+//        LS->randomLocalSearch(routes[ant]);
 //        LS->randomPheromoneLocalSearch(routes[ant]);
 //        LS->twoOptLocalSearch(routes[ant]);
-//        double Temptotal = GenerateTour::getRouteLength(routes[ant]);
-//        if(Temptotal < total)
-//            total = Temptotal;
-
-        //For visualisation
-//        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
-//            printf("%d-%d ",customerA,customerB);
             pheromones[getArcCode(customerA, customerB)] += amountOfPheromone(routeLength);
         }
-//        printf("\n");
-//        printf("End %d\n",ant);
     }
-    addRunDataToFile(iterations,best_sol->tour_length);
+    addRunDataToFile(iterations, best_sol->tour_length);
 }
 
 /*

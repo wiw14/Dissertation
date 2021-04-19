@@ -1,11 +1,7 @@
-//
-// Created by wmw13 on 05/03/2021.
-//
-
 #ifndef TESTSAMPLECODE_CACOHEURISTIC_H
 #define TESTSAMPLECODE_CACOHEURISTIC_H
 
-
+//Runs the CACO metaheuristic.
 void CACOHeuristic();
 
 

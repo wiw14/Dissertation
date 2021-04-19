@@ -1,6 +1,7 @@
-////
-//// Created by wmw13 on 05/03/2021.
-////
+/*
+ * REPLACED BY KMEANS CLUSTERING.
+ */
+
 //
 //#ifndef TESTSAMPLECODE_CLUSTERER_H
 //#define TESTSAMPLECODE_CLUSTERER_H

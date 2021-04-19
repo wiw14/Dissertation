@@ -1,7 +1,3 @@
-//
-// Created by wmw13 on 06/02/2021.
-//
-
 #include <queue>
 #include <functional>
 #include <climits>

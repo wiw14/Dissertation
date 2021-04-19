@@ -392,23 +392,10 @@ int isInPartition(std::list<int>* partitionOne, std::list<int>* partitionTwo, in
 
 /*
  * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
+ * Version 2.0
  */
 int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
-    //DEBUGGING EXAMPLE WITH TWO PARTIONS.
-    //    int* currentBest = new int[NUM_OF_CUSTOMERS+1] {0,5,7,9,13,11,4,3,2,1,6,8,10,17,20,18,15,12,16,19,21,14};
-    //    int* toCombine = new int[NUM_OF_CUSTOMERS+1] {0,14,17,20,18,15,11,4,3,1,2,6,8,10,7,5,9,12,21,13,19,16};
-
     auto LS = new localSearch(3,3);
-
-    //DEBUGGING
-//    printf("Current Best : ");
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        printf("%d, ", currentBest[i]);
-//    printf("\n");
-//    printf("To Combine : ");
-//    for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//        printf("%d, ", toCombine[i]);
-//    printf("\n");
 
     /*
      * STEP 1:
@@ -423,11 +410,6 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
      */
     auto degreeList = createDegreeList(edgeTable);
 
-    //DEBUGGING
-//    for (auto i : *degreeList)
-//        printf("%d,",i);
-//    printf("\n");
-
     /*
      * STEP 3:
      * Create partitions.
@@ -437,13 +419,10 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
     //DEBUGGING
     int smallParitionSize = INT_MAX, smallestPartition = -1,counter = 1;
     for (auto p : *partitionList) {
-//        printf("Partition %d: ",counter);
         int paritionSize = 0;
         for (auto c : *p) {
-//            printf("%d, ", c);
             paritionSize++;
         }
-//        printf("\n");
         if(paritionSize < INT_MAX){
             smallParitionSize = paritionSize;
             smallestPartition = counter-1;
@@ -473,20 +452,12 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
             }
         }
 
-//        for (auto p : *partitionA)
-//            printf("-%d, ",p);
-//        printf("\n");
-//        for (auto p : *partitionB)
-//            printf("=%d, ",p);
-//        printf("\n");
-
         int *childOne = new int[NUM_OF_CUSTOMERS + 1], *childTwo = new int[NUM_OF_CUSTOMERS + 1];
 
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
             bool check = false;
             for (auto p : *partitionList->at(smallestPartition)) {
                 if(currentBest[i] == p){
-//                    printf("%d::%d\n",currentBest[i], partitionB->front());
                     childOne[i] = partitionB->front();
                     partitionB->pop_front();
                     check = true;
@@ -497,15 +468,11 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
                 childOne[i] = currentBest[i];
             }
         }
-//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//            printf("%d, ", childOne[i]);
-//        printf("\n");
 
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i) {
             bool check = false;
             for (auto p : *partitionList->at(smallestPartition)) {
                 if(toCombine[i] == p){
-//                    printf("%d::%d\n",toCombine[i], partitionA->front());
                     childTwo[i] = partitionA->front();
                     partitionA->pop_front();
                     check = true;
@@ -516,9 +483,6 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
                 childTwo[i] = toCombine[i];
             }
         }
-//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//            printf("%d, ", childTwo[i]);
-//        printf("\n");
 
         tempChildren[0] = childOne; tempChildren[1] = childTwo;
     }
@@ -528,11 +492,9 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
         int *child = new int[NUM_OF_CUSTOMERS + 1];
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
             child[i] = toCombine[i];
-        //printf("-%d\n",childPopulationCounter);
+
         LS->randomPheromoneLocalSearchWithTwoOpt(child);
-//        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
-//            printf("%d, ",child[i]);
-//        printf("\n");
+
         tempChildren[0] = child;
         int* fakeChild = new int[NUM_OF_CUSTOMERS+1];
         for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
@@ -546,13 +508,13 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
         delete p;
     }
     delete partitionList;
-    return tempChildren;
 
-    delete LS;
+    return tempChildren;
 }
 
 /*
  * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
+ * Version 1.0
  */
 //int** CrossoverOperators::PCRecombine(int *currentBest, int *toCombine) {
 //    /*

@@ -5,27 +5,6 @@
 
 /*
  * ================================================================================ *
- * AntColonyOptimisation FILE METHODS
- * ================================================================================ *
- */
-//
-//FILE* ACOFile;
-//
-//void openACOFile(){
-//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-//    fprintf(ACOFile," , , \n");
-//}
-//
-//void closeACOFile(){
-//    fclose(ACOFile);
-//}
-//
-//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-//}
-
-/*
- * ================================================================================ *
  * ANT COLONY OPTIMISATION
  * ================================================================================ *
  */
@@ -36,7 +15,7 @@
 MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int ProbabilityArraySize, double Alpha,double PBest,
          double Beta, int TwoOptIteration, int RandomSearchIteration) {
     //Creates a local search object to allow local searches to be used after a path has been found.
-    LS = new localSearch(RandomSearchIteration,TwoOptIteration);
+    LS = new localSearch(RandomSearchIteration, TwoOptIteration);
 
     //Sets tMax to an arbitrary large value.
     tMAX = INT_MAX;
@@ -74,8 +53,6 @@ MaxMinACO::MaxMinACO(int numberOfAnts, double pheromoneDecreaseFactor, double q,
             bestRoute[customer] = -1;
         }
     }
-    //Opens AntColonyOptimisation file to store optimas.
-    //openACOFile();
 }
 
 /*
@@ -270,9 +247,6 @@ void MaxMinACO::displayPheromones(){
  * Iterates over all the ants, updating the pheromones for the customers used in the route.
  */
 void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAnt) {
-
-        //double routeLength = length(ant);
-
         //Decreases all the pheromones by a constant factor.
         for (int i = 0; i <= NUM_OF_CUSTOMERS; i++) {
             for (int j = i + 1; j <= NUM_OF_CUSTOMERS; j++) {
@@ -288,10 +262,12 @@ void MaxMinACO::updatePheromones(int iterations,double iterBestLength,int bestAn
         }
 
         //Run local search to improve the route before updating the pheromones.
-        LS->randomPheromoneLocalSearchWithTwoOpt(routes[bestAnt]);
-
-        //For visualisation
-        //addLocalOptimumToFile(GenerateTour::getRouteLength(routes[bestAnt]),iterations,bestAnt);
+//            LS->randomPheromoneLocalSearchWithTwoOpt(routes[bestAnt]);
+        LS->LKSearch(routes[bestAnt]);
+        GenerateTour::getRouteLength(routes[bestAnt]);
+//        LS->randomLocalSearch(routes[bestAnt]);
+//        LS->randomPheromoneLocalSearch(routes[bestAnt]);
+//        LS->twoOptLocalSearch(routes[bestAnt]);
 
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < NUM_OF_CUSTOMERS; index++) {

@@ -1,33 +1,8 @@
-//
-// Created by wmw13 on 05/03/2021.
-//
-
 #include "CACO.h"
 
 #include <climits>
 #include <functional>
 #include<string>
-
-/*
- * ================================================================================ *
- * AntColonyOptimisation FILE METHODS
- * ================================================================================ *
- */
-
-//FILE* ACOFile;
-//
-//void openACOFile(){
-//    if ((ACOFile = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\storeACO.csv)","a")) == NULL) { printf("ERROR\n");}
-//    fprintf(ACOFile," , , \n");
-//}
-//
-//void closeACOFile(){
-//    fclose(ACOFile);
-//}
-//
-//void addLocalOptimumToFile(double localOtimum, int iteration, int ant){
-//    fprintf(ACOFile,"%d,%d,%f\n",iteration,ant,localOtimum);
-//}
 
 /*
  * ================================================================================ *
@@ -79,8 +54,6 @@ CACO::CACO(int numberOfAnts, double pheromoneDecreaseFactor, double q, int Proba
             bestRoute[customer] = -1;
         }
     }
-    //Opens AntColonyOptimisation file to store optimas.
-//    openACOFile();
 }
 
 /*
@@ -122,8 +95,6 @@ CACO::~CACO() {
     delete[] probability;
     delete[] bestRoute;
 
-    //Closes AntColonyOptimisation file after it has been used.
-//    closeACOFile();
 }
 
 /*
@@ -150,15 +121,12 @@ void CACO::resetProbability() {
  */
 void CACO::optimize(int iterations) {
     for (int iter = 1; iter <= iterations; iter++) {
-//        printf("MARKER START %d\n",iter);
         for (int ant = 0; ant < numOfAnts; ant++) {
             //While the cluster route for the ant isn't valid.
             //The route is reset and re-calculated.
-
             while (valid(ant)) {
                 resetRoute(ant);
                 route(ant);
-//                printf("MARKER END %d\n",iter);
             }
 
 
@@ -181,21 +149,8 @@ void CACO::optimize(int iterations) {
         //Resets the all the cluster routes.
         for (int ant = 0; ant < numOfAnts; ant++)
             resetRoute(ant);
-        /*
-         * LOCAL SEARCH EVERY ITERATION OF THE ANTS.
-         */
-        //LS->randomPheromoneLocalSearchWithTwoOpt(KMeansClustering::getRouteFromClusters(bestRoute));
-        //LS->randomLocalSearch();
-        //LS->twoOptLocalSearch(bestRoute);
-        //LS->randomPheromoneLocalSearchWithTwoOptCluster(bestRoute);
 
     }
-    /*
-     * LOCAL SEARCH AFTER THE ITERATIONS.
-     */
-    //LS->randomPheromoneLocalSearchWithTwoOpt(bestRoute);
-//    LS->randomLocalSearch();
-    //LS->twoOptLocalSearch(bestRoute);
 }
 
 /*
@@ -226,9 +181,6 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
 //            LS->randomLocalSearch(routes[ant]);
 
 
-        //For visualisation
-//        addLocalOptimumToFile(LS->getRouteLength(routes[ant]),iterations,ant);
-
         //Update the pheromones of the customers in the route from the local search.
         for (int index = 0; index < KMeansClustering::numOfClusters-1; index++) {
             int customerA = routes[ant][index], customerB = routes[ant][index + 1];
@@ -243,16 +195,13 @@ void CACO::updatePheromones(int iterations,int maxIterations) {
  */
 int CACO::getNextCustomer() {
     int count = 0;
-//    printf("START NEXT CUSTOMER\n");
     for (int index = 0; index < probabilitySize; index++) {
         if (probability[index][1] != -1)
             count++;
     }
-//    printf("MID %d\n",count);
     std::uniform_int_distribution<int> nextCustomerSelector(0, count - 1);
     int nextCustomer = nextCustomerSelector(seed);
 
-//    printf("END NEXT CUSTOMER\n");
     if(count > 0)
         return (int) probability[nextCustomer][1];
     else
@@ -291,27 +240,21 @@ void CACO::route(int ant) {
 
     //loop through all but one customer
     for (int i = 0; i < KMeansClustering::numOfClusters-1; i++) {
-//        printf("M %d\n",i);
         int customerA = routes[ant][i];
 
         //loop through all the customers to look for connections
         for (int customerB = 0; customerB < KMeansClustering::numOfClusters; customerB++) {
-//            printf("-M %d\n",i);
             //If the customerA is the same as the customer selected skip.
             if (customerA == customerB) {
                 continue;
             }
-//            printf("=M %d\n",i);
             //Checks if a path exists between the customers.
             if (CACO::exists(customerA, customerB)) {
-//                printf("/M %d\n",i);
                 //Checks whether the customer has already been visited.
                 if (!visited(ant, customerB)) {
-//                    printf(":M %d\n",i);
                     //Calculates the probability from A to B, if its better than the current probability
                     //set the current next customer to B.
                     double prob = getProbability(customerA, customerB, ant);
-//                    printf("%d:%d=%f\n",customerA,customerB,prob);
                         for (int index = 0; index < probabilitySize; index++) {
                         if (prob > probability[index][0]) {
                             probability[index][0] = prob;
@@ -322,12 +265,10 @@ void CACO::route(int ant) {
                 }
 
             }
-//            printf("+M %d\n",i);
         }
 
         //Gets the next customer based on the calculated probabilities.
         int nextCustomer = getNextCustomer();
-//        printf("MARK\n");
 
         //Checks for deadlock.
         if (nextCustomer == -1)
@@ -337,14 +278,12 @@ void CACO::route(int ant) {
         routes[ant][i + 1] = nextCustomer;
         resetProbability();
     }
-//    printf("ROUTE END\n");
 }
 
 /*
  * Checks whether then is an arc from A to B.
  */
 bool CACO::exists(int customerA, int customerB) {
-//    printf("%d -- %d\n",customerA, customerB);
     return (KMeansClustering::getClosestDistance(customerA, customerB) != INT_MAX);
 }
 
@@ -421,7 +360,7 @@ int *CACO::returnResults() {
  * including charging stations and depots.
  */
 double CACO::getRL(int *route) {
-
+    //Applies local search to the final route.
     LS->randomPheromoneLocalSearchWithTwoOpt(route);
 //    LS->twoOptLocalSearch(route);
 //    LS->LKSearch(route);

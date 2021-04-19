@@ -1,7 +1,12 @@
 #include "CACOHeuristic.h"
 #include "CACO.h"
 /*
- * Creates and initialises Ant Colony to run on the clusters generated from the initial clusters.
+ * Creates and configures CACO object using the created variables.
+ * Runs optimise function to find a local optimum.
+ * Adds local optimum as best solution.
+ *
+ * CACO updates pheromones based on length of  total route of customers, charging stations, and depots
+ * rather than just the route of the customers.
  */
 void CACOHeuristic(){
     int numAnts= 8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;

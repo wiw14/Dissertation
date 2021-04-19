@@ -1,11 +1,10 @@
-//
-// Created by wmw13 on 08/03/2021.
-//
-
 #include "KMeansClustering.h"
 
 /*
  * NODE FUNCTIONS.
+ */
+/*
+ * Displays the customers within a node.
  */
 std::string KMeansClustering::Node::displayNode() {
     auto getCustomerString = [&]() {
@@ -21,6 +20,9 @@ std::string KMeansClustering::Node::displayNode() {
     return output;
 }
 
+/*
+ * Gets the total distance within a cluster.
+ */
 void KMeansClustering::Node::getTotalDistance() {
     double length = 0.0;
 
@@ -33,13 +35,16 @@ void KMeansClustering::Node::getTotalDistance() {
 /*
  * BODY OF CLASS.
  */
-
+//Variables to configure the clusters.
 int KMeansClustering::numOfClusters;
 int *KMeansClustering::centroids;
 bool *KMeansClustering::visited;
 struct KMeansClustering::Node **KMeansClustering::clusters;
 int KMeansClustering::twoOptIterations = 3;
 
+/*
+ * Randomly selects  k number of initial centroids to generate clusters from.
+ */
 void KMeansClustering::initialCentroids() {
     for (int centroidIndex = 0; centroidIndex < numOfClusters; ++centroidIndex) {
         //Loops until it finds a viable centroid.
@@ -52,8 +57,10 @@ void KMeansClustering::initialCentroids() {
     }
 }
 
+/*
+ * Instantiates the variables for the clusters.
+ */
 void KMeansClustering::createClusters(int k) {
-//    printf("Start Clustering...\n");
     numOfClusters = (NUM_OF_CUSTOMERS / k);
     clusters = new struct Node *[numOfClusters];
     for (int clusterIndex = 0; clusterIndex < numOfClusters; ++clusterIndex) {
@@ -69,16 +76,14 @@ void KMeansClustering::createClusters(int k) {
     for (int customerIndex = 0; customerIndex <= NUM_OF_CUSTOMERS; ++customerIndex)
         visited[customerIndex] = false;
 
-//    printf("Initialise Centroids...\n");
     initialCentroids();
 //    displayCentroids();
-//    printf("Initialise Cluster...\n");
     clusterAroundCentroids();
-//    for (int clusterIndex = 0; clusterIndex < numOfClusters; ++clusterIndex)
-//        optimiseClusters(clusters[clusterIndex]);
-//    printf("Finished Clustering\n");
 }
 
+/*
+ * Swaps two clusters for cluster local search.
+ */
 //void KMeansClustering::twoOptSwap(int i, int j, int *route, const int *currRoute) {
 //    for (int l = 0; l < i; ++l)
 //        route[l] = currRoute[l];
@@ -91,16 +96,11 @@ void KMeansClustering::createClusters(int k) {
 //        route[l] = currRoute[l];
 //    }
 //}
-//
-//double KMeansClustering::calculateClusterDistance(int* customers,int size){
-//    double length = 0.0;
-//    for (int i = 0; i < size-1; ++i)
-//        length+= get_distance(customers[i],customers[i+1]);
-//    return length;
-//}
-//
+
+/*
+ * Two-opt local search for clusters.
+ */
 //void KMeansClustering::optimiseClusters(struct Node* node){
-//    printf("Start Optimise\n");
 //    int* bestRoute = node->customers;
 //    int improve = 0;
 //    int *tempRoute = new int[node->sizeOfCluster];
@@ -125,16 +125,14 @@ void KMeansClustering::createClusters(int k) {
 //        improve++;
 //    }
 //    node->distance = calculateClusterDistance(bestRoute,node->sizeOfCluster);
-//    printf("Finish Optimise\n");
-//
-//    for (int i = 0; i < node->sizeOfCluster; ++i) {
-//        printf("%d, ",node->customers[i]);
-//    }printf("\n");
 //
 //    //De-allocates the memory used above.
 //    //delete[] tempRoute;
 //}
 
+/*
+ * Generates clusters from the centroids.
+ */
 void KMeansClustering::clusterAroundCentroids() {
     /*
      * STEP 1:
@@ -165,10 +163,11 @@ void KMeansClustering::clusterAroundCentroids() {
     for (int clusterIndex = 0; clusterIndex < numOfClusters; ++clusterIndex)
         clusters[clusterIndex]->getTotalDistance();
 
-//    for (int clusterIndex = 0; clusterIndex < numOfClusters; ++clusterIndex)
-//        printf("%s\n", clusters[clusterIndex]->displayNode().c_str());
 }
 
+/*
+ * Gets the route length of a set of clusters.
+ */
 double KMeansClustering::getRouteLength(int *clusterRoute) {
     double length = 0.0;
     for (int i = 0; i < numOfClusters; ++i)
@@ -176,13 +175,11 @@ double KMeansClustering::getRouteLength(int *clusterRoute) {
     return length;
 }
 
+/*
+ * Gets the closest distance between two clusters.
+ */
 double KMeansClustering::getClosestDistance(int posA, int posB) {
     double minDist = INT_MAX;
-//    printf("Num Clusters : %d, posA: %d, posB: %d\n",numOfClusters,posA,posB);
-//    for (int i = 0; i < clusters[posA]->sizeOfCluster; ++i)
-//        printf("%d, ",clusters[posA]->customers[i]);
-//    for (int i = 0; i < clusters[posB]->sizeOfCluster; ++i)
-//        printf("%d, ",clusters[posB]->customers[i]);
     for (int i = 0; i < clusters[posA]->sizeOfCluster; ++i) {
         for (int j = 0; j < clusters[posB]->sizeOfCluster; ++j) {
             double currentDist = get_distance(clusters[posA]->customers[i], clusters[posB]->customers[j]);
@@ -191,10 +188,12 @@ double KMeansClustering::getClosestDistance(int posA, int posB) {
         }
 
     }
-//    printf("END DIST %f\n",minDist);
     return minDist;
 }
 
+/*
+ * Creates a route of customers from the clusters.
+ */
 int *KMeansClustering::getRouteFromClusters(const int *clusterRoute) {
     int *route = new int[NUM_OF_CUSTOMERS + 1], counter = 0;
     for (int i = 0; i < numOfClusters; ++i) {
@@ -203,11 +202,12 @@ int *KMeansClustering::getRouteFromClusters(const int *clusterRoute) {
             route[counter++] = tempClusterRoute[j];
         }
     }
-    //delete[] clusterRoute;
     return route;
 }
 
-//DEBUGGING
+/*
+ * Display all the centroids for debugging.
+ */
 void KMeansClustering::displayCentroids() {
     printf("numOfClusters=%d : ", numOfClusters);
     for (int centroidIndex = 0; centroidIndex < numOfClusters; ++centroidIndex)
@@ -216,7 +216,6 @@ void KMeansClustering::displayCentroids() {
 }
 
 void KMeansClustering::freeClusters() {
-//    printf("Start Freeing\n");
     delete[] centroids;
     delete[] visited;
 
@@ -225,7 +224,6 @@ void KMeansClustering::freeClusters() {
 //        delete clusters[i];
 //    }
 //    delete[] clusters;
-//    printf("End Freeing");
 }
 
 
