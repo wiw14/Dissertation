@@ -4,7 +4,7 @@
  * Creates and runs the Genetic Algorithm.
  */
 void GAHeuristic() {
-    int sizeOfPopulation = 20, generations = 50, numMutations = 10;
+    int sizeOfPopulation = 10, generations = 10, numMutations = 5;
     auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
 
     GA->generateStartingPopulation();

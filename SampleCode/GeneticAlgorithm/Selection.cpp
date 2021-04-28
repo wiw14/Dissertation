@@ -104,6 +104,7 @@ int** Selection::generateHammingDistanceArray(int** childPopulation,int childPop
  */
 int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int childPopulationCounter,int sizeOfPopulation){
 
+    //Selects a set of children which are the best.
     int** firstHalf = Selection::firstHalf(childPopulation,childPopulationCounter,(sizeOfPopulation)/2);
     int** parentPopulation = new int*[sizeOfPopulation];
     for (int i = 0; i < sizeOfPopulation; ++i) {
@@ -114,8 +115,11 @@ int** Selection::correlativeFamilyBasedSelection(int** childPopulation, int chil
             parentPopulation[i][j] = firstHalf[i][j];
         }
     }
+
+    //Compares the remaining children with the selected set using Hamming distance.
     int** hammingDistance = generateHammingDistanceArray(childPopulation,childPopulationCounter,firstHalf,(sizeOfPopulation)/2);
 
+    //The most diverse children are selected to fill the remainder of the parent population.
     int popCounter = (sizeOfPopulation)/2;
     for (int popIndex = 0; popIndex < sizeOfPopulation/2; ++popIndex) {
         int mostDiverseIndex = -1;

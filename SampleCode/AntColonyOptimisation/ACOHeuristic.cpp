@@ -13,8 +13,8 @@
  * charging stations, and depots.
  */
 void ACOHeuristic(){
-    int numAnts= 8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.98, Q = 1,alpha = 0.6, beta=0.6;
+    int numAnts = 4, iterations = 50, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
+    double pheromoneDecrease = 0.5, Q = 1,alpha = 0.5, beta = 2;
 
     auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
 

@@ -26,6 +26,9 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
 localSearch::~localSearch() {
 }
 
+/*
+ * Finds the closest neighbour to a customer.
+ */
 int localSearch::findNearestCustomer(int customer) {
     double shortestDist = INT_MAX;
     int nearestNeighbour = -1;
@@ -41,6 +44,9 @@ int localSearch::findNearestCustomer(int customer) {
     return nearestNeighbour;
 }
 
+/*
+ * Gets the position of a customer within a route.
+ */
 int locatePosInRoute(int *bestRoute, int customer) {
     for (int findCustomer = 0; findCustomer <= NUM_OF_CUSTOMERS; ++findCustomer) {
         if (bestRoute[findCustomer] == customer)
@@ -49,6 +55,9 @@ int locatePosInRoute(int *bestRoute, int customer) {
     return -1;
 }
 
+/*
+ * Moves a position marker to the right.
+ */
 int addToPos(int p) {
     int P;
     if (p + 1 <= NUM_OF_CUSTOMERS)
@@ -58,6 +67,9 @@ int addToPos(int p) {
     return P;
 }
 
+/*
+ * Moves a position marker to the left.
+ */
 int subtractFromPos(int p) {
     int P;
     if (p - 1 >= 0)
@@ -67,6 +79,9 @@ int subtractFromPos(int p) {
     return P;
 }
 
+/*
+ * Checks whether the swaps invalidates the route.
+ */
 int checkClosure(int *bestRoute, int p1, int p2, int p3, int p4) {
     if (p1 == p2 || p1 == p3 || p1 == p4 || p2 == p3 || p2 == p4 || p3 == p4)
         return 0;
@@ -77,12 +92,18 @@ int checkClosure(int *bestRoute, int p1, int p2, int p3, int p4) {
         return 1;
 }
 
+/*
+ * Gets the overall gain of the new swaps.
+ */
 double getGain(int *bestRoute, int p1, int p2, int p3, int p4) {
     double originalDist = get_distance(bestRoute[p1], bestRoute[p2]) + get_distance(bestRoute[p3], bestRoute[p4]);
     double newDist = get_distance(bestRoute[p1], bestRoute[p4]) + get_distance(bestRoute[p2], bestRoute[p3]);
     return originalDist - newDist;
 }
 
+/*
+ * Constructs a route from swap points.
+ */
 std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, int p4) {
     auto subRouteOne = std::vector<int>();
     auto subRouteTwo = std::vector<int>();
@@ -158,7 +179,7 @@ std::vector<int> constructRoute(const int *bestRoute, int p1, int p2, int p3, in
 
 /*
  * Lin-Kernighan Heuristic
- * Version 3.
+ * Version 3 (limited depth).
  */
 void localSearch::LKSearch(int *bestRoute) {
     for (int p1 = 0; p1 <= NUM_OF_CUSTOMERS; p1++) {
@@ -887,7 +908,7 @@ void localSearch::randomPheromoneLocalSearchWithTwoOpt(int *bestRoute) {
         //2-Opt As well
         twoOptLocalPheromoneAddonSearch(tempRoute);
 
-        new_route_length = GenerateTour::getRouteLength(tempRoute);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    new_route_length = GenerateTour::getRouteLength(tempRoute);
     }
     decreaseLocalSearchPheromone();
     if (new_route_length < route_length) {

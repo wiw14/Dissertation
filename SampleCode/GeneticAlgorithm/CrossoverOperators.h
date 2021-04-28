@@ -14,10 +14,12 @@ private:
     static std::vector<std::list<int>*>* createPartitions(std::map<int, std::pair<int, std::string> *>*, std::list<int>* );
     static bool checkIfCustomerVisited(std::list<int>*, int);
     static void displayList(std::list<int>*);
+    static int findInPartiton(std::vector<std::list<int>*>*, int);
 public:
     static int** testRecombination(int*, int*);
     static int** partiallyMappedCrossover(int*, int*);
     static int** PCRecombine(int*, int*);
+    static int** GPCRecombine(int*, int*);
 };
 
 

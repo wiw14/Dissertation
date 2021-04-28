@@ -46,7 +46,7 @@ GeneticAlgorithm::~GeneticAlgorithm() {
 }
 
 /*
- *
+ * Updates the best route by calling generate tour.
  */
 void GeneticAlgorithm::checkSolution() {
     GenerateTour::getRouteLength(parentPopulation[0]);
@@ -68,13 +68,17 @@ void GeneticAlgorithm::randomRoute(int *route) {
         tempRoute.erase(tempRoute.begin() + randIndex);
     }
 
-    //Local Search to create local optimums.
+    //Local Search to improve starting population.
     LS->randomPheromoneLocalSearchWithTwoOpt(route);
 }
 
+/*
+ * Clustered ACO for optimal starting population generation.
+ */
 int* GeneticAlgorithm::getCACO(){
     srand (rand());
     KMeansClustering::createClusters(4);
+    //Minimal parameters chosen as optimality of route was not important, but runtime was
     int numAnts= 3, iterations = 5, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
     double pheromoneDecrease = 0.9, Q = 1,alpha = 0.6, beta=2.1;
     auto* a = new CACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
@@ -83,7 +87,8 @@ int* GeneticAlgorithm::getCACO(){
 
     int* temp = a->returnResults();
 
-//    LS->twoOptLocalPheromoneAddonSearch(temp); //BEST
+    //Local search used to locate optimal route.
+    LS->twoOptLocalPheromoneAddonSearch(temp); //BEST
 //    LS->randomPheromoneLocalSearchWithTwoOpt(temp);
 //    LS->LKSearch(temp);
     delete a;
@@ -95,15 +100,21 @@ int* GeneticAlgorithm::getCACO(){
  * Creates a random population of children which are then selected to be parents.
  */
 void GeneticAlgorithm::generateStartingPopulation() {
+    //Uncomment to use the different populations.
+    /*
+     * Random Starting Population.
+     */
 //    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
 //        childPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS+1];
 //        randomRoute(childPopulation[populationIndex]);
 //        childPopulationCounter++;
 //    }
-    //Random Starting Population
 //    selectChildrenForParents();
 
-    //Clustered ACO starting population.
+
+    /*
+     * Clustered ACO starting population.
+     */
     for (int i = 0; i < sizeOfPopulation; ++i) {
         parentPopulation[i] = getCACO();
     }
@@ -156,7 +167,8 @@ void GeneticAlgorithm::runGenerations() {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
         crossoverOperator();
-//        randomMutateChildren();
+        //randomMutateChildren() is commented out when using PX or GPX.
+        randomMutateChildren();
         selectChildrenForParents();
         addRunDataToFile(x,best_sol->tour_length);
         //repairParents();
@@ -169,9 +181,16 @@ void GeneticAlgorithm::runGenerations() {
 void GeneticAlgorithm::crossoverOperator() {
     childPopulationCounter = 0;
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-      int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+
+        //SELECT CROSSOVER OPERATOR BY UNCOMMENTING.
+        //GPX:
+//        int** tempChildren = CrossoverOperators::GPCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+        //PX:
+//     int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+        //Test Recombination -- Debugging:
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-//        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+        //PMX:
+        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter] = new int[NUM_OF_CUSTOMERS+1];
@@ -204,8 +223,12 @@ void GeneticAlgorithm::selectChildrenForParents() {
         delete[] parentPopulation[i];
         parentPopulation[i] = nullptr;
     }
-//    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-        int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+
+    //Select different selection operators by uncommenting.
+    //Truncation Selection:
+    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    //Correlated family-based Selection:
+//        int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
 
     for (int i = 0; i < sizeOfPopulation; ++i) {
         parentPopulation[i] = new int[NUM_OF_CUSTOMERS+1];
@@ -235,8 +258,12 @@ void GeneticAlgorithm::randomMutateChildren(){
     for (int i = 0; i < childPopulationCounter; ++i) {
         int toMutate = rand()%probabiltyOfMutation;
         if(toMutate == 0) {
+            //Mutation Operators, uncomment to select different operators.
+            //Local Search Mutation:
             LS->randomPheromoneLocalSearchWithTwoOpt(childPopulation[i]);
+            //Random Swap Mutation:
 //            Mutation::randomSwapMutation(childPopulation[i]);
+            //Lin-Kernighan Mutation:
 //            Mutation::LKMutation(childPopulation[i],LS);
         }
     }

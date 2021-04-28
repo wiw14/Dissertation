@@ -1,5 +1,11 @@
 #include "Cluster.h"
+/*
+ * NODE FUNCTIONS
+ */
 
+/*
+ * Gets the total demand within the cluster.
+ */
 void Cluster::Node::getTotalDemand() {
     double total = 0.0;
     for (int i = 0; i < sizeOfCluster; ++i)
@@ -7,6 +13,9 @@ void Cluster::Node::getTotalDemand() {
     demand = total;
 }
 
+/*
+ * Displays all the customers within the cluster, used for debugging.
+ */
 std::string Cluster::Node::displayNode() {
     auto getCustomerString = [&]() {
         std::string output;
@@ -21,6 +30,9 @@ std::string Cluster::Node::displayNode() {
     return output;
 }
 
+/*
+ * Gets the total distance within the cluster.
+ */
 void Cluster::Node::getTotalDistance() {
     double length = 0.0;
 
@@ -30,10 +42,21 @@ void Cluster::Node::getTotalDistance() {
     distance = length;
 }
 
+/*
+ * BODY OF CLASS
+ */
+
+/*
+ * Constructor.
+ * Calls the k-means clustering algorithm.
+ */
 Cluster::Cluster() {
     createClusters();
 }
 
+/*
+ * De-constructor.
+ */
 Cluster::~Cluster(){
     for (auto a : *centroids)
         delete a;
@@ -81,16 +104,26 @@ void Cluster::initialCentroids(){
     }
 }
 
+/*
+ * Displays the current centroids, used for debugging.
+ */
 void Cluster::displayCentroids(){
     for (int centroidIndex = 0; centroidIndex < numOfClusters; ++centroidIndex) {
         printf("%d :: %f, %f\n",centroidIndex+1,centroids->at(centroidIndex)->first,centroids->at(centroidIndex)->second);
     }printf("\n");
 }
 
+/*
+ * Gets the distance from a point to a centroid. Used in the clustering process.
+ */
 double Cluster::getXYDistance(double x, double y, int centroidNum){
     return sqrt(pow((x-centroids->at(centroidNum)->first),2)+(pow((y-centroids->at(centroidNum)->second),2)));
 }
 
+
+/*
+ * Clusters the customers around a set of centroids using Euclidean distance.
+ */
 void Cluster::clusterAroundCentroids() {
     for (int customerIndex = 1; customerIndex <=NUM_OF_CUSTOMERS; ++customerIndex) {
         double minDis = INT_MAX;
@@ -110,6 +143,9 @@ void Cluster::clusterAroundCentroids() {
     }
 }
 
+/*
+ * Updates the centroids based on the current clusters to move the centroids closer to an optimal position.
+ */
 bool Cluster::generateCentroidsBasedOnClusters(){
     bool change = true;
     for (int clusterIndex = 0; clusterIndex < numOfClusters; ++clusterIndex) {
@@ -141,12 +177,18 @@ bool Cluster::generateCentroidsBasedOnClusters(){
     return change;
 }
 
+/*
+ * Displays all the clusters, used for debugging.
+ */
 void Cluster::displayClusters() {
     for (auto c : *clusters) {
         printf("%s\n",c->displayNode().c_str());
     }
 }
 
+/*
+ * Main body of the k-means clustering algorith.
+ */
 void Cluster::createClusters() {
     numOfClusters = MIN_VEHICLES;
     clusters = new std::vector<struct Node *>;

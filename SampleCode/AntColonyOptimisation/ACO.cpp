@@ -179,9 +179,9 @@ void ACO::updatePheromones(int iterations) {
          * Run local search to improve the route before updating the pheromones.
          * Select different local searches by uncommenting.
          */
-//            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
-        LS->LKSearch(routes[ant]);
-        GenerateTour::getRouteLength(routes[ant]);
+            LS->randomPheromoneLocalSearchWithTwoOpt(routes[ant]);
+//        LS->LKSearch(routes[ant]);
+//        GenerateTour::getRouteLength(routes[ant]);
 //        LS->randomLocalSearch(routes[ant]);
 //        LS->randomPheromoneLocalSearch(routes[ant]);
 //        LS->twoOptLocalSearch(routes[ant]);

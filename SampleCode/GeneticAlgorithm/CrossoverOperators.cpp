@@ -416,7 +416,6 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
      */
     auto partitionList = createPartitions(edgeTable,degreeList);
 
-    //DEBUGGING
     int smallParitionSize = INT_MAX, smallestPartition = -1,counter = 1;
     for (auto p : *partitionList) {
         int paritionSize = 0;
@@ -511,6 +510,130 @@ int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
 
     return tempChildren;
 }
+
+/*
+ * ================================================================================ *
+ * Generalised Partition Crossover Operator.
+ * ================================================================================ *
+ */
+/*
+ * Locates which partition the customer is in.
+ */
+int CrossoverOperators::findInPartiton(std::vector<std::list<int>*>* partitions, int customer){
+    int pCounter = 0;
+    for (auto p : *partitions) {
+        pCounter++;
+        for (auto c : *p) {
+            if(c == customer)
+                return pCounter;
+        }
+    }
+    return -1;
+}
+
+/*
+ * Generalised Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
+ * Version 1.0 (Does not produce optimal results)
+ */
+int** CrossoverOperators::GPCRecombine(int * currentBest, int * toCombine) {
+    auto LS = new localSearch(3,3);
+
+    /*
+     * STEP 1:
+     * Create edge table.
+     */
+    auto edgeTable = createEdgeTable(currentBest,toCombine);
+//    displayEdgeTable(edgeTable);
+
+    /*
+     * STEP 2:
+     * Create list without 2 degree vertices.
+     */
+    auto degreeList = createDegreeList(edgeTable);
+
+    /*
+     * STEP 3:
+     * Create partitions.
+     */
+    auto partitionList = createPartitions(edgeTable,degreeList);
+
+    /*
+     * STEP 4:
+     * Generate children from partitions.
+     */
+    int** tempChildren = new int*[2];
+    if(partitionList->size() > 1){
+        int *childOne = new int[NUM_OF_CUSTOMERS + 1], *childTwo = new int[NUM_OF_CUSTOMERS + 1];
+        bool* visited = new bool[NUM_OF_CUSTOMERS+1];
+        for (int customerCounter = 0; customerCounter <= NUM_OF_CUSTOMERS; ++customerCounter)
+            visited[customerCounter] = false;
+        for (int customerCounter = 0; customerCounter <= NUM_OF_CUSTOMERS; ++customerCounter) {
+            int type = findInPartiton(partitionList, currentBest[customerCounter]);
+            if ((type == -1 || type % 2 == 0) && !visited[currentBest[customerCounter]]) {
+            visited[currentBest[customerCounter]] = true;
+            childOne[customerCounter] = currentBest[customerCounter];
+        }
+            else if(!visited[toCombine[customerCounter]]) {
+                visited[toCombine[customerCounter]] = true;
+                childOne[customerCounter] = toCombine[customerCounter];
+            }
+            else{
+                visited[customerCounter] = true;
+                childOne[customerCounter] = customerCounter;
+            }
+
+        }
+        for (int customerCounter = 0; customerCounter <= NUM_OF_CUSTOMERS; ++customerCounter)
+            visited[customerCounter] = false;
+        for (int customerCounter = 0; customerCounter <= NUM_OF_CUSTOMERS; ++customerCounter) {
+            int type = findInPartiton(partitionList,toCombine[customerCounter]);
+            if((type == -1 || type%2 == 0 ) && !visited[toCombine[customerCounter]]) {
+                visited[toCombine[customerCounter]] = true;
+                childTwo[customerCounter] = toCombine[customerCounter];
+            }
+            else if(!visited[currentBest[customerCounter]]) {
+                visited[currentBest[customerCounter]] = true;
+                childTwo[customerCounter] = currentBest[customerCounter];
+            }
+            else {
+                visited[customerCounter] = true;
+                childTwo[customerCounter] = customerCounter;
+            }
+
+        }
+        delete[] visited;
+        tempChildren[0] = childOne; tempChildren[1] = childTwo;
+    }
+    else{
+        printf("F, ");
+
+        int *child = new int[NUM_OF_CUSTOMERS + 1];
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+            child[i] = toCombine[i];
+
+        LS->randomPheromoneLocalSearchWithTwoOpt(child);
+        tempChildren[0] = child;
+        int* fakeChild = new int[NUM_OF_CUSTOMERS+1];
+        for (int i = 0; i <= NUM_OF_CUSTOMERS; ++i)
+            fakeChild[i] = INT_MAX;
+        tempChildren[1] = fakeChild;
+    }
+    delete LS;
+    delete edgeTable;
+    delete degreeList;
+    for (auto p : *partitionList) {
+        delete p;
+    }
+    delete partitionList;
+
+    return tempChildren;
+}
+
+/*
+ * ================================================================================ *
+ * Old Code
+ * ================================================================================ *
+ */
 
 /*
  * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
