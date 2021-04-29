@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#Creates relevant lists.
 iterations = []
 scores = []
 
+#Reads the individual run data from the file for visualisation.
 def readFile(runNum):
     file = open("C:/Users/wmw13/Documents/Github/Dissertation/Technical Work/Data/RunData"+str(runNum)+".txt","r")
     for line in file:
@@ -12,6 +14,8 @@ def readFile(runNum):
         scores.append(float(score))
     file.close()
 
+#Plots the run data and creates regression line to show general trend.
+#Creates a single graph representing one run.
 def plotRunData(runNum):
     minVal = min(scores)
     minIter =[]
@@ -31,6 +35,7 @@ def plotRunData(runNum):
     plt.draw()
     plt.show()
 
+#Creates 20 sub-plots representing all the runs.
 def plotAllRunData():
     global scores, iterations
     fig = plt.figure()
@@ -55,10 +60,6 @@ def plotAllRunData():
         iterations = []
     plt.show()
 
-# for x in range(1,21):
-#     readFile(x)
-#     plotRunData(x)
-#     scores = []
-#     iterations = []
+#Main body of the program.
 plotAllRunData()
 
