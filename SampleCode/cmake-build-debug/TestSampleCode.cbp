@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TestSampleCode"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestSampleCode">
+				<Option output="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/TestSampleCode.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestSampleCode"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="TestSampleCode/fast">
+				<Option output="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/TestSampleCode.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 TestSampleCode/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j12 -f &quot;/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOWithChargingStation.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/ACOWithChargingStation.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/AntColonyOptimisation/MaxMinACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Dijkstra/DijkstrasHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACOHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/CACOHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/Clusterer.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/Clusterer.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/KMeansClustering.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/ExternalClusteringACO/KMeansClustering.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/EVRP.hpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/heuristic.hpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/Framework/stats.hpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/CrossoverOperators.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GAHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/GeneticAlgorithm.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Mutation.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/RepairOperators.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GeneticAlgorithm/Selection.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/GreedyEuclidean/greedyEuclideanHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClusters.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClusters.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClustersHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ACOOnClustersHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/Cluster.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/Cluster.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ClusterACO.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/InternalClusteringACO/ClusterACO.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNN.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNN.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNNHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/KNN/KNNHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/GenerateTour.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/LocalSearchAndGenerateTour/LocalSearches.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/RandomHeuristic/randomHeuristic.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/RandomHeuristic/randomHeuristic.h">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/main.cpp">
+			<Option target="TestSampleCode"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/SampleCode/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
