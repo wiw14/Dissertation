@@ -54,27 +54,27 @@ void checkRouteIsValid(int* route, int routeSize){
  * List of all the currently implemented heuristics.
  * Activate heuristics by uncommenting.
  */
-void run_heuristic(int input) {
-    if(input == 1)//Greedy heuristic.
-        greedyHeuristic();
+void run_heuristic(int input,vector<double>*vars) {
+    if(input == 1) //Greedy heuristic.
+        greedyHeuristic((int)vars->at(0), (int)vars->at(1));
     else if(input == 2)//Random heuristic.
-        randomHeuristic();
+        randomHeuristic((int)vars->at(0), (int)vars->at(1));
     else if(input == 3)//Dijkstra heuristic.
-        DijkstrasHeuristic();
+        DijkstrasHeuristic((int)vars->at(0), (int)vars->at(1));
     else if(input == 4)//KNN heuristic.
-        KNNHeuristic();
+        KNNHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2));
     else if(input == 5)//Internal Clustering ACO.
-        ACOOnClustersHeuristic();
+        ACOOnClustersHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
     else if(input == 6)//Genetic Algorithm.
-        GAHeuristic();
+        GAHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2), (int)vars->at(6), (int)vars->at(7),(int)vars->at(3),(int)vars->at(4),(int)vars->at(5));
     else if(input == 7)//Ant Colony Optimisation.
-        ACOHeuristic();
+        ACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
     else if(input == 8)//Ant Colony Optimisation with Charging Stations.
-        ACOCSHeuristic();
+        ACOCSHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
     else if(input == 9)//Max Min Ant Colony Optimisation.
-        MMACOHeuristic();
+        MMACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
     else if(input == 10)//External Clustering ACO.
-        CACOHeuristic();
+        CACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
 
 }
 

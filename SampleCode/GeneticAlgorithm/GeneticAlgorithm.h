@@ -21,17 +21,17 @@ private:
     void randomRoute(int*);
     static void deleteSegmentOfArray(int**, int, int);
     std::pair<int*,int> getBestRoute();
-    void selectChildrenForParents();
+    void selectChildrenForParents(int);
     void repairParents();
-    void crossoverOperator();
-    void randomMutateChildren();
+    void crossoverOperator(int );
+    void randomMutateChildren(int );
     int* getCACO();
 
 public:
-    GeneticAlgorithm(int,int,int);
+    GeneticAlgorithm(int,int,int,int,int);
     virtual ~GeneticAlgorithm();
-    void generateStartingPopulation();
-    void runGenerations();
+    void generateStartingPopulation(int,int);
+    void runGenerations(int,int,int);
     void displayPopulation();
     void checkSolution();
 };

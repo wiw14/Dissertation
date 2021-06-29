@@ -17,7 +17,7 @@ public:
 
     void generateRoute(int);
     int findNextClosestNode(int);
-    KNN(int);
+    KNN(int,int,int);
     int *getKNN(int, int);
     void printRoute();
     ~KNN();

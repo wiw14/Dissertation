@@ -3,12 +3,12 @@
 /*
  * Creates and runs the Genetic Algorithm.
  */
-void GAHeuristic() {
-    int sizeOfPopulation = 10, generations = 10, numMutations = 5;
-    auto *GA = new GeneticAlgorithm(sizeOfPopulation, generations,numMutations);
+void GAHeuristic(int popSize, int gen, int numMut,int rsi,int toi,int selection,int crossover, int mutation) {
 
-    GA->generateStartingPopulation();
-    GA->runGenerations();
+    auto *GA = new GeneticAlgorithm(popSize, gen,numMut,rsi,toi);
+
+    GA->generateStartingPopulation(crossover,selection);
+    GA->runGenerations(selection,crossover,mutation);
 
     //DEBUGGING
 //    GA->displayPopulation();

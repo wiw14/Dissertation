@@ -1,4 +1,4 @@
-
+#include "vector"
 
 struct solution{
     int *tour;	//this is what the fitness_evaluation function in EVRP.hpp will evaluate
@@ -20,7 +20,7 @@ extern long int ms;
 extern solution *best_sol;
 
 void initialize_heuristic();
-void run_heuristic(int);
+void run_heuristic(int,std::vector<double>*);
 void openTourFile(void);
 void closeTourFile(void);
 double end_heuristic(void);

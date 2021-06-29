@@ -1,7 +1,7 @@
 #ifndef TESTSAMPLECODE_ACOONCLUSTERS_H
 #define TESTSAMPLECODE_ACOONCLUSTERS_H
 #include "ClusterACO.h"
-void ACOOnClusters();
+void ACOOnClusters(int,int,int,double,double,double,double,int,int);
 int* generateCostTable(int, std::vector<int*>,int*);
 void twoOptForCluster(int* bestRoute, int clusterSize, int twoOptIterations);
 void twoOptSwapForClusters(int i, int j, int *route, const int *currRoute,int routeSize);

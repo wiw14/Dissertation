@@ -12,9 +12,9 @@ using namespace std;
  * Finds numOfClusters nearest neighbours to a customer and randomly picks one from the generated list.
  * The random nature aims to improve upon greedy euclidean heuristic by forcing movement from local optimums.
  */
-KNN::KNN(int KNN) {
+KNN::KNN(int KNN,int randomSearchIteration,int twoOptIteration) {
     //Create Local Search object to improve the route.
-    LS = new localSearch(3,3);
+    LS = new localSearch(randomSearchIteration,twoOptIteration);
 
     //Instantiate needed arrays.
     v = new int[NUM_OF_CUSTOMERS+1];

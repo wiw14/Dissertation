@@ -46,8 +46,8 @@ int findNextNode(const bool* validNode){
 /*
  * Finds a route between customers based on a greedy approach which chooses the closest neighbour.
  */
-void greedyHeuristic(){
-    auto * LS = new localSearch(3,10);
+void greedyHeuristic(int randomSearchIteration, int twoOptIteration){
+    auto * LS = new localSearch(randomSearchIteration,twoOptIteration);
 
     int prev, next, chargingStation;
     double activeCapacity = 0.0, activeBatteryLevel = 0.0;

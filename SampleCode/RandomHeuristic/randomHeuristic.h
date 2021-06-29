@@ -1,6 +1,6 @@
 #ifndef TESTSAMPLECODE_RANDOMHEURISTIC_H
 #define TESTSAMPLECODE_RANDOMHEURISTIC_H
 
-void randomHeuristic();
+void randomHeuristic(int,int);
 
 #endif //TESTSAMPLECODE_RANDOMHEURISTIC_H
