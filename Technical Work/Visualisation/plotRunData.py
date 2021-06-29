@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 #Creates relevant lists.
 iterations = []
@@ -7,7 +8,8 @@ scores = []
 
 #Reads the individual run data from the file for visualisation.
 def readFile(runNum):
-    file = open("C:/Users/wmw13/Documents/Github/Dissertation/Technical Work/Data/RunData"+str(runNum)+".txt","r")
+    directory = os.path.realpath('..')
+    file = open(os.path.join(directory,"Data","RunData"+str(runNum)+".txt"),"r")
     for line in file:
         iteration, score = line.split(" ")
         iterations.append(int(iteration))

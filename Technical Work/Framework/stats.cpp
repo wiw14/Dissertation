@@ -31,11 +31,11 @@ double* perf_of_trials;
  * Not part of competition framework.
  */
 void openTourFile(void){
-    if ((jsonTour = fopen(R"(C:\Users\wmw13\Documents\GitHub\Dissertation\Technical Work\Data\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
+    if ((jsonTour = fopen(R"(..\Data\storeTour.txt)","w")) == NULL) { printf("ERROR\n");}
 }
 
 void openRunDataFile(int run){
-    if ((runDataFile = fopen((R"(C:\Users\wmw13\Documents\GitHub\Dissertation\Technical Work\Data\RunData)" + std::to_string(run) + ".txt").c_str(),"w")) == NULL) { printf("ERROR\n");}
+    if ((runDataFile = fopen((R"(..\Data\RunData)" + std::to_string(run) + ".txt").c_str(),"w")) == NULL) { printf("ERROR\n");}
 }
 
 void addRunDataToFile(int iteration, double score){

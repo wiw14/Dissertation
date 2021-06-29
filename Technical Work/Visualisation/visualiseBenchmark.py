@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.path import Path
 import matplotlib.patches as patches
 import pandas as pd
+import os
 
 #======================================================================#
 # Visualises the benchmark datasets with no route.
@@ -9,7 +10,8 @@ import pandas as pd
 
 #Reads the benchmark datasets for plotting.
 def readFile(file):
-    file = open("C:/Users/wmw13/Documents/GitHub/Dissertation/evrp-benchmark-set/"+file, "r")
+    directory = os.path.realpath('..')
+    file = open(os.path.join(directory,"evrp-benchmark-set",file), "r")
     customers = pd.DataFrame(columns={"x","y"})
     depot = pd.DataFrame(columns={"x","y"})
     charging = pd.DataFrame(columns={"x","y"})

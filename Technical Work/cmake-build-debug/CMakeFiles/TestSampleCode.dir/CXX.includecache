@@ -6,169 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/AntColonyOptimisation/ACOHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/EVRP.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/AntColonyOptimisation/MaxMinACO.cpp
-climits
--
-functional
--
-MaxMinACO.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/AntColonyOptimisation/MaxMinACO.h
-string
--
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/heuristic.hpp
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/AntColonyOptimisation/MaxMinACO.h
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/LocalSearches.h
-map
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/stats.cpp
+cmath
 -
 iostream
 -
-string
--
 stdio.h
 -
-random
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Dijkstra/DijkstrasHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/CACOHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/Clusterer.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/KMeansClustering.h
-string
--
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/LocalSearches.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/EVRP.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/heuristic.cpp
-cmath
+stdlib.h
 -
 string
+-
+cstring
+-
+math.h
+-
+fstream
+-
+time.h
 -
 limits.h
 -
-../GreedyEuclidean/greedyEuclideanHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GreedyEuclidean/greedyEuclideanHeuristic.h
-../RandomHeuristic/randomHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/RandomHeuristic/randomHeuristic.h
-../AntColonyOptimisation/ACOHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/AntColonyOptimisation/ACOHeuristic.h
-../Dijkstra/DijkstrasHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Dijkstra/DijkstrasHeuristic.h
-../KNN/KNNHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/KNN/KNNHeuristic.h
-../GeneticAlgorithm/GAHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/GAHeuristic.h
-../ExternalClusteringACO/CACOHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/CACOHeuristic.h
-../ExternalClusteringACO/Clusterer.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/Clusterer.h
-../ExternalClusteringACO/KMeansClustering.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/KMeansClustering.h
-../InternalClusteringACO/ACOOnClustersHeuristic.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ACOOnClustersHeuristic.h
-chrono
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/heuristic.hpp
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/CrossoverOperators.h
-list
--
-deque
--
-../GeneticAlgorithm/Mutation.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/Mutation.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/GAHeuristic.h
-GeneticAlgorithm.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/GeneticAlgorithm.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/GeneticAlgorithm.h
-../GeneticAlgorithm/CrossoverOperators.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/CrossoverOperators.h
-deque
--
-list
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/Mutation.h
-../GeneticAlgorithm/Selection.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/Selection.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/RepairOperators.h
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/LocalSearches.h
-list
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/Selection.h
-RepairOperators.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GeneticAlgorithm/RepairOperators.h
-algorithm
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/GreedyEuclidean/greedyEuclideanHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ACOOnClusters.h
-ClusterACO.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ClusterACO.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ACOOnClustersHeuristic.h
-ACOOnClusters.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ACOOnClusters.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/Cluster.h
-../LocalSearchAndGenerateTour/LocalSearches.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/LocalSearches.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/ClusterACO.h
-Cluster.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/InternalClusteringACO/Cluster.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/KNN/KNNHeuristic.h
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/GenerateTour.h
-../Framework/EVRP.hpp
+EVRP.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/EVRP.hpp
-../Framework/heuristic.hpp
+stats.hpp
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/stats.hpp
+heuristic.hpp
 /cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/heuristic.hpp
-../ExternalClusteringACO/KMeansClustering.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/ExternalClusteringACO/KMeansClustering.h
-map
--
-iostream
--
-string
--
-stdio.h
--
-random
--
-climits
--
 
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/LocalSearches.h
-../LocalSearchAndGenerateTour/GenerateTour.h
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/LocalSearchAndGenerateTour/GenerateTour.h
-map
--
-iostream
--
-string
--
-stdio.h
--
-random
--
-climits
--
-
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/RandomHeuristic/randomHeuristic.h
+/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/Technical Work/Framework/stats.hpp
 
