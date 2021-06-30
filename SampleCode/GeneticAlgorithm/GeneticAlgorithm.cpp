@@ -11,8 +11,8 @@
 /*
  * Genetic Algorithm Constructor.
  */
-GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int NumMutations) {
-    LS = new localSearch(3, 3);
+GeneticAlgorithm::GeneticAlgorithm(int SizeOfPopulation, int Generations, int NumMutations,int randomSearchIterations,int twoOptIterations) {
+    LS = new localSearch(randomSearchIterations, twoOptIterations);
 
     sizeOfPopulation = SizeOfPopulation;
     generations = Generations;
@@ -99,24 +99,26 @@ int* GeneticAlgorithm::getCACO(){
 /*
  * Creates a random population of children which are then selected to be parents.
  */
-void GeneticAlgorithm::generateStartingPopulation() {
+void GeneticAlgorithm::generateStartingPopulation(int type,int selectType) {
     //Uncomment to use the different populations.
     /*
      * Random Starting Population.
      */
-//    for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
-//        childPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS+1];
-//        randomRoute(childPopulation[populationIndex]);
-//        childPopulationCounter++;
-//    }
-//    selectChildrenForParents();
-
-
-    /*
-     * Clustered ACO starting population.
-     */
-    for (int i = 0; i < sizeOfPopulation; ++i) {
-        parentPopulation[i] = getCACO();
+    if(type == 1) {
+        for (int populationIndex = 0; populationIndex < sizeOfPopulation + sizeOfPopulation; ++populationIndex) {
+            childPopulation[populationIndex] = new int[NUM_OF_CUSTOMERS + 1];
+            randomRoute(childPopulation[populationIndex]);
+            childPopulationCounter++;
+        }
+        selectChildrenForParents(selectType);
+    }
+    else if(type == 2) {
+        /*
+         * Clustered ACO starting population.
+         */
+        for (int i = 0; i < sizeOfPopulation; ++i) {
+            parentPopulation[i] = getCACO();
+        }
     }
 }
 
@@ -163,13 +165,13 @@ std::pair<int *, int> GeneticAlgorithm::getBestRoute() {
 /*
  * Main body of the genetic algorithm, calls the Crossover, mutation, selection and repair operators.
  */
-void GeneticAlgorithm::runGenerations() {
+void GeneticAlgorithm::runGenerations(int selection,int crossover,int mutation) {
     for (int x = 1; x <= generations; ++x) {
         childPopulationCounter = 0;
-        crossoverOperator();
-        //randomMutateChildren() is commented out when using PX or GPX.
-        randomMutateChildren();
-        selectChildrenForParents();
+        crossoverOperator(crossover);
+        if(mutation != 0)
+            randomMutateChildren(mutation);
+        selectChildrenForParents(selection);
         addRunDataToFile(x,best_sol->tour_length);
         //repairParents();
     }
@@ -178,19 +180,26 @@ void GeneticAlgorithm::runGenerations() {
 /*
  * Calls the different crossover operators to generate children from the parents.
  */
-void GeneticAlgorithm::crossoverOperator() {
+void GeneticAlgorithm::crossoverOperator(int type) {
     childPopulationCounter = 0;
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
-
+        int** tempChildren;
         //SELECT CROSSOVER OPERATOR BY UNCOMMENTING.
         //GPX:
+        if(type == 1){
+            //PMX:
+            tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+        }
+        else if (type == 2){
+            //PX:
+            tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+        }
 //        int** tempChildren = CrossoverOperators::GPCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
         //PX:
 //     int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
         //Test Recombination -- Debugging:
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
-        //PMX:
-        int** tempChildren = CrossoverOperators::partiallyMappedCrossover(parentPopulation[0],parentPopulation[recombineCounter]);
+
 
         //Add the generated children to the children population.
         childPopulation[childPopulationCounter] = new int[NUM_OF_CUSTOMERS+1];
@@ -218,17 +227,21 @@ void GeneticAlgorithm::crossoverOperator() {
 /*
  * Uses a selection operator to select viable children to be parents.
  */
-void GeneticAlgorithm::selectChildrenForParents() {
+void GeneticAlgorithm::selectChildrenForParents(int type) {
     for (int i = 0; i < sizeOfPopulation; ++i) {
         delete[] parentPopulation[i];
         parentPopulation[i] = nullptr;
     }
+    int** tempParentPopulation;
+    if(type == 1){
+        //Truncation Selection:
+        tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    }
+    else if(type == 2){
+        //Correlated family-based Selection:
+        tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
+    }
 
-    //Select different selection operators by uncommenting.
-    //Truncation Selection:
-    int** tempParentPopulation = Selection::greedySelection(childPopulation,childPopulationCounter,sizeOfPopulation);
-    //Correlated family-based Selection:
-//        int** tempParentPopulation = Selection::correlativeFamilyBasedSelection(childPopulation,childPopulationCounter,sizeOfPopulation);
 
     for (int i = 0; i < sizeOfPopulation; ++i) {
         parentPopulation[i] = new int[NUM_OF_CUSTOMERS+1];
@@ -254,13 +267,20 @@ void GeneticAlgorithm::repairParents(){
  * Uses a mutation operator to mutate the children population based upon a predetermined probability.
  * This helps to reduce the Genetic Algorithm from getting stuck in local optimums.
  */
-void GeneticAlgorithm::randomMutateChildren(){
+void GeneticAlgorithm::randomMutateChildren(int type){
     for (int i = 0; i < childPopulationCounter; ++i) {
         int toMutate = rand()%probabiltyOfMutation;
         if(toMutate == 0) {
             //Mutation Operators, uncomment to select different operators.
-            //Local Search Mutation:
-            LS->randomPheromoneLocalSearchWithTwoOpt(childPopulation[i]);
+            if(type == 1){
+                //Random Swap Mutation:
+                Mutation::randomSwapMutation(childPopulation[i]);
+            }
+            else if (type == 2){
+                //Local Search Mutation:
+                LS->randomPheromoneLocalSearchWithTwoOpt(childPopulation[i]);
+            }
+
             //Random Swap Mutation:
 //            Mutation::randomSwapMutation(childPopulation[i]);
             //Lin-Kernighan Mutation:

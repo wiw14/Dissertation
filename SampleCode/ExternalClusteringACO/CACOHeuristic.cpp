@@ -8,12 +8,11 @@
  * CACO updates pheromones based on length of  total route of customers, charging stations, and depots
  * rather than just the route of the customers.
  */
-void CACOHeuristic(){
-    int numAnts= 8, iterations = 500, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.98, Q = 1,alpha = 0.6, beta=0.6;
-    auto* a = new CACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
+void CACOHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi){
 
-    a->optimize(iterations);
+    auto* a = new CACO(nAnts,pheroDec,q,probSize,al,be,toi,rsi);
+
+    a->optimize(iter);
     int * route = a->returnResults();
 
     a->getRL(route);

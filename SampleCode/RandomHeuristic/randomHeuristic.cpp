@@ -21,8 +21,8 @@
  * Randomly picks a next customer until all customers have been chosen.
  * Evaluates the tour generated.
  */
-void randomHeuristic(){
-    auto* LS = new localSearch(3,3);
+void randomHeuristic(int randomSearchIteration,int twoOptIteration){
+    auto* LS = new localSearch(randomSearchIteration,twoOptIteration);
 
     //generate a random solution for the random heuristic
     int i,help, object, tot_assigned =0;

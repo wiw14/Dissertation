@@ -19,21 +19,19 @@ int *generateRouteFromClusters(int numClusters, std::vector<int *> clusters, int
 /*
  * Internal Clustered Ant Colony Optimisation, applies the ACO to each cluster to generate an optimal route.
  */
-void ACOOnClusters() {
-    int numAnts = 8, iterations = 50, probabilityArraySize = 2, twoOptIteration = 3, randomSearchIteration = 10;
-    double pheromoneDecrease = 0.98, Q = 1, alpha = 0.6, beta = 0.6;
+void ACOOnClusters(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi) {
 
     auto cluster = new Cluster();
     auto clusters = std::vector<int *>();
     int *clusterSizes = new int[cluster->numOfClusters];
     for (int clusterIndex = 0; clusterIndex < cluster->numOfClusters; ++clusterIndex) {
         if (cluster->clusters->at(clusterIndex)->sizeOfCluster > 1) {
-            auto clusterACO = new ClusterACO(numAnts, pheromoneDecrease, Q, probabilityArraySize, alpha, beta,
-                                             twoOptIteration, randomSearchIteration,
+            auto clusterACO = new ClusterACO(nAnts, pheroDec, q, probSize, al, be,
+                                             toi, rsi,
                                              cluster->clusters->at(clusterIndex)->customers,
                                              cluster->clusters->at(clusterIndex)->sizeOfCluster);
 
-            clusterACO->optimize(iterations);
+            clusterACO->optimize(iter);
             int *route = clusterACO->returnResults();
             clusterSizes[clusterIndex] = cluster->clusters->at(clusterIndex)->sizeOfCluster;
             twoOptForCluster(route, clusterSizes[clusterIndex], 5);
@@ -50,7 +48,7 @@ void ACOOnClusters() {
 
     //Route improvement by iteratively running local search on the generated route.
     int improve = 0;
-    auto *LS = new localSearch(3, 3);
+    auto *LS = new localSearch(rsi, toi);
     GenerateTour::getRouteLength(r);
     for (int i = 0; i < 50; ++i) {
         double currentBest = best_sol->tour_length;
@@ -62,7 +60,7 @@ void ACOOnClusters() {
         }
         improve++;
         //If no improvement after x iterations exit for loop.
-        if (improve > randomSearchIteration) {
+        if (improve > rsi) {
             break;
         }
     }

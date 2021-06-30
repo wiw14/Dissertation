@@ -2,7 +2,7 @@
 #define TESTSAMPLECODE_KNNHEURISTIC_H
 
 
-void KNNHeuristic();
+void KNNHeuristic(int,int,int);
 
 
 #endif //TESTSAMPLECODE_KNNHEURISTIC_H

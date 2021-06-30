@@ -12,13 +12,11 @@
  * AntColonyOptimisation updates pheromones based on length of customer route rather than total route of customers,
  * charging stations, and depots.
  */
-void ACOHeuristic(){
-    int numAnts = 4, iterations = 50, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.5, Q = 1,alpha = 0.5, beta = 2;
+void ACOHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi){
 
-    auto* a = new ACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
+    auto* a = new ACO(nAnts,pheroDec,q,probSize,al,be,toi,rsi);
 
-    a->optimize(iterations);
+    a->optimize(iter);
 
     int * route = a->returnResults();
     a->getRL(route);
@@ -34,13 +32,11 @@ void ACOHeuristic(){
  * ACOCS updates pheromones based on length of  total route of customers, charging stations, and depots
  * rather than just the route of the customers.
  */
-void ACOCSHeuristic(){
-    int numAnts=4, iterations = 25, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.8, Q = 80,alpha = 0.8, beta=0.8;
+void ACOCSHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi){
 
-    auto* a = new ACOCS(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha,beta,twoOptIteration,randomSearchIteration);
+    auto* a = new ACOCS(nAnts,pheroDec,q,probSize,al,be,toi,rsi);
 
-    a->optimize(iterations);
+    a->optimize(iter);
 
     int * route = a->returnResults();
     a->getRL(route);
@@ -56,13 +52,13 @@ void ACOCSHeuristic(){
  * MMACO updates pheromones based on length of  total route of customers, charging stations, and depots
  * rather than just the route of the customers.
  */
-void MMACOHeuristic(){
-    int numAnts=3, iterations = 50, probabilityArraySize = 2, twoOptIteration = 3,randomSearchIteration = 3;
-    double pheromoneDecrease = 0.98, Q = 1,alpha = 0.6, beta=0.6, pBest = 0.05;
+void MMACOHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi){
 
-    auto* a = new MaxMinACO(numAnts,pheromoneDecrease,Q,probabilityArraySize,alpha, pBest,beta,twoOptIteration,randomSearchIteration);
+    double pBest = 0.05;
 
-    a->optimize(iterations);
+    auto* a = new MaxMinACO(nAnts,pheroDec,q,probSize,al, pBest,be,toi,rsi);
+
+    a->optimize(iter);
 
     int * route = a->returnResults();
     a->getRL(route);

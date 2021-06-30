@@ -152,8 +152,8 @@ int *Dijkstra() {
 /*
  * Creates local search object, finds tour between customers, runs local search, then evaluates the tour.
  */
-void DijkstrasHeuristic() {
-    auto *LS = new localSearch(3, 3);
+void DijkstrasHeuristic(int randomSearchIteration,int twoOptIteration) {
+    auto *LS = new localSearch(randomSearchIteration, twoOptIteration);
     int *tour = Dijkstra();
     LS->randomPheromoneLocalSearchWithTwoOpt(tour);
     double val = GenerateTour::getRouteLength(tour);

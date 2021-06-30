@@ -48,6 +48,80 @@ int printMenu(){
     return var;
 }
 
+auto getParameters(int input){
+    auto vars = new vector<double>();
+    if(input == 4){
+        int knn;
+        printf("Enter Number of Neighbours (KNN): ");
+        cin >> knn;
+        vars->push_back(knn);
+    } else if (input == 5 || (7 <= input && input <=10) ){
+        int nAnts,iter,probSize;
+        double pheroDec,q,al,be;
+        printf("Enter Number of Ants: ");
+        cin >> nAnts;
+        printf("Enter Number of Iterations: ");
+        cin >> iter;
+        printf("Enter Size of Probability (Default = 2): ");
+        cin >> probSize;
+        printf("Enter Value for Pheromone Decrease: ");
+        cin >> pheroDec;
+        printf("Enter Value for Q (Default = 1): ");
+        cin >> q;
+        printf("Enter Value for Alpha: ");
+        cin >> al;
+        printf("Enter Value for Beta: ");
+        cin >> be;
+
+        vars->push_back(nAnts);
+        vars->push_back(iter);
+        vars->push_back(probSize);
+        vars->push_back(pheroDec);
+        vars->push_back(q);
+        vars->push_back(al);
+        vars->push_back(be);
+    }
+    else if(input == 6){
+        int popSize,gen,numMut;
+        printf("Enter Size of Populations: ");
+        cin >> popSize;
+        printf("Enter Number of Generations: ");
+        cin >> gen;
+        printf("Enter Number of Mutations (1/x e.g. Enter 100 = 1/100): ");
+        cin >> numMut;
+
+        vars->push_back(popSize);
+        vars->push_back(gen);
+        vars->push_back(numMut);
+
+        int selection,crossover,mutation;
+        printf("Select Selection Operator:\n1. Truncation Selection\n2. Correlated Family-Based Selection\n");
+        cin >> selection;
+        printf("Select Crossover Operator:\n1. Partially Mapped Crossover\n2. Partition Crossover\n");
+        cin >> crossover;
+        if(crossover == 1) {
+            printf("Select Mutation Operator:\n1. Random Mutation\n2. Local Search Mutation\n");
+            cin>>mutation;
+        }else{
+            mutation = 0;
+        }
+
+        vars->push_back(selection);
+        vars->push_back(crossover);
+        vars->push_back(mutation);
+    }
+    int randomSearchIterations, twoOptIterations;
+    printf("Enter Number of Random Search Iterations: ");
+    cin >> randomSearchIterations;
+    printf("Enter Number of Two Opt Iterations: ");
+    cin >> twoOptIterations;
+
+    vars->push_back(randomSearchIterations);
+    vars->push_back(twoOptIterations);
+
+    return vars;
+}
+
 /*
  * Prints results table at the end.
  */
@@ -76,6 +150,7 @@ int main(int argc, char *argv[]) {
     int input = printMenu();
     int NumRuns = 20;
     auto runData = new double*[NumRuns];
+    auto vars = getParameters(input);
     for(run = 1; run <= NumRuns; run++){
         runData[run-1] = new double[3];
         printf("Run %d...\n",run);
@@ -89,7 +164,7 @@ int main(int argc, char *argv[]) {
         while(!termination_condition()){
             //Execute your heuristic
             openRunDataFile(run);
-            run_heuristic(input);
+            run_heuristic(input,vars);
             closeRunDataFile(run);
         }
 

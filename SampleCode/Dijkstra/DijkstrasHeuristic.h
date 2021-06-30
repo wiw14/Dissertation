@@ -2,7 +2,7 @@
 #define TESTSAMPLECODE_DIJKSTRASHEURISTIC_H
 
 
-void DijkstrasHeuristic();
+void DijkstrasHeuristic(int,int);
 int* Dijkstra();
 
 

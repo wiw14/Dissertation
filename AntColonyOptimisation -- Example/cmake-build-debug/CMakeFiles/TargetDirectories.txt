@@ -1,3 +1,0 @@
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AntColonyOptimisation -- Example/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AntColonyOptimisation -- Example/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/Users/wmw13/Documents/GitHub/Dissertation/AntColonyOptimisation -- Example/cmake-build-debug/CMakeFiles/AntColonyOptimisation.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/DijkstrasAlgorithm.dir/main.cpp.o  -o DijkstrasAlgorithm.exe -Wl,--out-implib,libDijkstrasAlgorithm.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
