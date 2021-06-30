@@ -1,8 +1,0 @@
-#ifndef TESTSAMPLECODE_CACOHEURISTIC_H
-#define TESTSAMPLECODE_CACOHEURISTIC_H
-
-//Runs the CACO metaheuristic.
-void CACOHeuristic();
-
-
-#endif //TESTSAMPLECODE_CACOHEURISTIC_H
