@@ -18,8 +18,8 @@ private:
 public:
     static int** testRecombination(int*, int*);
     static int** partiallyMappedCrossover(int*, int*);
-    static int** PCRecombine(int*, int*);
-    static int** GPCRecombine(int*, int*);
+    static int** PCRecombine(int*, int*,int randomSearchIteration,int twoOptIterations);
+    static int** GPCRecombine(int*, int*,int randomSearchIteration,int twoOptIterations);
 };
 
 

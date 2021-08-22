@@ -26,6 +26,10 @@ localSearch::localSearch(int RandomSearchIteration, int TwoOptIterations) {
 localSearch::~localSearch() {
 }
 
+std::pair<int,int>* localSearch::getIterations(){
+    return new std::pair<int,int>(randomSearchIteration,twoOptIterations);
+}
+
 /*
  * Finds the closest neighbour to a customer.
  */

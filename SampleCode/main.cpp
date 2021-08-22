@@ -80,6 +80,14 @@ auto getParameters(int input){
         vars->push_back(q);
         vars->push_back(al);
         vars->push_back(be);
+
+        if(input == 9){
+            double pb;
+            printf("Enter Value for pBest (Default = 0.05): ");
+            cin >> pb;
+            vars->push_back(pb);
+        }
+
     }
     else if(input == 6){
         int popSize,gen,numMut;

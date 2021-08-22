@@ -25,32 +25,42 @@ void randomHeuristic(int randomSearchIteration,int twoOptIteration){
     auto* LS = new localSearch(randomSearchIteration,twoOptIteration);
 
     //generate a random solution for the random heuristic
-    int i,help, object, tot_assigned =0;
-    int *r;
+    int i,tempCustomer, offset, tot_assigned =0;
+    int *customers;
 
-    r = new int[NUM_OF_CUSTOMERS+1];
+    customers = new int[NUM_OF_CUSTOMERS+1];
     //set indexes of objects.
-    for(i = 1; i <= NUM_OF_CUSTOMERS; i++){
-        r[i-1]=i;
-
+    for(i = 0; i <= NUM_OF_CUSTOMERS; i++){
+        customers[i]=i;
     }
+
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+        printf("%d,",customers[index]);
+    }
+    printf("\n");
+
     //randomly change indexes of objects.
     for(i = 0; i <= NUM_OF_CUSTOMERS; i++){
-        object = (int) ((rand()/(RAND_MAX+1.0)) * (double)(NUM_OF_CUSTOMERS-tot_assigned));
-        help = r[i];
-        r[i]=r[i+object];
-        r[i+object]=help;
+        offset = (int) ((rand()/(RAND_MAX+1.0)) * (double)((NUM_OF_CUSTOMERS+1)-tot_assigned));
+        tempCustomer = customers[i];
+        customers[i]=customers[offset+i];
+        customers[offset+i]=tempCustomer;
         tot_assigned++;
     }
 
+    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+        printf("%d,",customers[index]);
+    }
+    printf("\n");
+
     //Runs local search on the randomly generated tour.
-    LS->randomPheromoneLocalSearchWithTwoOpt(r);
+    LS->randomPheromoneLocalSearchWithTwoOpt(customers);
 
     //Calculates the quality of the tour created.
-    double val = GenerateTour::getRouteLength(r);
+    double val = GenerateTour::getRouteLength(customers);
 
 
     //de-allocates memory
-    delete[] r;
+    delete[] customers;
     delete LS;
 }
