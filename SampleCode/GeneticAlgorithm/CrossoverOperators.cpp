@@ -394,8 +394,8 @@ int isInPartition(std::list<int>* partitionOne, std::list<int>* partitionTwo, in
  * Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
  * Version 2.0
  */
-int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine) {
-    auto LS = new localSearch(3,3);
+int** CrossoverOperators::PCRecombine(int * currentBest, int * toCombine,int randomSearchIteration,int twoOptIterations) {
+    auto LS = new localSearch(randomSearchIteration,twoOptIterations);
 
     /*
      * STEP 1:
@@ -535,8 +535,8 @@ int CrossoverOperators::findInPartiton(std::vector<std::list<int>*>* partitions,
  * Generalised Partition Crossover Operator, generates children based on alternating partitions located within parent routes.
  * Version 1.0 (Does not produce optimal results)
  */
-int** CrossoverOperators::GPCRecombine(int * currentBest, int * toCombine) {
-    auto LS = new localSearch(3,3);
+int** CrossoverOperators::GPCRecombine(int * currentBest, int * toCombine,int randomSearchIteration,int twoOptIterations) {
+    auto LS = new localSearch(randomSearchIteration,twoOptIterations);
 
     /*
      * STEP 1:

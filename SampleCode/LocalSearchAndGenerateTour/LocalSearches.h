@@ -19,6 +19,7 @@ private:
 public:
     localSearch(int RandomSearchIteration, int TwoOptIterations);
     virtual ~localSearch();
+    std::pair<int,int>* getIterations();
     int getTotalWeight();
     int getTotalWeightCluster();
     void randomPheromoneLocalSearch(int* bestRoute);

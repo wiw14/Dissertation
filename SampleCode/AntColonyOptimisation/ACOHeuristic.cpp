@@ -52,9 +52,9 @@ void ACOCSHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q
  * MMACO updates pheromones based on length of  total route of customers, charging stations, and depots
  * rather than just the route of the customers.
  */
-void MMACOHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi){
+void MMACOHeuristic(int nAnts, int iter, int probSize, double pheroDec, double q, double al, double be, int rsi, int toi,double pb){
 
-    double pBest = 0.05;
+    double pBest = pb;
 
     auto* a = new MaxMinACO(nAnts,pheroDec,q,probSize,al, pBest,be,toi,rsi);
 

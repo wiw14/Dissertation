@@ -182,6 +182,7 @@ void GeneticAlgorithm::runGenerations(int selection,int crossover,int mutation) 
  */
 void GeneticAlgorithm::crossoverOperator(int type) {
     childPopulationCounter = 0;
+    auto iterations = LS->getIterations();
     for (int recombineCounter = 1; recombineCounter < sizeOfPopulation; ++recombineCounter) {
         int** tempChildren;
         //SELECT CROSSOVER OPERATOR BY UNCOMMENTING.
@@ -192,11 +193,10 @@ void GeneticAlgorithm::crossoverOperator(int type) {
         }
         else if (type == 2){
             //PX:
-            tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+            tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter],iterations->first,iterations->second);
         }
-//        int** tempChildren = CrossoverOperators::GPCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
+//        int** tempChildren = CrossoverOperators::GPCRecombine(parentPopulation[0], parentPopulation[recombineCounter],iterations->first,iterations->second);
         //PX:
-//     int** tempChildren = CrossoverOperators::PCRecombine(parentPopulation[0], parentPopulation[recombineCounter]);
         //Test Recombination -- Debugging:
 //      int** tempChildren = CrossoverOperators::testRecombination(parentPopulation[0],parentPopulation[recombineCounter]);
 
@@ -219,6 +219,7 @@ void GeneticAlgorithm::crossoverOperator(int type) {
 
         delete[] tempChildren[0]; delete[] tempChildren[1]; delete[] tempChildren;
     }
+    delete iterations;
     if(childPopulationCounter < sizeOfPopulation) {
         childPopulation[childPopulationCounter++] = getCACO();
     }

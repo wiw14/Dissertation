@@ -34,7 +34,7 @@ void ACOOnClusters(int nAnts, int iter, int probSize, double pheroDec, double q,
             clusterACO->optimize(iter);
             int *route = clusterACO->returnResults();
             clusterSizes[clusterIndex] = cluster->clusters->at(clusterIndex)->sizeOfCluster;
-            twoOptForCluster(route, clusterSizes[clusterIndex], 5);
+            twoOptForCluster(route, clusterSizes[clusterIndex], toi);
             clusters.push_back(route);
 
             delete clusterACO;

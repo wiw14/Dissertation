@@ -72,7 +72,7 @@ void run_heuristic(int input,vector<double>*vars) {
     else if(input == 8)//Ant Colony Optimisation with Charging Stations.
         ACOCSHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
     else if(input == 9)//Max Min Ant Colony Optimisation.
-        MMACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
+        MMACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(8), (int)vars->at(9),(double)vars->at(7));
     else if(input == 10)//External Clustering ACO.
         CACOHeuristic((int)vars->at(0), (int)vars->at(1), (int)vars->at(2),vars->at(3),vars->at(4),vars->at(5),vars->at(6),(int)vars->at(7), (int)vars->at(8));
 
