@@ -34,10 +34,11 @@ void randomHeuristic(int randomSearchIteration,int twoOptIteration){
         customers[i]=i;
     }
 
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
-        printf("%d,",customers[index]);
-    }
-    printf("\n");
+    //DEBUGGING - prints customer routes before random shift.
+//    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+//        printf("%d,",customers[index]);
+//    }
+//    printf("\n");
 
     //randomly change indexes of objects.
     for(i = 0; i <= NUM_OF_CUSTOMERS; i++){
@@ -48,10 +49,11 @@ void randomHeuristic(int randomSearchIteration,int twoOptIteration){
         tot_assigned++;
     }
 
-    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
-        printf("%d,",customers[index]);
-    }
-    printf("\n");
+    //DEBUGGING - prints customer routes after random shift.
+//    for (int index = 0; index <= NUM_OF_CUSTOMERS; index++){
+//        printf("%d,",customers[index]);
+//    }
+//    printf("\n");
 
     //Runs local search on the randomly generated tour.
     LS->randomPheromoneLocalSearchWithTwoOpt(customers);

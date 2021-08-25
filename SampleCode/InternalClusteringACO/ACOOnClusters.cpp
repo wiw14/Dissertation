@@ -25,6 +25,7 @@ void ACOOnClusters(int nAnts, int iter, int probSize, double pheroDec, double q,
     auto clusters = std::vector<int *>();
     int *clusterSizes = new int[cluster->numOfClusters];
     for (int clusterIndex = 0; clusterIndex < cluster->numOfClusters; ++clusterIndex) {
+        printf("Cluster %d\n",clusterIndex);
         if (cluster->clusters->at(clusterIndex)->sizeOfCluster > 1) {
             auto clusterACO = new ClusterACO(nAnts, pheroDec, q, probSize, al, be,
                                              toi, rsi,
