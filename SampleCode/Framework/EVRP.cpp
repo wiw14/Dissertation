@@ -120,6 +120,162 @@ void displayNodeData(void){
     }
 }
 
+/****************************************************************/
+/* Read the variables instance and generate the initial object    */
+/* vector.                                                      */
+/****************************************************************/
+std::vector<double>* read_variables(std::string filename,int input){
+    auto vars = new std::vector<double>();
+
+    int i;
+    char line[CHAR_LEN];
+    char * keywords;
+    char Delimiters[] = " :=\n\t\r\f\v";
+    ifstream fin("../"+filename);
+
+    //ANT COLONY VARS
+    int ants,iter,prob,q,randIter,twoOptIter;
+    double phero,alpha,beta,pBest;
+
+    //GENETIC ALGORITHM VARS
+    int pop,gen,mut,sel,cros,mutSel;
+
+    while((fin.getline(line, CHAR_LEN-1))){
+        printf("line: %s\n",line);
+
+        if(!(keywords = strtok(line, Delimiters)))
+            continue;
+        if(!strcmp(keywords, "ANTS")){
+            if(!sscanf(strtok(NULL, Delimiters), "%d", &ants)){
+                cout<<"ANTS error"<<endl;
+                exit(0);
+            }
+        }
+        else if(!strcmp(keywords, "ITERATIONS")){
+            if(!sscanf(strtok(NULL, Delimiters), "%d", &iter)){
+                cout<<"ITERATIONS error"<<endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "PROBABILITY")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &prob)){
+                cout << "PROBABILITY error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "PHEROMONE")){
+            if(!sscanf(strtok(NULL,Delimiters), "%lf", &phero)){
+                cout << "PHEROMONE error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "Q")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &q)){
+                cout << "Q error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "ALPHA")){
+            if(!sscanf(strtok(NULL,Delimiters), "%lf", &alpha)){
+                cout << "ALPHA error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "BETA")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &beta)){
+                cout << "BETA error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "RANDOMITER")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &randIter)){
+                cout << "RANDOMITER error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "TWOOPTITER")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &twoOptIter)){
+                cout << "TWOOPTITER error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "PBEST")){
+            if(!sscanf(strtok(NULL,Delimiters), "%lf", &pBest)){
+                cout << "PBEST error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "POP")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &pop)){
+                cout << "POP error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "GEN")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &gen)){
+                cout << "GEN error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "MUT")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &mut)){
+                cout << "MUT error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "SEL")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &sel)){
+                cout << "SEL error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "CROS")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &cros)){
+                cout << "CROS error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "MUTSEL")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &mutSel)){
+                cout << "MUTSEL error" << endl;
+                exit(0);
+            }
+        }
+    }
+    fin.close();
+    if(randIter != 0){
+    if(input == 5 || (7 <= input && input <= 10)){
+        vars->push_back(ants);
+        vars->push_back(iter);
+        vars->push_back(prob);
+        vars->push_back(phero);
+        vars->push_back(q);
+        vars->push_back(alpha);
+        vars->push_back(beta);
+        if(input==9){
+            vars->push_back(pBest);
+        }
+    }
+    else if(input == 6){
+        vars->push_back(pop);
+        vars->push_back(gen);
+        vars->push_back(mut);
+        vars->push_back(sel);
+        vars->push_back(cros);
+        if(cros == 1)
+            vars->push_back(mutSel);
+        else
+            vars->push_back(0);
+    }
+
+    vars->push_back(randIter);
+    vars->push_back(twoOptIter);
+    return vars;
+    }else{
+        return nullptr;
+    }
+}
+
 
 /****************************************************************/
 /* Read the problem instance and generate the initial object    */

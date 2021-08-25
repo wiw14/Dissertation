@@ -1,25 +1,27 @@
 #include<iostream>
 #include<stdlib.h>
 #include<limits.h>
-
+#include <fstream>
 #include "Framework/EVRP.hpp"
 #include "Framework/heuristic.hpp"
 #include "Framework/stats.hpp"
+
 using namespace std;
 
 
 /*initialiazes a run for your heuristic*/
-void start_run(int r){
+void start_run(int r) {
     srand(r); //random seed
     init_evals();
     init_current_best();
 }
 
 /*gets an observation of the run for your heuristic*/
-void end_run(int r){
+void end_run(int r) {
 //    cout << "Run: " << r << " with random seed " << r << endl;
-    get_mean(r-1,get_current_best()); //from stats.h
-    cout << "End of run " << r << " with best solution quality " << get_current_best() << " total evaluations: " << get_evals()  << endl;
+    get_mean(r - 1, get_current_best()); //from stats.h
+    cout << "End of run " << r << " with best solution quality " << get_current_best() << " total evaluations: "
+         << get_evals() << endl;
 //    cout << " " << endl;
 }
 
@@ -29,10 +31,9 @@ void end_run(int r){
 bool termination_condition(void) {
 
     bool flag;
-    if(get_evals() >= TERMINATION){
+    if (get_evals() >= TERMINATION) {
         flag = true;
-    }
-    else
+    } else
         flag = false;
 
     return flag;
@@ -41,23 +42,23 @@ bool termination_condition(void) {
 /*
  * Displays selection menu for metaheuristics.
  */
-int printMenu(){
+int printMenu() {
     printf("1. Greedy Heuristic\n2. Random heuristic\n3. Dijkstra Heuristic\n4. KNN Heuristic\n5. Ant Colony Optimisation on each Clusters\n6. Genetic Algorithm\n7. Ant Colony Optimisation\n8. Ant Colony Optimisation Including Charging Stations\n9. Max Min Ant Colony Optimisation\n10. Ant Colony Optimisation between Clusters\nWhich Metaheuristic:\n");
     int var;
     std::cin >> var;
     return var;
 }
 
-auto getParameters(int input){
+auto getManualParameters(int input) {
     auto vars = new vector<double>();
-    if(input == 4){
+    if (input == 4) {
         int knn;
         printf("Enter Number of Neighbours (KNN): ");
         cin >> knn;
         vars->push_back(knn);
-    } else if (input == 5 || (7 <= input && input <=10) ){
-        int nAnts,iter,probSize;
-        double pheroDec,q,al,be;
+    } else if (input == 5 || (7 <= input && input <= 10)) {
+        int nAnts, iter, probSize;
+        double pheroDec, q, al, be;
         printf("Enter Number of Ants: ");
         cin >> nAnts;
         printf("Enter Number of Iterations: ");
@@ -81,16 +82,15 @@ auto getParameters(int input){
         vars->push_back(al);
         vars->push_back(be);
 
-        if(input == 9){
+        if (input == 9) {
             double pb;
             printf("Enter Value for pBest (Default = 0.05): ");
             cin >> pb;
             vars->push_back(pb);
         }
 
-    }
-    else if(input == 6){
-        int popSize,gen,numMut;
+    } else if (input == 6) {
+        int popSize, gen, numMut;
         printf("Enter Size of Populations: ");
         cin >> popSize;
         printf("Enter Number of Generations: ");
@@ -102,15 +102,15 @@ auto getParameters(int input){
         vars->push_back(gen);
         vars->push_back(numMut);
 
-        int selection,crossover,mutation;
+        int selection, crossover, mutation;
         printf("Select Selection Operator:\n1. Truncation Selection\n2. Correlated Family-Based Selection\n");
         cin >> selection;
         printf("Select Crossover Operator:\n1. Partially Mapped Crossover\n2. Partition Crossover\n");
         cin >> crossover;
-        if(crossover == 1) {
+        if (crossover == 1) {
             printf("Select Mutation Operator:\n1. Random Mutation\n2. Local Search Mutation\n");
-            cin>>mutation;
-        }else{
+            cin >> mutation;
+        } else {
             mutation = 0;
         }
 
@@ -130,17 +130,47 @@ auto getParameters(int input){
     return vars;
 }
 
+
+auto getAutoParameters(int input) {
+
+    string fileName;
+    printf("Name of variables file?\n");
+    cin >> fileName;
+
+    auto vars = read_variables(fileName, input);
+
+    return vars;
+}
+
+vector<double>* getParameters(int input) {
+    if (input > 4) {
+        string fileInput;
+        printf("Read from file? (y/n)\n");
+        cin >> fileInput;
+        if (fileInput == "n" || fileInput == "N") {
+            return getManualParameters(input);
+        } else if (fileInput == "y" || fileInput == "Y") {
+            return getAutoParameters(input);
+        }
+    } else {
+        return getManualParameters(input);
+    }
+    return nullptr;
+}
+
 /*
  * Prints results table at the end.
  */
-void printDataTable(double** data,int numRun){
+void printDataTable(double **data, int numRun) {
     double avgScore = 0, avgEval = 0, avgTime = 0;
-    printf("%4s|%15s|%15s|%10s\n","Run","Score","Eval","Time");
+    printf("%4s|%15s|%15s|%10s\n", "Run", "Score", "Eval", "Time");
     for (int run = 0; run < numRun; ++run) {
         printf("%4d|%15f|%15f|%10f\n", run + 1, data[run][0], data[run][1], data[run][2]);
-        avgScore += data[run][0]; avgEval += data[run][1]; avgTime += data[run][2];
+        avgScore += data[run][0];
+        avgEval += data[run][1];
+        avgTime += data[run][2];
     }
-    printf("%4s|%15f|%15f|%10f\n","Avg.",(avgScore/numRun),(avgEval/numRun),(avgTime/numRun));
+    printf("%4s|%15f|%15f|%10f\n", "Avg.", (avgScore / numRun), (avgEval / numRun), (avgTime / numRun));
 }
 /****************************************************************/
 /*                Main Function                                 */
@@ -157,11 +187,14 @@ int main(int argc, char *argv[]) {
     openTourFile();
     int input = printMenu();
     int NumRuns = 20;
-    auto runData = new double*[NumRuns];
+    auto runData = new double *[NumRuns];
     auto vars = getParameters(input);
-    for(run = 1; run <= NumRuns; run++){
-        runData[run-1] = new double[3];
-        printf("Run %d...\n",run);
+    if(vars == nullptr){
+        return 0;
+    }
+    for (run = 1; run <= NumRuns; run++) {
+        runData[run - 1] = new double[3];
+        printf("Run %d...\n", run);
         /*Step 3 - Start Run*/
         start_run(run);
         //Initialize your heuristic here
@@ -169,22 +202,22 @@ int main(int argc, char *argv[]) {
 
         /*Step 4 - Run heuristic*/
         int count = 1;
-        while(!termination_condition()){
+        while (!termination_condition()) {
             //Execute your heuristic
             openRunDataFile(run);
-            run_heuristic(input,vars);
+            run_heuristic(input, vars);
             closeRunDataFile(run);
         }
 
-        runData[run-1][0] = get_current_best();
-        runData[run-1][1] = get_evals();
+        runData[run - 1][0] = get_current_best();
+        runData[run - 1][1] = get_evals();
 
 
         storeTour(run);
 
         /*Step 5 - End run*/
         end_run(run);  //store the best solution quality for each run
-        runData[run-1][2] = end_heuristic();
+        runData[run - 1][2] = end_heuristic();
     }
     /*Step 6 - Save best results to stats files.*/
     close_stats(); //close text files to calculate the mean result from the 20 runs stats.h
@@ -195,7 +228,7 @@ int main(int argc, char *argv[]) {
     free_heuristic();
     free_EVRP();
 
-    printDataTable(runData,NumRuns);
+    printDataTable(runData, NumRuns);
 
     for (int runs = 0; runs < NumRuns; ++runs)
         delete[] runData[runs];

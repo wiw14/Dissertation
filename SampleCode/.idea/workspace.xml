@@ -33,51 +33,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe34ad7-13af-486c-a4f5-bbf7ee8a326c" name="Default Changelist" comment="Added store tour to file method and implemented the updating of the matplotlib graph.">
-      <change afterPath="$PROJECT_DIR$/.idea/TestSampleCode2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ACOVar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAPMXVar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GAPXVar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MMACOVar.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData12.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData13.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData14.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData14.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData15.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData15.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData16.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData16.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData17.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData18.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData18.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData20.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData20.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/storeTour.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/storeTour.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dijkstra/DijkstrasHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Dijkstra/DijkstrasHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dijkstra/DijkstrasHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/Dijkstra/DijkstrasHeuristic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExternalClusteringACO/CACOHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalClusteringACO/CACOHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExternalClusteringACO/CACOHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/ExternalClusteringACO/CACOHeuristic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/heuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/heuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/heuristic.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/heuristic.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.h" beforeDir="false" afterPath="$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreedyEuclidean/greedyEuclideanHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/GreedyEuclidean/greedyEuclideanHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GreedyEuclidean/greedyEuclideanHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/GreedyEuclidean/greedyEuclideanHeuristic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/RunData9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/EVRP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/EVRP.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/EVRP.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/EVRP.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.h" beforeDir="false" afterPath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClustersHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClustersHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClustersHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClustersHeuristic.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNN/KNN.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/KNN/KNN.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNN/KNN.h" beforeDir="false" afterPath="$PROJECT_DIR$/KNN/KNN.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNN/KNNHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/KNN/KNNHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KNN/KNNHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/KNN/KNNHeuristic.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.h" beforeDir="false" afterPath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACOHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACOHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GAHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o" afterDir="false" />
@@ -93,9 +87,12 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe.stackdump" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evrp-benchmark-set/E-n101-k8.evrp.stats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../evrp-benchmark-set/E-n101-k8.evrp.stats.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../evrp-benchmark-set/E-n22-k4.evrp.stats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../evrp-benchmark-set/E-n22-k4.evrp.stats.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,20 +117,20 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../Technical Work/InternalClusteringACO/ACOOnClusters.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Technical Work/main.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Framework/heuristic.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GAHeuristic.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GAHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GeneticAlgorithm.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Technical Work/Framework/heuristic.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Technical Work/AntColonyOptimisation/ACOHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/Framework/heuristic.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GeneticAlgorithm.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GAHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AntColonyOptimisation/ACOHeuristic.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/GeneticAlgorithm/GAHeuristic.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/main.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Technical Work/InternalClusteringACO/ACOOnClusters.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GeneticAlgorithm.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GeneticAlgorithm/GAHeuristic.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Framework/heuristic.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1nqFaXcyITnRqzU0Inz1LFvL5R8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -161,12 +158,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\Data" />
       <recent name="C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode" />
+      <recent name="C:\Users\wmw13\Documents\GitHub\Dissertation\SampleCode\Data" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.TestSampleCode">
@@ -378,6 +375,10 @@
       <workItem from="1619725463599" duration="1276000" />
       <workItem from="1624271620671" duration="75000" />
       <workItem from="1624695556928" duration="15000" />
+      <workItem from="1625216626052" duration="372000" />
+      <workItem from="1629622346664" duration="318000" />
+      <workItem from="1629623007647" duration="2635000" />
+      <workItem from="1629822766707" duration="7933000" />
     </task>
     <task id="LOCAL-00001" summary="Added store tour to file method and implemented the updating of the matplotlib graph.">
       <created>1612180823539</created>
