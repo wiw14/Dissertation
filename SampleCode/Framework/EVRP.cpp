@@ -134,7 +134,7 @@ std::vector<double>* read_variables(std::string filename,int input){
     ifstream fin("../"+filename);
 
     //ANT COLONY VARS
-    int ants,iter,prob,q,randIter,twoOptIter;
+    int ants,iter,prob,q,randIter,twoOptIter,cluster;
     double phero,alpha,beta,pBest;
 
     //GENETIC ALGORITHM VARS
@@ -182,7 +182,7 @@ std::vector<double>* read_variables(std::string filename,int input){
             }
         }
         else if (!strcmp(keywords, "BETA")){
-            if(!sscanf(strtok(NULL,Delimiters), "%d", &beta)){
+            if(!sscanf(strtok(NULL,Delimiters), "%lf", &beta)){
                 cout << "BETA error" << endl;
                 exit(0);
             }
@@ -202,6 +202,12 @@ std::vector<double>* read_variables(std::string filename,int input){
         else if (!strcmp(keywords, "PBEST")){
             if(!sscanf(strtok(NULL,Delimiters), "%lf", &pBest)){
                 cout << "PBEST error" << endl;
+                exit(0);
+            }
+        }
+        else if (!strcmp(keywords, "CLUSTER")){
+            if(!sscanf(strtok(NULL,Delimiters), "%d", &cluster)){
+                cout << "CLUSTER error" << endl;
                 exit(0);
             }
         }
@@ -252,6 +258,9 @@ std::vector<double>* read_variables(std::string filename,int input){
         vars->push_back(q);
         vars->push_back(alpha);
         vars->push_back(beta);
+        if(input==10){
+            vars->push_back(cluster);
+        }
         if(input==9){
             vars->push_back(pBest);
         }

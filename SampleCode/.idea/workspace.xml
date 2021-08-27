@@ -33,12 +33,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fe34ad7-13af-486c-a4f5-bbf7ee8a326c" name="Default Changelist" comment="Added store tour to file method and implemented the updating of the matplotlib graph.">
-      <change afterPath="$PROJECT_DIR$/ACOVar.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAPMXVar.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GAPXVar.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MMACOVar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ECACOVar.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/RunData1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData10.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData11.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData12.txt" afterDir="false" />
@@ -56,43 +52,18 @@
       <change beforePath="$PROJECT_DIR$/Data/RunData7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData7.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData8.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/RunData9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/RunData9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/storeTour.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/storeTour.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Framework/EVRP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/EVRP.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Framework/EVRP.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/EVRP.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/InternalClusteringACO/ACOOnClusters.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/RandomHeuristic/randomHeuristic.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACO.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/ACOWithChargingStation.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/AntColonyOptimisation/MaxMinACO.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Framework/heuristic.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Framework/heuristic.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAPMXVar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GAPMXVar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GAPXVar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GAPXVar.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Dijkstra/DijkstrasHeuristic.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/CACO.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/ExternalClusteringACO/KMeansClustering.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/EVRP.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/heuristic.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/Framework/stats.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/CrossoverOperators.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/GeneticAlgorithm.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Mutation.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/RepairOperators.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GeneticAlgorithm/Selection.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/GreedyEuclidean/greedyEuclideanHeuristic.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClusters.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClusters.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClustersHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ACOOnClustersHeuristic.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/Cluster.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/Cluster.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ClusterACO.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/InternalClusteringACO/ClusterACO.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/KNN/KNN.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/KNN/KNNHeuristic.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/GenerateTour.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/LocalSearchAndGenerateTour/LocalSearches.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/RandomHeuristic/randomHeuristic.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TestSampleCode.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TestSampleCode.exe.stackdump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evrp-benchmark-set/E-n101-k8.evrp.stats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../evrp-benchmark-set/E-n101-k8.evrp.stats.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../evrp-benchmark-set/E-n22-k4.evrp.stats.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../evrp-benchmark-set/E-n22-k4.evrp.stats.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,11 +139,6 @@
   </component>
   <component name="RunManager" selected="CMake Application.TestSampleCode">
     <configuration name="TestSampleCode" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="C:\Users\wmw13\Documents\GitHub\Dissertation\evrp-benchmark-set\E-n22-k4.evrp" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TestSampleCode" TARGET_NAME="TestSampleCode" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TestSampleCode" RUN_TARGET_NAME="TestSampleCode">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -379,6 +345,7 @@
       <workItem from="1629622346664" duration="318000" />
       <workItem from="1629623007647" duration="2635000" />
       <workItem from="1629822766707" duration="7933000" />
+      <workItem from="1630049139134" duration="866000" />
     </task>
     <task id="LOCAL-00001" summary="Added store tour to file method and implemented the updating of the matplotlib graph.">
       <created>1612180823539</created>

@@ -82,6 +82,13 @@ auto getManualParameters(int input) {
         vars->push_back(al);
         vars->push_back(be);
 
+        if(input==10){
+            int cNum;
+            printf("Enter number of clusters (Default = 4): ");
+            cin >> cNum;
+            vars->push_back(cNum);
+        }
+
         if (input == 9) {
             double pb;
             printf("Enter Value for pBest (Default = 0.05): ");
